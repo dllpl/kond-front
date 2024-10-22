@@ -5,9 +5,8 @@ export default defineNuxtConfig({
   devtools: {enabled: false},
 
   modules: [
-    'nuxt-icon',
+    '@nuxt/icon',
     '@pinia/nuxt',
-    'google-fonts',
     '@nuxtjs/google-fonts',
     '@nuxtjs/seo',
     '@vee-validate/nuxt',

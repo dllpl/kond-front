@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@fancyapps/ui": "^5.0.36",
+    "@nuxt/icon": "^1.5.6",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/seo": "^2.0.0-rc.23",
     "@vee-validate/i18n": "^4.14.3",
