@@ -11,9 +11,14 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@vee-validate/nuxt',
     'yandex-metrika-module-nuxt3',
+    'nuxt-headlessui',
   ],
 
   css: ['~/assets/css/main.css'],
+
+  headlessui: {
+    prefix: ''
+  },
 
   postcss: {
     plugins: {
