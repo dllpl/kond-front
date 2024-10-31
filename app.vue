@@ -1,11 +1,15 @@
 <script setup>
+
+
 provideHeadlessUseId(() => useId())
 </script>
 
 <template>
     <div>
         <NuxtLayout>
-            <NuxtPage/>
+            <Header />
+            <NuxtPage />
+            <Footer />
         </NuxtLayout>
     </div>
 </template>

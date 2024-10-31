@@ -70,8 +70,8 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Montserrat: [600],
-      Inter: '400..600'
+       Inter: '400..600',
+      Montserrat: '400..600',
     },
     display: 'swap',
     preload: true,
