@@ -1,8 +1,8 @@
 <template>
+    <h2 class=" mb-4 font-bold text-4xl 2xl:text-3xl ">Популярные категории</h2>
+    <div class="grid grid-cols-3 grid-rows-2 gap-6 xl:grid-cols-2 xl:gauto-rows-max">
 
-    <div class="grid grid-cols-3 grid-rows-2 gap-6">
-
-        <div class=" relative row-span-2 group  overflow-hidden rounded-lg  ">
+        <div class=" relative group overflow-hidden row-span-2 rounded-lg">
             <img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-featured-category.jpg" alt=""
                 class="object-cover object-center group-hover:opacity-75 transition-all" />
 
@@ -22,7 +22,7 @@
         </div>
 
 
-        <div class="group overflow-hidden rounded-lg aspect-none relative h-full 
+        <div class="relative group overflow-hidden rounded-lg aspect-none h-full 
             sm:aspect-w-2 sm:aspect-h-1 ">
             <img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-01.jpg" alt="" class="object-cover object-center group-hover:opacity-75  transition-all absolute inset-0 h-full w-full
                     sm:static sm:inset-auto " />
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="group overflow-hidden rounded-lg aspect-none relative h-full 
+        <div class="relative group overflow-hidden rounded-lg aspect-none h-full 
             sm:aspect-w-2 sm:aspect-h-1 ">
             <img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-02.jpg" alt="" class="object-cover object-center group-hover:opacity-75 transition-all absolute inset-0 h-full w-full
                     sm:static sm:inset-auto " />
@@ -61,10 +61,10 @@
             </div>
         </div>
 
-        <div class="group overflow-hidden rounded-lg aspect-none relative h-full 
-            sm:aspect-w-2 sm:aspect-h-1 ">
-            <img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-01.jpg" alt="" class="object-cover object-center group-hover:opacity-75  transition-all absolute inset-0 h-full w-full
-                    sm:static sm:inset-auto " />
+        <div class="relative group overflow-hidden rounded-lg aspect-none h-full 
+            sm:aspect-w-2 sm:aspect-h-1">
+            <img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-01.jpg" alt=""
+                class="object-cover object-center group-hover:opacity-75  transition-all absolute inset-0 h-full w-full xl:static sm:inset-auto " />
 
             <div aria-hidden="true"
                 class="bg-gradient-to-b from-transparent to-black opacity-50 absolute inset-0 sm:static sm:inset-auto" />
@@ -80,11 +80,11 @@
                 </div>
             </div>
         </div>
-
-        <div class="group overflow-hidden rounded-lg aspect-none relative h-full 
-            sm:aspect-w-2 sm:aspect-h-1 ">
-            <img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-02.jpg" alt="" class="object-cover object-center group-hover:opacity-75 transition-all absolute inset-0 h-full w-full
-                    sm:static sm:inset-auto " />
+        <!-- Проверь соотношение картинки, может поэтому строка высокая -->
+        <div class="relative group overflow-hidden rounded-lg aspect-none h-full 
+            sm:aspect-w-2 sm:aspect-h-1">
+            <img src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-02.jpg" alt="" class="object-cover object-center group-hover:opacity-75 transition-all absolute inset-0 h-full w-full  
+                    xl:static sm:inset-auto" />
             <div aria-hidden="true"
                 class="bg-gradient-to-b from-transparent to-black opacity-50 absolute inset-0 sm:static sm:inset-auto" />
             <div class="flex items-end p-6 absolute inset-0 sm:static sm:inset-auto">
@@ -99,6 +99,7 @@
                 </div>
             </div>
         </div>
+
 
     </div>
 
