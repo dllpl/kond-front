@@ -19,7 +19,7 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-        @apply font-main;
+        @apply font-title;
     }
 
     input:focus, textarea:focus, select:focus, button:focus, a:focus {
@@ -36,17 +36,6 @@
 
     .wrapper-container {
         width: 100%;
-    }
-
-    .grey-line::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: calc((100vw - 100%)/-2);
-        width: 100vw;
-        height: 100%;
-        background-color: rgb(243 244 246);
-        z-index: -1;
     }
 
     .dropdown:hover .dropdown-menu {

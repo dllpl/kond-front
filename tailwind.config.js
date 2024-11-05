@@ -12,7 +12,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 main: ['Montserrat', 'sans-serif'],
-                title: ['Inter', 'sans-serif'],
+                title: ['Open Sans', 'sans-serif'],
             },
         },
 

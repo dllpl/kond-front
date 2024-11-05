@@ -70,7 +70,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-       Inter: '400..600',
+      'Open Sans': '400..600',
       Montserrat: '400..600',
     },
     display: 'swap',
