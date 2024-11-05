@@ -292,7 +292,7 @@ const navigationTop = [
 ]
 
 const navigationMain = [
-    { name: 'Каталог', href: '#' },
+    { name: 'Каталог', href: '#catalog' },
     { name: 'Съедобная печать', href: '#' },
     { name: 'Блог', href: '#' },
     { name: 'Контакты', href: '#' },
