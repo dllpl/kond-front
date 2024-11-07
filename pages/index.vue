@@ -17,6 +17,8 @@
                 <SectionProductTop />
                 <SectionFollowSocial />
                 <SectionPromoCook />
+                <SectionPromoPrice />
+                <SectionAdvantages />
             </div>
         </div>
     </div>
