@@ -292,11 +292,7 @@ const navigationTop = [
 ]
 
 const navigationMain = [
-<<<<<<< HEAD
     { name: 'Каталог', href: '/catalog' },
-=======
-    { name: 'Каталог', href: '#catalog' },
->>>>>>> 703a22c1aa875017ad6855d2d3d9bc79fcff01f3
     { name: 'Съедобная печать', href: '#' },
     { name: 'Блог', href: '#' },
     { name: 'Контакты', href: '#' },

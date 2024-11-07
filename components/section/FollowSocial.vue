@@ -24,7 +24,7 @@
                         Whatsapp
                     </a>
                     <a href="#"
-                        class="flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-yellow-400 px-4 py-3 hover:bg-amber-400 transition-base">
+                        class="flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-amber-400 px-4 py-3 hover:bg-amber-300 transition-base">
                         <icon name="mdi:instagram" class="h-6 w-6 " />
                         Instagram
                     </a>
