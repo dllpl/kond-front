@@ -192,7 +192,7 @@
         <div class="wrapper-container px-12 xl:px-6 xs:px-4">
             <nav class="flex items-center justify-between py-4 gap-x-12 xl:px-0  lg:flex-wrap lg:gap-y-4 xs:justify-center"
                 aria-label="Основное меню">
-                <a href="#" class="-m-1.5 p-1.5 ">
+                <a href="/" class="-m-1.5 p-1.5 ">
                     <span class="sr-only">Все для кондитера</span>
                     <img class="h-12 w-auto" src="https://dljakonditera.ru/a/tort/files/125837/124927/logos.png"
                         alt="Все для кондитера" />
@@ -292,7 +292,7 @@ const navigationTop = [
 ]
 
 const navigationMain = [
-    { name: 'Каталог', href: '#catalog' },
+    { name: 'Каталог', href: '/catalog' },
     { name: 'Съедобная печать', href: '#' },
     { name: 'Блог', href: '#' },
     { name: 'Контакты', href: '#' },
