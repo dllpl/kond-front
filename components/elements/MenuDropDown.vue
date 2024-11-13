@@ -1,5 +1,6 @@
 <template>
-    <div class="flex flex-col w-full p-4 rounded-lg bg-white shadow-lg sticky top-5 z-10">
+    <div class="flex flex-col w-full p-4 rounded-lg bg-white shadow-lg">
+        <!-- <div class="flex flex-col w-full p-4 rounded-lg bg-white shadow-lg sticky top-5 z-10"> -->
         <h2 class="pb-2 mb-2 font-bold text-4xl border-b border-gray-500/10 2xl:text-3xl">Каталог</h2>
 
         <div class="group dropdown relative transition-base ">

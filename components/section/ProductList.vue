@@ -26,15 +26,16 @@
                         </Icon>
                     </button>
                 </div>
-                <div class="flex items-center gap-x-2 justify-center">
-
-                    <button
-                        class="flex items-center gap-x-2 rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
+                <div class="">
+                    <!-- Кнопка "Купить" -->
+                    <!-- <button v-if="!inCart" @click="addToCart"
+                        class="flex items-center gap-x-2 w-full justify-center rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
                         <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 ">
                         </Icon>
                         В корзину
-                    </button>
+                    </button> -->
 
+                    <ElementsProductCounter :inCart="product?.inCart" />
                 </div>
             </div>
         </div>
@@ -43,6 +44,14 @@
 </template>
 
 <script setup>
+// // Состояние, чтобы узнать, добавлен ли товар в корзину
+// const inCart = ref(false);
+
+// // Добавить товар в корзину
+// const addToCart = () => {
+//     inCart.value = true;
+//     quantity.value = 1;
+// };
 
 const products = [
     {
@@ -52,6 +61,7 @@ const products = [
         imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-01.jpg',
         imageAlt: 'TODO',
         href: '#',
+        inCart: true
     },
     {
         id: 2,
