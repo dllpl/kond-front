@@ -7,7 +7,7 @@ provideHeadlessUseId(() => useId())
 <template>
     <div>
         <NuxtLayout>
-            <Header />
+            <HeaderCopy />
             <NuxtPage />
             <Footer />
         </NuxtLayout>

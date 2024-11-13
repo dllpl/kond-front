@@ -1,6 +1,6 @@
 <template>
 
-    <header class="">
+    <header class="sticky top-0 z-10 w-full pb-6">
         <div class="bg-gray-100">
             <div class="wrapper-container relative px-12 xl:px-6 xs:px-4">
                 <div class="flex items-center justify-between py-4 lg:gap-6 md:flex-row md:gap-x-4"
@@ -25,7 +25,7 @@
                                     </ComboboxButton>
 
                                     <ComboboxOptions v-if="filteredCityes.length > 0"
-                                        class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                        class="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                         <ComboboxOption v-for="city in filteredCityes" :key="city.id" :value="city"
                                             as="template" v-slot="{ active, selected }">
                                             <li
@@ -189,97 +189,152 @@
                 </div>
             </div>
         </div>
-        <div class="wrapper-container px-12 xl:px-6 xs:px-4">
-            <nav class="flex items-center justify-between py-4 gap-x-12 xl:px-0  lg:flex-wrap lg:gap-y-4 xs:justify-center"
-                aria-label="Основное меню">
-                <a href="/" class="-m-1.5 p-1.5 ">
-                    <span class="sr-only">Все для кондитера</span>
-                    <img class="h-12 w-auto" src="https://dljakonditera.ru/a/tort/files/125837/124927/logos.png"
-                        alt="Все для кондитера" />
-                </a>
 
-                <div class="flex items-center gap-x-12 2xl:gap-x-10 lg:w-full lg:order-1 xs:hidden">
-                    <div class="flex gap-x-32 2xl:gap-x-12 lg:justify-between lg:w-full">
+        <Popover class="relative isolate z-10 shadow bg-gray-50">
+            <div class="wrapper-container px-12 xl:px-6 xs:px-4 ">
+
+                <div class="relative flex items-center justify-between py-4">
+
+                    <a href="/" class="-m-1.5 p-1.5 ">
+                        <span class="sr-only">Все для кондитера</span>
+                        <img class="h-12 w-auto" src="https://dljakonditera.ru/a/tort/files/125837/124927/logos.png"
+                            alt="Все для кондитера" />
+                    </a>
+
+                    <nav class="flex items-center justify-between  gap-x-12" aria-label="Основное меню">
+
+                        <PopoverButton
+                            class="group flex items-center gap-2 text-base font-semibold text-gray-900 transition-all hover:text-red-600 focus:text-red-600">
+                            Каталог
+                            <Icon name="material-symbols:keyboard-arrow-down-rounded"
+                                class="w-6 h-6  group-hover:text-red-600 " aria-hidden="true" />
+                        </PopoverButton>
+
                         <a v-for="item in navigationMain" :key="item.name" :href="item.href"
                             class="text-base font-semibold text-gray-900 transition-base hover:text-red-600 focus:text-red-600">{{
                                 item.name }}
                         </a>
+                    </nav>
+
+                    <div class=" flex gap-5 xs:hidden">
+                        <!-- Search -->
+                        <button type="button" @click="open = true"
+                            class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
+                            <Icon name="material-symbols:search" class="w-6 h-6 group-hover:stroke-red-600">
+                            </Icon>
+
+                            <TransitionRoot :show="open" as="template" @after-leave="query = ''" appear>
+                                <Dialog class="relative z-10" @close="open = false">
+                                    <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
+                                        enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100"
+                                        leave-to="opacity-0">
+                                        <div class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
+                                    </TransitionChild>
+
+                                    <div class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
+                                        <TransitionChild as="template" enter="ease-out duration-300"
+                                            enter-from="opacity-0 scale-95" enter-to="opacity-100 scale-100"
+                                            leave="ease-in duration-200" leave-from="opacity-100 scale-100"
+                                            leave-to="opacity-0 scale-95">
+                                            <DialogPanel
+                                                class="mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
+                                                <Combobox @update:modelValue="onSelect">
+                                                    <div class="relative">
+                                                        <Icon name="mdi-light:magnify"
+                                                            class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
+                                                            aria-hidden="true" />
+
+                                                        <ComboboxInput
+                                                            class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+                                                            placeholder="Введите название..."
+                                                            @change="query = $event.target.value" @blur="query = ''" />
+                                                    </div>
+
+                                                    <ComboboxOptions v-if="filteredPeople.length > 0" static
+                                                        class="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800">
+                                                        <ComboboxOption v-for="person in filteredPeople"
+                                                            :key="person.id" :value="person" as="template"
+                                                            v-slot="{ active }">
+                                                            <li
+                                                                :class="['cursor-default select-none px-4 py-2', active && 'bg-indigo-600 text-white']">
+                                                                {{ person.name }}
+                                                            </li>
+                                                        </ComboboxOption>
+                                                    </ComboboxOptions>
+
+                                                    <p v-if="query !== '' && filteredPeople.length === 0"
+                                                        class="p-4 text-sm text-gray-500">No people found.</p>
+                                                </Combobox>
+                                            </DialogPanel>
+                                        </TransitionChild>
+                                    </div>
+                                </Dialog>
+                            </TransitionRoot>
+                        </button>
+                        <!-- Like -->
+                        <a href="http://"
+                            class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
+
+                            <Icon name="material-symbols:favorite-outline-rounded"
+                                class="w-6 h-6 group-hover:stroke-red-600">
+                            </Icon>
+                        </a>
+                        <!-- Basket -->
+                        <a href="http://"
+                            class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
+
+                            <Icon name="material-symbols:shopping-cart-outline"
+                                class="w-6 h-6 group-hover:stroke-red-600">
+                            </Icon>
+                        </a>
                     </div>
                 </div>
 
-                <div class=" flex gap-5 xs:hidden">
-                    <!-- Search -->
-                    <button type="button" @click="open = true"
-                        class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
-                        <Icon name="material-symbols:search" class="w-6 h-6 group-hover:stroke-red-600"></Icon>
+                <transition enter-active-class="transition ease-out duration-200"
+                    enter-from-class="opacity-0 -translate-y-1" enter-to-class="opacity-100 translate-y-0"
+                    leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0"
+                    leave-to-class="opacity-0 -translate-y-1">
 
-                        <TransitionRoot :show="open" as="template" @after-leave="query = ''" appear>
-                            <Dialog class="relative z-10" @close="open = false">
-                                <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
-                                    enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100"
-                                    leave-to="opacity-0">
-                                    <div class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
-                                </TransitionChild>
+                    <PopoverPanel
+                        class="absolute -z-10 w-screen overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1 ring-gray-900/5 py-6 px-2">
+                        <div
+                            class="custom-scroll mx-auto grid max-w-7xl overflow-y-auto h-60 grid-cols-3 gap-2 px-6 mb-6">
 
-                                <div class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
-                                    <TransitionChild as="template" enter="ease-out duration-300"
-                                        enter-from="opacity-0 scale-95" enter-to="opacity-100 scale-100"
-                                        leave="ease-in duration-200" leave-from="opacity-100 scale-100"
-                                        leave-to="opacity-0 scale-95">
-                                        <DialogPanel
-                                            class="mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
-                                            <Combobox @update:modelValue="onSelect">
-                                                <div class="relative">
-                                                    <Icon name="mdi-light:magnify"
-                                                        class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
-                                                        aria-hidden="true" />
-
-                                                    <ComboboxInput
-                                                        class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-                                                        placeholder="Введите название..."
-                                                        @change="query = $event.target.value" @blur="query = ''" />
-                                                </div>
-
-                                                <ComboboxOptions v-if="filteredPeople.length > 0" static
-                                                    class="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800">
-                                                    <ComboboxOption v-for="person in filteredPeople" :key="person.id"
-                                                        :value="person" as="template" v-slot="{ active }">
-                                                        <li
-                                                            :class="['cursor-default select-none px-4 py-2', active && 'bg-indigo-600 text-white']">
-                                                            {{ person.name }}
-                                                        </li>
-                                                    </ComboboxOption>
-                                                </ComboboxOptions>
-
-                                                <p v-if="query !== '' && filteredPeople.length === 0"
-                                                    class="p-4 text-sm text-gray-500">No people found.</p>
-                                            </Combobox>
-                                        </DialogPanel>
-                                    </TransitionChild>
+                            <div v-for="item in solutions" :key="item.name"
+                                class="group relative -mx-3 flex gap-6 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50 sm:flex-col sm:p-6">
+                                <div
+                                    class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                    <component :is="item.icon" class="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                                        aria-hidden="true" />
                                 </div>
-                            </Dialog>
-                        </TransitionRoot>
-                    </button>
-                    <!-- Like -->
-                    <a href="http://"
-                        class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
+                                <div>
+                                    <a :href="item.href" class="font-semibold text-gray-900">
+                                        {{ item.name }}
+                                        <span class="absolute inset-0" />
+                                    </a>
+                                    <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                                </div>
+                            </div>
 
-                        <Icon name="material-symbols:favorite-outline-rounded"
-                            class="w-6 h-6 group-hover:stroke-red-600">
-                        </Icon>
-                    </a>
-                    <!-- Basket -->
-                    <a href="http://"
-                        class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
+                        </div>
+                        <div class="">
+                            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                                <div
+                                    class="grid grid-cols-1 divide-y divide-gray-900/5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:border-x sm:border-gray-900/5">
+                                    <a v-for="item in callsToAction" :key="item.name" :href="item.href"
+                                        class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 sm:justify-center sm:px-0">
+                                        <component :is="item.icon" class="h-5 w-5 flex-none text-gray-400"
+                                            aria-hidden="true" />
+                                        {{ item.name }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </PopoverPanel>
+                </transition>
 
-                        <Icon name="material-symbols:shopping-cart-outline" class="w-6 h-6 group-hover:stroke-red-600">
-                        </Icon>
-                    </a>
-                </div>
-
-            </nav>
-
-        </div>
+            </div>
+        </Popover>
 
     </header>
 
@@ -288,11 +343,11 @@
 
 const navigationTop = [
     { name: 'О магазине', href: '/about' },
-    { name: 'Доставка и оплата', href: '#' },
+    { name: 'Доставка и оплата', href: '/delivery' },
 ]
 
 const navigationMain = [
-    { name: 'Каталог', href: '/catalog' },
+    // { name: 'Каталог', href: '/catalog' },
     { name: 'Съедобная печать', href: '#' },
     { name: 'Блог', href: '#' },
     { name: 'Контакты', href: '#' },
@@ -340,5 +395,51 @@ function onSelect(person) {
         window.location = person.url
     }
 }
-
+const solutions = [
+    {
+        name: 'Упаковка',
+        description: 'Get a better understanding of where your traffic is coming from',
+        href: '#',
+    },
+    {
+        name: 'Формы',
+        description: 'Speak directly to your customers with our engagement tool',
+        href: '#',
+    },
+    {
+        name: 'Ингредиенты',
+        description: "Your customers' data will be safe and secure",
+        href: '#',
+    },
+    {
+        name: 'Кондитерский инвентарь',
+        description: "Connect with third-party tools that you're already using",
+        href: '#',
+    },
+    {
+        name: 'Все для съедобной печати',
+        description: "Connect with third-party tools that you're already using",
+        href: '#',
+    },
+    {
+        name: 'Украшения и декор',
+        description: "Connect with third-party tools that you're already using",
+        href: '#',
+    },
+    {
+        name: 'Прочее',
+        description: "Connect with third-party tools that you're already using",
+        href: '#',
+    },
+    {
+        name: 'Посуда/ Фуд Декор',
+        description: "Connect with third-party tools that you're already using",
+        href: '#',
+    },
+]
+const callsToAction = [
+    { name: 'Watch demo', href: '#', },
+    { name: 'Contact sales', href: '#', },
+    { name: 'View all products', href: '#', },
+]
 </script>
