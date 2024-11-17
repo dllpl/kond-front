@@ -1,6 +1,6 @@
 <template>
 
-    <header class="sticky top-0 z-10 w-full pb-6">
+    <header class="sticky top-0 shadow-xs z-10 w-full " ref="header">
         <div class="bg-gray-100">
             <div class="wrapper-container relative px-12 xl:px-6 xs:px-4">
                 <div class="flex items-center justify-between py-4 lg:gap-6 md:flex-row md:gap-x-4"
@@ -349,7 +349,7 @@ const navigationTop = [
 const navigationMain = [
     // { name: 'Каталог', href: '/catalog' },
     { name: 'Съедобная печать', href: '#' },
-    { name: 'Блог', href: '#' },
+    { name: 'Блог', href: '/blog' },
     { name: 'Контакты', href: '#' },
 ]
 
@@ -442,4 +442,7 @@ const callsToAction = [
     { name: 'Contact sales', href: '#', },
     { name: 'View all products', href: '#', },
 ]
+
+
+
 </script>

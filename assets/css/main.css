@@ -35,7 +35,10 @@
     }
 
     .wrapper-container {
-        width: 100%;
+        max-width: 1580px;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        margin: 0 auto;
     }
 
     .dropdown:hover .dropdown-menu {

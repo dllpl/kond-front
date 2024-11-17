@@ -3,7 +3,7 @@
 
         <h2 class="sr-only">Products</h2>
 
-        <div class=" grid grid-cols-5 border-l border-gray-200 mx-0">
+        <div class=" grid grid-cols-6 border-l border-gray-200 mx-0">
             <div v-for="product in products" :key="product.id"
                 class="group border-b border-r border-gray-200 p-6 sm:p-4">
                 <div class="relative">

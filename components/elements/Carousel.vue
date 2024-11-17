@@ -6,44 +6,36 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { Carousel } from "@fancyapps/ui/dist/carousel/carousel.esm.js";
-// import "@fancyapps/ui/dist/carousel/carousel.css";
-import "@fancyapps/ui/dist/carousel/carousel.css";
 import { Autoplay } from "@fancyapps/ui/dist/carousel/carousel.autoplay.esm.js";
+import "@fancyapps/ui/dist/carousel/carousel.css";
 
-export default defineComponent({
-    props: {
-        options: Object,
-    },
-    setup(props) {
-        const fcInstance = ref(null);
-        const carouselRef = ref(null);
+const props = defineProps({
+    options: Object,
+})
 
-        onMounted(() => {
-            fcInstance.value = new Carousel(
-                carouselRef.value,
-                {
-                    ...(props.options || {}),
-                },
-                {
-                    ...(props.options?.Autoplay && { Autoplay })
-                }
-            );
-        });
+const fcInstance = ref(null);
+const carousel = ref(null);
 
-        onUnmounted(() => {
-            if (fcInstance.value) {
-                fcInstance.value.destroy();
-                fcInstance.value = null;
-            }
-        });
-
-        return {
-            fcInstance,
-            carouselRef,
-        };
-    },
+onMounted(() => {
+    fcInstance.value = new Carousel(
+        carousel.value,
+        {
+            ...(props.options.value || {}),
+        },
+        {
+            ...(props.options.value?.Autoplay && { Autoplay }),
+        }
+    );
 });
+
+onUnmounted(() => {
+    if (fcInstance.value) {
+        fcInstance.value.destroy();
+        fcInstance.value = null;
+    }
+});
+
 
 </script>
