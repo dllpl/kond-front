@@ -4,6 +4,24 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: {enabled: false},
 
+  runtimeConfig:{
+      public:{
+        // @ts-ignore
+        backOptions:{
+          storage:process.env.STORAGE_PATH,
+          api:process.env.API_URL,
+        },
+      },
+  },
+  routeRules:{
+    '/': {
+      prerender: true,
+      sitemap: { priority: 1.0, changefreq: 'weekly'},
+      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
+  },
+
+},
+
   modules: [
     '@nuxt/icon',
     '@pinia/nuxt',
@@ -12,8 +30,12 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     'yandex-metrika-module-nuxt3',
     'nuxt-headlessui',
+    'nuxt-splide',
   ],
-
+// @ts-ignore
+splide: {
+  theme: 'default'
+},
   css: ['~/assets/css/main.css'],
 
   headlessui: {
@@ -99,5 +121,7 @@ export default defineNuxtConfig({
   devServer: {
     host: '127.0.0.1',
   },
+
+
 
 })

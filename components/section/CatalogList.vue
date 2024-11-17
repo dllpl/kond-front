@@ -2,7 +2,7 @@
 
     <div class="relative box-content py-2 overflow-visible">
         <!-- relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible -->
-        <div class="relative grid grid-cols-5 gap-8 space-x-0 xl:grid-cols-4 lg:grid-cols-3 lg:gap-6
+        <div class="relative grid grid-cols-6 gap-8 space-x-0 xl:grid-cols-4 lg:grid-cols-3 lg:gap-6
                             ">
             <!-- 
                                 absolute flex space-x-8 px-4 
@@ -72,6 +72,20 @@ const categories = [
         href: '#',
         imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/home-page-01-category-05.jpg',
     },
-    { name: 'Sale', href: '#', imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/home-page-01-category-03.jpg' },
+    {
+        name: 'Sale',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/home-page-01-category-03.jpg'
+    },
+    {
+        name: 'Accessories',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/home-page-01-category-05.jpg',
+    },
+    {
+        name: 'Sale',
+        href: '#',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/home-page-01-category-03.jpg'
+    },
 ]
 </script>

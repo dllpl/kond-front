@@ -1,5 +1,6 @@
 <template>
-    <div class="wrapper-container px-12 xl:px-6 xs:px-4 ">
+    <main class="wrapper-container py-16">
+
         <div class="relative h-96 flex flex-col justify-center gap-6 py-12 px-12 mb-14">
             <h1 class="text-4xl font-semibold text-white">Доставка и оплата</h1>
             <p class="text-lg max-w-4xl text-gray-200">
@@ -16,8 +17,8 @@
         </div>
 
         <div class="mb-16 flex gap-6">
-            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-100 shrink-0">
-                <Icon name="hugeicons:delivery-truck-02" class="w-10 h-10 text-red-600" />
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-500 shrink-0">
+                <Icon name="hugeicons:delivery-truck-02" class="w-10 h-10 text-white" />
             </div>
             <div class="">
                 <h2 class="text-3xl font-semibold mb-4">
@@ -93,8 +94,8 @@
         </div>
 
         <div class="mb-16 flex gap-6">
-            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-100 shrink-0">
-                <Icon name="hugeicons:credit-card-accept" class="w-10 h-10 text-red-600" />
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-500 shrink-0">
+                <Icon name="hugeicons:credit-card-accept" class="w-10 h-10 text-white" />
             </div>
             <div class="">
                 <h2 class="text-3xl font-semibold mb-4">
@@ -126,8 +127,8 @@
         </div>
 
         <div class="mb-16 flex gap-6">
-            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-100 shrink-0">
-                <Icon name="hugeicons:delivery-return-01" class="w-10 h-10 text-red-600" />
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-500 shrink-0">
+                <Icon name="hugeicons:delivery-return-01" class="w-10 h-10 text-white" />
             </div>
             <div class="">
                 <h2 class="text-3xl font-semibold mb-4">
@@ -172,13 +173,10 @@
 
             </div>
         </div>
-
-
         <p class="text-xl text-center">
             Мы уверены, что покупка в нашем магазине станет для вас удобным и приятным процессом!
         </p>
-
-    </div>
+    </main>
 </template>
 
 <script setup>
