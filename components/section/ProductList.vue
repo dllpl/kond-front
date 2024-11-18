@@ -4,7 +4,7 @@
         <h2 class="sr-only">Products</h2>
 
         <div class=" grid grid-cols-6 border-l border-gray-200 mx-0">
-            <div v-for="product in products" :key="product.id"
+            <!-- <div v-for="product in products" :key="product.id"
                 class="group border-b border-r border-gray-200 p-6 sm:p-4">
                 <div class="relative">
                     <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
@@ -26,24 +26,28 @@
                         </Icon>
                     </button>
                 </div>
-                <div class="">
-                    <!-- Кнопка "Купить" -->
-                    <!-- <button v-if="!inCart" @click="addToCart"
+                <div class=""> -->
+            <!-- Кнопка "Купить" -->
+            <!-- <button v-if="!inCart" @click="addToCart"
                         class="flex items-center gap-x-2 w-full justify-center rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
                         <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 ">
                         </Icon>
                         В корзину
                     </button> -->
 
-                    <ElementsProductCounter :inCart="product?.inCart" />
+            <!-- <ElementsProductCounter :inCart="product?.inCart" />
                 </div>
-            </div>
+            </div> -->
+
+            <SectionProductCard class="border-b border-r border-gray-200" v-for="product in products" :key="product.id"
+                :product="product" />
         </div>
 
     </div>
 </template>
 
 <script setup>
+
 // // Состояние, чтобы узнать, добавлен ли товар в корзину
 // const inCart = ref(false);
 
@@ -153,4 +157,5 @@ const products = [
     },
     // More products...
 ]
+// console.log(products)
 </script>

@@ -12,7 +12,7 @@
                         <span class="">{{ item.name }}</span>
                     </div>
                     <Icon name="material-symbols:keyboard-arrow-down-rounded"
-                        class="w-6 h-6 transition-base group-hover:-rotate-90 " aria-hidden="true" />
+                        class="w-6 h-6 transition-base group-hover:-rotate-90 shrink-0" aria-hidden="true" />
                 </NuxtLink>
 
 

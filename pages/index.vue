@@ -1,13 +1,13 @@
 <template>
     <main class="wrapper-container py-16">
-        <div class="grid  grid-cols-[300px_1fr] gap-8">
+        <div class="grid grid-cols-custom gap-8 md:grid-cols-1">
 
-            <div class="col-span-1 ">
+            <div class="col-span-1 lg:hidden">
                 <ElementsMenuDropDown :data="data.sidebar" />
             </div>
 
             <div class="">
-                <div class="h-96 ">
+                <div class="mb-8">
                     <ElementsSliderBanner :data="banners.data" />
                 </div>
                 <SectionProductTop />
@@ -15,6 +15,9 @@
                 <SectionPromoCook />
                 <SectionPromoPrice />
                 <SectionAdvantages />
+                <ElementsSliderNew :data="productNews" />
+                <ElementsSliderOffers :data="specialOffers" />
+
             </div>
         </div>
     </main>
@@ -141,19 +144,121 @@ const data = {
             "icon": "https://dljakonditera.ru/a/tort/files//userfiles/images/%D1%83%D0%BF%D0%B0%D0%BA%D0%BE%D0%B2%D0%BE%D1%87%D0%BA%D0%B02.svg",
         },
     ],
-    "banners": [
-        {
+    // "banners": [
+    //     {
 
-        }
-    ],
-    "specialOffers": [
-        {
+    //     }
+    // ],
+    // "specialOffers": [
+    //     {
 
-        }
-    ]
+    //     }
+    // ]
 }
 const { public: config } = useRuntimeConfig();
 const { data: banners } = await useFetch(config.backOptions.api + '/banners');
-console.log(banners.value.data)
 
+const productNews = [
+    {
+        id: 1,
+        name: 'Organize Basic Set (Walnut)',
+        price: '149 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-01.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+        inCart: true
+    },
+    {
+        id: 2,
+        name: 'Organize Pen Holder',
+        price: '1150 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-02.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+    {
+        id: 3,
+        name: 'Organize Sticky Note Holder',
+        price: '15 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-03.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+    {
+        id: 4,
+        name: 'Organize Phone Holder',
+        price: '785 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-04.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+    {
+        id: 5,
+        name: 'Organize Basic Set (Walnut)',
+        price: '963 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-01.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+    {
+        id: 6,
+        name: 'Organize Pen Holder',
+        price: '2100 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-02.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+]
+const specialOffers = [
+    {
+        id: 1,
+        name: 'Organize Basic Set (Walnut)',
+        price: '149 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-01.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+        inCart: true
+    },
+    {
+        id: 2,
+        name: 'Organize Pen Holder',
+        price: '1150 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-02.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+    {
+        id: 3,
+        name: 'Organize Sticky Note Holder',
+        price: '15 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-03.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+    {
+        id: 4,
+        name: 'Organize Phone Holder',
+        price: '785 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-04.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+    {
+        id: 5,
+        name: 'Organize Basic Set (Walnut)',
+        price: '963 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-01.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+    {
+        id: 6,
+        name: 'Organize Pen Holder',
+        price: '2100 руб.',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-02.jpg',
+        imageAlt: 'TODO',
+        href: '#',
+    },
+]
+console.log(productNews)
 </script>
