@@ -57,23 +57,22 @@
                 <form class=" flex max-w-md mt-0 lg:mt-6">
                     <label for="phone" class="sr-only">Телефон</label>
                     <input v-maska=maskaOptions.phone.mask name="phone" id="phone" autocomplete="phone" required=""
-                        class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-1 ring-inset transition-all  ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
+                        class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-2 ring-inset transition-base  ring-white/10 placeholder:text-gray-500 hover:ring-red-500  focus:ring-red-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
                         placeholder="Номер телефона" />
                     <div class=" ml-4 mt-0 flex-shrink-0 lg:mt-4">
-                        <button type="submit"
-                            class="flex w-full items-center justify-center rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Отправить</button>
+                        <button type="submit" class="flex w-full items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-base  hover:bg-red-500 
+                            focus-visible:bg-red-500">Отправить</button>
                     </div>
                 </form>
             </div>
 
             <div class="border-t border-white/10 py-8 flex items-center justify-between">
                 <div class="flex items-center space-x-6 order-2">
-                    <a v-for="item in navigation.social" :key="item.name" :href="item.href"
-                        class="flex items-center p-1.5 text-gray-500 transition-all hover:text-gray-400 ">
+                    <NuxtLink :to="item.href" v-for="item in navigation.social" :key="item.name"
+                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400 ">
                         <span class="sr-only">{{ item.name }}</span>
                         <icon :name="item.icon" class="h-6 w-6" aria-hidden="true"></icon>
-                        <!-- <component :is="item.icon" /> -->
-                    </a>
+                    </NuxtLink>
                 </div>
                 <p class="text-xs leading-5 text-gray-400 order-1 mt-0">&copy; 2020 Your Company, Inc. All
                     rights reserved.</p>

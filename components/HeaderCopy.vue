@@ -2,7 +2,7 @@
 
     <header class="sticky top-0 shadow-xs z-10 w-full " ref="header">
         <div class="bg-gray-100">
-            <div class="wrapper-container relative px-12 xl:px-6 xs:px-4">
+            <div class="wrapper-container relative">
                 <div class="flex items-center justify-between py-4 lg:gap-6 md:flex-row md:gap-x-4"
                     aria-label="Верхнее меню">
 
@@ -16,7 +16,7 @@
                                 </ComboboxLabel>
                                 <div class="relative 2xl:w-52">
                                     <ComboboxInput
-                                        class="input-accent w-full transition-base bg-gray-50 hover: ring-red-500 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6 "
+                                        class="input-accent w-full bg-transparent transition-base bg-gray-50 hover: ring-red-500 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6 "
                                         @change="query = $event.target.value" @blur="query = ''"
                                         :display-value="(city) => city?.name" />
                                     <ComboboxButton
@@ -191,7 +191,7 @@
         </div>
 
         <Popover class="relative isolate z-10 shadow bg-gray-50">
-            <div class="wrapper-container px-12 xl:px-6 xs:px-4 ">
+            <div class="wrapper-container ">
 
                 <div class="relative flex items-center justify-between py-4">
 
