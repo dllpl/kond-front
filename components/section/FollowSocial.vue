@@ -1,20 +1,20 @@
 <template>
 
-    <div class="relative py-12">
+    <div class="relative">
 
-        <div class=" relative mx-auto grid grid-cols-3 items-center rounded-lg gap-x-12 py-16 ring-1 ring-white/10 
+        <div class=" relative mx-auto grid grid-cols-3 items-center  gap-x-12 
         xl:grid-cols-5 ">
             <img src="assets/img/iphones.png" alt=""
-                class="rounded-2xl object-cover h-auto xl:col-span-2 xl:col-start-4 xl:row-start-1 xl:mb-auto" />
+                class=" object-cover h-auto xl:col-span-2 xl:col-start-4 xl:row-start-1 xl:mb-auto" />
             <div class="col-span-2 w-full xl:col-span-3  ">
                 <h2 class="font-bold text-4xl 2xl:text-3xl">Мы в социальных сетях</h2>
-                <p class="mt-6 text-base leading-8 ">
+                <p class="mt-8 text-lg leading-8 ">
                     Хотите быстро и удобно получить консультацию по нашим услугам или оформить заказ? Теперь у
                     вас есть возможность связаться с нами в Telegram и WhatsApp. Мы всегда стремимся быть на
                     связи с нашими клиентами и предоставить им максимальное удобство в общении с нами.
                 </p>
 
-                <div class="flex gap-6 py-4 ">
+                <div class="flex gap-6 pt-8 ">
                     <a href="#"
                         class="group hover:shadow-lg flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-green-500 px-4 py-3 text-white transition-base">
                         <icon name="mdi:whatsapp" class="h-6 w-6  text-white " />

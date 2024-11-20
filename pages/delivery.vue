@@ -1,5 +1,8 @@
 <template>
-    <main class="wrapper-container py-16">
+    <section>
+        <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
+    </section>
+    <main class="wrapper-container pt-3 pb-16">
 
         <div class="relative h-96 flex flex-col justify-center gap-6 py-12 px-12 mb-14">
             <h1 class="text-4xl font-semibold text-white">Доставка и оплата</h1>
@@ -180,6 +183,11 @@
 </template>
 
 <script setup>
-
+const breadcrumbs = [
+    {
+        name: 'Доставка и оплата',
+        href: '/delivery',
+    },
+]
 
 </script>
