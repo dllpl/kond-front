@@ -1,42 +1,50 @@
 <template>
     <div class="group p-6 sm:p-4">
         <div class="relative">
-            <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
-                <img :src="product.imageSrc" :alt="product.imageAlt" class="h-full w-full object-cover object-center" />
+            <!--исходник было - пусть будет-->
+            <!-- <div
+                class="max-h-[200px] aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
+                <img v-if="product.images && product.images.length" :src="storage + product.images[0]"
+                    :alt="product.title" class="h-full w-full object-cover object-center" />
+                <img v-else src="/assets/img/default-product-img.webp" :alt="product.title"
+                    class="h-full w-full object-cover object-center">
+            </div> -->
+
+            <div
+                class="flex items-center justify-center h-48 aspect-h-1 aspect-w-1 overflow-hidden rounded-lg ring-1 bg-white    ring-gray-200 transition-base group-hover:opacity-75">
+
+                <img v-if="product.images && product.images.length" :src="storage + product.images[0]"
+                    :alt="product.title" class="object-contain object-center h-full" />
+                <img v-else src="/assets/img/default-product-img.webp" :alt="product.title"
+                    class="object-cover object-center h-full">
             </div>
+
             <div class="pb-4 pt-10 text-center">
                 <h3 class="text-sm ">
-                    <a :href="product.href">
+                    <NuxtLink :to="product.slug">
                         <span aria-hidden="true" class="absolute inset-0" />
-                        {{ product.name }}
-                    </a>
+                        {{ product.title }}
+                    </NuxtLink>
                 </h3>
                 <p class="mt-4 text-base font-semibold ">{{ product.price }}</p>
             </div>
+
             <button
-                class="absolute top-2.5 right-2.5 flex items-center justify-center transition-all p-1 rounded-md ring-2 ring-gray-300/20 hover:bg-red-600 hover:text-white">
+                class="absolute top-2.5 right-2.5 flex items-center justify-center transition-all p-1 bg-white/70 rounded-md ring-1 ring-gray-300/20 hover:bg-red-600 hover:text-white">
                 <Icon name="material-symbols:favorite-outline-rounded" class="w-6 h-6 ">
                 </Icon>
             </button>
         </div>
-        <div class="">
-            <!-- Кнопка "Купить" -->
-            <!-- <button v-if="!inCart" @click="addToCart"
-                        class="flex items-center gap-x-2 w-full justify-center rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
-                        <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 ">
-                        </Icon>
-                        В корзину
-                    </button> -->
 
+        <div class="">
             <ElementsProductCounter :inCart="product?.inCart" />
         </div>
     </div>
 </template>
 
 <script setup>
+const { storage } = useRuntimeConfig().public.backOptions;
 const props = defineProps({
     product: Object
 });
-// console.log()
-
 </script>

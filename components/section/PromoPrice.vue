@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <div class="overflow-hidden pt-14">
-            <div class="bg-red-600 rounded-2xl">
+            <div class="bg-red-600 rounded-2xl ">
                 <div class="mx-auto max-w-7xl px-8">
                     <div class="relative pb-24  pt-48 sm:pb-16">
                         <div>
