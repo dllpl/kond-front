@@ -3,10 +3,10 @@
         <h2 class="mb-8 font-bold text-4xl 2xl:text-3xl">Новинки</h2>
         <div class="relative">
             <ElementsCarousel class="" :options="{
-                autoResize: true, duration: 750, circular: true,
+                autoResize: true, duration: 750, circular: true, align: 'prev'
             }" :pagination="{ type: 'bullet' }">
                 <SectionProductCard v-for="product in data" :key="product.id" :product="product"
-                    class="w-1/6 mr-5 2xl:w-1/4 border border-gray-200 rounded-lg">
+                    class="w-1/6 mr-5 border border-gray-200 rounded-lg 2xl:w-1/4">
 
                 </SectionProductCard>
                 <template #pagination>
@@ -19,7 +19,7 @@
 
 <script setup>
 
-const { storage } = useRuntimeConfig().public.backOptions;
+// const { storage } = useRuntimeConfig().public.backOptions;
 
 const props = defineProps({
     data: Array

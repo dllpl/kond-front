@@ -12,7 +12,7 @@
         <div v-if="inCart" class="flex items-center justify-between w-full bg-amber-100 p-0.5 rounded-lg">
             <button @click="decreaseQuantity"
                 class="flex items-center  rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base">
-                <Icon name="ic:round-minus" class="w-5 h-5 ">
+                <Icon name="ic:round-minus" class="w-5 h-5 shrink-0">
                 </Icon>
             </button>
 

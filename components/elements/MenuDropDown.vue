@@ -8,8 +8,8 @@
 
                 <NuxtLink :to="`/catalog/${item.slug}`" class=" inline-flex justify-between items-center w-full py-4">
                     <div class="flex items-center gap-2 transition-all group-hover:translate-x-1">
-                        <!-- <img :src="storage + item.img" :alt="item.title" class="w-6 h-auto"> -->
-                        <span class="">{{ item.title }}</span>
+                        <img :src="storage + item.img" :alt="item.title" class="w-8 h-auto">
+                        <span class="leading-normal">{{ item.title }}</span>
                     </div>
                     <Icon name="material-symbols:keyboard-arrow-down-rounded"
                         class="w-6 h-6 transition-base group-hover:-rotate-90 shrink-0" aria-hidden="true" />
