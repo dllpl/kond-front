@@ -1,6 +1,6 @@
 <template>
 
-	<header class="sticky top-0 shadow-xs z-10 w-full " ref="header">
+	<header class="sticky top-0 shadow-xs z-20 w-full " ref="header">
 		<div class="bg-gray-100">
 			<div class="wrapper-container relative">
 				<div class="flex items-center justify-between py-4 lg:gap-6 md:flex-row md:gap-x-4" aria-label="Верхнее меню">
@@ -191,6 +191,7 @@
 			</div>
 		</div>
 
+
 		<Popover class="relative isolate z-10 shadow bg-gray-50">
 			<div class="wrapper-container ">
 
@@ -203,7 +204,7 @@
 
 					<nav class="flex items-center justify-between  gap-x-12" aria-label="Основное меню">
 
-						<PopoverButton
+						<PopoverButton type="button"
 							class="group flex items-center gap-2 text-base font-semibold text-gray-900 transition-all hover:text-red-600 focus:text-red-600">
 							<Icon name="ph:squares-four-thin" class="w-6 h-6 group-hover:text-red-600" aria-hidden="true" />
 							Каталог
@@ -226,7 +227,7 @@
 							</Icon>
 
 							<TransitionRoot :show="open" as="template" @after-leave="query = ''" appear>
-								<Dialog class="relative z-10" @close="open = false">
+								<Dialog class="relative z-30" @close="open = false">
 									<TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
 										enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
 										<div class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
@@ -270,6 +271,7 @@
 								</Dialog>
 							</TransitionRoot>
 						</button>
+
 						<!-- Like -->
 						<a href="http://"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
@@ -277,13 +279,17 @@
 							<Icon name="material-symbols:favorite-outline-rounded" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</a>
-						<!-- Basket -->
-						<a href="http://"
-							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 
+						<!-- Basket -->
+						<!-- <button @click="openDrawer = true; " -->
+						<button @click="toggleValue"
+							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="material-symbols:shopping-cart-outline" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
-						</a>
+						</button>
+
+						<ElementsDrawer :isActive="isActive"></ElementsDrawer>
+
 					</div>
 				</div>
 
@@ -292,7 +298,8 @@
 					leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-1">
 
 					<PopoverPanel
-						class="absolute -z-10 w-full overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1 ring-gray-900/5 py-6 px-2">
+						class="absolute z-10 w-full overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1 ring-gray-900/5 py-6 px-2">
+
 						<div class="wrapper-container grid grid-cols-3 gap-2 overflow-y-auto h-60 custom-scroll px-6 mb-6">
 
 							<div v-for="item in categories.data" :key="item.name"
@@ -323,6 +330,7 @@
 								</div>
 							</div>
 						</div>
+
 					</PopoverPanel>
 				</transition>
 
@@ -332,7 +340,15 @@
 	</header>
 
 </template>
+
+
+
 <script setup>
+const isActive = ref(false);
+const toggleValue = () => {
+	isActive.value = !isActive.value;
+	console.log(isActive.value)
+};
 
 const navigationTop = [
 	{ name: 'О магазине', href: 'about' },
@@ -344,8 +360,7 @@ const navigationMain = [
 	{ name: 'Блог', slug: 'blog' },
 	{ name: 'Контакты', href: 'сontacts' },
 ]
-
-const catalogPopover = ref(false)
+const openDrawer = ref(false)
 const mobileMenuOpen = ref(false)
 
 const city = [
