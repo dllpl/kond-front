@@ -1,6 +1,7 @@
 <template>
 
 	<header class="sticky top-0 shadow-xs z-20 w-full " ref="header">
+		<!-- HEADER TOP -->
 		<div class="bg-gray-100">
 			<div class="wrapper-container relative">
 				<div class="flex items-center justify-between py-4 lg:gap-6 md:flex-row md:gap-x-4" aria-label="Верхнее меню">
@@ -48,58 +49,15 @@
 							<span class="block text-base xs:hidden"> +7 (958) 628-10-44</span>
 						</a>
 					</div>
-
+					<!-- MOBILE VISIBLE XS-->
 					<div class="hidden xs:flex xs:gap-4 ">
 						<!-- Search -->
-						<button type="button" @click="open = true"
+						<button type="button" @click="openSearch"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
-							<Icon name="mdi-light:magnify" class="w-6 h-6 group-hover:stroke-red-600"></Icon>
-
-							<TransitionRoot :show="open" as="template" @after-leave="query = ''" appear>
-								<Dialog class="relative z-10" @close="open = false">
-									<TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
-										enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
-										<div class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
-									</TransitionChild>
-
-									<div class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
-										<TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 scale-95"
-											enter-to="opacity-100 scale-100" leave="ease-in duration-200" leave-from="opacity-100 scale-100"
-											leave-to="opacity-0 scale-95">
-											<DialogPanel
-												class="mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
-												<Combobox @update:modelValue="onSelect">
-													<div class="relative">
-														<Icon name="mdi-light:magnify"
-															class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
-															aria-hidden="true" />
-
-														<ComboboxInput
-															class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-															placeholder="Введите название..." @change="query = $event.target.value"
-															@blur="query = ''" />
-													</div>
-
-													<ComboboxOptions v-if="filteredPeople.length > 0" static
-														class="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800">
-														<ComboboxOption v-for="person in filteredPeople" :key="person.id" :value="person"
-															as="template" v-slot="{ active }">
-															<li
-																:class="['cursor-default select-none px-4 py-2', active && 'bg-indigo-600 text-white']">
-																{{ person.name }}
-															</li>
-														</ComboboxOption>
-													</ComboboxOptions>
-
-													<p v-if="query !== '' && filteredPeople.length === 0" class="p-4 text-sm text-gray-500">No
-														found</p>
-												</Combobox>
-											</DialogPanel>
-										</TransitionChild>
-									</div>
-								</Dialog>
-							</TransitionRoot>
+							<Icon name="mdi-light:magnify" class="w-6 h-6 group-hover:stroke-red-600">
+							</Icon>
 						</button>
+						<ElementsSearch :show="search" @close="closeSearch" />
 
 						<!-- Like -->
 						<a href="http://"
@@ -110,12 +68,12 @@
 						</a>
 
 						<!-- Basket -->
-						<a href="http://"
+						<button @click="openDrawer"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
-
 							<Icon name="mdi-light:cart" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
-						</a>
+						</button>
+						<ElementsDrawer :show="drawer" @close="closeDrawer"></ElementsDrawer>
 					</div>
 
 					<div class="flex items-center gap-x-12 2xl:gap-x-4 md:w-auto xs:order-first xs:mr-auto">
@@ -191,7 +149,7 @@
 			</div>
 		</div>
 
-
+		<!-- HEADER BOTTOM -->
 		<Popover class="relative isolate z-10 shadow bg-gray-50">
 			<div class="wrapper-container ">
 
@@ -221,56 +179,12 @@
 
 					<div class=" flex gap-5 xs:hidden">
 						<!-- Search -->
-						<button type="button" @click="open = true"
+						<button type="button" @click="openSearch"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="material-symbols:search" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
-
-							<TransitionRoot :show="open" as="template" @after-leave="query = ''" appear>
-								<Dialog class="relative z-30" @close="open = false">
-									<TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0"
-										enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
-										<div class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
-									</TransitionChild>
-
-									<div class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
-										<TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 scale-95"
-											enter-to="opacity-100 scale-100" leave="ease-in duration-200" leave-from="opacity-100 scale-100"
-											leave-to="opacity-0 scale-95">
-											<DialogPanel
-												class="mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
-												<Combobox @update:modelValue="onSelect">
-													<div class="relative">
-														<Icon name="mdi-light:magnify"
-															class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
-															aria-hidden="true" />
-
-														<ComboboxInput
-															class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-															placeholder="Введите название..." @change="query = $event.target.value"
-															@blur="query = ''" />
-													</div>
-
-													<ComboboxOptions v-if="filteredPeople.length > 0" static
-														class="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800">
-														<ComboboxOption v-for="person in filteredPeople" :key="person.id" :value="person"
-															as="template" v-slot="{ active }">
-															<li
-																:class="['cursor-default select-none px-4 py-2', active && 'bg-indigo-600 text-white']">
-																{{ person.name }}
-															</li>
-														</ComboboxOption>
-													</ComboboxOptions>
-
-													<p v-if="query !== '' && filteredPeople.length === 0" class="p-4 text-sm text-gray-500">No
-														people found.</p>
-												</Combobox>
-											</DialogPanel>
-										</TransitionChild>
-									</div>
-								</Dialog>
-							</TransitionRoot>
 						</button>
+						<ElementsSearch :show="search" @close="closeSearch" />
 
 						<!-- Like -->
 						<a href="http://"
@@ -281,14 +195,59 @@
 						</a>
 
 						<!-- Basket -->
-						<!-- <button @click="openDrawer = true; " -->
-						<button @click="toggleValue"
+						<button @click="openDrawer"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="material-symbols:shopping-cart-outline" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
+						<ElementsDrawer :show="drawer" @close="closeDrawer"></ElementsDrawer>
 
-						<ElementsDrawer :isActive="isActive"></ElementsDrawer>
+						<!-- <TransitionRoot as="template" :show="openDrawer">
+							<Dialog class="relative z-40" @close="openDrawer = false">
+
+								<TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
+									enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
+									<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+								</TransitionChild>
+
+								<div class="fixed inset-0 overflow-hidden">
+									<div class="absolute inset-0 overflow-hidden">
+										<div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+											<TransitionChild as="template" enter="transform transition ease-in-out duration-500"
+												enter-from="translate-x-full" enter-to="translate-x-0"
+												leave="transform transition ease-in-out duration-500" leave-from="translate-x-0"
+												leave-to="translate-x-full">
+
+												<DialogPanel class="pointer-events-auto w-screen max-w-md">
+													<div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+
+														<div class="px-6 sm:px-4">
+															<div class="flex items-center justify-between">
+
+																<DialogTitle class="text-xl font-semibold leading-6">Корзина</DialogTitle>
+																<button type="button"
+																	class="
+																	flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-500/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-gray-500 focus:text-gray-500"
+																	@click="openDrawer = false">
+																	<span class="sr-only">Закрыть козину</span>
+																	<Icon name="material-symbols:close-rounded" class="h-6 w-6" aria-hidden="true" />
+																</button>
+
+															</div>
+														</div>
+
+														<div class="relative mt-6 flex-1 px-6 sm:px-4">-->
+						<!-- Your content -->
+						<!-- </div>
+													</div>
+												</DialogPanel>
+
+											</TransitionChild>
+										</div>
+									</div>
+								</div>
+							</Dialog>
+						</TransitionRoot> -->
 
 					</div>
 				</div>
@@ -344,11 +303,31 @@
 
 
 <script setup>
-const isActive = ref(false);
-const toggleValue = () => {
-	isActive.value = !isActive.value;
-	console.log(isActive.value)
+// -----SEARCH-----
+const search = ref(false)
+
+const openSearch = () => {
+	search.value = !search.value;
 };
+
+const closeSearch = () => {
+	search.value = false;
+};
+
+// -----DRAWER-----
+const drawer = ref(false);
+const openDrawer = () => {
+	drawer.value = !drawer.value;
+};
+
+const closeDrawer = () => {
+	drawer.value = false;
+};
+
+
+
+
+const mobileMenuOpen = ref(false)
 
 const navigationTop = [
 	{ name: 'О магазине', href: 'about' },
@@ -360,8 +339,6 @@ const navigationMain = [
 	{ name: 'Блог', slug: 'blog' },
 	{ name: 'Контакты', href: 'сontacts' },
 ]
-const openDrawer = ref(false)
-const mobileMenuOpen = ref(false)
 
 const city = [
 	{ id: 1, name: 'Набережные Челны' },
@@ -383,25 +360,7 @@ const filteredCityes = computed(() =>
 		}),
 )
 
-const people = [
-	{ id: 1, name: 'Роман', url: '#' },
-	{ id: 2, name: 'Дмитрий', url: '#' },
-]
 
-const open = ref(false)
-const filteredPeople = computed(() =>
-	query.value === ''
-		? []
-		: people.filter((person) => {
-			return person.name.toLowerCase().includes(query.value.toLowerCase())
-		}),
-)
-
-function onSelect(person) {
-	if (person) {
-		window.location = person.url
-	}
-}
 
 const callsToAction = [
 	{ name: 'Watch demo', href: '#', },

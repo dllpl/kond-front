@@ -1,7 +1,6 @@
 <template>
-    <p>The value is: {{ isActive ? 'Active' : 'Inactive' }}</p>
-    <TransitionRoot as="template" :show="isActive">
-        <Dialog class="relative z-40" @close="open = false">
+    <TransitionRoot as="template" :show="show">
+        <Dialog class="relative z-40" @close="closeModal">
 
             <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
                 enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
@@ -23,10 +22,11 @@
                                         <div class="flex items-center justify-between">
 
                                             <DialogTitle class="text-xl font-semibold leading-6">Корзина</DialogTitle>
+                                            <p>value: {{ show ? 'Open' : 'close' }}</p>
                                             <button type="button"
                                                 class="
 																	flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-500/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-gray-500 focus:text-gray-500"
-                                                @click="isActive = false">
+                                                @click="closeModal">
                                                 <span class="sr-only">Закрыть козину</span>
                                                 <Icon name="material-symbols:close-rounded" class="h-6 w-6"
                                                     aria-hidden="true" />
@@ -52,9 +52,13 @@
 
 <script setup>
 const props = defineProps({
-    isActive: {
+    show: {
         type: Boolean,
     }
 })
-
+console.log(props.show)
+const emit = defineEmits(['close'])
+const closeModal = () => {
+    emit('close');
+}
 </script>
