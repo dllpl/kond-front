@@ -2,7 +2,7 @@
     <div class="relative">
         <ElementsCarousel class="rounded-2xl " :options="{
             circular: true, autoResize: true, moveType: 'strict', duration: 750,
-        }" :pagination="{ type: 'bullet' }">
+        }" :pagination="{ type: 'scroll' }">
             <div class="w-full mr-5" v-for="item in data" :key="item.id">
                 <div class="relative h-96 py-12 px-12 flex flex-col justify-center gap-5 ">
                     <h2 class="text-4xl font-semibold" :class="item.text_color ? `text-[${item.text_color}]` : ''">
