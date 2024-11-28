@@ -1,6 +1,6 @@
 <template>
-    <div class="group p-6 sm:p-4">
-        <div class="relative">
+    <div class="group p-6 flex flex-col h-full lg:p-4">
+        <div class="relative flex flex-col h-full">
             <!--исходник было - пусть будет-->
             <!-- <div
                 class="max-h-[200px] aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
@@ -11,7 +11,7 @@
             </div> -->
 
             <div
-                class="flex items-center justify-center h-48 aspect-h-1 aspect-w-1 overflow-hidden rounded-lg ring-1 bg-white    ring-gray-200 transition-base group-hover:opacity-75">
+                class="flex items-center shrink-0 justify-center h-48 aspect-h-1 aspect-w-1 overflow-hidden rounded-lg ring-1 bg-white    ring-gray-200 transition-base group-hover:opacity-75">
 
                 <img v-if="product.images && product.images.length" :src="storage + product.images[0]"
                     :alt="product.title" class="object-contain object-center h-full" />
@@ -19,14 +19,14 @@
                     class="object-cover object-center h-full">
             </div>
 
-            <div class="pb-4 pt-10 text-center">
-                <h3 class="text-sm ">
+            <div class="flex flex-col h-full pb-4 pt-10 text-center lg:pt-6">
+                <h3 class="text-sm mb-4">
                     <NuxtLink :to="product.slug">
                         <span aria-hidden="true" class="absolute inset-0" />
                         {{ product.title }}
                     </NuxtLink>
                 </h3>
-                <p class="mt-4 text-base font-semibold ">{{ product.price }}</p>
+                <span class="mt-auto text-base font-semibold ">{{ product.price }}</span>
             </div>
 
             <button

@@ -47,19 +47,19 @@
                 </div>
             </div>
 
-            <div class="border-t border-white/10 py-8 flex items-center justify-between">
+            <div class="border-t border-white/10 py-8 flex items-end gap-4 justify-between ">
                 <div>
                     <h3 class="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
                     <p class="mt-2 text-sm leading-6 text-gray-300">The latest news, articles, and resources, sent to
                         your inbox weekly.</p>
                 </div>
 
-                <form class=" flex max-w-md mt-0 lg:mt-6">
+                <form class=" flex max-w-md mt-0 lg:mt-6 shrink-0">
                     <label for="phone" class="sr-only">Телефон</label>
                     <input v-maska=maskaOptions.phone.mask name="phone" id="phone" autocomplete="phone" required=""
                         class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-2 ring-inset transition-base  ring-white/10 placeholder:text-gray-500 hover:ring-red-500  focus:ring-red-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
                         placeholder="Номер телефона" />
-                    <div class=" ml-4 mt-0 flex-shrink-0 lg:mt-4">
+                    <div class=" ml-4 mt-0 flex-shrink-0 ">
                         <button type="submit" class="flex w-full items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-base  hover:bg-red-500 
                             focus-visible:bg-red-500">Отправить</button>
                     </div>
@@ -83,7 +83,9 @@
 </template>
 
 <script setup>
+
 const maskaOptions = useMaskaOptions()
+
 const navigation = {
     menu: [
         { name: 'Каталог', href: '#' },

@@ -13,7 +13,7 @@
                     </p>
 
                     <NuxtLink v-if="item.link" :to="item.link" target="_blank"
-                        class="text-sm font-semibold rounded-lg  px-4 py-3 bg-amber-300 hover:bg-amber-400 transition-base mr-auto cursor-pointer">
+                        class="text-sm font-semibold rounded-lg  px-10 py-3 bg-amber-300 hover:bg-amber-400 transition-base mr-auto cursor-pointer">
                         Перейти
                     </NuxtLink>
 
