@@ -15,11 +15,18 @@
         </div>
         <div class="relative">
             <ElementsCarousel class="" :options="{
-                autoResize: true, duration: 750, circular: true, align: 'prev'
+                autoResize: true, duration: 750, circular: true, align: 'prev', panelsPerView: 3,
             }" :plugins="arrow">
-                <SectionProductCard v-for="product in data" :key="product.id" :product="product"
-                    class="w-1/6 mr-5 2xl:w-1/4 border border-gray-200 rounded-2xl ">
-                </SectionProductCard>
+
+                <!-- panelsPerView: 5, -->
+                <!-- lg: panelsPerView: 4, -->
+                <!-- md: panelsPerView: 3, -->
+                <!-- xs: panelsPerView: 2, -->
+                <div class="mr-4" v-for="product in data" :key="product.id">
+                    <SectionProductCard :product="product" class="border border-gray-200 rounded-lg">
+                    </SectionProductCard>
+                </div>
+
             </ElementsCarousel>
         </div>
     </div>
@@ -33,6 +40,40 @@ const props = defineProps({
     data: Array
 });
 
-// console.log(props)
+
+// const panelsPerView = computed(() => {
+//     if (process.server) {
+//         return 5
+//     }
+//     const vw = window.innerWidth
+//     if (vw < 1441) {
+//         return 4
+//     } else {
+//         return 5
+//     }
+// })
+
+
+// const screenWidth = ref(window.innerWidth);
+
+
+// // Функция для обновления размеров экрана
+// const updateScreenSize = () => {
+//     screenWidth.value = window.innerWidth;
+// };
+
+// // Добавляем обработчик события resize при монтировании компонента
+// onMounted(() => {
+//     window.addEventListener('resize', updateScreenSize);
+// });
+
+// // Убираем обработчик события resize при размонтировании компонента
+// onBeforeUnmount(() => {
+//     window.removeEventListener('resize', updateScreenSize);
+// });
+
+
+
+// console.log(panelsPerView)
 
 </script>

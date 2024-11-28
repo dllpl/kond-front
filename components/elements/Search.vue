@@ -6,7 +6,7 @@
                 <div class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
             </TransitionChild>
 
-            <div class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
+            <div class="fixed inset-0 z-40 w-screen overflow-y-auto p-4">
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 scale-95"
                     enter-to="opacity-100 scale-100" leave="ease-in duration-200" leave-from="opacity-100 scale-100"
                     leave-to="opacity-0 scale-95">
@@ -19,7 +19,7 @@
                                     aria-hidden="true" />
 
                                 <ComboboxInput
-                                    class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+                                    class="h-12 w-full border-0 bg-transparent pl-11 pr-4  placeholder:text-gray-400 focus:ring-0"
                                     placeholder="Введите название..." @change="query = $event.target.value"
                                     @blur="query = ''" />
                             </div>
@@ -29,14 +29,14 @@
                                 <ComboboxOption v-for="person in filteredPeople" :key="person.id" :value="person"
                                     as="template" v-slot="{ active }">
                                     <li
-                                        :class="['cursor-default select-none px-4 py-2', active && 'bg-indigo-600 text-white']">
+                                        :class="['cursor-default select-none px-4 py-2 font-medium', active && 'bg-amber-300']">
                                         {{ person.name }}
                                     </li>
                                 </ComboboxOption>
                             </ComboboxOptions>
 
-                            <p v-if="query !== '' && filteredPeople.length === 0" class="p-4 text-sm text-gray-500">No
-                                people found.</p>
+                            <p v-if="query !== '' && filteredPeople.length === 0" class="p-4 text-sm text-gray-500">
+                                Товар не найден</p>
                         </Combobox>
                     </DialogPanel>
                 </TransitionChild>
@@ -46,12 +46,15 @@
 </template>
 
 
+
 <script setup>
 const props = defineProps({
     show: {
         type: Boolean,
     }
 })
+
+console.log(props.show)
 const query = ref('')
 
 const emit = defineEmits(['close'])

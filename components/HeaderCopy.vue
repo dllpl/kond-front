@@ -51,13 +51,14 @@
 					</div>
 					<!-- MOBILE VISIBLE XS-->
 					<div class="hidden xs:flex xs:gap-4 ">
+
 						<!-- Search -->
 						<button type="button" @click="openSearch"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="mdi-light:magnify" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
-						<ElementsSearch :show="search" @close="closeSearch" />
+						<!-- <ElementsSearch :show="search" @close="closeSearch" /> -->
 
 						<!-- Like -->
 						<a href="http://"
@@ -73,12 +74,12 @@
 							<Icon name="mdi-light:cart" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
-						<ElementsDrawer :show="drawer" @close="closeDrawer"></ElementsDrawer>
+						<!-- <ElementsDrawer :show="drawer" @close="closeDrawer"></ElementsDrawer> -->
 					</div>
 
 					<div class="flex items-center gap-x-12 2xl:gap-x-4 md:w-auto xs:order-first xs:mr-auto">
 						<div class="flex items-center gap-x-12 2xl:gap-x-4 lg:hidden">
-							<NuxtLink :to="item.href" v-for="item in navigationTop" :key="item.name"
+							<NuxtLink :to="item.slug" v-for="item in navTop" :key="item.name"
 								class="text-sm transition-base hover:text-red-600 focus:text-red-600">{{
 									item.name
 								}}
@@ -88,62 +89,20 @@
 								| Регистрация
 							</NuxtLink>
 						</div>
-						<!-- Burger -->
+
+						<!-- BURGER -->
 						<div class="hidden lg:flex">
+
 							<button type="button"
 								class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600"
-								@click="mobileMenuOpen = true">
+								@click="openBurger">
 								<span class="sr-only">Открыть меню</span>
-
 								<Icon name="material-symbols:menu" class="w-6 h-6" aria-hidden="true" />
-
 							</button>
-						</div>
-						<Dialog class="" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
-							<div class="fixed inset-0 z-10" />
-							<DialogPanel
-								class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-4 lg:max-w-sm lg:ring-1 lg:ring-gray-900/10 sm:max-w-full">
-								<div class="flex items-center justify-between">
-									<NuxtLink :to="'/'" class="-m-1.5 p-1.5">
-										<span class="sr-only">Все для кондитера</span>
-										<img class="h-8 w-auto" src="https://dljakonditera.ru/a/tort/files/125837/124927/logos.png"
-											alt="Все для кондитера" />
-									</NuxtLink>
 
-									<button type="button"
-										class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600"
-										@click="mobileMenuOpen = false">
-										<span class="sr-only">Закрыть меню</span>
-										<Icon name="material-symbols:close-rounded" class="w-6 h-6 group-hover:stroke-red-600"
-											aria-hidden="true"></Icon>
-									</button>
-								</div>
-								<div class="mt-6 flow-root">
-									<div class=" divide-y divide-gray-500/10">
-										<div class="">
-											<NuxtLink :to="'/'"
-												class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7 text-gray-900 hover:text-red-600 focus:text-red-600">
-												Вход | Регистрация
-											</NuxtLink>
-										</div>
-										<div class="hidden py-4 xs:block">
-											<NuxtLink :to="item.href" v-for="item in navigationMain" :key="item.name"
-												class="-mx-3 block rounded-lg px-3 py-2 text-sm  hover:text-red-600 focus:text-red-600">
-												{{
-													item.name }}
-											</NuxtLink>
-										</div>
-										<div class=" py-4">
-											<NuxtLink :to="item.href" v-for="item in navigationTop" :key="item.name"
-												class="-mx-3 block rounded-lg px-3 py-2 text-sm  hover:text-red-600 focus:text-red-600">
-												{{
-													item.name }}
-											</NuxtLink>
-										</div>
-									</div>
-								</div>
-							</DialogPanel>
-						</Dialog>
+
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -170,8 +129,8 @@
 								aria-hidden="true" />
 						</PopoverButton>
 
-						<NuxtLink :to="item.slug" v-for="item in navigationMain" :key="item.name"
-							class="text-base font-semibold text-gray-900 transition-base hover:text-red-600 focus:text-red-600">
+						<NuxtLink :to="item.slug" v-for="item in nav" :key="item.name"
+							class="text-base font-semibold text-gray-900 transition-base hover:text-red-600 focus:text-red-600 lg:hidden">
 							{{
 								item.name }}
 						</NuxtLink>
@@ -184,7 +143,6 @@
 							<Icon name="material-symbols:search" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
-						<ElementsSearch :show="search" @close="closeSearch" />
 
 						<!-- Like -->
 						<a href="http://"
@@ -200,54 +158,7 @@
 							<Icon name="material-symbols:shopping-cart-outline" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
-						<ElementsDrawer :show="drawer" @close="closeDrawer"></ElementsDrawer>
 
-						<!-- <TransitionRoot as="template" :show="openDrawer">
-							<Dialog class="relative z-40" @close="openDrawer = false">
-
-								<TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
-									enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
-									<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-								</TransitionChild>
-
-								<div class="fixed inset-0 overflow-hidden">
-									<div class="absolute inset-0 overflow-hidden">
-										<div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-											<TransitionChild as="template" enter="transform transition ease-in-out duration-500"
-												enter-from="translate-x-full" enter-to="translate-x-0"
-												leave="transform transition ease-in-out duration-500" leave-from="translate-x-0"
-												leave-to="translate-x-full">
-
-												<DialogPanel class="pointer-events-auto w-screen max-w-md">
-													<div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-
-														<div class="px-6 sm:px-4">
-															<div class="flex items-center justify-between">
-
-																<DialogTitle class="text-xl font-semibold leading-6">Корзина</DialogTitle>
-																<button type="button"
-																	class="
-																	flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-500/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-gray-500 focus:text-gray-500"
-																	@click="openDrawer = false">
-																	<span class="sr-only">Закрыть козину</span>
-																	<Icon name="material-symbols:close-rounded" class="h-6 w-6" aria-hidden="true" />
-																</button>
-
-															</div>
-														</div>
-
-														<div class="relative mt-6 flex-1 px-6 sm:px-4">-->
-						<!-- Your content -->
-						<!-- </div>
-													</div>
-												</DialogPanel>
-
-											</TransitionChild>
-										</div>
-									</div>
-								</div>
-							</Dialog>
-						</TransitionRoot> -->
 
 					</div>
 				</div>
@@ -296,6 +207,10 @@
 			</div>
 		</Popover>
 
+		<ElementsSearch :show="search" @close="closeSearch" />
+		<ElementsDrawer :show="drawer" @close="closeDrawer" />
+		<ElementsBurger :show="burger" :data="navBurger" @close="closeBurger" />
+
 	</header>
 
 </template>
@@ -304,8 +219,7 @@
 
 <script setup>
 // -----SEARCH-----
-const search = ref(false)
-
+const search = ref(false);
 const openSearch = () => {
 	search.value = !search.value;
 };
@@ -324,20 +238,36 @@ const closeDrawer = () => {
 	drawer.value = false;
 };
 
+// -----BURGER-----
+const burger = ref(false)
+
+const openBurger = () => {
+	burger.value = !burger.value;
+};
+
+const closeBurger = () => {
+	burger.value = false;
+};
 
 
-
-const mobileMenuOpen = ref(false)
-
-const navigationTop = [
-	{ name: 'О магазине', href: 'about' },
-	{ name: 'Доставка и оплата', href: 'delivery' },
+const navTop = [
+	{ name: 'О магазине', slug: 'about' },
+	{ name: 'Доставка и оплата', slug: 'delivery' },
 ]
 
-const navigationMain = [
-	{ name: 'Съедобная печать?', href: '#' },
+const nav = [
+	{ name: 'Съедобная печать?', slug: '#' },
 	{ name: 'Блог', slug: 'blog' },
-	{ name: 'Контакты', href: 'сontacts' },
+	{ name: 'Контакты', slug: 'сontacts' },
+]
+
+const navBurger = [
+	{ name: 'Каталог', slug: 'catalog' },
+	{ name: 'Съедобная печать?', slug: '#' },
+	{ name: 'Блог', slug: 'blog' },
+	{ name: 'Контакты', slug: 'сontacts' },
+	{ name: 'О магазине', slug: 'about' },
+	{ name: 'Доставка и оплата', slug: 'delivery' },
 ]
 
 const city = [
@@ -359,6 +289,7 @@ const filteredCityes = computed(() =>
 			return city.name.toLowerCase().includes(query.value.toLowerCase())
 		}),
 )
+
 
 
 

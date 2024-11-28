@@ -25,7 +25,7 @@ const { data: categories } = await useFetch(config.backOptions.api + '/products-
 const breadcrumbs = [
   {
     name: 'Каталог',
-    href: 'catalog',
+    slug: 'catalog',
   },
 ]
 // console.log(uri)

@@ -19,9 +19,9 @@
                 </p>
             </div>
 
-            <div class="grid auto-rows-fr gap-8 max-w-none grid-cols-4">
-                <article v-for="post in blog.data" :key="post.id"
-                    class="group relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-60 hover:scale-105 hover:shadow-lg hover:shadow-gray-700 transition-base">
+            <div class="grid auto-rows-fr gap-8 max-w-none grid-cols-4 xl:grid-cols-3 md:grid-cols-2 xs:grid-cols-1">
+                <article v-for="post in blog.data" :key="post.id" class="group relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-60 hover:scale-105 hover:shadow-lg hover:shadow-gray-700 transition-base
+                    xl:pt-40 md:pt-25">
                     <img :src="storage + post.image" :alt="post.title"
                         class="absolute inset-0 -z-10 h-full w-full object-cover" />
                     <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
