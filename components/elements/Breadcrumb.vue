@@ -17,7 +17,7 @@
                     <span v-if="data.length - 1 === i" class="ml-1 text-sm font-medium text-gray-400 ">
                         {{ page.name }}
                     </span>
-                    <NuxtLink v-else :to="`/${page.href}`"
+                    <NuxtLink v-else :to="`/${page.uri}`"
                         class="ml-1 text-sm font-medium text-gray-400 hover:text-gray-500 transition-all">
                         {{ page.name }}
                     </NuxtLink>

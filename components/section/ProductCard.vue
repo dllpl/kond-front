@@ -21,12 +21,14 @@
 
             <div class="flex flex-col h-full pb-4 pt-10 text-center lg:pt-6">
                 <h3 class="text-sm mb-4">
-                    <NuxtLink :to="product.slug">
+                    <NuxtLink :to="'/catalog/' + product.slug_path">
                         <span aria-hidden="true" class="absolute inset-0" />
                         {{ product.title }}
                     </NuxtLink>
                 </h3>
-                <span class="mt-auto text-base font-semibold ">{{ product.price }}</span>
+                <span class="mt-auto text-base font-semibold ">
+                    {{ product.price ? formatNumber(product.price) : '' }}
+                </span>
             </div>
 
             <button
@@ -37,12 +39,13 @@
         </div>
 
         <div class="">
-            <ElementsProductCounter :inCart="product?.inCart" />
+            <ElementsProductCounter :item="product" />
         </div>
     </div>
 </template>
 
 <script setup>
+
 const { storage } = useRuntimeConfig().public.backOptions;
 const props = defineProps({
     product: Object

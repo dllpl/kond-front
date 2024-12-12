@@ -70,7 +70,7 @@
                         профессионалов. С нами вы всегда сможете найти всё необходимое для создания идеальных
                         десертов, сэкономив время и усилия на поисках.
                     </p>
-                    <NuxtLink :to="'/'"
+                    <NuxtLink :to="'/catalog'"
                         class="group flex items-center gap-x-1 w-auto mr-auto justify-center rounded-lg mt-6 bg-amber-400 px-5 py-2 hover:bg-amber-300 transition-base lg:inline-flex lg:px-10">
                         В каталог
                         <icon name="material-symbols-light:keyboard-double-arrow-right-rounded"

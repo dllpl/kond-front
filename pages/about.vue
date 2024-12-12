@@ -19,8 +19,6 @@
                         src="/assets/img/delivery-1920.jpg" alt="">
                 </picture>
             </div>
-
-
             <div class="mb-16 flex gap-6">
                 <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-600 shrink-0">
                     <Icon name="hugeicons:location-star-02" class="w-10 h-10 text-white" />
@@ -37,7 +35,6 @@
                     </p>
                 </div>
             </div>
-
             <div class="grid grid-cols-3 items-center gap-14 mb-40 lg:grid-cols-1 lg:mb-20 xs:mb-10">
                 <div class=" col-span-2 lg:col-span-1">
                     <h2 class="text-3xl font-bold tracking-tight mb-8"> В нашем интернет-магазине вы найдете

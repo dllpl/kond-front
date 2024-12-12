@@ -35,7 +35,67 @@
                                     <div class="flex-1 overflow-y-auto custom-scroll px-4 sm:px-6">
                                         <div class="mt-8">
                                             <div class="flow-root">
+
+
+                                                <!-- pinia test -->
                                                 <ul role="list" class="-my-6 divide-y divide-gray-200">
+                                                    <li v-for="product in products" :key="product.id" class="flex py-4">
+                                                        <div
+                                                            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                                            <!-- <img :src="product.imageSrc" :alt="product.imageAlt"
+                                                                class="h-full w-full object-cover object-center" /> -->
+
+
+
+
+                                                            <img v-if="product.images && product.images.length"
+                                                                :src="storage + product.images[0]" :alt="product.title"
+                                                                class="h-full w-full object-cover object-center" />
+                                                            <img v-else src="/assets/img/default-product-img.webp"
+                                                                :alt="product.title"
+                                                                class="h-full w-full object-cover object-center">
+                                                        </div>
+
+                                                        <div class="ml-4 flex flex-1 flex-col ">
+                                                            <h3 class="text-base font-medium">
+                                                                <a :href="product.href">{{ product.title }}</a>
+                                                            </h3>
+
+                                                            <div class="flex gap-5 justify-between">
+                                                                <div class="">
+                                                                    <p class="text-base font-medium">
+                                                                        <span class="text-gray-500 text-sm">Цена:
+                                                                        </span>
+                                                                        {{ formatNumber(product.price) }}
+                                                                    </p>
+
+                                                                    <p class="text-base font-medium">
+                                                                        <span
+                                                                            class="text-gray-500 text-sm">Кол-во:</span>
+                                                                        {{ product.inCard }}
+                                                                    </p>
+
+                                                                    <p v-if="product.inCard > 1"
+                                                                        class="text-base font-medium">
+                                                                        <span class="text-gray-500 text-sm">Сумма:
+                                                                        </span>{{
+                                                                            formatNumber(cartStore.totalPriceProduct(product))
+                                                                        }}
+                                                                    </p>
+                                                                </div>
+                                                                <button type="button"
+                                                                    @click="cartStore.removeCart(product.id)"
+                                                                    class="ml-4 flex items-end justify-center transition-base p-1 transition-base text-gray-400 hover:text-indigo-950 group">
+                                                                    <Icon name="mdi-light:delete" class="h-6 w-6"
+                                                                        aria-hidden="true" />
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+
+                                                <!-- <ul role="list" class="-my-6 divide-y divide-gray-200">
                                                     <li v-for="product in products" :key="product.id" class="flex py-6">
                                                         <div
                                                             class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -66,15 +126,16 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                </ul>
+                                                </ul> -->
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="border-t border-gray-200 px-4 py-4 sm:px-6">
-                                        <div class="flex justify-between text-base font-medium ">
+                                        <div class="flex justify-between text-base font-medium">
                                             <p>Общая сумма</p>
-                                            <p>262.00</p>
+                                            <p v-if="cartStore.totalPriceAllProducts">{{ cartStore.totalPriceAllProducts
+                                                }}</p>
                                         </div>
                                         <p class="mt-0.5 text-sm text-gray-500">Способ доставки выбирается при офомлении
                                             заказа</p>
@@ -96,66 +157,20 @@
 </template>
 
 <script setup>
+const { storage } = useRuntimeConfig().public.backOptions;
 
 const props = defineProps({
     show: {
         type: Boolean,
-    }
+    },
 })
+
+const cartStore = useCartStore();
+const { products } = storeToRefs(cartStore);
 
 const emit = defineEmits(['close'])
 const closeModal = () => {
     emit('close');
 }
 
-const products = [
-    {
-        id: 1,
-        name: 'Throwback Hip Bag',
-        href: '#',
-        price: '$90.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    },
-    {
-        id: 2,
-        name: 'Medium Stuff Satchel',
-        href: '#',
-        price: '$32.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    },
-    {
-        id: 3,
-        name: 'Throwback Hip Bag',
-        href: '#',
-        price: '$90.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    },
-    {
-        id: 4,
-        name: 'Medium Stuff Satchel',
-        href: '#',
-        price: '$32.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    },
-    {
-        id: 5,
-        name: 'Throwback Hip Bag',
-        href: '#',
-        price: '$90.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    },
-    {
-        id: 6,
-        name: 'Medium Stuff Satchel',
-        href: '#',
-        price: '$32.00',
-        quantity: 1,
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    },
-]
 </script>
