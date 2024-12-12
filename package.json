@@ -12,10 +12,9 @@
   "dependencies": {
     "@egjs/flicking-plugins": "^4.7.1",
     "@egjs/vue3-flicking": "^4.11.4",
-    "@pinia/nuxt": "^0.5.5",
     "axios": "^1.7.7",
     "google-fonts": "^1.0.0",
-    "pinia": "^2.2.4",
+    "pinia": "^2.2.8",
     "vue": "^3.5.12",
     "vue-router": "latest",
     "yandex-metrika-module-nuxt3": "^1.5.3"
@@ -25,6 +24,7 @@
     "@nuxt/icon": "^1.5.6",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/seo": "^2.0.0-rc.23",
+    "@pinia/nuxt": "^0.8.0",
     "@vee-validate/i18n": "^4.14.3",
     "@vee-validate/nuxt": "^4.14.3",
     "@vee-validate/rules": "^4.14.3",

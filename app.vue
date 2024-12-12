@@ -1,11 +1,14 @@
-<script setup>
-
-</script>
-
 <template>
     <NuxtLayout>
-        <HeaderCopy />
+        <Header />
+        <!-- {{ cartStore.product }} -->
         <NuxtPage />
         <Footer />
     </NuxtLayout>
 </template>
+
+
+<script setup>
+
+
+</script>

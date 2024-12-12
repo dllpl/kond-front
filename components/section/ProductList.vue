@@ -13,6 +13,7 @@
 
 <script setup>
 
+
 // // Состояние, чтобы узнать, добавлен ли товар в корзину
 // const inCart = ref(false);
 
@@ -130,6 +131,5 @@ const props = defineProps({
 	}
 })
 
-// console.log(props.data)
 
 </script>

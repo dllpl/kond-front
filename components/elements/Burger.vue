@@ -15,8 +15,8 @@
                     leave-to="translate-x-full">
 
                     <DialogPanel
-                        class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-4 lg:max-w-sm lg:ring-1 lg:ring-gray-900/10 sm:max-w-full">
-                        <div class="flex items-center justify-between">
+                        class="flex flex-col fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white pt-4 lg:max-w-sm lg:ring-1 lg:ring-gray-900/10 sm:max-w-full">
+                        <div class="flex items-center justify-between px-6 ">
                             <NuxtLink :to="'/'" class="-m-1.5 p-1.5">
                                 <span class="sr-only">Все для кондитера</span>
                                 <img class="h-8 w-auto"
@@ -33,11 +33,11 @@
                             </button>
                         </div>
 
-                        <div class="mt-6 flow-root">
+                        <div class="mt-6 px-6  flow-root">
                             <div class=" divide-y divide-gray-500/10">
                                 <div class="">
                                     <NuxtLink :to="'/'"
-                                        class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7 text-gray-900 hover:text-red-600 focus:text-red-600">
+                                        class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7  hover:text-red-600 focus:text-red-600">
                                         Вход | Регистрация
                                     </NuxtLink>
                                 </div>
@@ -50,6 +50,13 @@
                             </div>
                         </div>
 
+                        <div class="mt-auto divide-y divide-gray-500/10">
+                            <NuxtLink :to="item.href" v-for="item in calls" :key="item.name"
+                                class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6  bg-gray-100 sm:justify-center sm:px-0">
+                                <component :is="item.icon" class="h-5 w-5 flex-none " aria-hidden="true" />
+                                {{ item.name }}
+                            </NuxtLink>
+                        </div>
                     </DialogPanel>
 
                 </TransitionChild>
@@ -65,6 +72,7 @@
 const props = defineProps({
     show: Boolean,
     data: Array,
+    calls: Array,
 })
 
 let navi = props.data

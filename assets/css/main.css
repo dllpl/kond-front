@@ -73,6 +73,10 @@
     background-color: rgb(251 191 36 / var(--tw-bg-opacity));
   }
 
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .grid-cols-custom {
     grid-template-columns: 300px calc((100% - 300px) - 2rem);
   }
