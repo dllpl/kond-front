@@ -12,10 +12,6 @@ const breadcrumbs = [
   },
   ...data.value.breadcrumbs
 ]
-console.log(data.value)
-// console.log(categories.value.data.children)
-// console.log(categories.value.products.length)
-// console.log(categories.value.data[0].children.length)
 </script>
 
 

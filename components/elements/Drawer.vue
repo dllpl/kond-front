@@ -14,7 +14,7 @@
                             enter-from="translate-x-full" enter-to="translate-x-0"
                             leave="transform transition ease-in-out duration-500 sm:duration-700"
                             leave-from="translate-x-0" leave-to="translate-x-full">
-                            <DialogPanel class="pointer-events-auto w-screen max-w-md">
+                            <DialogPanel class="pointer-events-auto w-screen max-w-2xl">
 
                                 <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                                     <div class="flex items-center justify-between px-4 py-4 sm:px-6">
@@ -35,19 +35,16 @@
                                     <div class="flex-1 overflow-y-auto custom-scroll px-4 sm:px-6">
                                         <div class="mt-8">
                                             <div class="flow-root">
+                                                <p v-if="!products.length" class="text-center text-sm text-gray-500">В
+                                                    корзине пока пусто</p>
 
-
-                                                <!-- pinia test -->
+                                                <!-- pinia cartStore -->
                                                 <ul role="list" class="-my-6 divide-y divide-gray-200">
                                                     <li v-for="product in products" :key="product.id" class="flex py-4">
                                                         <div
                                                             class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                             <!-- <img :src="product.imageSrc" :alt="product.imageAlt"
                                                                 class="h-full w-full object-cover object-center" /> -->
-
-
-
-
                                                             <img v-if="product.images && product.images.length"
                                                                 :src="storage + product.images[0]" :alt="product.title"
                                                                 class="h-full w-full object-cover object-center" />
@@ -58,7 +55,9 @@
 
                                                         <div class="ml-4 flex flex-1 flex-col ">
                                                             <h3 class="text-base font-medium">
-                                                                <a :href="product.href">{{ product.title }}</a>
+                                                                <NuxtLink :to="product.slug_path">
+                                                                    {{ product.title }}
+                                                                </NuxtLink>
                                                             </h3>
 
                                                             <div class="flex gap-5 justify-between">
@@ -72,10 +71,10 @@
                                                                     <p class="text-base font-medium">
                                                                         <span
                                                                             class="text-gray-500 text-sm">Кол-во:</span>
-                                                                        {{ product.inCard }}
+                                                                        {{ product.inCart }}
                                                                     </p>
 
-                                                                    <p v-if="product.inCard > 1"
+                                                                    <p v-if="product.inCart > 1"
                                                                         class="text-base font-medium">
                                                                         <span class="text-gray-500 text-sm">Сумма:
                                                                         </span>{{
@@ -94,39 +93,6 @@
                                                     </li>
                                                 </ul>
 
-
-                                                <!-- <ul role="list" class="-my-6 divide-y divide-gray-200">
-                                                    <li v-for="product in products" :key="product.id" class="flex py-6">
-                                                        <div
-                                                            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                            <img :src="product.imageSrc" :alt="product.imageAlt"
-                                                                class="h-full w-full object-cover object-center" />
-                                                        </div>
-
-                                                        <div class="ml-4 flex flex-1 flex-col">
-                                                            <div>
-                                                                <div
-                                                                    class="flex justify-between text-base font-medium text-gray-900">
-                                                                    <h3>
-                                                                        <a :href="product.href">{{ product.name }}</a>
-                                                                    </h3>
-                                                                    <p class="ml-4">{{ product.price }}</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="flex flex-1 items-end justify-between text-sm">
-                                                                <p class="text-gray-500">Кол-во {{ product.quantity }}
-                                                                </p>
-
-                                                                <button type="button"
-                                                                    class="flex items-center justify-center transition-base p-1 transition-base text-gray-400 hover:text-indigo-950  group">
-                                                                    <Icon name="mdi-light:delete" class="h-6 w-6"
-                                                                        aria-hidden="true" />
-                                                                </button>
-
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul> -->
                                             </div>
                                         </div>
                                     </div>
@@ -134,8 +100,9 @@
                                     <div class="border-t border-gray-200 px-4 py-4 sm:px-6">
                                         <div class="flex justify-between text-base font-medium">
                                             <p>Общая сумма</p>
-                                            <p v-if="cartStore.totalPriceAllProducts">{{ cartStore.totalPriceAllProducts
-                                                }}</p>
+                                            <p v-if="cartStore.totalPriceAllProducts">{{ formatNumber(
+                                                cartStore.totalPriceAllProducts
+                                            ) }}</p>
                                         </div>
                                         <p class="mt-0.5 text-sm text-gray-500">Способ доставки выбирается при офомлении
                                             заказа</p>
@@ -172,5 +139,4 @@ const emit = defineEmits(['close'])
 const closeModal = () => {
     emit('close');
 }
-
 </script>
