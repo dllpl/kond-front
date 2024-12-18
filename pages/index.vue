@@ -31,6 +31,7 @@ const { public: config } = useRuntimeConfig();
 const { data: banners } = await useFetch(config.backOptions.api + '/banners');
 const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
 
+
 const productNews = [
 	{
 		id: 1,

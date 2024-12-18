@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   },
   routeRules:{
     '/': {
-      prerender: true,
+      // prerender: true,
       sitemap: { priority: 1.0, changefreq: 'weekly'},
       headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
   },
@@ -120,5 +120,6 @@ splide: {
 
   devServer: {
     host: '127.0.0.1',
+    // host: '192.168.1.242',
   },
 })

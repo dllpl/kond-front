@@ -1,28 +1,14 @@
 <script setup>
 const { storage } = useRuntimeConfig().public.backOptions;
 
-
 const props = defineProps({
     product: Object
 })
-
-console.log(props.product)
-
-
-// const product = {
-//     name: 'Паста десертная Фисташковая 1кг Россия',
-//     price: '2790',
-//     count: 15,
-//     description:
-//         'Это высококачественный продукт, изготовленный на основе фисташек, с ярким, насыщенным вкусом и ароматом. Она идеально подходит для использования в приготовлении различных десертов, выпечки и кондитерских изделий. Паста имеет густую, однородную текстуру, что облегчает её нанесение и смешивание с другими ингредиентами. Она прекрасно подходит для начинки тортов, пирожных, макаронов, а также для создания кремов и соусов. Упаковка 1 кг является удобной и экономичной как для профессиональных кондитеров, так и для домашних кулинаров.',
-//     imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/product-page-05-product-01.jpg',
-// }
 
 const callsToAction = [
     { name: 'Позвонить нам', href: '#', },
     { name: 'Остались вопросы?', href: '#', },
 ]
-
 
 const social = [
     {
@@ -40,9 +26,7 @@ const social = [
         href: '#',
         icon: 'basil:vk-outline',
     },
-
 ]
-
 </script>
 
 
@@ -137,17 +121,17 @@ const social = [
                                 class="-mb-px flex space-x-8 sm:no-scrollbar sm:snap-x sm:overflow-x-auto sm:w-full ">
                                 <Tab as="template" v-if="product.description && product.description.length"
                                     v-slot="{ selected }" class="scroll-ml-6 snap-start">
-                                    <button
-                                        :class="[selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800', 'whitespace-nowrap border-b-2 py-6 text-sm font-medium']">Описание</button>
+                                    <button class="transition-base"
+                                        :class="[selected ? 'border-amber-400' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">Описание</button>
                                 </Tab>
                                 <Tab as="template" v-slot="{ selected }" class="scroll-ml-6 snap-start">
-                                    <button
-                                        :class="[selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800', 'whitespace-nowrap border-b-2 py-6 text-sm font-medium']">Оформление
+                                    <button class="transition-base"
+                                        :class="[selected ? 'border-amber-400 ' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">Оформление
                                         заказа</button>
                                 </Tab>
                                 <Tab as="template" v-slot="{ selected }" class="scroll-ml-6 snap-start">
-                                    <button
-                                        :class="[selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800', 'whitespace-nowrap border-b-2 py-6 text-sm font-medium']">Доставка</button>
+                                    <button class="transition-base"
+                                        :class="[selected ? 'border-amber-400' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">Доставка</button>
                                 </Tab>
                             </TabList>
                         </div>

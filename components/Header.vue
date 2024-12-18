@@ -45,12 +45,14 @@
 								</div>
 							</Combobox>
 						</div>
-						<a href="tel:+79586281044"
+
+						<NuxtLink :to="`tel:${contacts.phone}`" target="_blank"
 							class="flex items-center gap-2 transition-base rounded-md hover:text-red-600 group focus:bg-red-500 focus:rounded-md focus:text-white
                         xs:p-1 xs:ring-2 xs:ring-gray-300/20 xs:hover:ring-red-500 xs:focus:ring-red-500 xs:focus:text-red-600 xs:focus:bg-transparent">
 							<Icon name="mdi-light:phone" class="w-6 h-6 group-hover:stroke-red-600 " />
-							<span class="block text-base xs:hidden"> +7 (958) 628-10-44</span>
-						</a>
+							<span class="block text-base xs:hidden">{{ contacts.phone }}</span>
+						</NuxtLink>
+
 					</div>
 					<!-- MOBILE VISIBLE XS-->
 					<div class="hidden xs:flex xs:gap-4 ">
@@ -199,19 +201,19 @@
 
 						</div>
 
-						<div class="">
-							<div class="wrapper-container">
-								<div
-									class="grid grid-cols-1 divide-y divide-gray-900/5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:border-x sm:border-gray-900/5">
-									<NuxtLink :to="item.href" v-for="item in callsToAction" :key="item.name"
-										class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 sm:justify-center sm:px-0">
-										<component :is="item.icon" class="h-5 w-5 flex-none text-gray-400"
-											aria-hidden="true" />
-										{{ item.name }}
-									</NuxtLink>
-								</div>
+
+						<div class="wrapper-container">
+							<div
+								class="grid grid-cols-1 divide-y divide-gray-900/5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:border-x sm:border-gray-900/5">
+								<NuxtLink :to="item.href" v-for="item in callsToAction" :key="item.name"
+									class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 sm:justify-center sm:px-0">
+									<component :is="item.icon" class="h-5 w-5 flex-none text-gray-400"
+										aria-hidden="true" />
+									{{ item.name }}
+								</NuxtLink>
 							</div>
 						</div>
+
 
 					</PopoverPanel>
 				</transition>
@@ -232,6 +234,7 @@
 <script setup>
 
 const cartStore = useCartStore();
+const { contacts } = useContactsStore();
 
 // -----SEARCH-----
 const search = ref(false);
@@ -273,16 +276,16 @@ const navTop = [
 const nav = [
 	{ name: 'Съедобная печать?', slug: '#' },
 	{ name: 'Блог', slug: '/blog' },
-	{ name: 'Контакты', slug: '/сontacts' },
+	{ name: 'Контакты', slug: '/contacts' },
 ]
 
 const navBurger = [
 	{ name: 'Каталог', slug: 'catalog' },
 	{ name: 'Съедобная печать?', slug: '#' },
 	{ name: 'Блог', slug: 'blog' },
-	{ name: 'Контакты', slug: 'сontacts' },
 	{ name: 'О магазине', slug: 'about' },
 	{ name: 'Доставка и оплата', slug: 'delivery' },
+	{ name: 'Контакты', slug: 'contacts' },
 ]
 
 const city = [

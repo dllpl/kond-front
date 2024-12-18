@@ -2,34 +2,10 @@
 
 export const useCartStore = defineStore('cartStore', {
     state: () => ({
-        products: [
-            // {
-            //     id: 1,
-            //     name: 'test1',
-            //     href: '#',
-            //     price: 10.00,
-            //     quantity: 2,
-            //     imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-03.jpg',
-            // },
-            // {
-            //     id: 2,
-            //     name: 'test2',
-            //     href: '#',
-            //     price: 2.00,
-            //     quantity: 5,
-            //     imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-            // },
-            // {
-            //     id: 3,
-            //     name: 'test3',
-            //     href: '#',
-            //     price: 4.00,
-            //     quantity: 2,
-            //     imageSrc: 'https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-03.jpg',
-            // },
-        ]
+        products: []
     }),
     getters: {
+        // сумма товара
         totalCountProducts() {
             return this.products.length
         },
@@ -39,7 +15,7 @@ export const useCartStore = defineStore('cartStore', {
             let arr = this.products;
             let initialValue = 0;
             let result = arr.reduce((accumulator, arr) => {
-                return accumulator = accumulator + (arr.price * arr.quantity);
+                return accumulator = accumulator + (arr.price * arr.inCart);
             }, initialValue);
             return result
         },
@@ -48,7 +24,7 @@ export const useCartStore = defineStore('cartStore', {
     actions: {
         // сумма шт * кол-во
         totalPriceProduct(item) {
-            return item.inCard * item.price;
+            return item.inCart * item.price;
         },
 
         //удаление товара из корзины
@@ -56,27 +32,69 @@ export const useCartStore = defineStore('cartStore', {
             return this.products = this.products.filter(item => item.id !== productId);
         },
 
-        // // Добавить товар в корзину
-        // addToCart(i = 1) {
-        //     inCart.value = true;
-        //     quantity.value = i;
-        // },
+        //проверяем если ли товар в корзине
+        issetInCart(productId) {
+            const product = this.products.find(item => item.id === productId);
+            if (typeof product !== 'undefined') {
+                return product;
+            }
+            return false
+        },
 
-        // Увеличить количество товара
-        increment(newProduct, i = 1) {
-            console.log(newProduct.id);
-            console.log(this.products);
+        getCountProductInCart(productId) {
+            const product = this.products.find(item => item.id === productId);
+            if (typeof product !== 'undefined') {
+                return product.inCart;
+            }
+            return 0
+        },
 
-            newProduct.inCard = i;
-            return this.products.push(newProduct);
+        // Увеличить количество товара  
+        increment(product) {
+            if (this.products.length) {
+                // Перебираем товары в корзине
+                let isProductInCart = false;
+                this.products = this.products.map(item => {
+                    if (item.id === product.id) {
+                        // Если товар уже есть в корзине, увеличиваем количество
+                        item.inCart++;
+                        isProductInCart = true;
+                    }
+                    return item;
+                });
+                // Если товар не найден в корзине, добавляем его
+                if (!isProductInCart) {
+                    product.inCart = 1;  // Добавляем новый товар с количеством 1
+                    this.products.push(product);
+                }
+            } else {
+                // Если корзина пустая, просто добавляем товар с количеством 1
+                product.inCart = 1;
+                this.products.push(product);
+            }
         },
 
         // Уменьшить количество товара
-        decrement(productId) {
-            if (quantity.value > 1) {
-                quantity.value--;
-            } else {
-                removeFromCart();
+        decrement(product) {
+            if (this.products.length) {
+                // Перебираем товары в корзине
+                let isProductInCart = true;
+                this.products = this.products.map(item => {
+                    if (item.id === product.id) {
+                        // Если товар найден, уменьшаем количество
+                        if (item.inCart > 1) {
+                            item.inCart--;  // Уменьшаем количество на 1
+                        } else {
+                            isProductInCart = false;
+                        }
+                    }
+                    return item;
+                });
+
+                // Если товар не найден в корзине, ничего не делаем
+                if (!isProductInCart) {
+                    this.products = this.products.filter(item => item.id !== product.id);
+                }
             }
         },
 

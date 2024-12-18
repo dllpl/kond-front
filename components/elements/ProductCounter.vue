@@ -2,47 +2,12 @@
 const cartStore = useCartStore();
 const { products } = storeToRefs(cartStore);
 
-// console.log(products)
-
 const props = defineProps({
-    // inCart: {
-    //     type: Boolean,
-    //     default: false
-    // },
-    // count: {
-    //     type: Number,
-    // },
     item: {
         type: Object,
         required: true,
     }
 })
-
-// Состояние для количества товара в корзине
-// const quantity = ref();
-
-// Состояние, чтобы узнать, добавлен ли товар в корзину
-//const inCart = ref(props.inCart);
-
-// Увеличить количество товара
-// const increaseQuantity = () => {
-//     quantity.value++;
-// };
-
-// Уменьшить количество товара
-// const decreaseQuantity = () => {
-//     if (quantity.value > 1) {
-//         quantity.value--;
-//     } else {
-//         removeFromCart();
-//     }
-// };
-
-// // Удалить товар из корзины
-// const removeFromCart = () => {
-//     inCart.value = false;
-//     quantity.value = 1;
-// };
 
 function showAlert() {
     alert('Будет модалка с сообщением - Уведомим как только появится в наличии');
@@ -50,12 +15,10 @@ function showAlert() {
 </script>
 
 
-
 <template>
     <div class="flex items-center">
-
         <template v-if="item.count">
-            <button v-if="!item.inCart" @click="cartStore.increment(item)"
+            <button v-if="!cartStore.issetInCart(item.id)" @click="cartStore.increment(item)"
                 class="flex items-center gap-x-2 w-full justify-center rounded-lg ring-2 ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
                 <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 ">
                 </Icon>
@@ -63,16 +26,19 @@ function showAlert() {
             </button>
 
             <!-- Счетчик и кнопки управления -->
-            <div v-if="item.inCart" class="flex items-center justify-between w-full bg-amber-100 p-0.5 rounded-lg">
-                <button @click="cartStore.increment(item)"
+            <div v-if="cartStore.issetInCart(item.id)"
+                class="flex items-center justify-between w-full bg-amber-100 p-0.5 rounded-lg">
+
+                <button @click="cartStore.decrement(item)"
                     class="flex items-center  rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base">
                     <Icon name="ic:round-minus" class="w-5 h-5 shrink-0">
                     </Icon>
                 </button>
 
-                <span class="text-lg">{{ item.inCard }}</span>
+                <span class="text-lg">{{ cartStore.getCountProductInCart(item.id) }}</span>
 
-                <button @click="cartStore.decrement(item)"
+                <button :disabled="cartStore.getCountProductInCart(item.id) >= item.count"
+                    @click="cartStore.increment(item)"
                     class="flex items-center rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base">
                     <Icon name="ic:round-plus" class="w-5 h-5 ">
                     </Icon>
