@@ -1,6 +1,6 @@
 <template>
-    <TransitionRoot as="template" :show="show" @after-leave="query = ''" appear>
-        <Dialog class="relative z-30" @close="closeModal">
+    <TransitionRoot as="template" :show="search" @after-leave="query = ''" appear>
+        <Dialog class="relative z-30" @close="popupStore.close('search')">
             <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
                 leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
                 <div class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
@@ -48,19 +48,10 @@
 
 
 <script setup>
-const props = defineProps({
-    show: {
-        type: Boolean,
-    }
-})
+const popupStore = usePopupStore();
+const { search } = storeToRefs(popupStore);
 
-console.log(props.show)
 const query = ref('')
-
-const emit = defineEmits(['close'])
-const closeModal = () => {
-    emit('close');
-}
 
 const filteredPeople = computed(() =>
     query.value === ''

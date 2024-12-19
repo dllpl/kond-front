@@ -7,39 +7,58 @@
             <div class="grid grid-cols-3 gap-8 py-16">
                 <div class="">
                     <img class="h-12 w-auto" src="https://dljakonditera.ru/a/tort/files/125837/124927/logos.png"
-                        alt="Company name" />
+                        alt="Все для кондитера" />
 
                     <div>
-                        <!-- <h3 class="text-sm font-semibold leading-6 text-white">Контакты</h3> -->
                         <ul role="list" class="mt-6 space-y-4">
-                            <li v-for="item in navigation.company" :key="item.name">
-                                <a :href="item.href"
-                                    class="text-sm leading-6 text-gray-300 transition-all hover:text-white">{{
-                                        item.name }}</a>
+                            <li>
+                                <NuxtLink :to="`tel:${contacts.phone}`" target="_blank"
+                                    class="text-sm leading-6 text-gray-300 transition-all hover:text-white">
+                                    {{ contacts.phone }}
+                                </NuxtLink>
                             </li>
+                            <li>
+                                <NuxtLink :to="`mailto:${contacts.email}`" target="_blank"
+                                    class="text-sm leading-6 text-gray-300 transition-all hover:text-white">
+                                    {{ contacts.email }}
+                                </NuxtLink>
+                            </li>
+                            <li>
+                                <span class="text-sm leading-6 text-gray-300"> {{ contacts.address }} </span>
+                            </li>
+                            <li>
+                                <span class="text-sm leading-6 text-gray-300">
+                                    Пн-Пт: {{ contacts.wt_weekday }}<br>
+                                    Сб-Вс: {{ contacts.wt_weekend }}
+                                    <!-- <span>Праздники: {{ contacts.wt_holiday }}</span> -->
+                                </span>
+                            </li>
+                            <li></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-8 col-span-2 xl:mt-0">
+                <div class=" grid grid-cols-2 gap-8 col-span-2 xl:mt-0">
                     <div>
-                        <h3 class=" font-semibold leading-6 text-white">Меню</h3>
+                        <h3 class=" font-semibold leading-6 text-white">Навигация</h3>
                         <ul role="list" class="mt-6 space-y-4">
                             <li v-for="item in navigation.menu" :key="item.name">
-                                <a :href="item.href"
-                                    class="text-sm leading-6 text-gray-300 transition-all hover:text-white">{{
-                                        item.name }}</a>
+                                <NuxtLink :to="item.href"
+                                    class="text-sm leading-6 text-gray-300 transition-all hover:text-white">
+                                    {{ item.name }}
+                                </NuxtLink>
                             </li>
+
                         </ul>
                     </div>
 
                     <div>
-                        <h3 class="font-semibold leading-6 text-white">Legal</h3>
-                        <ul role="list" class="mt-6 space-y-4">
-                            <li v-for="item in navigation.legal" :key="item.name">
-                                <a :href="item.href"
-                                    class="text-sm leading-6 text-gray-300 transition-all hover:text-white">{{
-                                        item.name }}</a>
+                        <ul role="list" class="mt-12 space-y-4">
+                            <li v-for="item in navigation.other" :key="item.name">
+                                <NuxtLink :to="item.href"
+                                    class="text-sm leading-6 text-gray-300 transition-all hover:text-white">
+                                    {{ item.name }}
+                                </NuxtLink>
                             </li>
                         </ul>
                     </div>
@@ -50,7 +69,8 @@
             <div class="border-t border-white/10 py-8 flex items-end gap-4 justify-between ">
                 <div>
                     <h3 class="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
-                    <p class="mt-2 text-sm leading-6 text-gray-300">The latest news, articles, and resources, sent to
+                    <p class="mt-2 text-sm leading-6 text-gray-300">The latest news, articles, and resources, sent
+                        to
                         your inbox weekly.</p>
                 </div>
 
@@ -68,10 +88,28 @@
 
             <div class="border-t border-white/10 py-8 flex items-center justify-between">
                 <div class="flex items-center space-x-6 order-2">
-                    <NuxtLink :to="item.href" v-for="item in navigation.social" :key="item.name"
-                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400 ">
-                        <span class="sr-only">{{ item.name }}</span>
-                        <icon :name="item.icon" class="h-6 w-6" aria-hidden="true"></icon>
+                    <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
+                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                        <span class="sr-only">Whatsapp</span>
+                        <Icon name="mdi:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                    </NuxtLink>
+
+                    <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
+                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                        <span class="sr-only">Instagram</span>
+                        <Icon name="mdi:instagram" class="w-6 h-6 " aria-hidden="true" />
+                    </NuxtLink>
+
+                    <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
+                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                        <span class="sr-only">Телеграм</span>
+                        <Icon name="teenyicons:telegram-outline" class="w-6 h-6 " aria-hidden="true" />
+                    </NuxtLink>
+
+                    <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
+                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                        <span class="sr-only">ВКонтакте</span>
+                        <Icon name="basil:vk-outline" class="w-6 h-6 " aria-hidden="true" />
                     </NuxtLink>
                 </div>
                 <p class="text-xs leading-5 text-gray-400 order-1 mt-0">&copy; 2020 Your Company, Inc. All
@@ -83,48 +121,25 @@
 </template>
 
 <script setup>
-
+const { contacts } = useContactsStore();
 const maskaOptions = useMaskaOptions()
+
 
 const navigation = {
     menu: [
-        { name: 'Каталог', href: '#' },
+        { name: 'Каталог', href: 'catalog' },
         { name: 'Съедобная печать', href: '#' },
-        { name: 'Блог', href: '#' },
-        { name: 'Контакты', href: '#' },
-        { name: 'О магазине', href: '#' },
-    ],
-    company: [
-        { name: '+7 (951) 000-00-00', href: '#' },
-        { name: 'zakazkonditer.nch@gmail.com', href: '#' },
-        { name: 'Набережные Челны, Мира, 31А', href: '#' },
-        { name: 'Пн - Пт: с 9:00 до 20:00', href: '#' },
-        { name: 'Сб - Вс: с 9:00 до 19:00', href: '#' },
-    ],
-    legal: [
+        { name: 'Блог', href: 'blog' },
+        { name: 'Контакты', href: 'contacts' },
         { name: 'Вход | Регистрация', href: '#' },
-        { name: 'Поиск', href: '#' },
-        { name: 'Избранное', href: '#' },
-        { name: 'Корзина', href: '#' },
-        { name: 'Доставка и оплата', href: '#' },
     ],
-    social: [
-        {
-            name: 'Whatsapp',
-            href: '#',
-            icon: 'mdi:whatsapp',
-        },
-        {
-            name: 'Instagram',
-            href: '#',
-            icon: 'mdi:instagram',
-        },
-        {
-            name: 'ВКонтакте',
-            href: '#',
-            icon: 'basil:vk-outline',
-        },
 
+    other: [
+        { name: 'О магазине', href: 'about' },
+        { name: 'Доставка и оплата', href: 'delivery' },
+        { name: 'Корзина' },
+        { name: 'Поиск' },
+        { name: 'Избранное', href: '#' },
     ],
 }
 </script>

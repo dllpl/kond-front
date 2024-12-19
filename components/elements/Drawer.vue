@@ -1,6 +1,6 @@
 <template>
-    <TransitionRoot as="template" :show="show">
-        <Dialog class="relative z-20" @close="closeModal">
+    <TransitionRoot as="template" :show="drawer">
+        <Dialog class="relative z-20" @close="popupStore.close('drawer')">
             <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
                 enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100" leave-to="opacity-0">
                 <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
@@ -22,9 +22,8 @@
                                         </DialogTitle>
                                         <div class="ml-3 flex h-7 items-center">
 
-                                            <button type="button"
-                                                class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20 transition-base text-gray-400 hover:text-indigo-950 hover:ring-indigo-950 group"
-                                                @click="closeModal">
+                                            <button type="button" @click="popupStore.close('drawer')"
+                                                class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20 transition-base text-gray-400 hover:text-indigo-950 hover:ring-indigo-950 group">
                                                 <span class="sr-only">Закрыть корзину</span>
                                                 <Icon name="material-symbols:close-rounded" class="h-6 w-6"
                                                     aria-hidden="true" />
@@ -126,17 +125,9 @@
 <script setup>
 const { storage } = useRuntimeConfig().public.backOptions;
 
-const props = defineProps({
-    show: {
-        type: Boolean,
-    },
-})
+const popupStore = usePopupStore();
+const { drawer } = storeToRefs(popupStore);
 
 const cartStore = useCartStore();
 const { products } = storeToRefs(cartStore);
-
-const emit = defineEmits(['close'])
-const closeModal = () => {
-    emit('close');
-}
 </script>
