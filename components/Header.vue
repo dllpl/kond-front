@@ -11,7 +11,7 @@
 						<div class="flex items-center gap-x-2.5 sm:hidden">
 							<Combobox as="div" v-model="selectedCity" @update:modelValue="query = ''"
 								class="flex items-center gap-2">
-								<ComboboxLabel class="block text-sm text-gray-900 flex items-center gap-1">
+								<ComboboxLabel class="text-sm text-gray-900 flex items-center gap-1">
 									<Icon name="mdi-light:map-marker" class="w-6 h-6" />
 									<span>Ваш город</span>
 								</ComboboxLabel>
@@ -58,12 +58,11 @@
 					<div class="hidden xs:flex xs:gap-4 ">
 
 						<!-- Search -->
-						<button type="button" @click="openSearch"
+						<button type="button" @click="popupStore.toggle('search')"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="mdi-light:magnify" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
-						<!-- <ElementsSearch :show="search" @close="closeSearch" /> -->
 
 						<!-- Like -->
 						<a href="http://"
@@ -74,12 +73,11 @@
 						</a>
 
 						<!-- Basket -->
-						<button @click="openDrawer"
+						<button @click="popupStore.toggle('drawer')"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="mdi-light:cart" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
-						<!-- <ElementsDrawer :show="drawer" @close="closeDrawer"></ElementsDrawer> -->
 					</div>
 
 					<div class="flex items-center gap-x-12 2xl:gap-x-4 md:w-auto xs:order-first xs:mr-auto">
@@ -97,15 +95,11 @@
 
 						<!-- BURGER -->
 						<div class="hidden lg:flex">
-
-							<button type="button"
-								class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600"
-								@click="openBurger">
+							<button type="button" @click="popupStore.toggle('burger')"
+								class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 								<span class="sr-only">Открыть меню</span>
 								<Icon name="material-symbols:menu" class="w-6 h-6" aria-hidden="true" />
 							</button>
-
-
 						</div>
 
 					</div>
@@ -144,7 +138,7 @@
 
 					<div class=" flex gap-5 xs:hidden">
 						<!-- Search -->
-						<button type="button" @click="openSearch"
+						<button type="button" @click="popupStore.toggle('search')"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="material-symbols:search" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
@@ -160,7 +154,7 @@
 						</a>
 
 						<!-- Basket -->
-						<button @click="openDrawer"
+						<button @click="popupStore.toggle('drawer')"
 							class="relative flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="material-symbols:shopping-cart-outline"
 								class="w-6 h-6 group-hover:stroke-red-600">
@@ -179,8 +173,8 @@
 					leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0"
 					leave-to-class="opacity-0 -translate-y-1">
 
-					<PopoverPanel
-						class="absolute z-10 w-full overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1 ring-gray-900/5 py-6 px-2">
+					<PopoverPanel v-slot="{ close }" class="absolute z-10 w-full overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1
+						ring-gray-900/5 py-6 px-2">
 
 						<div
 							class="wrapper-container grid grid-cols-3 gap-2 overflow-y-auto h-60 custom-scroll px-6 mb-6">
@@ -192,7 +186,8 @@
 									<img :src="storage + item.img" :alt="item.title">
 								</div>
 								<div>
-									<NuxtLink :to="`/catalog/${item.slug}`" class="font-semibold text-gray-900">
+									<NuxtLink @click="close()" :to="`/catalog/${item.slug}`"
+										class="font-semibold text-gray-900">
 										{{ item.title }}
 										<span class="absolute inset-0" />
 									</NuxtLink>
@@ -201,11 +196,11 @@
 
 						</div>
 
-
 						<div class="wrapper-container">
 							<div
 								class="grid grid-cols-1 divide-y divide-gray-900/5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:border-x sm:border-gray-900/5">
-								<NuxtLink :to="item.href" v-for="item in callsToAction" :key="item.name"
+								<NuxtLink @click="close()" :to="item.href" v-for="item in callsToAction"
+									:key="item.name"
 									class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 sm:justify-center sm:px-0">
 									<component :is="item.icon" class="h-5 w-5 flex-none text-gray-400"
 										aria-hidden="true" />
@@ -214,19 +209,16 @@
 							</div>
 						</div>
 
-
 					</PopoverPanel>
 				</transition>
-
 			</div>
 		</Popover>
 
-		<ElementsSearch :show="search" @close="closeSearch" />
-		<ElementsDrawer :show="drawer" @close="closeDrawer" />
-		<ElementsBurger :show="burger" :data="navBurger" :calls="callsToAction" @close="closeBurger" />
+		<ElementsSearch @close="popupStore.close('search')" />
+		<ElementsDrawer @close="popupStore.close('drawer')" />
+		<ElementsBurger @close="popupStore.close('burger')" :data="navBurger" :calls="callsToAction" />
 
 	</header>
-
 </template>
 
 
@@ -235,38 +227,7 @@
 
 const cartStore = useCartStore();
 const { contacts } = useContactsStore();
-
-// -----SEARCH-----
-const search = ref(false);
-const openSearch = () => {
-	search.value = !search.value;
-};
-
-const closeSearch = () => {
-	search.value = false;
-};
-
-// -----DRAWER-----
-const drawer = ref(false);
-const openDrawer = () => {
-	drawer.value = !drawer.value;
-};
-
-const closeDrawer = () => {
-	drawer.value = false;
-};
-
-// -----BURGER-----
-const burger = ref(false)
-
-const openBurger = () => {
-	burger.value = !burger.value;
-};
-
-const closeBurger = () => {
-	burger.value = false;
-};
-
+const popupStore = usePopupStore();
 
 const navTop = [
 	{ name: 'О магазине', slug: '/about' },

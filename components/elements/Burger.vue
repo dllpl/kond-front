@@ -1,8 +1,8 @@
 <template>
 
     <div class="">
-        <TransitionRoot as="template" :show="show">
-            <Dialog class="" @close="closeBurger">
+        <TransitionRoot as="template" :show="burger">
+            <Dialog class="" @close="popupStore.close('burger')">
                 <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
                     enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100"
                     leave-to="opacity-0">
@@ -24,9 +24,8 @@
                                     alt="Все для кондитера" />
                             </NuxtLink>
 
-                            <button type="button"
-                                class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600"
-                                @click="closeBurger">
+                            <button type="button" @click="popupStore.close('burger')"
+                                class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
                                 <span class="sr-only">Закрыть меню</span>
                                 <Icon name="material-symbols:close-rounded" class="w-6 h-6 group-hover:stroke-red-600"
                                     aria-hidden="true"></Icon>
@@ -42,7 +41,8 @@
                                     </NuxtLink>
                                 </div>
                                 <div class="hidden py-4 lg:block">
-                                    <NuxtLink :to="item.slug" v-for="item in navi" :key="item.name" @click="closeBurger"
+                                    <NuxtLink :to="item.slug" v-for="item in nav" :key="item.name"
+                                        @click="popupStore.close('burger')"
                                         class="-mx-3 block rounded-lg px-3 py-2 text-sm  hover:text-red-600 focus:text-red-600">
                                         {{ item.name }}
                                     </NuxtLink>
@@ -68,6 +68,8 @@
 
 
 <script setup>
+const popupStore = usePopupStore();
+const { burger } = storeToRefs(popupStore);
 
 const props = defineProps({
     show: Boolean,
@@ -75,11 +77,6 @@ const props = defineProps({
     calls: Array,
 })
 
-let navi = props.data
-
-const emit = defineEmits(['close'])
-const closeBurger = () => {
-    emit('close');
-}
+let nav = props.data
 
 </script>
