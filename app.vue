@@ -3,6 +3,7 @@
         <Header />
         <NuxtPage />
         <Footer />
+        <ElementsNotifications />
     </NuxtLayout>
 </template>
 

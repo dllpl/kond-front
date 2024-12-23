@@ -4,16 +4,21 @@ export const usePopupStore = defineStore('popupStore', {
         burger: false,
         modal: false,
         drawer: false,
+        toast: false,
     }),
     getters: {},
     actions: {
         toggle(value) {
-            console.log('open')
+            console.log('open' + value)
+            if (value === 'toast' || this[value]) {
+                setTimeout(() => {
+                    this[value] = false
+                }, 2000)
+            }
             this[value] = !this[value]
         },
 
         close(value) {
-            console.log('close')
             this[value] = false;
         },
     }

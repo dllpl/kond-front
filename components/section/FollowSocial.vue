@@ -4,7 +4,7 @@
 
         <div class=" relative mx-auto grid grid-cols-3 items-center gap-x-12 
         xl:grid-cols-5 lg:gap-x-6">
-            <img src="assets/img/iphones.png" alt=""
+            <img src="assets/img/iphones.png" alt="Мы в социальных сетях"
                 class=" object-cover h-auto xl:col-span-2 xl:col-start-4 xl:row-start-1 xl:mb-auto" />
             <div class="col-span-2 w-full xl:col-span-3  ">
                 <h2 class="font-bold text-4xl 2xl:text-3xl">Мы в социальных сетях</h2>

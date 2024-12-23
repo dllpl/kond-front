@@ -79,25 +79,23 @@
                 </div>
                 <div class="contents lg:gap-8 lg:flex lg:flex-wrap lg:items-start lg:justify-end sm:gap-6">
                     <div class="self-end ml-auto flex-none w-auto lg:hidden lg:flex-auto lg:w-0 sm:block">
-                        <img src="https://images.unsplash.com/photo-1670272502246-768d249768ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80"
-                            alt="" class="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover" />
+                        <img src="assets/img/cooking-1.4.webp" alt="Все для Кондитера"
+                            class="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover" />
                     </div>
                     <div
                         class="flex col-span-2 col-end-2 ml-auto w-[37rem] items-start justify-end gap-x-8 sm:contents">
                         <div class="flex justify-end self-end order-first flex-none lg:w-64">
-                            <img src="https://images.unsplash.com/photo-1605656816944-971cd5c1407f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&h=604&q=80"
-                                alt=""
+                            <img src="assets/img/cooking-1.3.webp" alt="Все для Кондитера"
                                 class="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover" />
                         </div>
                         <div class="flex justify-end flex-none lg:flex-none lg:w-auto sm:w-96 sm:flex-auto">
-                            <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&h=842&q=80"
-                                alt=""
+                            <img src="assets/img/cooking-1.2.webp" alt="Все для Кондитера"
                                 class="aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover" />
                         </div>
 
                         <div class="w-auto flex-none block lg:flex-auto lg:w-0 lg:hidden">
-                            <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=768&h=604&q=80"
-                                alt="" class="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover" />
+                            <img src="assets/img/cooking-1.1.webp" alt="Все для Кондитера"
+                                class="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover" />
                         </div>
                     </div>
                 </div>
