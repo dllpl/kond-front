@@ -125,8 +125,6 @@
 							<Icon name="ph:squares-four-thin" class="w-6 h-6 group-hover:text-red-600"
 								aria-hidden="true" />
 							Каталог
-							<Icon name="material-symbols:keyboard-arrow-down-rounded"
-								class="w-6 h-6  group-hover:text-red-600 " aria-hidden="true" />
 						</PopoverButton>
 
 						<NuxtLink :to="item.slug" v-for="item in nav" :key="item.name"
@@ -163,8 +161,6 @@
 								class="absolute -top-2 -right-2 flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full">
 								{{ cartStore.totalCountProducts }}</span>
 						</button>
-
-
 					</div>
 				</div>
 
@@ -175,10 +171,8 @@
 
 					<PopoverPanel v-slot="{ close }" class="absolute z-10 w-full overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1
 						ring-gray-900/5 py-6 px-2">
-
 						<div
 							class="wrapper-container grid grid-cols-3 gap-2 overflow-y-auto h-60 custom-scroll px-6 mb-6">
-
 							<div v-for="item in categories.data" :key="item.name"
 								class="group relative flex items-center gap-6 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50 sm:flex-col sm:p-6">
 								<div
@@ -193,20 +187,10 @@
 									</NuxtLink>
 								</div>
 							</div>
-
 						</div>
 
 						<div class="wrapper-container">
-							<div
-								class="grid grid-cols-1 divide-y divide-gray-900/5 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:border-x sm:border-gray-900/5">
-								<NuxtLink @click="close()" :to="item.href" v-for="item in callsToAction"
-									:key="item.name"
-									class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 sm:justify-center sm:px-0">
-									<component :is="item.icon" class="h-5 w-5 flex-none text-gray-400"
-										aria-hidden="true" />
-									{{ item.name }}
-								</NuxtLink>
-							</div>
+							<ElementsCallsToAction @click="close()" />
 						</div>
 
 					</PopoverPanel>
@@ -217,7 +201,7 @@
 		<ElementsSearch @close="popupStore.close('search')" />
 		<ElementsDrawer @close="popupStore.close('drawer')" />
 		<ElementsBurger @close="popupStore.close('burger')" :data="navBurger" :calls="callsToAction" />
-
+		<NuxtLoadingIndicator :color="'#fbbf24'" />
 	</header>
 </template>
 

@@ -29,41 +29,35 @@
 
                                     <div class="flex-shrink-0">
                                         <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
-                                            src="https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-02.jpg"
-                                            alt="" />
+                                            src="assets/img/promo-action-2.webp" alt="Скидки! Все для кондитера" />
                                     </div>
 
                                     <div class="mt-6 flex-shrink-0 sm:mt-0">
                                         <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
-                                            src="https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-03.jpg"
-                                            alt="" />
+                                            src="assets/img/promo-action-3.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
                                 <div class="flex flex-col space-y-8 space-x-0 -mt-20 lg:space-y-6 sm:flex sm:space-x-6 sm:mt-auto
                                     ">
                                     <div class="flex-shrink-0">
                                         <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
-                                            src="https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-01.jpg"
-                                            alt="" />
+                                            src="assets/img/promo-action-1.webp" alt="Скидки! Все для кондитера" />
                                     </div>
 
                                     <div class="mt-6 flex-shrink-0 sm:mt-0">
                                         <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
-                                            src="https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-04.jpg"
-                                            alt="" />
+                                            src="assets/img/promo-action-4.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
                                 <div class="flex flex-col space-y-8 space-x-0 lg:space-y-6 sm:flex sm:space-x-6">
                                     <div class="flex-shrink-0">
                                         <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
-                                            src="https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-03.jpg"
-                                            alt="" />
+                                            src="assets/img/promo-action-5.webp" alt="Скидки! Все для кондитера" />
                                     </div>
 
                                     <div class="mt-6 flex-shrink-0 sm:mt-0">
                                         <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
-                                            src="https://tailwindui.com/plus/img/ecommerce-images/category-page-05-image-card-03.jpg"
-                                            alt="" />
+                                            src="assets/img/promo-action-4.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
                             </div>

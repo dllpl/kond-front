@@ -2,6 +2,9 @@
 const cartStore = useCartStore();
 const { products } = storeToRefs(cartStore);
 
+const popupStore = usePopupStore();
+
+
 const props = defineProps({
     item: {
         type: Object,
@@ -18,7 +21,8 @@ function showAlert() {
 <template>
     <div class="flex items-center">
         <template v-if="item.count">
-            <button v-if="!cartStore.issetInCart(item.id)" @click="cartStore.increment(item)"
+            <button v-if="!cartStore.issetInCart(item.id)"
+                @click="cartStore.increment(item), popupStore.toggle('toast')"
                 class="flex items-center gap-x-2 w-full justify-center rounded-lg ring-2 ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
                 <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 ">
                 </Icon>
@@ -44,6 +48,7 @@ function showAlert() {
                     </Icon>
                 </button>
             </div>
+
         </template>
 
         <!-- Уведомить о наличии -->
