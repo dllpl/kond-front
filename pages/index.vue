@@ -13,10 +13,12 @@
 				<SectionAdvantages />
 			</div>
 
-			<ElementsSliderOffers class="col-span-2 lg:grid-cols-1 mb-20" :data="productsOffers.data" />
+			<ElementsSliderProduct class="col-span-2 lg:grid-cols-1 mb-20 relative" :data="productsOffers.data"
+				title="Спецпредложения" />
 			<SectionProductTop class="col-span-2 lg:grid-cols-1 mb-20" />
 			<SectionPromoPrice class="col-span-2 lg:grid-cols-1 mb-20" />
-			<ElementsSliderNew class="col-span-2 lg:grid-cols-1 mb-20" :data="productsNew.data" />
+			<ElementsSliderProduct class="col-span-2 lg:grid-cols-1 mb-20 relative" :data="productsNew.data"
+				title="Новинки" />
 			<SectionFollowSocial class="col-span-2 lg:grid-cols-1 mb-20" />
 			<SectionPromoCook class="col-span-2 lg:grid-cols-1 " />
 		</div>
