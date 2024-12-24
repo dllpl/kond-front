@@ -51,7 +51,7 @@ splide: {
 
   site: {
     url: '',
-    name: 'Разработка веб сайта под ключ Webseed.ru',
+    name: 'Все для кондитера',
     defaultLocal: 'ru'
   },
 

@@ -1,15 +1,13 @@
 <script setup>
-const { storage } = useRuntimeConfig().public.backOptions;
+const { public: config } = useRuntimeConfig();
 const { contacts } = useContactsStore();
+const { storage } = useRuntimeConfig().public.backOptions;
+const { data: productNews } = await useFetch(config.backOptions.api + '/products/spec');
+
 
 const props = defineProps({
     product: Object
 })
-
-const callsToAction = [
-    { name: 'Позвонить нам', href: '#', },
-    { name: 'Остались вопросы?', href: '#', },
-]
 
 </script>
 
@@ -74,14 +72,6 @@ const callsToAction = [
 
                     </div>
 
-                    <!-- <div
-                        class="mt-10 border-y border-gray-200 divide-y divide-gray-900/5 sm:grid-cols-3 sm:divide-x  sm:border-x sm:border-gray-900/5">
-                        <NuxtLink :to="item.href" v-for="item in callsToAction" :key="item.name"
-                            class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 lg:justify-center sm:justify-center sm:px-0">
-                            <component :is="item.icon" class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                            {{ item.name }}
-                        </NuxtLink>
-                    </div> -->
                     <ElementsCallsToAction />
 
                     <!-- social -->
@@ -192,24 +182,39 @@ const callsToAction = [
                             </TabPanel>
                         </TabPanels>
                     </TabGroup>
+
                     <!-- social -->
                     <div class="hidden pt-10 text-right lg:block">
                         <h3 class="text-sm font-medium text-gray-900">Мы в соцсетях</h3>
-                        <ul role="list" class="mt-2 flex items-center justify-end space-x-2">
-                            <li v-for="item in social" :key="item.name">
-                                <NuxtLink :to="item.href"
-                                    class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
-                                    <span class="sr-only">{{ item.name }}</span>
-                                    <icon :name="item.icon" class="h-6 w-6" aria-hidden="true"></icon>
-                                </NuxtLink>
-                            </li>
-                        </ul>
+                        <div class="mt-2 flex items-center justify-end space-x-2">
+                            <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
+                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                <span class="sr-only">Whatsapp</span>
+                                <Icon name="mdi:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                            </NuxtLink>
+                            <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
+                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                <span class="sr-only">Instagram</span>
+                                <Icon name="mdi:instagram" class="w-6 h-6 " aria-hidden="true" />
+                            </NuxtLink>
+                            <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
+                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                <span class="sr-only">Телеграм</span>
+                                <Icon name="teenyicons:telegram-outline" class="w-6 h-6 " aria-hidden="true" />
+                            </NuxtLink>
+                            <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
+                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                <span class="sr-only">ВКонтакте</span>
+                                <Icon name="basil:vk-outline" class="w-6 h-6 " aria-hidden="true" />
+                            </NuxtLink>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Product others -->
                 <div class="col-span-8 mt-8 lg:col-span-1">
-                    <ElementsSliderOtherBuy class="col-span-2 lg:grid-cols-1" :data="productNews" />
+                    <ElementsSliderProduct class="col-span-2 lg:grid-cols-1" :data="productNews.data"
+                        title="Похожие товары" />
                 </div>
             </div>
         </div>

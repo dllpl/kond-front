@@ -50,12 +50,13 @@
                             </div>
                         </div>
 
-                        <div class="mt-auto divide-y divide-gray-500/10">
-                            <NuxtLink :to="item.href" v-for="item in calls" :key="item.name"
+                        <div class="mt-auto ">
+                            <!-- <NuxtLink :to="item.href" v-for="item in calls" :key="item.name"
                                 class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6  bg-gray-100 sm:justify-center sm:px-0">
                                 <component :is="item.icon" class="h-5 w-5 flex-none " aria-hidden="true" />
                                 {{ item.name }}
-                            </NuxtLink>
+                            </NuxtLink> -->
+                            <ElementsCallsToAction />
                         </div>
                     </DialogPanel>
 
