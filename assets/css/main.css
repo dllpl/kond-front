@@ -81,12 +81,6 @@
     grid-template-columns: 300px calc((100% - 300px) - 2rem);
   }
 
-  @media (max-width: 1024px) {
-    .grid-cols-custom {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-  }
-
   .arrow-next {}
 
   .arrow--prev {}
@@ -115,4 +109,17 @@
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 1024px) {
+  .grid-cols-custom {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
