@@ -4,7 +4,7 @@
 
         <div class="wrapper-container ">
 
-            <div class="grid grid-cols-3 gap-8 py-16">
+            <div class="grid grid-cols-2 gap-12 py-16 sm:grid-cols-1 sm:gap-8 sm:py-8">
                 <div class="">
                     <img class="h-12 w-auto" src="https://dljakonditera.ru/a/tort/files/125837/124927/logos.png"
                         alt="Все для кондитера" />
@@ -33,13 +33,13 @@
                                     <!-- <span>Праздники: {{ contacts.wt_holiday }}</span> -->
                                 </span>
                             </li>
-                            <li></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class=" grid grid-cols-2 gap-8 col-span-2 xl:mt-0">
-                    <div>
+                <div class="
+                grid grid-cols-2 gap-8 sm:gap-4">
+                    <div class="">
                         <h3 class=" font-semibold leading-6 text-white">Навигация</h3>
                         <ul role="list" class="mt-6 space-y-4">
                             <li v-for="item in navigation.menu" :key="item.name">
@@ -52,7 +52,7 @@
                         </ul>
                     </div>
 
-                    <div>
+                    <div class="">
                         <ul role="list" class="mt-12 space-y-4">
                             <li v-for="item in navigation.other" :key="item.name">
 
@@ -77,7 +77,8 @@
                 </div>
             </div>
 
-            <div class="border-t border-white/10 py-8 flex items-end gap-4 justify-between ">
+            <div
+                class="border-t border-white/10 py-8 flex items-end gap-4 justify-between lg:flex-col lg:items-start lg:justify-start ">
                 <div>
                     <h3 class="text-sm font-semibold leading-6 text-white">Остались вопросы?</h3>
                     <p class="mt-2 text-sm leading-6 text-gray-300">
@@ -85,7 +86,7 @@
                     </p>
                 </div>
 
-                <form class=" flex space-x-4 mt-0 lg:mt-6 shrink-0">
+                <form class="flex space-x-4 mt-0 shrink-0 sm:flex-col sm:space-x-0 sm:space-y-2 sm:w-full">
                     <div class="">
                         <label for="name" class="sr-only">Имя</label>
                         <input v-maska=maskaOptions.cyrillic_and_upper_case name="name" id="name" autocomplete="name"
@@ -106,8 +107,12 @@
                 </form>
             </div>
 
-            <div class="border-t border-white/10 py-8 flex items-center justify-between">
-                <div class="flex items-center space-x-6 order-2">
+            <div
+                class="border-t border-white/10 py-8 flex items-center justify-between xs:flex-col-reverse xs:items-center xs:gap-4">
+                <p class="text-xs leading-5 text-gray-400 mt-0">&copy; 2020 Your Company, Inc. All
+                    rights reserved.
+                </p>
+                <div class="flex items-center space-x-6  ">
                     <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                         class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                         <span class="sr-only">Whatsapp</span>
@@ -132,8 +137,7 @@
                         <Icon name="basil:vk-outline" class="w-6 h-6 " aria-hidden="true" />
                     </NuxtLink>
                 </div>
-                <p class="text-xs leading-5 text-gray-400 order-1 mt-0">&copy; 2020 Your Company, Inc. All
-                    rights reserved.</p>
+
             </div>
         </div>
 

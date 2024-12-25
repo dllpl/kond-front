@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <div class="flex items-center justify-between gap-4 mb-8">
-            <h2 class="font-bold text-4xl 2xl:text-3xl">{{ title }}</h2>
+            <h2 class="font-bold text-4xl 2xl:text-3xl xs:text-2xl">{{ title }}</h2>
         </div>
 
         <ElementsCarousel class="" :options="{
@@ -14,8 +14,12 @@
             useResizeObserver: true,
             panelsPerView: 5,
             isAdaptive: true,
-        }" :arrow="{ parentEl: null, prevElSelector: '.arrow--prev', nextElSelector: '.arrow--next' }"
-            :autoplay="{ duration: 3000 }">
+            length: data.length,
+        }" :arrow="{
+            parentEl: null,
+            prevElSelector: '.arrow--prev',
+            nextElSelector: '.arrow--next'
+        }" :autoplay="autoPlay">
 
             <template #arrow>
                 <div class="flex items-center gap-4 absolute top-0 right-0">

@@ -1,25 +1,26 @@
 <template>
-	<main class="wrapper-container py-16">
-		<div class="grid grid-cols-custom gap-8 lg:grid-cols-1 lg:gap-0">
+	<main class="wrapper-container py-16 sm:py-8">
+		<div class="grid grid-cols-custom gap-y-20 gap-x-8 lg:grid-cols-1 lg:gap-y-20 lg:gap-x-0">
 
 			<div class="col-span-1 lg:hidden">
 				<ElementsMenuDropDown :data="categories.data" />
 			</div>
 
-			<div class="col-span-1 mb-20">
-				<div class="mb-20">
+			<div class="col-span-1">
+				<div class="mb-20 lg:mb-0">
 					<ElementsSliderBanner :data="banners.data" />
 				</div>
-				<SectionAdvantages />
+				<SectionAdvantages class="lg:hidden" />
 			</div>
 
-			<ElementsSliderProduct class="col-span-2 lg:grid-cols-1 mb-20 relative" :data="productsOffers.data"
-				title="Спецпредложения" />
-			<SectionProductTop class="col-span-2 lg:grid-cols-1 mb-20" />
-			<SectionPromoPrice class="col-span-2 lg:grid-cols-1 mb-20" />
-			<ElementsSliderProduct class="col-span-2 lg:grid-cols-1 mb-20 relative" :data="productsNew.data"
-				title="Новинки" />
-			<SectionFollowSocial class="col-span-2 lg:grid-cols-1 mb-20" />
+			<ElementsSliderProduct :data="productsOffers.data" title="Спецпредложения"
+				class="col-span-2 lg:grid-cols-1  relative" />
+			<SectionProductTop class="col-span-2 lg:grid-cols-1 " />
+			<SectionPromoPrice class="col-span-2 lg:grid-cols-1 " />
+			<ElementsSliderProduct :data="productsNew.data" title="Новинки"
+				class="col-span-2 lg:grid-cols-1  relative" />
+			<SectionAdvantages class="hidden lg:block" />
+			<SectionFollowSocial class="col-span-2 lg:grid-cols-1 " />
 			<SectionPromoCook class="col-span-2 lg:grid-cols-1 " />
 		</div>
 
@@ -27,12 +28,9 @@
 </template>
 
 <script setup>
-
-
 const { public: config } = useRuntimeConfig();
 const { data: banners } = await useFetch(config.backOptions.api + '/banners');
 const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
 const { data: productsNew } = await useFetch(config.backOptions.api + '/products/new');
 const { data: productsOffers } = await useFetch(config.backOptions.api + '/products/spec');
-
 </script>

@@ -1,8 +1,8 @@
 <script setup>
-const { public: config } = useRuntimeConfig();
+// const { public: config } = useRuntimeConfig();
 const { contacts } = useContactsStore();
 const { storage } = useRuntimeConfig().public.backOptions;
-const { data: productNews } = await useFetch(config.backOptions.api + '/products/spec');
+// const { data: productNews } = await useFetch(config.backOptions.api + '/products/spec');
 
 
 const props = defineProps({
@@ -212,8 +212,8 @@ const props = defineProps({
                 </div>
 
                 <!-- Product others -->
-                <div class="col-span-8 mt-8 lg:col-span-1">
-                    <ElementsSliderProduct class="col-span-2 lg:grid-cols-1" :data="productNews.data"
+                <div class="col-span-8 mt-8 lg:col-span-1 relative">
+                    <ElementsSliderProduct class="col-span-2 lg:grid-cols-1" :data="product.similars"
                         title="Похожие товары" />
                 </div>
             </div>

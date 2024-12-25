@@ -36,7 +36,6 @@ const props = defineProps({
 const options = ref(props.options);
 // получаем ширину экрана
 const ready = (e) => {
-    console.log(e)
     const width = window.innerWidth;
     adaptiveSlide({ width })
 }
@@ -44,9 +43,12 @@ const ready = (e) => {
 const adaptiveSlide = (e) => {
     if (!options.value.isAdaptive)
         return
-    // console.log(e.width)
 
-    if (e.width <= 576) {
+    if (e.width <= 425) {
+        // console.log('mobile')
+        options.value.panelsPerView = 1
+    }
+    if (e.width <= 576 && e.width > 425) {
         // console.log('mobile')
         options.value.panelsPerView = 2
     }
@@ -59,8 +61,11 @@ const adaptiveSlide = (e) => {
         options.value.panelsPerView = 4
     }
     if (e.width > 1024) {
-        // console.log('desktop')
         options.value.panelsPerView = 5
+        if (options.value.length <= 5) {
+            console.log('desktop')
+            console.log(plugins.value)
+        }
     }
 }
 
@@ -86,3 +91,9 @@ else {
 
 
 </script>
+
+<style>
+.flicking-viewport {
+    position: static;
+}
+</style>
