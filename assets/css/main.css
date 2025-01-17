@@ -58,16 +58,16 @@
     display: block;
   }
 
-  .custom-scroll::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 7px;
   }
 
-  .custom-scroll::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     background-color: rgb(254 243 199 / var(--tw-bg-opacity));
     border-radius: 8px;
   }
 
-  .custom-scroll::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     height: 100px;
     border-radius: 8px;
     background-color: rgb(251 191 36 / var(--tw-bg-opacity));
@@ -80,10 +80,6 @@
   .grid-cols-custom {
     grid-template-columns: 300px calc((100% - 300px) - 2rem);
   }
-
-  .arrow-next {}
-
-  .arrow--prev {}
 
 }
 

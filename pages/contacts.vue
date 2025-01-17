@@ -37,8 +37,6 @@
                                     class="hover:text-red-600  focus:text-red-600 transition-all">
                                     {{ contacts.email }}
                                 </NuxtLink>
-
-
                             </dd>
                         </div>
                         <div class="flex gap-x-4">
@@ -222,21 +220,4 @@ const breadcrumbs = [
 ]
 const { contacts } = useContactsStore();
 
-// const social = [
-//     {
-//         name: 'Instagram',
-//         href: '#',
-//         icon: 'mdi:instagram',
-//     },
-//     {
-//         name: 'Whatsapp',
-//         href: '#',
-//         icon: 'mdi:whatsapp',
-//     },
-//     {
-//         name: 'ВКонтакте',
-//         href: '#',
-//         icon: 'basil:vk-outline',
-//     },
-// ]
 </script>

@@ -24,8 +24,7 @@ function showAlert() {
             <button v-if="!cartStore.issetInCart(item.id)"
                 @click="cartStore.increment(item), popupStore.toggle('toast')"
                 class="flex items-center gap-x-2 w-full justify-center rounded-lg ring-2 ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
-                <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 ">
-                </Icon>
+                <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 " />
                 В корзину
             </button>
 
@@ -35,8 +34,7 @@ function showAlert() {
 
                 <button @click="cartStore.decrement(item)"
                     class="flex items-center  rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base">
-                    <Icon name="ic:round-minus" class="w-5 h-5 shrink-0">
-                    </Icon>
+                    <Icon name="ic:round-minus" class="w-5 h-5 shrink-0" />
                 </button>
 
                 <span class="text-lg">{{ cartStore.getCountProductInCart(item.id) }}</span>
@@ -44,8 +42,7 @@ function showAlert() {
                 <button :disabled="cartStore.getCountProductInCart(item.id) >= item.count"
                     @click="cartStore.increment(item)"
                     class="flex items-center rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base">
-                    <Icon name="ic:round-plus" class="w-5 h-5 ">
-                    </Icon>
+                    <Icon name="ic:round-plus" class="w-5 h-5 " />
                 </button>
             </div>
 
