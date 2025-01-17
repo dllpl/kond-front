@@ -87,7 +87,8 @@
 									item.name
 								}}
 							</NuxtLink>
-							<NuxtLink :to="`/`" class="text-sm transition-base hover:text-red-600 focus:text-red-600">
+							<NuxtLink :to="`/login`"
+								class="text-sm transition-base hover:text-red-600 focus:text-red-600">
 								Вход
 								| Регистрация
 							</NuxtLink>
@@ -253,10 +254,10 @@ const filteredCityes = computed(() =>
 		}),
 )
 
-const callsToAction = [
-	{ name: 'Позвонить нам', href: '#', },
-	{ name: 'Остались вопросы?', href: '#', },
-]
+// const callsToAction = [
+// 	{ name: 'Позвонить нам', href: '#', },
+// 	{ name: 'Остались вопросы?', href: '#', },
+// ]
 
 
 

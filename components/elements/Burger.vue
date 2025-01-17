@@ -35,7 +35,7 @@
                         <div class="mt-6 px-6  flow-root">
                             <div class=" divide-y divide-gray-500/10">
                                 <div class="">
-                                    <NuxtLink :to="'/'"
+                                    <NuxtLink :to="'/login'" @click="popupStore.close('burger')"
                                         class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7  hover:text-red-600 focus:text-red-600">
                                         Вход | Регистрация
                                     </NuxtLink>

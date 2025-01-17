@@ -174,16 +174,33 @@
                         готовы помочь!
                     </p>
 
-                    <ul class="space-y-2 mb-4">
-                        <li class="flex items-center gap-2 ">
-                            <Icon name="mdi-light:phone" class="w-6 h-6 text-red-600 " />
-                            <a href="tel:+7(495)123-45-67">Телефон: +7 (495) 123-45-67</a>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <Icon name="mdi-light:email" class="w-6 h-6 text-red-600 " />
-                            <a href="mailto:4kS4v@example.com">Email: 4kS4v@example.com</a>
-                        </li>
-                    </ul>
+                    <dl class="space-y-2 mb-4">
+                        <div class="flex gap-x-4">
+                            <dt class="flex-none">
+                                <span class="sr-only">Телефон</span>
+                                <Icon name="mdi-light:phone" class="w-6 h-6 text-red-600" aria-hidden="true" />
+                            </dt>
+                            <dd>
+                                <NuxtLink :to="`tel:${contacts.phone}`" target="_blank"
+                                    class="hover:text-red-600  focus:text-red-600 transition-all">
+                                    {{ contacts.phone }}
+                                </NuxtLink>
+                            </dd>
+                        </div>
+
+                        <div class="flex gap-x-4">
+                            <dt class="flex-none">
+                                <span class="sr-only">Почта</span>
+                                <Icon name="mdi-light:email" class="w-6 h-6 text-red-600" aria-hidden="true" />
+                            </dt>
+                            <dd>
+                                <NuxtLink :to="`mailto:${contacts.email}`" target="_blank"
+                                    class="hover:text-red-600  focus:text-red-600 transition-all">
+                                    {{ contacts.email }}
+                                </NuxtLink>
+                            </dd>
+                        </div>
+                    </dl>
 
                 </div>
             </div>
@@ -195,6 +212,8 @@
 </template>
 
 <script setup>
+const { contacts } = useContactsStore();
+
 const breadcrumbs = [
     {
         name: 'Доставка и оплата',

@@ -19,7 +19,7 @@
             parentEl: null,
             prevElSelector: '.arrow--prev',
             nextElSelector: '.arrow--next'
-        }" :autoplay="autoPlay">
+        }">
 
             <template #arrow>
                 <div class="flex items-center gap-4 absolute top-0 right-0">

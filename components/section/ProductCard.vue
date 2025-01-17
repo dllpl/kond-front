@@ -14,7 +14,7 @@
                 class="flex items-center shrink-0 justify-center h-48 aspect-h-1 aspect-w-1 overflow-hidden rounded-lg ring-1 bg-white    ring-gray-200 transition-base group-hover:opacity-75">
 
                 <img v-if="product.images && product.images.length" :src="storage + product.images[0]"
-                    :alt="product.title" class="object-contain object-center h-full" />
+                    :alt="product.title" class="object-cover w-full object-center h-full" />
                 <img v-else src="/assets/img/default-product-img.webp" :alt="product.title"
                     class="object-cover object-center h-full">
             </div>

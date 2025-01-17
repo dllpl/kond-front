@@ -30,7 +30,7 @@ const props = defineProps({
     autoplay: {
         type: Object,
         default: null
-    }
+    },
 })
 
 const options = ref(props.options);
@@ -43,7 +43,6 @@ const ready = (e) => {
 const adaptiveSlide = (e) => {
     if (!options.value.isAdaptive)
         return
-
     if (e.width <= 425) {
         // console.log('mobile')
         options.value.panelsPerView = 1
@@ -63,8 +62,8 @@ const adaptiveSlide = (e) => {
     if (e.width > 1024) {
         options.value.panelsPerView = 5
         if (options.value.length <= 5) {
-            console.log('desktop')
-            console.log(plugins.value)
+            // console.log('desktop')
+            // console.log(plugins.value)
         }
     }
 }
@@ -80,16 +79,21 @@ if (props.arrow) {
     plugins.value.push(new Arrow(props.arrow))
 }
 
-if (props.autoplay) {
-    console.log(props.autoplay)
-    plugins.value.push(new AutoPlay(props.autoplay))
-}
-else {
-    console.log(props.autoplay)
-    plugins.value.push(new AutoPlay({ duration: 8000 }))
-}
+if (options.value?.length) {
+    if (options.value.length > 5) {
+        if (props.autoplay) {
+            // console.log(props.autoplay)
+            plugins.value.push(new AutoPlay(props.autoplay))
+        }
+        else {
+            // console.log(props.autoplay)
+            plugins.value.push(new AutoPlay({ duration: 8000 }))
+        }
+    }
 
-
+} else {
+    plugins.value.push(new AutoPlay(props.autoplay));
+}
 </script>
 
 <style>

@@ -15,7 +15,10 @@
 
 			<ElementsSliderProduct :data="productsOffers.data" title="Спецпредложения"
 				class="col-span-2 lg:grid-cols-1  relative" />
-			<SectionProductTop class="col-span-2 lg:grid-cols-1 " />
+
+			<SectionProductTop :data="productsSets.data" class="col-span-2 lg:grid-cols-1 "
+				title="Популярные категории" />
+
 			<SectionPromoPrice class="col-span-2 lg:grid-cols-1 " />
 			<ElementsSliderProduct :data="productsNew.data" title="Новинки"
 				class="col-span-2 lg:grid-cols-1  relative" />
@@ -33,4 +36,5 @@ const { data: banners } = await useFetch(config.backOptions.api + '/banners');
 const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
 const { data: productsNew } = await useFetch(config.backOptions.api + '/products/new');
 const { data: productsOffers } = await useFetch(config.backOptions.api + '/products/spec');
+const { data: productsSets } = await useFetch(config.backOptions.api + '/products-sets');
 </script>
