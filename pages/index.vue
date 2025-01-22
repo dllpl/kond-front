@@ -33,6 +33,7 @@
 <script setup>
 const { public: config } = useRuntimeConfig();
 const { data: banners } = await useFetch(config.backOptions.api + '/banners');
+console.log(banners.value)
 const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
 const { data: productsNew } = await useFetch(config.backOptions.api + '/products/new');
 const { data: productsOffers } = await useFetch(config.backOptions.api + '/products/spec');

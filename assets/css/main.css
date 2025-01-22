@@ -119,3 +119,9 @@
     padding-right: 1rem;
   }
 }
+
+@media (max-width: 425px) {
+  .title-short-w {
+    width: 230px;
+  }
+}
