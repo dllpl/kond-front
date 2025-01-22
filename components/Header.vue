@@ -177,7 +177,7 @@
 							<div v-for="item in categories.data" :key="item.name"
 								class="group relative flex items-center gap-6 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50 sm:flex-col sm:p-6">
 								<div
-									class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+									class="flex h-11 w-11 flex-none items-center justify-center rounded-lg group-hover:bg-white">
 									<img :src="storage + item.img" :alt="item.title">
 								</div>
 								<div>

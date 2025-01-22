@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <div class="flex items-center justify-between gap-4 mb-8">
+        <div class="flex items-center justify-between gap-4 mb-8 xs:mb-4">
             <h2 class="font-bold text-4xl 2xl:text-3xl xs:text-2xl">{{ title }}</h2>
         </div>
 
@@ -22,7 +22,8 @@
         }">
 
             <template #arrow>
-                <div class="flex items-center gap-4 absolute top-0 right-0">
+                <div
+                    class="flex items-center gap-4 absolute top-0 right-0 xs:w-full xs:justify-between xs:inset-y-2/4 xs:z-10">
                     <button
                         class="flex items-center rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base arrow--prev">
                         <Icon name="ic:round-arrow-back-ios" class="w-5 h-5"></Icon>
