@@ -48,7 +48,7 @@ const props = defineProps({
                     </p>
 
 
-                    <div class="mt-6 flex gap-2 justify-between items-end ">
+                    <div class="mt-6 flex gap-2 justify-between items-end flex-wrap">
                         <span class="text-gray-500" v-if="product.count">
                             В наличии: <span class="text-indigo-950">{{ product.count }} шт.</span>
                         </span>
@@ -56,7 +56,6 @@ const props = defineProps({
                             Цена: <span class="text-3xl">{{ product.price }}</span> ₽
                         </span>
                         <span v-else class="text-red-600 ml-auto">Нет в наличии</span>
-
                     </div>
 
                     <div class="mt-10 grid gap-x-6 gap-y-4 grid-cols-2  sm:grid-cols-1">
@@ -212,7 +211,7 @@ const props = defineProps({
                 </div>
 
                 <!-- Product others -->
-                <div class="col-span-8 mt-8 lg:col-span-1 relative">
+                <div class="relative col-span-8 mt-8 lg:col-span-1 lg:mt-0">
                     <ElementsSliderProduct class="col-span-2 lg:grid-cols-1" :data="product.similars"
                         title="Похожие товары" />
                 </div>

@@ -11,8 +11,7 @@
             <img src="assets/img/social.png" alt="Мы в социальных сетях"
                 class="hidden absolute -top-16 h-32 right-0 rotate-12 md:block">
 
-            <div class="col-span-2 w-full xl:col-span-3 z-10 md:col-span-1 
-            ">
+            <div class="col-span-2 w-full xl:col-span-3 z-10 md:col-span-1 md:pt-2.5">
                 <h2 class="font-bold text-4xl 2xl:text-3xl xs:text-2xl title-short-w">Мы в социальных сетях</h2>
                 <p class="mt-8 text-lg lg:text-base lg:mt-5">
                     Хотите быстро и удобно получить консультацию по нашим услугам или оформить заказ? Теперь у

@@ -5,7 +5,7 @@
       <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
     </section>
 
-    <main class="wrapper-container  pb-16">
+    <main class="wrapper-container pb-16">
       <template v-if="!data.product">
         <SectionCatalogList :data="data.data"
           :class="data.data[0].children.length === 0 || data.products.length === 0 ? 'mb-0' : 'mb-20'" />

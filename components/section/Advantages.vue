@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="mt-3  xl:mt-0  xl:ml-4 lg:ml-0 lg:mt-6 sm:ml-6 sm:mt-0">
-                    <h3 class="font-medium text-gray-900">{{ incentive.name }}</h3>
+                    <h3 class="font-medium">{{ incentive.name }}</h3>
                     <p class="mt-2 text-sm text-gray-500">{{ incentive.description }}</p>
                 </div>
             </div>

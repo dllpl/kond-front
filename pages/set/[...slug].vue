@@ -23,13 +23,12 @@ const { public: config } = useRuntimeConfig();
 
 let uri = route.params?.slug ? route.params.slug.join('/') : '';
 const { data } = await useFetch(config.backOptions.api + '/products-sets/' + uri);
-console.log(data.value.data);
 
 const breadcrumbs = [
     {
         name: 'Подборки',
         uri: 'set',
     },
-    // ...data.value.breadcrumbs
+    ...data.value.breadcrumbs
 ]
 </script>

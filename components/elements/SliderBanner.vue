@@ -9,29 +9,29 @@
         }" :pagination="{ type: 'scroll' }" :autoplay="{ duration: 5000, stopOnHover: true }">
 
             <div class="w-full mr-5" v-for="item in data" :key="item.id">
-                <div class="relative h-96 py-12 px-12 flex flex-col justify-center gap-5 
+                <div class=" text-white relative h-96 py-12 px-12 flex flex-col justify-center gap-5 
                 md:h-80 md:py-10 md:px-8 
                 sm:h-72
-                xs:h-80 xs:py-8 xs:px-6
+                xs:h-80 xs:py-4 xs:px-4
                 ">
                     <h2 class="text-4xl font-semibold 
-                    2xl:text-3xl 
-                    sm:text-2xl
-                    xs:text-xl" :class="item.text_color ? `text-[${item.text_color}]` : ''">
+                    2xl:text-3xl
+                    xs:text-2xl xs:drop-shadow-md                    
+                    " :class="item.text_color ? `text-[${item.text_color}]` : ''">
                         {{ item.title }}
                     </h2>
 
-                    <p class="text-lg 
-                    sm:text-base" :class="item.text_color ? `text-[${item.text_color}]` : ''">
+                    <p class="text-lg xs:drop-shadow-md" :class="item.text_color ? `text-[${item.text_color}]` : ''">
                         {{ item.subtitle }}
                     </p>
 
                     <NuxtLink v-if="item.link" :to="item.link" target="_blank"
-                        class="text-sm font-semibold rounded-lg  px-10 py-3 bg-amber-300 hover:bg-amber-400 transition-base mr-auto cursor-pointer">
+                        class="text-sm font-semibold rounded-lg text-indigo-950 px-10 py-3 bg-amber-400 hover:bg-amber-300 transition-base mr-auto cursor-pointer">
                         Перейти
                     </NuxtLink>
+                    <span class="hidden absolute inset-0 -z-10 bg-gray-900 opacity-15 sm:block"></span>
 
-                    <picture class="absolute inset-0 -z-10">
+                    <picture class="absolute inset-0 -z-20">
                         <source :src="storage + item.image_small" media="(max-width: 1440px)">
                         <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl"
                             :src="storage + item.image_large" :alt="item.title">
