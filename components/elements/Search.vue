@@ -28,9 +28,8 @@
                                 class="max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800">
 
                                 <ComboboxOption v-for="(product, i) in searchResult" :key="i" as="template">
-                                    <li
-                                        :class="['cursor-default select-none px-4 py-2 font-medium hover:bg-amber-300']">
-                                        <NuxtLink @click="popupStore.close('search')"
+                                    <li :class="['cursor-default select-none font-medium hover:bg-amber-300']">
+                                        <NuxtLink class="block px-4 py-2" @click="popupStore.close('search')"
                                             :to="'/catalog/' + product.slug_path">
                                             {{ product.title }}
                                         </NuxtLink>
