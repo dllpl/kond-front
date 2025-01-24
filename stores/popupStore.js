@@ -9,7 +9,6 @@ export const usePopupStore = defineStore('popupStore', {
     getters: {},
     actions: {
         toggle(value) {
-            console.log('open' + value)
             if (value === 'toast' || this[value]) {
                 setTimeout(() => {
                     this[value] = false
