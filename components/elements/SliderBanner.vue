@@ -14,14 +14,11 @@
                 sm:h-72
                 xs:h-80 xs:py-4 xs:px-4
                 ">
-                    <h2 class="text-4xl font-semibold 
-                    2xl:text-3xl
-                    xs:text-2xl xs:drop-shadow-md                    
-                    " :class="item.text_color ? `text-[${item.text_color}]` : ''">
+                    <h2 class="text-4xl font-semibold 2xl:text-3xl xs:text-2xl xs:drop-shadow-md">
                         {{ item.title }}
                     </h2>
 
-                    <p class="text-lg xs:drop-shadow-md" :class="item.text_color ? `text-[${item.text_color}]` : ''">
+                    <p class="text-lg xs:drop-shadow-md">
                         {{ item.subtitle }}
                     </p>
 

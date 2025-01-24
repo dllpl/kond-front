@@ -3,21 +3,35 @@
 		<section>
 			<ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
 		</section>
+
+
+		<!-- text-white relative min-h-96 py-12 px-12 flex flex-col justify-center gap-5 mb-20 md:py-10 md:px-8 md:min-h-80 sm:min-h-72 xs:min-h-80 xs:py-4 xs:px-4 xs:mb-10 -->
 		<main class="wrapper-container pt-3 pb-16">
-			<div class="relative pt-36 pb-14 px-20 rounded-2xl mb-20">
-				<div class="w-2/3 text-white font-semibold">
-					<h1 class="text-4xl font-semibold mb-4">{{ post.data.title }}</h1>
-					<p>
-						{{ post.data.excerpt }}
-					</p>
-				</div>
+
+			<div class="text-white relative min-h-96 py-12 px-12 flex flex-col justify-center gap-5 mb-20
+                md:py-10 md:px-8 md:min-h-80 
+                sm:min-h-72 
+                xs:min-h-80 xs:py-4 xs:px-4 xs:mb-10">
+				<h1 class="text-4xl font-semibold 2xl:text-3xl xs:text-2xl xs:drop-shadow-md">{{ post.data.title }}</h1>
+
+				<p class="text-lg max-w-4xl xs:drop-shadow-md ">
+					{{ post.data.excerpt }}
+				</p>
+
+				<!-- <picture class="absolute inset-0 -z-20">
+                    <source srcset="/assets/img/delivery-1440.jpg" media="(max-width: 1440px)">
+                    <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl"
+                        src="/assets/img/delivery-1920.jpg" alt="">
+                </picture> -->
+
 				<img :src="storage + post.data.image_large" :alt="post.data.title"
-					class="absolute inset-0 -z-10 h-full w-full object-cover rounded-2xl" />
-				<div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 rounded-2xl" />
-				<div class="absolute inset-0 -z-10 " />
+					class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl" />
+
+				<span class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 rounded-2xl"></span>
 			</div>
-			<div class="px-20">
-				<div class="mb-10">
+
+			<div class="px-20 md:px-0">
+				<!-- <div class="mb-10">
 					<h2 class="text-2xl mb-4">Ингредиенты</h2>
 					<ul class="list-disc list-inside">
 						<li>Какао-масло — 100 г</li>
@@ -26,11 +40,13 @@
 						<li>Ванильный экстракт — 1 ч. ложка (по желанию)</li>
 						<li>Щепотка морской соли</li>
 					</ul>
-				</div>
+				</div> -->
 
 				<div class="post-content mb-10" v-html="post.data.text">
 				</div>
 			</div>
+			<ElementsSliderProduct v-if="post.data.products.length" :data="post.data.products" title="Товары из рецепта"
+				class="col-span-2 lg:grid-cols-1  relative" />
 
 		</main>
 	</div>
@@ -45,12 +61,9 @@ const { data: post } = await useFetch(config.backOptions.api + '/blog/' + useRou
 const breadcrumbs = [
 	{
 		name: 'Блог',
-		href: 'blog',
+		uri: 'blog',
 	},
-	{
-		name: post.value.data.title,
-		href: 'blog/' + useRoute().params.slug,
-	}
+	...post.value.breadcrumbs
 ]
 </script>
 

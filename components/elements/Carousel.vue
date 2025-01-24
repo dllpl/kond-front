@@ -80,12 +80,14 @@ if (props.arrow) {
 }
 
 if (options.value?.length) {
+    // console.log(options.value.length)
     if (options.value.length > 5) {
         if (props.autoplay) {
             // console.log(props.autoplay)
             plugins.value.push(new AutoPlay(props.autoplay))
         }
         else {
+            // console.log(options.value.length)
             // console.log(props.autoplay)
             plugins.value.push(new AutoPlay({ duration: 8000 }))
         }

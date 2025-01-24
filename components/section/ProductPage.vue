@@ -37,7 +37,7 @@ const props = defineProps({
 
                 <!-- Product details -->
                 <div class="col-span-4 xl:col-span-3 lg:col-span-1">
-                    <h1 class="mt-4 text-3xl font-bold tracking-tight">{{
+                    <h1 class="text-3xl font-bold tracking-tight mt-4 xs:text-2xl">{{
                         product.title }}
                     </h1>
 
