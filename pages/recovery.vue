@@ -4,7 +4,7 @@
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
         </section>
         <main class="wrapper-container relative">
-            <div class="flex min-h-full flex-1 flex-col justify-center py-12 md:py-8">
+            <div class="flex min-h-full flex-1 flex-col justify-center py-12 pb-20 md:py-8">
 
                 <h1 class="text-center text-3xl font-semibold mb-8 md:mb-4">Восстановление</h1>
 

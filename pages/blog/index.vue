@@ -29,7 +29,7 @@
 
                     <div v-if="post.is_recipe" class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm ">
                         <span
-                            class="relative z-10 rounded-full bg-red-500 px-3 py-1.5 font-medium text-white cursor-pointer">
+                            class="relative rounded-full bg-red-500 px-3 py-1.5 font-medium text-white cursor-pointer">
                             Рецепт
                         </span>
                     </div>

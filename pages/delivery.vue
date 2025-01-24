@@ -5,9 +5,13 @@
         </section>
         <main class="wrapper-container pt-3 pb-16">
 
-            <div class="relative h-96 flex flex-col justify-center gap-6 py-12 px-12 mb-14">
-                <h1 class="text-4xl font-semibold text-white">Доставка и оплата</h1>
-                <p class="text-lg max-w-4xl text-gray-200">
+            <div class="text-white relative min-h-96 py-12 px-12 flex flex-col justify-center gap-5 mb-20
+                md:py-10 md:px-8 md:min-h-80 
+                sm:min-h-72 
+                xs:min-h-80 xs:py-4 xs:px-4 xs:mb-10">
+                <h1 class="text-4xl font-semibold 2xl:text-3xl xs:text-2xl xs:drop-shadow-md">Доставка и оплата</h1>
+
+                <p class="text-lg max-w-4xl xs:drop-shadow-md ">
                     Мы стараемся сделать процесс покупок в нашем интернет-магазине <b>"Все для кондитеров"</b>
                     максимально
                     удобным
@@ -15,19 +19,22 @@
                     для
                     вас способ.
                 </p>
-                <picture class="absolute inset-0 -z-10">
+                <picture class="absolute inset-0 -z-20">
                     <source srcset="/assets/img/delivery-1440.jpg" media="(max-width: 1440px)">
                     <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl"
                         src="/assets/img/delivery-1920.jpg" alt="">
                 </picture>
+
+                <span class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 rounded-2xl"></span>
             </div>
 
-            <div class="mb-16 flex gap-6">
+            <div class="mb-20 flex gap-6 md:flex-col xs:mb-10">
                 <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-500 shrink-0">
                     <Icon name="hugeicons:delivery-truck-02" class="w-10 h-10 text-white" />
                 </div>
+
                 <div class="">
-                    <h2 class="text-3xl font-semibold mb-4">
+                    <h2 class="text-3xl font-bold tracking-tight mb-4 xs:text-2xl">
                         Доставка
                     </h2>
                     <p class="mb-6">
@@ -36,7 +43,6 @@
                         удобном
                         для вас месте.
                     </p>
-
                     <ul role="list" class=" marker:text-red-500 list-disc list-inside space-y-6">
                         <li>
                             <h3 class="inline font-main text-lg font-semibold">Доставка по России</h3>
@@ -103,14 +109,15 @@
                         </li>
                     </ul>
                 </div>
+
             </div>
 
-            <div class="mb-16 flex gap-6">
+            <div class="mb-20 flex gap-6 md:flex-col xs:mb-10">
                 <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-500 shrink-0">
                     <Icon name="hugeicons:credit-card-accept" class="w-10 h-10 text-white" />
                 </div>
                 <div class="">
-                    <h2 class="text-3xl font-semibold mb-4">
+                    <h2 class="text-3xl font-bold tracking-tight mb-4 xs:text-2xl">
                         Оплата
                     </h2>
                     <p class="mb-6">
@@ -140,12 +147,12 @@
                 </div>
             </div>
 
-            <div class="mb-16 flex gap-6">
+            <div class="mb-20 flex gap-6 md:flex-col xs:mb-10">
                 <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-500 shrink-0">
                     <Icon name="hugeicons:delivery-return-01" class="w-10 h-10 text-white" />
                 </div>
                 <div class="">
-                    <h2 class="text-3xl font-semibold mb-4">
+                    <h2 class="text-3xl font-bold tracking-tight mb-4 xs:text-2xl">
                         Возврат и обмен
                     </h2>
 
@@ -204,7 +211,8 @@
 
                 </div>
             </div>
-            <p class="text-xl text-center">
+
+            <p class="text-xl text-center md:text-lg">
                 Мы уверены, что покупка в нашем магазине станет для вас удобным и приятным процессом!
             </p>
         </main>
