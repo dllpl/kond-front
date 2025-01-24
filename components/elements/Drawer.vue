@@ -54,8 +54,8 @@
 
                                                         <div class="ml-4 flex flex-1 flex-col ">
                                                             <h3 class="text-base font-medium">
-
-                                                                <NuxtLink :to="`/catalog/${product.slug_path}`">
+                                                                <NuxtLink :to="`/catalog/${product.slug_path}`"
+                                                                    @click="popupStore.close('drawer')">
                                                                     {{ product.title }}
                                                                 </NuxtLink>
                                                             </h3>
