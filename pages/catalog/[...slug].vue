@@ -26,6 +26,8 @@ let uri = route.params?.slug ? route.params.slug.join('/') : '';
 
 const {data} = await useFetch(config.backOptions.api + '/products-categories/' + uri);
 
+console.log(config.backOptions.api, uri, data)
+
 const breadcrumbs = [
   {
     name: 'Каталог',
