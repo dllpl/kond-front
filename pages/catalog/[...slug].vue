@@ -23,13 +23,18 @@ const route = useRoute();
 const {public: config} = useRuntimeConfig();
 
 let uri = route.params?.slug ? route.params.slug.join('/') : '';
+
+console.log(uri)
+
 const {data} = await useFetch(config.backOptions.api + '/products-categories/' + uri);
+
+console.log(data.value.breadcrumbs)
 
 const breadcrumbs = [
   {
     name: 'Каталог',
     uri: 'catalog',
   },
-  ...(data.value?.breadcrumbs ? data.value.breadcrumbs : {}),
+  ...data.value.breadcrumbs,
 ]
 </script>
