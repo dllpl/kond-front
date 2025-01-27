@@ -28,8 +28,6 @@ const full_url = config.backOptions.api + '/products-categories/' + uri;
 
 const {data} = await useFetch(full_url);
 
-console.log(full_url, data)
-
 const breadcrumbs = [
   {
     name: 'Каталог',
