@@ -22,11 +22,13 @@
 const route = useRoute();
 const {public: config} = useRuntimeConfig();
 
-let uri = route.params?.slug ? route.params.slug.join('/') : '';
+const uri = route.params?.slug ? route.params.slug.join('/') : '';
 
-const {data} = await useFetch(config.backOptions.api + '/products-categories/' + uri);
+const full_url = config.backOptions.api + '/products-categories/' + uri;
 
-console.log(config.backOptions.api, uri, data)
+const {data} = await useFetch(full_url);
+
+console.log(full_url, data)
 
 const breadcrumbs = [
   {
