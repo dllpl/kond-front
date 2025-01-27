@@ -74,9 +74,12 @@
 
 						<!-- Basket -->
 						<button @click="popupStore.toggle('drawer')"
-							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
+							class="relative flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="mdi-light:cart" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
+							<span v-if="cartStore.totalCountProducts"
+								class="absolute -top-2 -right-2 flex items-center justify-center w-4 h-4 text-white bg-red-500 rounded-full text-[10px]">
+								{{ cartStore.totalCountProducts }}</span>
 						</button>
 					</div>
 
