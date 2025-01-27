@@ -212,7 +212,7 @@ const props = defineProps({
 
                 <!-- Product others -->
                 <div class="relative col-span-8 mt-8 lg:col-span-1 lg:mt-0">
-                    <ElementsSliderProduct class="col-span-2 lg:grid-cols-1" :data="product.similars"
+                    <ElementsSliderProduct v-if="product.similars?.length" class="col-span-2 lg:grid-cols-1" :data="product.similars"
                         title="Похожие товары" />
                 </div>
             </div>
