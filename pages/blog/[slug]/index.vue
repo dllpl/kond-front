@@ -63,7 +63,7 @@ const breadcrumbs = [
 		name: 'Блог',
 		uri: 'blog',
 	},
-	...(data.value?.breadcrumbs ? data.value.breadcrumbs : {})
+	...(post.value?.breadcrumbs ? post.value.breadcrumbs : {})
 ]
 </script>
 
