@@ -30,6 +30,6 @@ const breadcrumbs = [
     name: 'Каталог',
     uri: 'catalog',
   },
-  ...data.value.breadcrumbs
+  ...(data.value?.breadcrumbs ? data.value.breadcrumbs : {})
 ]
 </script>
