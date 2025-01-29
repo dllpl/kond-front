@@ -5,17 +5,16 @@
             receive
             mail.</p>
         <form>
-            <div class="border-gray-900/10 space-y-0 divide-y divide-gray-900/10 border-b 
-                        
-                        ">
+            <div class="border-gray-900/10 space-y-0 divide-y divide-gray-900/10 border-b">
                 <ul class="grid grid-cols-3 gap-12 py-8 lg:gap-6 md:grid-cols-2 xs:grid-cols-1 xs:py-6 xs:gap-4">
+
                     <li class="">
                         <label for="surname" class="block text-sm font-medium leading-6 mb-2 pl-2.5">
                             Фамилия
                         </label>
 
-                        <input v-maska=maskaOptions.cyrillic_and_upper_case name="surname" autocomplete="surname"
-                            required=""
+                        <input v-model='form.surname' type="text" name="surname" autocomplete="surname" required
+                            minlength='5' v-maska=maskaOptions.cyrillic_and_upper_case
                             class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
                     </li>
 
@@ -80,4 +79,14 @@
 
 <script setup>
 const maskaOptions = useMaskaOptions();
+
+const form = ref({
+    surname: '',
+    name: '',
+    patronymic: '',
+    phone: '',
+    email: '',
+    city: ''
+})
+
 </script>

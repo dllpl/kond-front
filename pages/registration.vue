@@ -13,25 +13,15 @@
 
                     <div class="bg-white shadow rounded-lg py-8 px-8 sm:px-4 sm:py-6">
 
-                        <form class="space-y-4" action="#" method="POST">
+                        <form class="space-y-4" @submit.prevent="submit(form)">
                             <div>
-                                <label for="name" class="block text-sm font-medium">
-                                    Имя
-                                </label>
-                                <div class="mt-2">
-                                    <input id="name" name="name" type="name" autocomplete="current-name" required=""
-                                        class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm sm:leading-6" />
-                                </div>
-                            </div>
-
-                            <div>
-                                <label for="phone" class="block text-sm font-medium">
+                                <label for="tel" class="block text-sm font-medium">
                                     Телефон
                                 </label>
                                 <div class="mt-2">
 
-                                    <input v-maska=maskaOptions.phone.mask name="phone" type="phone"
-                                        autocomplete="phone" required=""
+                                    <input v-model="form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel"
+                                        autocomplete="tel" required=""
                                         class="block w-full rounded-md border-0 px-2 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
                                 </div>
                             </div>
@@ -41,7 +31,8 @@
                                     Email адрес
                                 </label>
                                 <div class="mt-2">
-                                    <input id="email" name="email" type="email" autocomplete="email" required=""
+                                    <input v-model="form.email" name="email" type="email" autocomplete="email"
+                                        required=""
                                         class="block w-full rounded-md border-0 px-2 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
                                 </div>
                             </div>
@@ -51,8 +42,8 @@
                                     Пароль
                                 </label>
                                 <div class="mt-2">
-                                    <input id="password" name="password" type="password" autocomplete="current-password"
-                                        required=""
+                                    <input v-model="form.password" name="password" type="password"
+                                        autocomplete="new-password" required=""
                                         class="block w-full rounded-md border-0 px-2 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
                                 </div>
                             </div>
@@ -96,9 +87,20 @@
 
 <script setup>
 const maskaOptions = useMaskaOptions();
+const helper = useHelper();
 const breadcrumbs = [
     {
         name: 'Регистрация', slug: '/registration'
     },
 ]
+const form = ref({
+    phone: '',
+    email: '',
+    password: '',
+})
+
+const submit = (form) => {
+    form.phone = helper.phoneClear(form.phone);
+}
+
 </script>
