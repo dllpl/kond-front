@@ -77,6 +77,10 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: 'auth',
+})
+
 const tabs = [
     { name: 'Заказы', href: '#', current: true, icon: 'material-symbols:shopping-bag-outline', },
     { name: 'Избранное', href: '#', current: false, icon: 'material-symbols:favorite-outline-rounded', },
