@@ -77,8 +77,6 @@
 </template>
 
 <script setup>
-
-
 const tabs = [
     { name: 'Заказы', href: '#', current: true, icon: 'material-symbols:shopping-bag-outline', },
     { name: 'Избранное', href: '#', current: false, icon: 'material-symbols:favorite-outline-rounded', },

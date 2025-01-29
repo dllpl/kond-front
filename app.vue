@@ -10,6 +10,7 @@
 
 <script setup>
 const contactsStore = useContactsStore(); // Получаем доступ к store
+const profileStore = useProfileStore();
 
 const { public: config } = useRuntimeConfig();
 const { data: contacts } = await useFetch(config.backOptions.api + '/contacts');
