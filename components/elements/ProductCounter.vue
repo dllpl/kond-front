@@ -9,12 +9,30 @@ const props = defineProps({
     item: {
         type: Object,
         required: true,
-    }
+    },
+    context: {
+        type: String,
+        default: 'base', // По умолчанию используется стиль для товара
+    },
 })
 
 function showAlert() {
     alert('Будет модалка с сообщением - Уведомим как только появится в наличии');
 }
+
+// Динамические классы для кнопок
+const buttonClass = computed(() => {
+    return props.context === 'small' ? 'px-2 py-2' : 'px-2.5 py-2';
+});
+
+// Динамические классы для иконок
+const iconClass = computed(() => {
+    return props.context === 'small' ? 'w-3 h-3' : 'w-5 h-5';
+});
+// Динамические классы для числа
+const numberClass = computed(() => {
+    return props.context === 'small' ? 'text-sm mx-4' : 'text-lg';
+});
 </script>
 
 
@@ -33,16 +51,18 @@ function showAlert() {
                 class="flex items-center justify-between w-full bg-amber-100 p-0.5 rounded-lg">
 
                 <button @click="cartStore.decrement(item)"
-                    class="flex items-center  rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base">
-                    <Icon name="ic:round-minus" class="w-5 h-5 shrink-0" />
+                    class="flex items-center rounded-lg bg-amber-400 hover:bg-amber-300 transition-base"
+                    :class="buttonClass">
+                    <Icon name="ic:round-minus" class="shrink-0" :class="iconClass" />
                 </button>
 
-                <span class="text-lg">{{ cartStore.getCountProductInCart(item.id) }}</span>
+                <span :class="numberClass">{{ cartStore.getCountProductInCart(item.id) }}</span>
 
                 <button :disabled="cartStore.getCountProductInCart(item.id) >= item.count"
                     @click="cartStore.increment(item)"
-                    class="flex items-center rounded-lg bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base">
-                    <Icon name="ic:round-plus" class="w-5 h-5 " />
+                    class="flex items-center rounded-lg bg-amber-400 hover:bg-amber-300 transition-base"
+                    :class="buttonClass">
+                    <Icon name="ic:round-plus" class="shrink-0" :class="iconClass" />
                 </button>
             </div>
 

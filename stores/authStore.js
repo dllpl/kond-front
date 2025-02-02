@@ -22,8 +22,8 @@ export const useAuthStore = defineStore('authStore', {
 
             let form = this.register.form
 
-            const {public: config} = useRuntimeConfig();
-            const {phoneClear} = useHelper()
+            const { public: config } = useRuntimeConfig();
+            const { phoneClear } = useHelper()
             const profileStore = useProfileStore()
 
             form.phone = phoneClear(form.phone)
@@ -31,10 +31,11 @@ export const useAuthStore = defineStore('authStore', {
             const res = await $fetch(`${config.backOptions.api}/user/register`, {
                 method: 'POST',
                 body: form
-            }).catch(({response}) => {
+            }).catch(({ response }) => {
                 if (response.status === 422) {
                     this.register.errors = response._data.errors
                 }
+                // return
             })
 
             profileStore.setAuth(res)
@@ -45,8 +46,8 @@ export const useAuthStore = defineStore('authStore', {
 
             let form = this.login.form
 
-            const {public: config} = useRuntimeConfig();
-            const {phoneClear} = useHelper()
+            const { public: config } = useRuntimeConfig();
+            const { phoneClear } = useHelper()
             const profileStore = useProfileStore()
 
             form.phone = phoneClear(form.phone)
@@ -54,7 +55,7 @@ export const useAuthStore = defineStore('authStore', {
             const res = await $fetch(`${config.backOptions.api}/user/login`, {
                 method: 'POST',
                 body: form
-            }).catch(({response}) => {
+            }).catch(({ response }) => {
                 if (response.status === 422) {
                     this.login.errors = response._data.errors
                 }

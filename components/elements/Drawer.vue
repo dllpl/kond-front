@@ -53,7 +53,7 @@
                                                         </div>
 
                                                         <div class="ml-4 flex flex-1 flex-col ">
-                                                            <h3 class="text-base font-medium">
+                                                            <h3 class="text-base font-medium mb-0.5">
                                                                 <NuxtLink :to="`/catalog/${product.slug_path}`"
                                                                     @click="popupStore.close('drawer')">
                                                                     {{ product.title }}
@@ -61,18 +61,21 @@
                                                             </h3>
 
                                                             <div class="flex gap-5 justify-between">
-                                                                <div class="">
+                                                                <div class="space-y-0.5">
+
+
                                                                     <p class="text-base font-medium">
                                                                         <span class="text-gray-500 text-sm">Цена:
                                                                         </span>
                                                                         {{ formatNumber(product.price) }}
                                                                     </p>
-
-                                                                    <p class="text-base font-medium">
+                                                                    <ElementsProductCounter :item="product"
+                                                                        context="small" />
+                                                                    <!-- <p class="text-base font-medium">
                                                                         <span
                                                                             class="text-gray-500 text-sm">Кол-во:</span>
                                                                         {{ product.inCart }}
-                                                                    </p>
+                                                                    </p> -->
 
                                                                     <p v-if="product.inCart > 1"
                                                                         class="text-base font-medium">
@@ -98,11 +101,10 @@
                                     </div>
 
                                     <div class="border-t border-gray-200 px-4 py-4 sm:px-6">
-                                        <div class="flex justify-between text-base font-medium">
+                                        <div class="flex justify-between items-end font-medium">
                                             <p>Общая сумма</p>
-                                            <p v-if="cartStore.totalPriceAllProducts">{{ formatNumber(
-                                                cartStore.totalPriceAllProducts
-                                            ) }}</p>
+                                            <p v-if="cartStore.totalPriceAllProducts" class="text-xl md:text-base">{{
+                                                formatNumber(cartStore.totalPriceAllProducts) }}</p>
                                         </div>
                                         <p class="mt-0.5 text-sm text-gray-500">Способ доставки выбирается при офомлении
                                             заказа</p>
