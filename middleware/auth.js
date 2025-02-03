@@ -1,28 +1,25 @@
-import {useProfileStore} from "~/stores/profileStore.js";
-
-export default defineNuxtRouteMiddleware(async () => {
+export default defineNuxtRouteMiddleware( async () => {
 
     const profileStore = useProfileStore()
+    const { public: config } = useRuntimeConfig();
 
-    const auth = await profileStore.init()
-
-    if (!auth.isAuth) {
-        return navigateTo('/login')
+    if (!profileStore.isAuth()) {
+        return navigateTo('/login', {redirectCode: 401})
     }
 
     try {
+        const {data: profile} =  await useFetch(`${config.backOptions.api}/user/profile`, {headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}})
 
-        // const {data: refers} = await useFetch('/api/proxy/v3/refers', {headers: {'Authorization': `Bearer ${auth.token}`}})
-        // const {data: profile} = await useFetch('/api/proxy/v3/profile', {headers: {'Authorization': `Bearer ${auth.token}`}})
-
-        // if (!refers.value) {
-        //     return navigateTo('/', {redirectCode: 401});
-        // }
-        //
-        // store.refers = refers.value.data
-        // store.profile = profile.value.data
+        profileStore.setAuth(profile.value)
 
     } catch (error) {
-        return navigateTo('/login', {redirectCode: 500})
+        if(error.status === 401) {
+            return navigateTo('/login', {redirectCode: 401})
+        }
+
+        createError({
+            statusCode: error.status,
+            statusMessage: error.message
+        })
     }
 });
