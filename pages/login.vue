@@ -12,32 +12,41 @@
 
                     <div class="bg-white shadow rounded-lg py-8 px-8 sm:px-4 sm:py-6">
 
-                        <form class="space-y-4" action="#" method="POST">
-                            <div>
+                        <form class="space-y-6" @submit.prevent="authStore.makeLogin()">
+                            <div class="relative">
                                 <label for="phone" class="block text-sm font-medium">
                                     Телефон
                                 </label>
                                 <div class="mt-2">
-                                    <input v-maska=maskaOptions.phone.mask name="phone" type="phone"
-                                        autocomplete="phone" required=""
-                                        class="block w-full rounded-md border-0 px-2 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
+
+                                    <input v-model="login.form.phone" v-maska=maskaOptions.phone.mask name="tel"
+                                        type="tel" autocomplete="tel" required
+                                        :class="login.errors?.phone ? 'ring-2 ring-red-400' : ''"
+                                        class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
+                                    <span v-if="login.errors?.phone" class="absolute text-[11px]">
+                                        {{ login.errors.phone[0] }}
+                                    </span>
                                 </div>
                             </div>
 
-                            <div>
+                            <div class="relative">
                                 <label for="password" class="block text-sm font-medium">
                                     Пароль
                                 </label>
                                 <div class="mt-2">
-                                    <input id="password" name="password" type="password" autocomplete="current-password"
-                                        required=""
-                                        class="block w-full rounded-md border-0 px-2 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
+                                    <input v-model="login.form.password" name="password" type="password"
+                                        autocomplete="current-password" placeholder="Минимум 6 символов" required
+                                        :class="login.errors?.password ? 'ring-2 ring-red-400' : ''"
+                                        class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
+                                    <span v-if="login.errors?.password" class="absolute text-[11px]">
+                                        {{ login.errors.password[0] }}
+                                    </span>
                                 </div>
                             </div>
 
                             <div>
                                 <button type="submit"
-                                    class="flex w-full justify-center rounded-md bg-amber-400 px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all ">
+                                    class="flex w-full justify-center rounded-md bg-amber-400 px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all">
                                     Войти</button>
                             </div>
                         </form>
@@ -88,6 +97,9 @@
 
 <script setup>
 const maskaOptions = useMaskaOptions();
+
+const authStore = useAuthStore();
+const { login } = storeToRefs(authStore);
 
 const breadcrumbs = [
     {
