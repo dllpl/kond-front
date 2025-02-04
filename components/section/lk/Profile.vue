@@ -60,7 +60,7 @@
                     </li>
 
                     <li class="lg:col-span-2 xs:col-auto">
-                        <label for="city" class="block text-sm font-medium leading-6 mb-2 pl-2.5">Адрес</label>
+                        <label for="city" class="block text-sm font-medium leading-6 mb-2 pl-2.5">Адрес доставки</label>
 
                         <input type="text" name="city" id="city" autocomplete="address-level2" v-model="profile.full_address"
                             class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
