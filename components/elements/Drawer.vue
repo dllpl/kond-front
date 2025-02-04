@@ -109,9 +109,10 @@
                                         <p class="mt-0.5 text-sm text-gray-500">Способ доставки выбирается при офомлении
                                             заказа</p>
                                         <div class="mt-6">
-                                            <a href="#"
-                                                class="flex items-center justify-center rounded-md border border-transparent px-6 py-3 text-base font-medium shadow-sm bg-amber-400 hover:bg-amber-300 transition-base">Оформить
-                                                заказ</a>
+                                            <NuxtLink :to="`/cart`" @click="popupStore.close('drawer')"
+                                                class="flex items-center justify-center rounded-md border border-transparent px-6 py-3 text-base font-medium shadow-sm bg-amber-400 hover:bg-amber-300 transition-base">
+                                                Оформить заказ
+                                            </NuxtLink>
                                         </div>
 
                                     </div>

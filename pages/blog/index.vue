@@ -5,7 +5,7 @@
         </section>
         <main class="wrapper-container pt-3 pb-16">
             <div class="mb-10">
-                <h1 class="text-4xl font-semibold mb-4">Блог</h1>
+                <h1 class="text-4xl font-semibold mb-4 2xl:text-3xl xs:text-2xl">Блог</h1>
                 <p>
                     Наши статьи — это не только полезные рекомендации, но и увлекательные истории о мире кондитерства,
                     секреты
