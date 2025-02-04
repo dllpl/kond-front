@@ -104,14 +104,14 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: 'web',
+})
 
 const maskaOptions = useMaskaOptions();
 
 const authStore = useAuthStore();
-
-const { register } = storeToRefs(authStore);
-
-// const errors = {}
+const { register } = useAuthStore();
 
 const breadcrumbs = [
   {

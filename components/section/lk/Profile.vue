@@ -13,7 +13,7 @@
                             Фамилия
                         </label>
 
-                        <input v-model='form.surname' type="text" name="surname" autocomplete="surname" required
+                        <input v-model='profile.last_name' type="text" name="surname" autocomplete="surname" required
                             minlength='5' v-maska=maskaOptions.cyrillic_and_upper_case
                             class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
                     </li>
@@ -24,6 +24,7 @@
                         </label>
 
                         <input v-maska=maskaOptions.cyrillic_and_upper_case name="name" autocomplete="name" required=""
+                               v-model="profile.first_name"
                             class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
                     </li>
 
@@ -33,7 +34,7 @@
                         </label>
 
                         <input v-maska=maskaOptions.cyrillic_and_upper_case name="patronymic" autocomplete="patronymic"
-                            required=""
+                            required       v-model="profile.surname"
                             class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
                     </li>
                 </ul>
@@ -42,7 +43,8 @@
                     <li class="">
                         <label for="phone" class="block text-sm font-medium leading-6 mb-2 pl-2.5">Телефон</label>
 
-                        <input v-maska=maskaOptions.phone.mask name="phone" autocomplete="phone" required=""
+                        <input v-maska=maskaOptions.phone.mask name="phone" autocomplete="phone" required
+                            v-model="profile.phone"
                             class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                             placeholder="+7 (___) ___-__-__" />
 
@@ -51,7 +53,7 @@
                     <li class="">
                         <label for="email" class="block text-sm font-medium leading-6 mb-2 pl-2.5">Email</label>
 
-                        <input id="email" name="email" type="email" autocomplete="email"
+                        <input id="email" name="email" type="email" autocomplete="email" v-model="profile.email"
                             class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                             placeholder="Email" />
 
@@ -60,7 +62,7 @@
                     <li class="lg:col-span-2 xs:col-auto">
                         <label for="city" class="block text-sm font-medium leading-6 mb-2 pl-2.5">Адрес доставки</label>
 
-                        <input type="text" name="city" id="city" autocomplete="address-level2"
+                        <input type="text" name="city" id="city" autocomplete="address-level2" v-model="profile.full_address"
                             class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
 
                     </li>
@@ -78,6 +80,13 @@
 </template>
 
 <script setup>
+defineProps({
+    profile: {
+        type: Object,
+        default: {}
+    }
+})
+
 const maskaOptions = useMaskaOptions();
 
 const form = ref({

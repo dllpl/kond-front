@@ -40,7 +40,7 @@ const numberClass = computed(() => {
     <div class="flex items-center">
         <template v-if="item.count">
             <button v-if="!cartStore.issetInCart(item.id)"
-                @click="cartStore.increment(item), popupStore.toggle('toast')"
+                @click="cartStore.increment(item); popupStore.toggle('toast', {title: 'Товар добавлен в корзину', subtitle: 'Перейти в корзину', callback: () => popupStore.toggle('drawer')})"
                 class="flex items-center gap-x-2 w-full justify-center rounded-lg ring-2 ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
                 <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 " />
                 В корзину

@@ -1,5 +1,5 @@
 <template>
-    <TransitionRoot as="template" :show="search" @after-leave="query = ''" appear>
+    <TransitionRoot as="template" :show="search.open" @after-leave="query = ''" appear>
         <Dialog class="relative z-30" @close="popupStore.close('search')">
             <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
                 leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">

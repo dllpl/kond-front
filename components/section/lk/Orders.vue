@@ -36,8 +36,8 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr v-for="order in orders" :key="order.index">
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 
+                                <tr v-for="order in orders" :key="order.index" v-if="orders.length">
+                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900
                                         sm:pl-6
                                         ">
                                         {{ order.date }}</td>
@@ -48,12 +48,17 @@
                                         }}&nbsp;₽
                                     </td>
 
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium 
+                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium
                                         sm:pr-6">
                                         <a href="#" class="text-indigo-600 hover:text-indigo-900">
                                             Подробнее
                                             <span class="sr-only">, {{ orders.name }}</span>
                                         </a>
+                                    </td>
+                                </tr>
+                                <tr v-else>
+                                    <td colspan="4" class="text-center text-gray-500">
+                                      Заказов нет
                                     </td>
                                 </tr>
                             </tbody>
@@ -64,11 +69,11 @@
         </div>
     </div>
 </template>
-
 <script setup>
-const orders = [
-    { date: '19/06/2023', orderId: '122', price: '1.005', },
-    { date: '04/04/2023', orderId: '133', price: '685', },
-    { date: '01/01/2023', orderId: '321', price: '3.085', },
-]
+defineProps({
+    orders: {
+        type: Array,
+        default: [],
+    }
+})
 </script>

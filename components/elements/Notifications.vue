@@ -6,18 +6,16 @@
                 leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100"
                 leave-to-class="opacity-0">
 
-                <div v-if="toast" @click="popupStore.toggle('drawer')"
+                <div v-if="toast.open" @click="toast.options?.callback ? toast.options.callback() : () => console.log('click')"
                     class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-amber-100 shadow-lg ring-2 ring-amber-400 cursor-pointer">
                     <div class="p-4">
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
-
-                                <Icon name="material-symbols:check-circle-rounded" class="h-6 w-6 bg-green-500"
-                                    aria-hidden="true" />
+                                <Icon :name="toast.options.type === 'error' ? 'material-symbols:warning-rounded' : 'material-symbols:check-circle-rounded'" class="h-6 w-6" :class="toast.options.type === 'error' ? 'bg-red-500' : 'bg-green-500'"></Icon>
                             </div>
                             <div class="ml-3 w-0 flex-1 pt-0.5">
-                                <p class="text-sm font-medium ">Товар добавлен!</p>
-                                <p class="mt-1 text-sm underline underline-offset-4">Перейти в корзину</p>
+                                <p class="text-sm font-medium " v-if="toast.options?.title">{{ toast.options.title }}</p>
+                                <p class="mt-1 text-sm underline underline-offset-4" v-if="toast.options?.subtitle">{{ toast.options.subtitle }}</p>
 
                             </div>
                             <div class="ml-4 flex flex-shrink-0">
@@ -39,5 +37,4 @@
 <script setup>
 const popupStore = usePopupStore();
 const { toast } = storeToRefs(popupStore);
-
 </script>

@@ -1,7 +1,7 @@
 <template>
 
     <div class="">
-        <TransitionRoot as="template" :show="burger">
+        <TransitionRoot as="template" :show="burger.open">
             <Dialog class="" @close="popupStore.close('burger')">
                 <TransitionChild as="template" enter="ease-in-out duration-500" enter-from="opacity-0"
                     enter-to="opacity-100" leave="ease-in-out duration-500" leave-from="opacity-100"

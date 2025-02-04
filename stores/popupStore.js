@@ -1,24 +1,51 @@
 export const usePopupStore = defineStore('popupStore', {
     state: () => ({
-        search: false,
-        burger: false,
-        modal: false,
-        drawer: false,
-        toast: false,
+        search: {
+            open: false,
+            options: {}
+        },
+        burger: {
+            open: false,
+            options: {}
+        },
+        modal: {
+            open: false,
+            options: {}
+        },
+        drawer: {
+            open: false,
+            options: {}
+        },
+        toast: {
+            open: false,
+            options: {
+                type: 'success',
+                title: null,
+                subtitle: null,
+                timeout: 3000,
+            },
+        },
     }),
-    getters: {},
     actions: {
-        toggle(value) {
-            if (value === 'toast' || this[value]) {
-                setTimeout(() => {
-                    this[value] = false
-                }, 2000)
+        toggle(type, options = {}) {
+
+            if (this[type].open) {
+                this[type].open = false
             }
-            this[value] = !this[value]
+
+            if (type === 'toast' || this[type].open) {
+                setTimeout(() => {
+                    this[type].open = false
+                }, options.timeout || 3000)
+            }
+            this[type].open = !this[type].open
+            this[type].options = options
         },
 
-        close(value) {
-            this[value] = false;
+        close(type) {
+            this[type].open = false;
+            this[type].options = {};
         },
-    }
+    },
+    getters: {},
 })

@@ -45,7 +45,7 @@
                             </div>
 
                             <div>
-                                <button type="submit"
+                                <button type="submit" :disabled="login.disabled"
                                     class="flex w-full justify-center rounded-md bg-amber-400 px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all">
                                     Войти</button>
                             </div>
@@ -96,10 +96,14 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware: 'web',
+})
+
 const maskaOptions = useMaskaOptions();
 
 const authStore = useAuthStore();
-const { login } = storeToRefs(authStore);
+const { login } = useAuthStore();
 
 const breadcrumbs = [
     {
