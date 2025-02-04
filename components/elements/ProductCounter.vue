@@ -56,11 +56,11 @@ const numberClass = computed(() => {
                     <Icon name="ic:round-minus" class="shrink-0" :class="iconClass" />
                 </button>
 
-                <span :class="numberClass">{{ cartStore.getCountProductInCart(item.id) }}</span>
+                <span class="tabular-nums" :class="numberClass">{{ cartStore.getCountProductInCart(item.id) }}</span>
 
                 <button :disabled="cartStore.getCountProductInCart(item.id) >= item.count"
                     @click="cartStore.increment(item)"
-                    class="flex items-center rounded-lg bg-amber-400 hover:bg-amber-300 transition-base"
+                    class="flex items-center rounded-lg bg-amber-400 hover:bg-amber-300 transition-base "
                     :class="buttonClass">
                     <Icon name="ic:round-plus" class="shrink-0" :class="iconClass" />
                 </button>
