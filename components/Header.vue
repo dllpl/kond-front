@@ -199,10 +199,11 @@
 			</div>
 		</Popover>
 
-		<ElementsSearch @close="popupStore.close('search')" />
-		<ElementsDrawer @close="popupStore.close('drawer')" />
-		<ElementsBurger @close="popupStore.close('burger')" :data="navBurger" :calls="callsToAction" />
-		<NuxtLoadingIndicator :color="'#fbbf24'" />
+		<ElementsSearch />
+		<ElementsSearch />
+		<ElementsDrawer />
+		<ElementsBurger :data="navBurger" :calls="callsToAction" />
+		<!-- <NuxtLoadingIndicator :color="'#fbbf24'" /> -->
 	</header>
 </template>
 

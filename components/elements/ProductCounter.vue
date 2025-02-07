@@ -16,9 +16,9 @@ const props = defineProps({
     },
 })
 
-function showAlert() {
-    alert('Будет модалка с сообщением - Уведомим как только появится в наличии');
-}
+// function showAlert() {
+//     alert('Будет модалка с сообщением - Уведомим как только появится в наличии');
+// }
 
 // Динамические классы для кнопок
 const buttonClass = computed(() => {
@@ -40,7 +40,7 @@ const numberClass = computed(() => {
     <div class="flex items-center">
         <template v-if="item.count">
             <button v-if="!cartStore.issetInCart(item.id)"
-                @click="cartStore.increment(item); popupStore.toggle('toast', {title: 'Товар добавлен в корзину', subtitle: 'Перейти в корзину', callback: () => popupStore.toggle('drawer')})"
+                @click="cartStore.increment(item); popupStore.toggle('toast', { title: 'Товар добавлен в корзину', subtitle: 'Перейти в корзину', callback: () => popupStore.toggle('drawer') })"
                 class="flex items-center gap-x-2 w-full justify-center rounded-lg ring-2 ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 transition-base ">
                 <Icon name="material-symbols:shopping-cart-outline" class="w-5 h-5 " />
                 В корзину
@@ -69,7 +69,8 @@ const numberClass = computed(() => {
         </template>
 
         <!-- Уведомить о наличии -->
-        <button v-else type="button" @click="showAlert"
+        <button v-else type="button"
+            @click="popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы получить уведомление о поступлении товара', type: 'login' })"
             class="flex items-center gap-x-2 w-full justify-center rounded-lg px-2.5 py-2 transition-base ring-2 ring-gray-900/20 bg-gray-900 text-white hover:text-white hover:ring-red-500 hover:bg-red-500 group focus:rounded-md focus:ring-red-500 focus:text-white">
 
             <Icon name="material-symbols:notifications-active-rounded"
