@@ -29,7 +29,9 @@ export const useCartStore = defineStore('cartStore', {
 
         //удаление товара из корзины
         removeCart(productId) {
-            return this.products = this.products.filter(item => item.id !== productId);
+            const arr = this.products = this.products.filter(item => item.id !== productId);
+            this.saveToLocalStorage(this.products)
+            return arr
         },
 
         //проверяем если ли товар в корзине
@@ -72,6 +74,7 @@ export const useCartStore = defineStore('cartStore', {
                 product.inCart = 1;
                 this.products.push(product);
             }
+            this.saveToLocalStorage(this.products)
         },
 
         // Уменьшить количество товара
@@ -96,7 +99,23 @@ export const useCartStore = defineStore('cartStore', {
                     this.products = this.products.filter(item => item.id !== product.id);
                 }
             }
+            this.saveToLocalStorage(this.products)
         },
-    }
+
+
+        saveToLocalStorage(items) {
+            console.log(items)
+            localStorage.setItem('cart', JSON.stringify(items))
+        },
+
+        loadFromLocalStorage(products) {
+            const savedCart = localStorage.getItem('cart')
+            if (savedCart) {
+                this.products = JSON.parse(savedCart)
+            }
+        },
+
+    },
+    persist: true
 
 })

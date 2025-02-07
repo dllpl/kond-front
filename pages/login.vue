@@ -4,11 +4,14 @@
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
         </section>
         <main class="wrapper-container relative">
+
             <div class="flex min-h-full flex-1 flex-col justify-center py-12 pb-20 md:py-8">
-
-                <h1 class="text-center text-3xl font-semibold mb-8 md:mb-4">Вход</h1>
-
-                <div class="mx-auto w-full max-w-lg">
+                <h1 class="text-center text-3xl font-semibold mb-6 md:mb-4">Вход</h1>
+                <div class="bg-white w-full max-w-lg mx-auto shadow rounded-lg py-8 px-8 sm:px-4 sm:py-6">
+                    <ElementsLogin />
+                </div>
+            </div>
+            <!--  <div class="mx-auto w-full max-w-lg">
 
                     <div class="bg-white shadow rounded-lg py-8 px-8 sm:px-4 sm:py-6">
 
@@ -90,14 +93,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </main>
     </div>
 </template>
 
 <script setup>
 definePageMeta({
-  middleware: 'web',
+    middleware: 'web',
 })
 
 const maskaOptions = useMaskaOptions();

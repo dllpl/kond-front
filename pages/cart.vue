@@ -65,7 +65,7 @@
                     <ElementsSliderProduct :data="productsOffers.data" title="Спецпредложения" class="relative" />
                 </section>
 
-                <div class="grid grid-cols-2 gap-12 lg:grid-cols-1 lg:gap-6">
+                <section class="grid grid-cols-2 gap-12 lg:grid-cols-1 lg:gap-6">
                     <div class="py-6 px-8 border border-gray-200 rounded-lg xs:py-6 xs:px-4">
                         <h2 class="text-lg font-medium text-gray-900 mb-6">Контактные данные</h2>
 
@@ -122,7 +122,6 @@
                         </ul>
                     </div>
 
-
                     <div class="py-6 px-8 border border-gray-200 rounded-lg xs:py-6 xs:px-4">
                         <h2 class="text-lg font-medium text-gray-900 mb-6">Способ получения</h2>
 
@@ -154,16 +153,44 @@
                                     </label>
                                 </div>
 
-                                <input v-if="is_pickup === false" type="text" name="city" id="city"
-                                    autocomplete="address-level2" placeholder="Адрес"
-                                    class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
+                                <Combobox v-model="selected" v-if="is_pickup === false" type="text" name="city"
+                                    id="city">
+                                    <div class="relative mt-1">
+                                        <div class="relative">
 
+                                            <ComboboxInput :displayValue="(item) => item.name" placeholder="Адрес"
+                                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
+                                                @change="query = searchAdress($event.target.value)" />
+                                        </div>
+                                        <TransitionRoot leave="transition ease-in duration-100" leaveFrom="opacity-100"
+                                            leaveTo="opacity-0" @after-leave="query = ''">
+                                            <ComboboxOptions
+                                                class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+                                                <div v-if="adresess.length === 0 && query !== ''"
+                                                    class="relative cursor-default select-none px-4 py-2 text-gray-700 text-sm">
+                                                    Адрес не найден
+                                                </div>
+
+                                                <ComboboxOption v-for="item in adresess" as="template"
+                                                    :key="item.fias_id" :value="item" v-slot="{ selected, active }">
+                                                    <li
+                                                        class="relative cursor-default select-none py-2 px-4  hover:bg-amber-300 text-sm">
+                                                        <span class="block">
+                                                            {{ item.name }}
+                                                        </span>
+                                                        <span v-if="!selected"
+                                                            class="absolute inset-y-0 left-0 flex items-center pl-1">
+                                                        </span>
+                                                    </li>
+                                                </ComboboxOption>
+                                            </ComboboxOptions>
+                                        </TransitionRoot>
+                                    </div>
+                                </Combobox>
                             </div>
-
                         </div>
                     </div>
-
-                </div>
+                </section>
 
                 <section class="rounded-lg bg-gray-200/20 p-8 xs:py-6 xs:px-4">
                     <h2 class="text-lg font-medium text-gray-900">Ваш заказ</h2>
@@ -240,13 +267,12 @@
                 </section>
 
             </div>
-
-
         </main>
     </div>
 </template>
 
 <script setup>
+
 const breadcrumbs = [
     {
         name: 'Оформление заказа',
@@ -275,4 +301,19 @@ const form = ref({
     city: ''
 })
 
+const query = ref('')
+const selected = ref({})
+
+const adresess = ref([])
+const searchAdress = async (value) => {
+    console.log(value)
+    const { data } = await useFetch('dadata/address', {
+        method: 'POST',
+        body: {
+            query: value,
+            count: 5,
+        }
+    })
+    adresess.value = data.value
+}
 </script>

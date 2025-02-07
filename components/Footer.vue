@@ -152,16 +152,16 @@ const popupStore = usePopupStore();
 
 const navigation = {
     menu: [
-        { name: 'Каталог', href: 'catalog' },
+        { name: 'Каталог', href: '/catalog' },
         { name: 'Съедобная печать', href: '#' },
-        { name: 'Блог', href: 'blog' },
-        { name: 'Контакты', href: 'contacts' },
+        { name: 'Блог', href: '/blog' },
+        { name: 'Контакты', href: '/contacts' },
         { name: 'Вход | Регистрация', href: '#' },
     ],
 
     other: [
-        { name: 'О магазине', href: 'about' },
-        { name: 'Доставка и оплата', href: 'delivery' },
+        { name: 'О магазине', href: '/about' },
+        { name: 'Доставка и оплата', href: '/delivery' },
         { name: 'Избранное', href: '#' },
         { name: 'Корзина' },
         { name: 'Поиск' },

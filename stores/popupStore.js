@@ -10,7 +10,11 @@ export const usePopupStore = defineStore('popupStore', {
         },
         modal: {
             open: false,
-            options: {}
+            options: {
+                title: null,
+                subtitle: null,
+                type: 'login',
+            }
         },
         drawer: {
             open: false,
@@ -44,7 +48,7 @@ export const usePopupStore = defineStore('popupStore', {
 
         close(type) {
             this[type].open = false;
-            this[type].options = {};
+            // this[type].options = {};
         },
     },
     getters: {},
