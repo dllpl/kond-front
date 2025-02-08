@@ -46,7 +46,15 @@
             <div>
                 <button type="submit" :disabled="login.disabled"
                     class="flex w-full justify-center rounded-md bg-amber-400 px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all">
-                    Войти</button>
+                  <svg v-if="login.disabled" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                       viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                    </path>
+                  </svg>
+                  Войти
+                </button>
             </div>
         </form>
 
@@ -74,20 +82,7 @@
                     <span class="bg-white px-6">Или войти через</span>
                 </div>
             </div>
-
-            <div class="mt-6 grid grid-cols-2 gap-4 xs:grid-cols-1">
-                <a href="#"
-                    class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent transition-all">
-                    <Icon name="vscode-icons:file-type-yandex" class="w-6 h-6" />
-                    <span class="text-sm font-semibold ">Яндекс</span>
-                </a>
-
-                <a href="#"
-                    class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent transition-all">
-                    <Icon name="bxl:vk" class="w-6 h-6 text-[#07F]" />
-                    <span class="text-sm font-semibold ">ВКонтакте</span>
-                </a>
-            </div>
+            <ElementsQuickLogin/>
         </div>
         <!-- </div> -->
     </div>

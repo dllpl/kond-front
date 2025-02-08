@@ -14,6 +14,7 @@
     "@egjs/vue3-flicking": "^4.11.4",
     "axios": "^1.7.7",
     "google-fonts": "^1.0.0",
+    "nuxt-booster": "^3.1.10",
     "pinia": "^2.2.8",
     "vue": "^3.5.12",
     "vue-router": "latest",

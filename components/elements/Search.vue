@@ -19,6 +19,7 @@
                                     class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
                                     aria-hidden="true" />
                                 <ComboboxInput
+                                    autofocus
                                     class="h-12 w-full border-0 bg-transparent pl-11 pr-4 placeholder:text-gray-400 focus:ring-0"
                                     placeholder="Введите название..." @change="goToSearch($event.target.value)"
                                     @blur="query = ''" />
@@ -65,9 +66,6 @@ async function goToSearch(i) {
             }
         });
         searchResult.value = result.value.data
-    }
-    else {
-        console.log('false');
     }
 }
 

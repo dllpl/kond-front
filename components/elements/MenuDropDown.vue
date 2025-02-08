@@ -1,8 +1,10 @@
 <template>
     <div class="flex flex-col w-full p-4 rounded-lg bg-white shadow-lg">
-        <h2 class="pb-2 mb-2 font-bold text-4xl border-b border-gray-500/10 2xl:text-3xl">Каталог</h2>
-
-
+      <NuxtLink to="/catalog">
+        <h2 class="pb-2 mb-2 font-bold text-4xl border-b border-gray-500/10 2xl:text-3xl">
+          Каталог
+        </h2>
+      </NuxtLink>
         <ul>
             <li v-for="item in data" class="group dropdown relative transition-base">
 

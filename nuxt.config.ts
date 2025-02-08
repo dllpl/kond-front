@@ -15,14 +15,8 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': {
-      sitemap: {priority: 1.0, changefreq: 'weekly'},
-      headers: {'Cache-Control': 'public, max-age=31536000, immutable'},
+      sitemap: {priority: 1.0, changefreq: 'daily'},
     },
-
-    '/**': {
-      headers: {'Cache-Control': 'public, max-age=31536000, immutable'},
-    },
-
   },
 
   modules: [
@@ -34,7 +28,9 @@ export default defineNuxtConfig({
     'yandex-metrika-module-nuxt3',
     'nuxt-headlessui',
     'nuxt-splide',
+    'nuxt-booster'
   ],
+  
 // @ts-ignore
   splide: {
     theme: 'default'

@@ -20,9 +20,9 @@
                   Телефон
                 </label>
                 <div class="mt-2">
-                  <input v-model="register.form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel"
+                  <input v-model="register.form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel" placeholder="+7 (___) ___-__-__"
                     autocomplete="tel" required :class="register.errors?.phone ? 'ring-2 ring-red-400' : ''"
-                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
+                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
                   <span v-if="register.errors?.phone" class="absolute text-[11px]">
                     {{ register.errors.phone[0] }}
                   </span>
@@ -34,9 +34,9 @@
                   Email адрес
                 </label>
                 <div class="mt-2">
-                  <input v-model="register.form.email" name="email" type="email" autocomplete="email" required
+                  <input v-model="register.form.email" name="email" type="email" autocomplete="email" required placeholder="Укажите электронную почту"
                     :class="register.errors?.email ? 'ring-2 ring-red-400' : ''"
-                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
+                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
                   <span v-if="register.errors?.email" class="absolute text-[11px]">
                     {{ register.errors.email[0] }}
                   </span>
@@ -59,9 +59,9 @@
               </div>
 
               <div>
-                <button type="submit"
+                <button type="submit" :disabled="register.disabled"
                   class="flex w-full items-center justify-center rounded-md bg-amber-400 px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all ">
-                  <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  <svg v-if="register.disabled" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor"
@@ -81,20 +81,7 @@
                   <span class="bg-white px-6">Или через</span>
                 </div>
               </div>
-
-              <div class="mt-6 grid grid-cols-2 gap-4 xs:grid-cols-1">
-                <a href="#"
-                  class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent transition-all">
-                  <Icon name="vscode-icons:file-type-yandex" class="w-6 h-6" />
-                  <span class="text-sm font-semibold ">Яндекс</span>
-                </a>
-
-                <a href="#"
-                  class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent transition-all">
-                  <Icon name="bxl:vk" class="w-6 h-6 text-[#07F]" />
-                  <span class="text-sm font-semibold ">ВКонтакте</span>
-                </a>
-              </div>
+              <ElementsQuickLogin/>
             </div>
           </div>
         </div>
