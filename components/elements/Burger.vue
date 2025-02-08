@@ -75,7 +75,6 @@ const { burger } = storeToRefs(popupStore);
 const props = defineProps({
     show: Boolean,
     data: Array,
-    calls: Array,
 })
 
 let nav = props.data

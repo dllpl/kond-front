@@ -33,10 +33,6 @@ export const usePopupStore = defineStore('popupStore', {
     actions: {
         toggle(type, options = {}) {
 
-            if (this[type].open) {
-                this[type].open = false
-            }
-
             if (type === 'toast' || this[type].open) {
                 setTimeout(() => {
                     this[type].open = false

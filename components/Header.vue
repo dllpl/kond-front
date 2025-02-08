@@ -34,11 +34,6 @@
 												<span :class="['block truncate', selected && 'font-semibold']">
 													{{ city.name }}
 												</span>
-
-												<span v-if="selected"
-													:class="['absolute inset-y-0 right-0 flex items-center pr-4', active ? 'text-white' : 'text-red-500']">
-													<CheckIcon class="h-5 w-5" aria-hidden="true" />
-												</span>
 											</li>
 										</ComboboxOption>
 									</ComboboxOptions>
@@ -200,10 +195,9 @@
 		</Popover>
 
 		<ElementsSearch />
-		<ElementsSearch />
 		<ElementsDrawer />
-		<ElementsBurger :data="navBurger" :calls="callsToAction" />
-		<!-- <NuxtLoadingIndicator :color="'#fbbf24'" /> -->
+		<ElementsBurger :data="navBurger"/>
+		 <NuxtLoadingIndicator :color="'#fbbf24'" />
 	</header>
 </template>
 
