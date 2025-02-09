@@ -14,14 +14,12 @@
     "@egjs/vue3-flicking": "^4.11.4",
     "axios": "^1.7.7",
     "google-fonts": "^1.0.0",
-    "nuxt-booster": "^3.1.10",
     "pinia": "^2.2.8",
     "vue": "^3.5.12",
     "vue-router": "latest",
     "yandex-metrika-module-nuxt3": "^1.5.3"
   },
   "devDependencies": {
-    "@fancyapps/ui": "^5.0.36",
     "@nuxt/icon": "^1.5.6",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/seo": "^2.0.0-rc.23",
@@ -35,7 +33,6 @@
     "nuxt": "^3.13.2",
     "nuxt-headlessui": "^1.2.0",
     "nuxt-icon": "^1.0.0-beta.7",
-    "nuxt-splide": "^1.1.1",
     "postcss": "^8.4.47",
     "sass-embedded": "^1.81.0",
     "tailwindcss": "^3.4.14"
