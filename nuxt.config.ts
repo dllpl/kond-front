@@ -26,7 +26,6 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    payloadExtraction: true, // Использование Payload для быстрой загрузки
     viewTransition: true, // Плавные переходы между страницами
   },
 
