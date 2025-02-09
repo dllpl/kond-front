@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ['/contacts', '/products', '/about', '/delivery', '/login', '/register'], // Генерация статичных страниц
+      routes: ['/contacts', '/about', '/delivery', '/login', '/registration'], // Генерация статичных страниц
     },
   },
 
