@@ -14,9 +14,10 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/': {
-      sitemap: {priority: 1.0, changefreq: 'daily'},
-    },
+    "/_nuxt/**": { headers: { "Cache-Control": "public, max-age=31536000, immutable" } },
+    "/static/**": { headers: { "Cache-Control": "public, max-age=86400" } }, // Кэш на сутки
+    "/api/**": { headers: { "Cache-Control": "no-store" } }, // API не кэшируем
+    "/*": { headers: { "Cache-Control": "public, max-age=3600" } }, // Кэш страниц на 1 час
   },
 
   modules: [
@@ -27,14 +28,9 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     'yandex-metrika-module-nuxt3',
     'nuxt-headlessui',
-    'nuxt-splide',
-    'nuxt-booster'
   ],
   
 // @ts-ignore
-  splide: {
-    theme: 'default'
-  },
   css: ['~/assets/css/main.css'],
 
   headlessui: {
