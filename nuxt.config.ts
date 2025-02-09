@@ -3,10 +3,16 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: {enabled: false},
+  ssr: true,
+
+  nitro: {
+    prerender: {
+      routes: ['/contacts', '/products', '/about', '/delivery', '/login', '/register'], // Генерация статичных страниц
+    },
+  },
 
   runtimeConfig: {
     public: {
-      // @ts-ignore
       backOptions: {
         storage: process.env.STORAGE_PATH,
         api: process.env.API_URL,
@@ -15,9 +21,13 @@ export default defineNuxtConfig({
   },
   routeRules: {
     "/_nuxt/**": { headers: { "Cache-Control": "public, max-age=31536000, immutable" } },
-    "/static/**": { headers: { "Cache-Control": "public, max-age=86400" } }, // Кэш на сутки
-    "/api/**": { headers: { "Cache-Control": "no-store" } }, // API не кэшируем
-    "/*": { headers: { "Cache-Control": "public, max-age=3600" } }, // Кэш страниц на 1 час
+    "/static/**": { headers: { "Cache-Control": "public, max-age=86400" } },
+    "/api/**": { swr: 300, headers: { "Cache-Control": "public, max-age=300" } },
+  },
+
+  experimental: {
+    payloadExtraction: true, // Использование Payload для быстрой загрузки
+    viewTransition: true, // Плавные переходы между страницами
   },
 
   modules: [
@@ -29,8 +39,7 @@ export default defineNuxtConfig({
     'yandex-metrika-module-nuxt3',
     'nuxt-headlessui',
   ],
-  
-// @ts-ignore
+
   css: ['~/assets/css/main.css'],
 
   headlessui: {
@@ -52,7 +61,6 @@ export default defineNuxtConfig({
 
 
   app: {
-    // pageTransition: {name: 'page', mode: 'out-in'},
     head: {
       htmlAttrs: {
         lang: 'ru'
