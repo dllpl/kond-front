@@ -18,8 +18,8 @@
 
                                 <button @click="popupStore.close('modal')" type="button"
                                     class=" absolute top-2.5 right-2.5 flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20 transition-base text-gray-400 hover:text-indigo-950 hover:ring-indigo-950 group">
-                                    <span class="sr-only">Закрыть корзину</span>
-                                    <Icon name="iconify i-material-symbols:close-rounded h-5 w-5" aria-hidden="true" />
+                                    <span class="sr-only">Закрыть</span>
+                                    <Icon name="hugeicons:cancel-01" class="h-5 w-5" aria-hidden="true" />
                                 </button>
                                 <ElementsLogin :title="modal.options.title" :subtitle="modal.options.subtitle" />
                             </div>

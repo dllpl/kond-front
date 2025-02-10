@@ -20,9 +20,9 @@
                                 {{ item.title }}
                             </NuxtLink>
                         </h3>
-                        <div class="mt-1 flex items-end space-x-0.5">
+                        <div class="mt-1 flex items-center space-x-1">
                             <span aria-hidden="true">Подробнее</span>
-                            <Icon name="material-symbols:keyboard-double-arrow-right-rounded"
+                            <Icon name="hugeicons:circle-arrow-right-01"
                                 class="w-5 h-5 group-hover:translate-x-1 transition-base shrink-0 "
                                 aria-hidden="true" />
                         </div>

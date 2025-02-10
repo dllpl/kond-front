@@ -14,7 +14,7 @@
                                 <NuxtLink to="/"
                                     class="group inline-flex items-center gap-x-1 justify-center rounded-lg mt-6 px-5 py-2 font-semibold text-white border-2 transition-base">
                                     Перейти
-                                    <icon name="material-symbols:keyboard-double-arrow-right-rounded"
+                                    <icon name="hugeicons:arrow-right-double"
                                         class="w-5 h-5 group-hover:translate-x-1 transition-base"></icon>
                                 </NuxtLink>
                             </div>

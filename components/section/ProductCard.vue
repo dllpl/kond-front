@@ -33,7 +33,7 @@
 
             <button
                 class="absolute top-2.5 right-2.5 flex items-center justify-center transition-all p-1 bg-white/70 rounded-md ring-1 ring-gray-300/20 hover:bg-red-600 hover:text-white">
-                <Icon name="material-symbols:favorite-outline-rounded" class="w-6 h-6 ">
+                <Icon name="hugeicons:heart-add" class="w-6 h-6 ">
                 </Icon>
             </button>
         </div>

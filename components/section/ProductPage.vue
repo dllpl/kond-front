@@ -62,7 +62,7 @@ const props = defineProps({
                         <button type="button"
                             class="flex items-center gap-x-2 w-full justify-center rounded-lg px-2.5 py-2 transition-base ring-2 ring-gray-300/20 hover:text-white hover:ring-red-500 hover:bg-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-500">
 
-                            <Icon name="material-symbols:favorite-rounded"
+                            <Icon name="hugeicons:heart-add"
                                 class="w-6 h-6 group-hover:text-white text-red-500 transition-base">
                             </Icon>
                             В избранное
@@ -80,22 +80,22 @@ const props = defineProps({
                             <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                                 class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Whatsapp</span>
-                                <Icon name="mdi:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
                             <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
                                 class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Instagram</span>
-                                <Icon name="mdi:instagram" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
                             <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
                                 class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Телеграм</span>
-                                <Icon name="teenyicons:telegram-outline" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
                             <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
                                 class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">ВКонтакте</span>
-                                <Icon name="basil:vk-outline" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
                         </div>
                     </div>
@@ -189,22 +189,22 @@ const props = defineProps({
                             <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                                 class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Whatsapp</span>
-                                <Icon name="mdi:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
                             <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
                                 class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Instagram</span>
-                                <Icon name="mdi:instagram" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
                             <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
                                 class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Телеграм</span>
-                                <Icon name="teenyicons:telegram-outline" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
                             <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
                                 class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">ВКонтакте</span>
-                                <Icon name="basil:vk-outline" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
                         </div>
                     </div>
@@ -212,8 +212,8 @@ const props = defineProps({
 
                 <!-- Product others -->
                 <div class="relative col-span-8 mt-8 lg:col-span-1 lg:mt-0">
-                    <ElementsSliderProduct v-if="product.similars?.length" class="col-span-2 lg:grid-cols-1" :data="product.similars"
-                        title="Похожие товары" />
+                    <ElementsSliderProduct v-if="product.similars?.length" class="col-span-2 lg:grid-cols-1"
+                        :data="product.similars" title="Похожие товары" />
                 </div>
             </div>
         </div>

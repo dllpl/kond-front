@@ -52,8 +52,7 @@
                                             focus:ring-indigo-950
                                             hover:text-indigo-950 group">
 
-                                    <Icon name="material-symbols-light:close-rounded" class="h-4 w-4"
-                                        aria-hidden="true" />
+                                    <Icon name="hugeicons:cancel-01" class="h-4 w-4" aria-hidden="true" />
                                 </button>
 
                             </div>
@@ -210,8 +209,7 @@
                                     class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all ">
                                 <button type="submit"
                                     class="absolute right-0 top-0 shadow-sm flex items-center justify-center rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all h-full">
-                                    <Icon name="material-symbols:arrow-right-alt-rounded"
-                                        class="h-5 w-5 text-grey-900" />
+                                    <Icon name="hugeicons:arrow-right-02" class="h-5 w-5 text-grey-900" />
                                 </button>
                             </div>
                         </li>

@@ -25,8 +25,7 @@
                                             <button type="button" @click="popupStore.close('drawer')"
                                                 class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20 transition-base text-gray-400 hover:text-indigo-950 hover:ring-indigo-950 group">
                                                 <span class="sr-only">Закрыть корзину</span>
-                                                <Icon name="material-symbols:close-rounded" class="h-6 w-6"
-                                                    aria-hidden="true" />
+                                                <Icon name="hugeicons:cancel-01" class="h-6 w-6" aria-hidden="true" />
                                             </button>
                                         </div>
                                     </div>
