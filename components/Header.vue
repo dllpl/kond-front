@@ -8,7 +8,7 @@
 					aria-label="Верхнее меню">
 
 					<div class="flex items-center gap-5 lg:w-full lg:justify-between xs:w-auto">
-						<div class="flex items-center gap-x-2.5 sm:hidden">
+						<!-- <div class="flex items-center gap-x-2.5 sm:hidden">
 							<Combobox as="div" v-model="selectedCity" @update:modelValue="query = ''"
 								class="flex items-center gap-2">
 								<ComboboxLabel class="text-sm text-gray-900 flex items-center gap-1">
@@ -44,7 +44,7 @@
 									</ComboboxOptions>
 								</div>
 							</Combobox>
-						</div>
+						</div> -->
 
 						<NuxtLink :to="`tel:${contacts.phone}`" target="_blank"
 							class="flex items-center gap-2 transition-base rounded-md hover:text-red-600 group focus:bg-red-500 focus:rounded-md focus:text-white
@@ -99,7 +99,7 @@
 							<button type="button" @click="popupStore.toggle('burger')"
 								class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 								<span class="sr-only">Открыть меню</span>
-								<Icon name="material-symbols:menu" class="w-6 h-6" aria-hidden="true" />
+								<Icon name="mdi-light:menu" class="w-6 h-6" aria-hidden="true" />
 							</button>
 						</div>
 
@@ -123,7 +123,7 @@
 
 						<PopoverButton type="button"
 							class="group flex items-center gap-2 text-base font-semibold text-gray-900 transition-all hover:text-red-600 focus:text-red-600">
-							<Icon name="ph:squares-four-thin" class="w-6 h-6 group-hover:text-red-600"
+							<Icon name="hugeicons:dashboard-square-01" class=" w-6 h-6 group-hover:text-red-600"
 								aria-hidden="true" />
 							Каталог
 						</PopoverButton>
@@ -139,7 +139,7 @@
 						<!-- Search -->
 						<button type="button" @click="popupStore.toggle('search')"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
-							<Icon name="material-symbols:search" class="w-6 h-6 group-hover:stroke-red-600">
+							<Icon name="hugeicons:search-01" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
 
@@ -147,16 +147,14 @@
 						<a href="http://"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 
-							<Icon name="material-symbols:favorite-outline-rounded"
-								class="w-6 h-6 group-hover:stroke-red-600">
+							<Icon name="hugeicons:heart-check" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</a>
 
 						<!-- Basket -->
 						<button @click="popupStore.toggle('drawer')"
 							class="relative flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
-							<Icon name="material-symbols:shopping-cart-outline"
-								class="w-6 h-6 group-hover:stroke-red-600">
+							<Icon name="hugeicons:shopping-cart-02" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 							<span v-if="cartStore.totalCountProducts"
 								class="absolute -top-2 -right-2 flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full">

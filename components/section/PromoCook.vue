@@ -22,7 +22,7 @@
                     <NuxtLink :to="'/catalog'"
                         class="group flex items-center gap-x-1 w-auto mr-auto justify-center rounded-lg mt-6 bg-amber-400 px-5 py-2 hover:bg-amber-300 transition-base lg:inline-flex lg:px-10">
                         В каталог
-                        <icon name="material-symbols-light:keyboard-double-arrow-right-rounded"
+                        <icon name="hugeicons:arrow-right-double"
                             class="w-5 h-5 group-hover:translate-x-1 transition-base"></icon>
                     </NuxtLink>
                 </div>

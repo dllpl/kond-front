@@ -22,25 +22,25 @@
                 <div class="flex flex-wrap gap-6 pt-8 ">
                     <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                         class="group hover:shadow-lg flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-green-500 px-4 py-3 text-white transition-base ">
-                        <icon name="mdi:whatsapp" class="h-6 w-6  text-white " />
+                        <icon name="fa-brands:whatsapp" class="h-6 w-6  text-white " />
                         <span class="xs:hidden">Whatsapp</span>
                     </NuxtLink>
 
                     <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
                         class="group hover:shadow-lg flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FDCB82] px-4 py-3 text-white transition-base ">
-                        <icon name="mdi:instagram" class="h-6 w-6 text-white " />
+                        <icon name="fa-brands:instagram" class="h-6 w-6 text-white " />
                         <span class="xs:hidden">Instagram</span>
                     </NuxtLink>
 
                     <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
                         class="group hover:shadow-lg flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-sky-500 px-4 py-3 text-white transition-base ">
-                        <icon name="basil:vk-outline" class="h-6 w-6 text-white " />
+                        <icon name="fa-brands:vk" class="h-6 w-6 text-white " />
                         <span class="xs:hidden">ВКонтакте</span>
                     </NuxtLink>
 
                     <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
                         class="group hover:shadow-lg flex items-center gap-x-2 text-sm font-semibold rounded-lg bg-sky-500 px-4 py-3 text-white transition-base ">
-                        <icon name="teenyicons:telegram-outline" class="h-6 w-6 text-white " />
+                        <icon name="fa-brands:telegram-plane" class="h-6 w-6 text-white " />
                         <span>Телеграм</span>
                     </NuxtLink>
                 </div>

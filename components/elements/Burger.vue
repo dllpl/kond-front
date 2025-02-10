@@ -27,7 +27,7 @@
                             <button type="button" @click="popupStore.close('burger')"
                                 class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
                                 <span class="sr-only">Закрыть меню</span>
-                                <Icon name="material-symbols:close-rounded" class="w-6 h-6 group-hover:stroke-red-600"
+                                <Icon name="hugeicons:cancel-01" class="w-6 h-6 group-hover:stroke-red-600"
                                     aria-hidden="true"></Icon>
                             </button>
                         </div>

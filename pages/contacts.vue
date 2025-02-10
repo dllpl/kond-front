@@ -43,8 +43,7 @@
                             <div class="flex gap-x-4">
                                 <dt class="flex-none">
                                     <span class="sr-only">Адрес</span>
-                                    <Icon name="material-symbols-light:home-work-outline-rounded" class="w-6 h-6"
-                                        aria-hidden="true" />
+                                    <Icon name="hugeicons:building-03" class="w-6 h-6" aria-hidden="true" />
                                 </dt>
                                 <dd>{{ contacts.address }}</dd>
                             </div>
@@ -70,30 +69,31 @@
 
                     <div class="lg:col-start-2 sm:col-auto">
                         <h2 class="mb-4 font-semibold text-lg">Наши социальные сети</h2>
+
                         <div class="flex space-x-2 ">
 
                             <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                                 class="flex items-center p-1.5  transition-base hover:text-red-600  focus:text-red-600 ">
                                 <span class="sr-only">Whatsapp</span>
-                                <Icon name="mdi:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
 
                             <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
                                 class="flex items-center p-1.5  transition-base hover:text-red-600  focus:text-red-600 ">
                                 <span class="sr-only">Instagram</span>
-                                <Icon name="mdi:instagram" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
 
                             <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
                                 class="flex items-center p-1.5  transition-base hover:text-red-600  focus:text-red-600 ">
                                 <span class="sr-only">Телеграм</span>
-                                <Icon name="teenyicons:telegram-outline" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
 
                             <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
                                 class="flex items-center p-1.5  transition-base hover:text-red-600  focus:text-red-600 ">
                                 <span class="sr-only">ВКонтакте</span>
-                                <Icon name="basil:vk-outline" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true" />
                             </NuxtLink>
 
                         </div>

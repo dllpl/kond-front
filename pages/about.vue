@@ -29,8 +29,8 @@
 
 
             <div class="mb-20 flex gap-6 sm:flex-col xs:mb-10">
-                <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-600 shrink-0">
-                    <Icon name="hugeicons:location-star-02" class="w-10 h-10 text-white" />
+                <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-500 shrink-0">
+                    <Icon name="hugeicons:ai-idea" class="text-white w-10 h-10 " />
                 </div>
                 <div class="">
                     <h2 class="text-3xl font-bold mb-4 xs:text-2xl">Наша миссия</h2>
@@ -50,7 +50,7 @@
                     </h2>
                     <ul class="space-y-6 xs:space-y-4">
                         <li v-for="item in withUs" :key="withUs.id" class="flex gap-x-3">
-                            <Icon name="weui:done2-filled" class="w-6 h-6 text-red-500 shrink-0" />
+                            <Icon name="hugeicons:checkmark-badge-04" class="w-6 h-6 text-red-500 shrink-0" />
                             <div class="">
                                 <h3 class="inline font-main font-bold mb-4 ">{{ item.name }}</h3>
                                 {{ ' ' }}

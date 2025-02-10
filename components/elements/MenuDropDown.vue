@@ -11,8 +11,8 @@
                         <img :src="storage + item.img" :alt="item.title" class="w-8 h-auto">
                         <span class="leading-normal">{{ item.title }}</span>
                     </div>
-                    <Icon name="material-symbols:keyboard-arrow-down-rounded"
-                        class="w-6 h-6 transition-base group-hover:-rotate-90 shrink-0" aria-hidden="true" />
+                    <Icon name="hugeicons:arrow-down-01" class="w-6 h-6 transition-base group-hover:-rotate-90 shrink-0"
+                        aria-hidden="true" />
                 </NuxtLink>
 
                 <ul v-if="item?.children && item.children.length"
