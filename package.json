@@ -29,7 +29,6 @@
     "@nuxtjs/seo": "^2.0.0-rc.23",
     "@pinia/nuxt": "^0.8.0",
     "@vee-validate/i18n": "^4.14.3",
-    "@vee-validate/nuxt": "^4.14.3",
     "@vee-validate/rules": "^4.14.3",
     "autoprefixer": "^10.4.20",
     "lvovich": "^2.0.2",

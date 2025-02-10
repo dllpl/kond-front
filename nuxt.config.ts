@@ -14,10 +14,10 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/": {swr: 300, headers: {"Cache-Control": "public, max-age=300"}},
-    "/_nuxt/**": {headers: {"Cache-Control": "public, max-age=31536000, immutable"}},
-    "/static/**": {headers: {"Cache-Control": "public, max-age=86400"}},
-    "/api/**": {swr: 300, headers: {"Cache-Control": "public, max-age=300"}},
+    "/": { swr: 300, headers: { "Cache-Control": "public, max-age=300" } },
+    "/_nuxt/**": { headers: { "Cache-Control": "public, max-age=31536000, immutable" } },
+    "/static/**": { headers: { "Cache-Control": "public, max-age=86400" } },
+    "/api/**": { swr: 300, headers: { "Cache-Control": "public, max-age=300" } },
   },
 
   icon: {
@@ -37,7 +37,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/google-fonts',
     '@nuxtjs/seo',
-    '@vee-validate/nuxt',
     'yandex-metrika-module-nuxt3',
     'nuxt-headlessui',
   ],
@@ -82,16 +81,6 @@ export default defineNuxtConfig({
   router: {
     options: {
       scrollBehaviorType: 'smooth'
-    },
-  },
-
-  veeValidate: {
-    autoImports: true,
-    componentNames: {
-      Form: 'VeeForm',
-      Field: 'VeeField',
-      FieldArray: 'VeeFieldArray',
-      ErrorMessage: 'VeeErrorMessage',
     },
   },
 
