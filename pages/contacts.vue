@@ -19,7 +19,7 @@
                             <div class="flex gap-x-4">
                                 <dt class="flex-none">
                                     <span class="sr-only">Телефон</span>
-                                    <Icon name="mdi-light:phone" class="w-6 h-6 " aria-hidden="true" />
+                                    <Icon name="hugeicons:calling" class="w-6 h-6 text-gray-700" aria-hidden="true" />
                                 </dt>
                                 <dd>
                                     <NuxtLink :to="`tel:${contacts.phone}`" target="_blank"
@@ -31,11 +31,12 @@
                             <div class="flex gap-x-4">
                                 <dt class="flex-none">
                                     <span class="sr-only">Почта</span>
-                                    <Icon name="mdi-light:email" class="w-6 h-6" aria-hidden="true" />
+                                    <Icon name="hugeicons:ai-mail-02" class="w-6 h-6 text-gray-700"
+                                        aria-hidden="true" />
                                 </dt>
                                 <dd>
                                     <NuxtLink :to="`mailto:${contacts.email}`" target="_blank"
-                                        class="hover:text-red-600  focus:text-red-600 transition-all">
+                                        class="hover:text-red-600 focus:text-red-600 transition-all">
                                         {{ contacts.email }}
                                     </NuxtLink>
                                 </dd>
@@ -43,7 +44,8 @@
                             <div class="flex gap-x-4">
                                 <dt class="flex-none">
                                     <span class="sr-only">Адрес</span>
-                                    <Icon name="hugeicons:building-03" class="w-6 h-6" aria-hidden="true" />
+                                    <Icon name="hugeicons:building-03" class="w-6 h-6 text-gray-700"
+                                        aria-hidden="true" />
                                 </dt>
                                 <dd>{{ contacts.address }}</dd>
                             </div>
@@ -56,7 +58,7 @@
                             <div class="flex gap-x-4">
                                 <dt class="flex-none">
                                     <span class="sr-only">График работы</span>
-                                    <Icon name="mdi-light:clock" class="w-6 h-6" aria-hidden="true" />
+                                    <Icon name="hugeicons:clock-03" class="w-6 h-6 text-gray-700" aria-hidden="true" />
                                 </dt>
                                 <dd>
                                     Пн-Пт: {{ contacts.wt_weekday }}<br>
