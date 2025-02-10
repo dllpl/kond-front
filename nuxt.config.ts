@@ -11,6 +11,12 @@ export default defineNuxtConfig({
     },
   },
 
+  icon: {
+    serverBundle: {
+      remote: 'jsdelivr', // 'unpkg' or 'github-raw', or a custom function
+    }
+  },
+
   runtimeConfig: {
     public: {
       backOptions: {
