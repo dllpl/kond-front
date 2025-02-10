@@ -27,7 +27,12 @@ export default defineNuxtConfig({
 
   icon: {
     provider: "server",
-    mode: 'svg'
+    mode: 'svg',
+    clientBundle: {
+      scan: true,
+
+      includeCustomCollections: true,
+    }
   },
 
   experimental: {
