@@ -25,6 +25,10 @@ export default defineNuxtConfig({
     "/api/**": { swr: 300, headers: { "Cache-Control": "public, max-age=300" } },
   },
 
+  icon: {
+    mode: 'svg'
+  },
+
   experimental: {
     viewTransition: true, // Плавные переходы между страницами
   },
