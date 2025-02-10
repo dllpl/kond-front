@@ -21,7 +21,6 @@ export default defineNuxtConfig({
 
   icon: {
     provider: "server",
-    mode: 'svg',
     clientBundle: {
       scan: true,
     }
