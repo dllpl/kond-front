@@ -23,7 +23,7 @@
     "@iconify-json/fa-brands": "^1.2.1",
     "@iconify-json/hugeicons": "^1.2.3",
     "@iconify-json/mdi-light": "^1.2.2",
-    "@nuxt/icon": "^1.5.6",
+    "@nuxt/icon": "^1.10.2",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/seo": "^2.0.0-rc.23",
     "@pinia/nuxt": "^0.8.0",
@@ -35,7 +35,6 @@
     "maska": "^3.0.3",
     "nuxt": "^3.13.2",
     "nuxt-headlessui": "^1.2.0",
-    "nuxt-icon": "^1.0.0-beta.7",
     "postcss": "^8.4.47",
     "sass-embedded": "^1.81.0",
     "tailwindcss": "^3.4.14"
