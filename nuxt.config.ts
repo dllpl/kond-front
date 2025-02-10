@@ -114,12 +114,6 @@ export default defineNuxtConfig({
     useStylesheet: true,
   },
 
-  ...(process.env.APP_ENV === 'prod' && {
-    svgSprite: {
-      iconsPath: false,
-    }
-  }),
-
   // @ts-ignore
   yandexMetrika: {
     id: process.env.YANDEX_METRIKA_ID || '65355439',
