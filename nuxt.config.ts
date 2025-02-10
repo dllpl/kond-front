@@ -13,6 +13,11 @@ export default defineNuxtConfig({
       },
     },
   },
+  nitro: {
+    prerender: {
+      routes: ['/'], // Генерация главной страницы статически
+    },
+  },
   routeRules: {
     "/": { swr: 300, headers: { "Cache-Control": "public, max-age=300" } },
     "/_nuxt/**": { headers: { "Cache-Control": "public, max-age=31536000, immutable" } },
@@ -99,16 +104,15 @@ export default defineNuxtConfig({
       'Open Sans': '400..600',
       Montserrat: '400..600',
     },
+    text: "Привет мир",
+    subsets: 'cyrillic',
+    overwriting: true,
     display: 'swap',
     preload: true,
+    prefetch: true,
+    preconnect: true,
     useStylesheet: true,
   },
-
-  ...(process.env.APP_ENV === 'prod' && {
-    svgSprite: {
-      iconsPath: false,
-    }
-  }),
 
   // @ts-ignore
   yandexMetrika: {

@@ -49,6 +49,6 @@ module.exports = {
     },
     plugins: [],
     // corePlugins: {
-    //     outline: false,
-    // }
+    //     preflight: false,
+    // },
 }
