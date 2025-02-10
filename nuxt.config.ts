@@ -12,9 +12,8 @@ export default defineNuxtConfig({
   },
 
   icon: {
-    serverBundle: {
-      remote: 'jsdelivr', // 'unpkg' or 'github-raw', or a custom function
-    }
+    provider: 'iconify',
+    serverBundle: false,
   },
 
   runtimeConfig: {
