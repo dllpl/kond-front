@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   },
 
   icon: {
-    serverBundle: 'local',
+    provider: "server",
     mode: 'svg'
   },
 
