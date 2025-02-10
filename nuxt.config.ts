@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
+    "/": { swr: 300, headers: { "Cache-Control": "public, max-age=300" } },
     "/_nuxt/**": { headers: { "Cache-Control": "public, max-age=31536000, immutable" } },
     "/static/**": { headers: { "Cache-Control": "public, max-age=86400" } },
     "/api/**": { swr: 300, headers: { "Cache-Control": "public, max-age=300" } },
