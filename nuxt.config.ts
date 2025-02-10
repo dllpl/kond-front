@@ -11,11 +11,6 @@ export default defineNuxtConfig({
     },
   },
 
-  icon: {
-    provider: 'iconify',
-    serverBundle: false,
-  },
-
   runtimeConfig: {
     public: {
       backOptions: {
