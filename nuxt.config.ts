@@ -5,12 +5,6 @@ export default defineNuxtConfig({
   devtools: {enabled: false},
   ssr: true,
 
-  nitro: {
-    prerender: {
-      routes: ['/contacts', '/about', '/delivery', '/login', '/registration'], // Генерация статичных страниц
-    },
-  },
-
   runtimeConfig: {
     public: {
       backOptions: {
@@ -30,8 +24,6 @@ export default defineNuxtConfig({
     mode: 'svg',
     clientBundle: {
       scan: true,
-
-      includeCustomCollections: true,
     }
   },
 
