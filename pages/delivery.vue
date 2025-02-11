@@ -20,9 +20,10 @@
                     вас способ.
                 </p>
                 <picture class="absolute inset-0 -z-20">
-                    <source srcset="/assets/img/delivery-1440.jpg" media="(max-width: 1440px)">
-                    <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl"
-                        src="/assets/img/delivery-1920.jpg" alt="Доставка и оплата">
+                    <source srcset="/assets/img/delivery-576.webp" media="(max-width: 576px)">
+                    <source srcset="/assets/img/delivery-1440.webp" media="(max-width: 1440px)">
+                    <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl xs:object-center"
+                        src="/assets/img/delivery-1920.webp" alt="Доставка и оплата">
                 </picture>
 
                 <span class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 rounded-2xl"></span>
