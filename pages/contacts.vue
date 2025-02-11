@@ -13,7 +13,7 @@
                 </p>
 
                 <div class="grid grid-cols-1 gap-6 row-start-2 lg:col-span-2 lg:row-auto lg:grid-cols-2 sm:grid-cols-1">
-                    <div class="lg:row-span-2 sm:row-auto">
+                    <div class="">
                         <h2 class=" mb-4 font-semibold text-lg">Наши контактные данные</h2>
                         <dl class="space-y-2 ">
                             <div class="flex gap-x-4">
@@ -48,6 +48,25 @@
                                         aria-hidden="true" />
                                 </dt>
                                 <dd>{{ contacts.address }}</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="">
+                        <h2 class=" mb-4 font-semibold text-lg">Наши реквизиты</h2>
+                        <dl class="space-y-2 ">
+                            <div class="flex gap-x-4">
+                                <dt class="flex-none">
+                                    <span class="sr-only">Реквизиты Все для кондитера</span>
+                                    <Icon name="hugeicons:file-02" class="w-6 h-6 text-gray-700" aria-hidden="true" />
+                                </dt>
+                                <dd>
+                                    <ul>
+                                        <li>ИП&nbsp;&mdash; ЕВГЕНЬЕВА ДИАНА ЕВГЕНЬЕВНА</li>
+                                        <li>ИНН&nbsp;&mdash; 165033847201</li>
+                                        <li>ОГРН&nbsp;&mdash; 308165020600060</li>
+                                    </ul>
+                                </dd>
                             </div>
                         </dl>
                     </div>
@@ -100,6 +119,9 @@
 
                         </div>
                     </div>
+
+
+
                 </div>
 
                 <!-- </div> -->

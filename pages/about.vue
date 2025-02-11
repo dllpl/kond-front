@@ -21,7 +21,7 @@
                 <picture class="absolute inset-0 -z-20">
                     <source srcset="/assets/img/delivery-1440.jpg" media="(max-width: 1440px)">
                     <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl"
-                        src="/assets/img/delivery-1920.jpg" alt="">
+                        src="/assets/img/delivery-1920.jpg" alt="О компании">
                 </picture>
 
                 <span class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 rounded-2xl"></span>
@@ -61,9 +61,15 @@
                 </div>
 
                 <div class="overflow-hidden rounded-lg h-full lg:h-80 xs:h-auto">
-                    <img src="https://tailwindui.com/plus/img/ecommerce-images/incentives-07-hero.jpg" alt=""
-                        class="object-cover object-center h-full w-full" />
+                    <picture>
+                        <source srcset="/assets/img/875.webp" media="(max-width: 1024px)">
+                        <img src="/assets/img/about-site.webp" alt="Интернет магазин - все для кондитера"
+                            class="object-cover object-center h-full w-full" />
+                    </picture>
                 </div>
+
+
+
             </div>
 
             <div class="mb-28 xl:mb-20 xs:mb-10">
@@ -149,23 +155,23 @@ const withUs = [
 const incentives = [
     {
         name: 'Качество',
-        icon: 'solar:medal-ribbons-star-broken',
+        icon: 'hugeicons:award-04',
         description: "Широкий ассортимент, который обновляется с учетом последних тенденций в мире кондитерского искусства",
     },
     {
         name: 'Доступность',
-        icon: 'solar:hand-stars-broken',
+        icon: 'hugeicons:hot-price',
         description: "Мы стараемся предложить конкурентные цены и гибкую систему скидок, чтобы каждый клиент мог найти что-то подходящее для себя.",
     },
     {
         name: 'Надежность',
-        icon: 'solar:shield-star-broken',
+        icon: 'hugeicons:user-group',
         description:
             "Мы ценим долгосрочные отношения с клиентами и всегда готовы поддержать вас в решении любых вопросов.",
     },
     {
         name: 'Актуальность',
-        icon: 'solar:restart-square-broken',
+        icon: 'hugeicons:package-open',
         description: "Мы постоянно пополняем ассортимент, отслеживая новинки и предлагая самые актуальные товары для кондитеров.",
     },
 ]

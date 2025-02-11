@@ -59,7 +59,7 @@
                                                                 </NuxtLink>
                                                             </h3>
 
-                                                            <div class="flex gap-5 justify-between">
+                                                            <div class="flex gap-5 items-end justify-between">
                                                                 <div class="space-y-0.5">
 
 

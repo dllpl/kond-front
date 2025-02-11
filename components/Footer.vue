@@ -109,9 +109,16 @@
 
             <div
                 class="border-t border-white/10 py-8 flex items-center justify-between xs:flex-col-reverse xs:items-center xs:gap-4">
-                <p class="text-xs leading-5 text-gray-400 mt-0">&copy; 2020 Your Company, Inc. All
-                    rights reserved.
-                </p>
+                <div class="">
+                    <ul class="text-xs leading-5 text-gray-400 mt-0 mb-2">
+                        <li>ИП&nbsp;&mdash; ЕВГЕНЬЕВА ДИАНА ЕВГЕНЬЕВНА</li>
+                        <li>ИНН&nbsp;&mdash; 165033847201</li>
+                        <li>ОГРН&nbsp;&mdash; 308165020600060</li>
+                    </ul>
+                    <p class="text-xs leading-5 text-gray-400 mt-0">&copy; {{ new Date().getFullYear() }} Всё для
+                        кондитера
+                    </p>
+                </div>
                 <div class="flex items-center space-x-6  ">
                     <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                         class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
