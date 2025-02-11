@@ -6,8 +6,7 @@
 
             <div class="grid grid-cols-2 gap-12 py-16 sm:grid-cols-1 sm:gap-8 sm:py-8">
                 <div class="">
-                    <img class="h-12 w-auto" src="https://dljakonditera.ru/a/tort/files/125837/124927/logos.png"
-                        alt="Все для кондитера" />
+                    <img class="h-12 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
 
                     <div>
                         <ul role="list" class="mt-6 space-y-4">

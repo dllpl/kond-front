@@ -110,8 +110,7 @@
 				<div class="relative flex items-center justify-between py-4">
 					<NuxtLink :to="'/'" class="-m-1.5 p-1.5 ">
 						<span class="sr-only">Все для кондитера</span>
-						<img class="h-12 w-auto" src="https://dljakonditera.ru/a/tort/files/125837/124927/logos.png"
-							alt="Все для кондитера" />
+						<img class="h-12 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
 					</NuxtLink>
 
 					<nav class="flex items-center justify-between  gap-x-12" aria-label="Основное меню">
@@ -194,8 +193,8 @@
 
 		<ElementsSearch />
 		<ElementsDrawer />
-		<ElementsBurger :data="navBurger"/>
-		 <NuxtLoadingIndicator :color="'#fbbf24'" />
+		<ElementsBurger :data="navBurger" />
+		<NuxtLoadingIndicator :color="'#fbbf24'" />
 	</header>
 </template>
 

@@ -41,8 +41,11 @@ const ready = (e) => {
 }
 
 const adaptiveSlide = (e) => {
-    if (!options.value.isAdaptive)
+    if (!options.value.isAdaptive) {
+        console.log('not adaptive')
         return
+        // добавил закрывающие усы:)
+    }
     if (e.width <= 425) {
         // console.log('mobile')
         options.value.panelsPerView = 1
