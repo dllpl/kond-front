@@ -62,7 +62,8 @@
 
                 <div class="overflow-hidden rounded-lg h-full lg:h-80 xs:h-auto">
                     <picture>
-                        <source srcset="/assets/img/875.webp" media="(max-width: 1024px)">
+                        <source srcset="/assets/img/about-site-768.webp" media="(max-width: 768px)">
+                        <source srcset="/assets/img/about-site-1024.webp" media="(max-width: 1024px)">
                         <img src="/assets/img/about-site.webp" alt="Интернет магазин - все для кондитера"
                             class="object-cover object-center h-full w-full" />
                     </picture>
