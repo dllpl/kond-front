@@ -36,15 +36,15 @@ const props = defineProps({
 const options = ref(props.options);
 // получаем ширину экрана
 const ready = (e) => {
+    console.log(options.value)
     const width = window.innerWidth;
     adaptiveSlide({ width })
 }
 
 const adaptiveSlide = (e) => {
     if (!options.value.isAdaptive) {
-        console.log('not adaptive')
+        options.value.panelsPerView = 1
         return
-        // добавил закрывающие усы:)
     }
     if (e.width <= 425) {
         // console.log('mobile')
