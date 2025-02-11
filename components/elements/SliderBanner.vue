@@ -6,7 +6,6 @@
             moveType: 'strict',
             duration: 750,
             isAdaptive: false,
-            // panelsPerView: 1,
         }" :pagination="{ type: 'scroll' }" :autoplay="{ duration: 5000, stopOnHover: true }">
 
             <div class="w-full mr-5" v-for="item in data" :key="item.id">
@@ -27,7 +26,7 @@
                         class="text-sm font-semibold rounded-lg text-indigo-950 px-10 py-3 bg-amber-400 hover:bg-amber-300 transition-base mr-auto cursor-pointer">
                         Перейти
                     </NuxtLink>
-                    <span class="hidden absolute inset-0 -z-10 bg-gray-900 opacity-15 sm:block"></span>
+                    <span class="hidden rounded-2xl absolute inset-0 -z-10 bg-gray-900 opacity-15 sm:block"></span>
 
                     <picture class="absolute inset-0 -z-20">
                         <source :src="storage + item.image_small" media="(max-width: 1440px)">
