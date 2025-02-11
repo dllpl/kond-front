@@ -6,6 +6,7 @@
             moveType: 'strict',
             duration: 750,
             isAdaptive: false,
+            // panelsPerView: 1,
         }" :pagination="{ type: 'scroll' }" :autoplay="{ duration: 5000, stopOnHover: true }">
 
             <div class="w-full mr-5" v-for="item in data" :key="item.id">
