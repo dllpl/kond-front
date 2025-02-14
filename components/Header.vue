@@ -4,7 +4,7 @@
 		<!-- HEADER TOP -->
 		<div class="bg-gray-100">
 			<div class="wrapper-container relative">
-				<div class="flex items-center justify-between py-4 lg:gap-6 md:flex-row md:gap-x-4"
+				<div class="flex items-center justify-between py-4 lg:gap-6 md:flex-row md:gap-x-4 xs:gap-3"
 					aria-label="Верхнее меню">
 
 					<div class="flex items-center gap-5 lg:w-full lg:justify-between xs:w-auto">
@@ -42,35 +42,39 @@
 						</div> -->
 
 						<NuxtLink :to="`tel:${contacts.phone}`" target="_blank"
-							class="flex items-center gap-2 transition-base rounded-md hover:text-red-600 group focus:bg-red-500 focus:rounded-md focus:text-white
+							class="flex items-center gap-2 transition-base rounded-md  hover:text-red-600 group focus:bg-red-500 focus:rounded-md focus:text-white
                         xs:p-1 xs:ring-2 xs:ring-gray-300/20 xs:hover:ring-red-500 xs:focus:ring-red-500 xs:focus:text-red-600 xs:focus:bg-transparent">
-							<Icon name="mdi-light:phone" class="w-6 h-6 group-hover:stroke-red-600 " />
+							<Icon name="hugeicons:call" class="w-6 h-6 group-hover:stroke-red-600 " />
 							<span class="block text-base xs:hidden">{{ contacts.phone }}</span>
 						</NuxtLink>
 
 					</div>
 					<!-- MOBILE VISIBLE XS-->
-					<div class="hidden xs:flex xs:gap-4 ">
+					<NuxtLink :to="'/'" class="hidden xs:block xs:-m-1.5 xs:p-1.5 xs:mr-auto xs:order-first">
+						<span class="sr-only">Все для кондитера</span>
+						<img class="max-h-8 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
+					</NuxtLink>
 
+					<div class="hidden xs:flex xs:gap-3 ">
 						<!-- Search -->
 						<button type="button" @click="popupStore.toggle('search')"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
-							<Icon name="mdi-light:magnify" class="w-6 h-6 group-hover:stroke-red-600">
+							<Icon name="hugeicons:search-01" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
 
 						<!-- Like -->
-						<a href="http://"
+						<!-- <a href="http://"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 
-							<Icon name="mdi-light:heart" class="w-6 h-6 group-hover:stroke-red-600">
+							<Icon name="hugeicons:heart-check" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
-						</a>
+						</a> -->
 
 						<!-- Basket -->
 						<button @click="popupStore.toggle('drawer')"
 							class=" relative flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
-							<Icon name="mdi-light:cart" class="w-6 h-6 group-hover:stroke-red-600">
+							<Icon name="hugeicons:shopping-cart-02" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 							<span v-if="cartStore.totalCountProducts"
 								class="absolute -top-2 -right-2 flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full">
@@ -78,7 +82,7 @@
 						</button>
 					</div>
 
-					<div class="flex items-center gap-x-12 2xl:gap-x-4 md:w-auto xs:order-first xs:mr-auto">
+					<div class="flex items-center gap-x-12 2xl:gap-x-4 md:w-auto xs:order-last">
 						<div class="flex items-center gap-x-12 2xl:gap-x-4 lg:hidden">
 							<NuxtLink :to="item.slug" v-for="item in navTop" :key="item.name"
 								class="text-sm transition-base hover:text-red-600 focus:text-red-600">{{
@@ -97,7 +101,7 @@
 							<button type="button" @click="popupStore.toggle('burger')"
 								class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 								<span class="sr-only">Открыть меню</span>
-								<Icon name="mdi-light:menu" class="w-6 h-6" aria-hidden="true" />
+								<Icon name="hugeicons:menu-01" class="w-6 h-6" aria-hidden="true" />
 							</button>
 						</div>
 
@@ -107,7 +111,7 @@
 		</div>
 
 		<!-- HEADER BOTTOM -->
-		<Popover class="relative isolate z-10 shadow bg-gray-50">
+		<Popover class="relative isolate z-10 shadow bg-gray-50 xs:hidden">
 			<div class="wrapper-container ">
 
 				<div class="relative flex items-center justify-between py-4">
@@ -119,7 +123,7 @@
 					<nav class="flex items-center justify-between  gap-x-12" aria-label="Основное меню">
 
 						<PopoverButton type="button"
-							class="group flex items-center gap-2 text-base font-semibold text-gray-900 transition-all hover:text-red-600 focus:text-red-600">
+							class="group flex items-center gap-2 text-base font-semibold lg:justify-center   transition-all hover:text-red-600 focus:text-red-600">
 							<Icon name="hugeicons:dashboard-square-01" class=" w-6 h-6 group-hover:text-red-600"
 								aria-hidden="true" />
 							Каталог
@@ -168,16 +172,15 @@
 					<PopoverPanel v-slot="{ close }" class="absolute z-10 w-full overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1
 						ring-gray-900/5 py-6 px-2">
 						<div
-							class="wrapper-container grid grid-cols-3 gap-2 overflow-y-auto h-60 custom-scroll px-6 mb-6">
+							class="wrapper-container grid grid-cols-3 gap-4 overflow-y-auto h-60 custom-scroll px-6 mb-6">
 							<div v-for="item in categories.data" :key="item.name"
-								class="group relative flex items-center gap-6 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50 sm:flex-col sm:p-6">
+								class="group relative flex items-center gap-2 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50 sm:flex-col sm:p-2 sm:text-center">
 								<div
 									class="flex h-11 w-11 flex-none items-center justify-center rounded-lg group-hover:bg-white">
 									<img :src="storage + item.img" :alt="item.title">
 								</div>
 								<div>
-									<NuxtLink @click="close()" :to="`/catalog/${item.slug}`"
-										class="font-semibold text-gray-900">
+									<NuxtLink @click="close()" :to="`/catalog/${item.slug}`" class="font-medium">
 										{{ item.title }}
 										<span class="absolute inset-0" />
 									</NuxtLink>
@@ -221,12 +224,12 @@ const nav = [
 ]
 
 const navBurger = [
-	{ name: 'Каталог', slug: 'catalog' },
+	{ name: 'Каталог', slug: '/catalog' },
 	{ name: 'Съедобная печать?', slug: '#' },
-	{ name: 'Блог', slug: 'blog' },
-	{ name: 'О магазине', slug: 'about' },
-	{ name: 'Доставка и оплата', slug: 'delivery' },
-	{ name: 'Контакты', slug: 'contacts' },
+	{ name: 'Блог', slug: '/blog' },
+	{ name: 'О магазине', slug: '/about' },
+	{ name: 'Доставка и оплата', slug: '/delivery' },
+	{ name: 'Контакты', slug: '/contacts' },
 ]
 
 const city = [
@@ -248,13 +251,6 @@ const filteredCityes = computed(() =>
 			return city.name.toLowerCase().includes(query.value.toLowerCase())
 		}),
 )
-
-// const callsToAction = [
-// 	{ name: 'Позвонить нам', href: '#', },
-// 	{ name: 'Остались вопросы?', href: '#', },
-// ]
-
-
 
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;

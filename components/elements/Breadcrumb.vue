@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex items-center" aria-label="Breadcrumb">
+    <div class="flex items-center" aria-label="Breadcrumb">
         <ol role="list" class="flex items-center space-x-1 overflow-x-scroll no-scrollbar">
             <li>
                 <NuxtLink :to="`/`" class="flex items-center text-gray-400 hover:text-gray-500 transition-all">
@@ -18,7 +18,7 @@
                 </NuxtLink>
             </li>
         </ol>
-    </nav>
+    </div>
 </template>
 
 <script setup>
