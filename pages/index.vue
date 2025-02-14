@@ -1,5 +1,10 @@
 <template>
-  <main class="wrapper-container py-16 sm:py-8">
+
+  <section class="flex items-center wrapper-container">
+    <ElementsMobileCatalogPopover />
+  </section>
+
+  <main class="wrapper-container py-16 sm:pb-8 sm:pt-4">
     <div class="grid grid-cols-custom gap-y-20 gap-x-8 lg:grid-cols-1 lg:gap-y-20 lg:gap-x-0">
 
       <div class="col-span-1 lg:hidden">
@@ -15,10 +20,10 @@
 
 
       <ClientOnly>
-          <LazyElementsSliderProduct v-if="productsOffersStatus === 'success'" :data="productsOffers.data" title="Спецпредложения"
-                                 class="col-span-2 lg:grid-cols-1 relative"/>
-          <LazySectionProductTop v-if="productsSetsStatus === 'success'" :data="productsSets.data" class="col-span-2 lg:grid-cols-1 "
-                             title="Популярные категории" />
+        <LazyElementsSliderProduct v-if="productsOffersStatus === 'success'" :data="productsOffers.data"
+          title="Спецпредложения" class="col-span-2 lg:grid-cols-1 relative" />
+        <LazySectionProductTop v-if="productsSetsStatus === 'success'" :data="productsSets.data"
+          class="col-span-2 lg:grid-cols-1 " title="Популярные категории" />
       </ClientOnly>
 
 
