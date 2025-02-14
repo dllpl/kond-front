@@ -35,7 +35,15 @@
                                 <div class="">
                                     <NuxtLink :to="'/login'" @click="popupStore.close('burger')"
                                         class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7  hover:text-red-600 focus:text-red-600">
-                                        Вход | Регистрация
+                                        <template v-if="!profileStore.isAuth()">
+                                            Вход | Регистрация
+                                        </template>
+                                        <template v-else>
+                                    <span class="flex items-center gap-2">
+                                        {{ profileStore.profile.first_name }}
+                                        <Icon name="hugeicons:user-circle" class="w-6 h-6"/>
+                                    </span>
+                                        </template>
                                     </NuxtLink>
                                 </div>
                                 <div class="hidden py-4 lg:block">
@@ -69,6 +77,7 @@
 <script setup>
 const popupStore = usePopupStore();
 const { burger } = storeToRefs(popupStore);
+const profileStore = useProfileStore();
 
 const props = defineProps({
     show: Boolean,

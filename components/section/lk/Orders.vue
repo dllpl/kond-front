@@ -19,48 +19,34 @@
                     ">
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-amber-300">
-                                <tr>
-                                    <th scope="col"
-                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                        Дата
-                                    </th>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        №&nbsp;заказа
-                                    </th>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Сумма
-                                    </th>
-                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                        <span class="sr-only">Edit</span>
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                    Заказ
+                                </th>
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                    Сумма
+                                </th>
+                                <th scope="col"
+                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                    Дата
+                                </th>
+                            </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr v-for="order in orders" :key="order.index" v-if="orders.length">
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900
+                            <tr v-for="order in orders" :key="order.id" v-if="orders.length" @click="profileStore.goToOrder(order.id)" class="hover:cursor-pointer hover:bg-amber-100 transition">
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ order.order_number }}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ formatNumber(order.total_price) }}</td>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900
                                         sm:pl-6
                                         ">
-                                        {{ order.date }}</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">№&nbsp;{{
-                                        order.orderId }}
-                                    </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ order.price
-                                        }}&nbsp;₽
-                                    </td>
-
-                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium
-                                        sm:pr-6">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                                            Подробнее
-                                            <span class="sr-only">, {{ orders.name }}</span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr v-else>
-                                    <td colspan="4" class="text-center text-gray-500">
-                                      Заказов нет
-                                    </td>
-                                </tr>
+                                    {{ order.created_at }}
+                                </td>
+                            </tr>
+                            <tr v-else>
+                                <td colspan="4" class="text-center text-gray-500">
+                                    Заказов нет
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -70,6 +56,8 @@
     </div>
 </template>
 <script setup>
+const profileStore = useProfileStore();
+
 defineProps({
     orders: {
         type: Array,

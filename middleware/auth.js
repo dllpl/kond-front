@@ -8,16 +8,16 @@ export default defineNuxtRouteMiddleware( async () => {
     }
 
     try {
-        const {data: profile} =  await useFetch(`${config.backOptions.api}/user/profile`, {headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}})
+        const {data: profile} = await useFetch(`${config.backOptions.api}/user/profile`, {headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}})
 
-        profileStore.setAuth(profile.value)
+        profileStore.setProfile(profile.value)
 
     } catch (error) {
-        if(error.status === 401) {
+        if (error.status === 401) {
             return navigateTo('/login', {redirectCode: 401})
         }
 
-        createError({
+        throw createError({
             statusCode: error.status,
             statusMessage: error.message
         })

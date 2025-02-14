@@ -1,5 +1,3 @@
-import {usePopupStore} from "~/stores/popupStore.js";
-
 export const useAuthStore = defineStore('authStore', {
     state: () => ({
         register: {
