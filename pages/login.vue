@@ -16,9 +16,9 @@
 </template>
 
 <script setup>
-definePageMeta({
-    middleware: 'web',
-})
+// definePageMeta({
+//     middleware: 'web',
+// })
 
 const maskaOptions = useMaskaOptions();
 

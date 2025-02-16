@@ -76,9 +76,9 @@
 </template>
 
 <script setup>
-definePageMeta({
-    middleware: 'auth',
-})
+// definePageMeta({
+//     middleware: 'auth',
+// })
 
 const {profile, orders, favorites} = useProfileStore();
 
