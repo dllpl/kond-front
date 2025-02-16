@@ -20,9 +20,9 @@
 
 
       <ClientOnly>
-        <LazyElementsSliderProduct v-if="productsOffersStatus === 'success'" :data="productsOffers.data"
+        <ElementsSliderProduct v-if="productsOffersStatus !== 'pending'" :data="productsOffers.data"
           title="Спецпредложения" class="col-span-2 lg:grid-cols-1 relative" />
-        <LazySectionProductTop v-if="productsSetsStatus === 'success'" :data="productsSets.data"
+        <SectionProductTop v-if="productsSetsStatus === 'success'" :data="productsSets.data"
           class="col-span-2 lg:grid-cols-1 " title="Популярные категории" />
       </ClientOnly>
 
