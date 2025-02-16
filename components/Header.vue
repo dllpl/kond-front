@@ -89,11 +89,19 @@
 									item.name
 								}}
 							</NuxtLink>
-							<NuxtLink :to="`/login`"
+							<NuxtLink  :to="`/login`"
 								class="text-sm transition-base hover:text-red-600 focus:text-red-600">
-								Вход
-								| Регистрация
+                                <template v-if="!profileStore.isAuth()">
+                                    Вход | Регистрация
+                                </template>
+                                <template v-else>
+                                    <span class="flex items-center gap-2">
+                                        {{ profileStore.profile.first_name }}
+                                        <Icon name="hugeicons:user-circle" class="w-6 h-6"/>
+                                    </span>
+                                </template>
 							</NuxtLink>
+
 						</div>
 
 						<!-- BURGER -->
@@ -211,6 +219,7 @@
 const cartStore = useCartStore();
 const { contacts } = useContactsStore();
 const popupStore = usePopupStore();
+const profileStore = useProfileStore();
 
 const navTop = [
 	{ name: 'О магазине', slug: '/about' },
