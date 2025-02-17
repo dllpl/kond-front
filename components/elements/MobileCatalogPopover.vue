@@ -16,7 +16,7 @@
             <PopoverPanel v-slot="{ close }" class="absolute z-10 w-full overflow-y-auto inset-x-0 top-[60px] bg-white shadow-lg ring-1
 						ring-gray-900/5 pt-6 pb-4 px-2">
 
-                <div class="wrapper-container grid grid-cols-2 gap-4 overflow-y-auto h-60 custom-scroll mb-4 xs:px-2">
+                <div class="wrapper-container grid grid-cols-2 gap-4 overflow-y-auto custom-scroll mb-4 xs:px-2">
 
                     <div v-for="item in categories.data" :key="item.name"
                         class="group relative flex items-center gap-2 rounded-lg text-sm leading-6 hover:bg-gray-50 sm:flex-col text-center">

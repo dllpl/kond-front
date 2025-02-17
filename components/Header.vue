@@ -180,7 +180,7 @@
 					<PopoverPanel v-slot="{ close }" class="absolute z-10 w-full overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1
 						ring-gray-900/5 py-6 px-2">
 						<div
-							class="wrapper-container grid grid-cols-3 gap-4 overflow-y-auto h-60 custom-scroll px-6 mb-6">
+							class="wrapper-container grid grid-cols-3 gap-4 overflow-y-auto custom-scroll px-6 mb-6">
 							<div v-for="item in categories.data" :key="item.name"
 								class="group relative flex items-center gap-2 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50 sm:flex-col sm:p-2 sm:text-center">
 								<div
@@ -208,7 +208,7 @@
 		<ElementsSearch />
 		<ElementsDrawer />
 		<ElementsBurger :data="navBurger" />
-		<NuxtLoadingIndicator :color="'#fbbf24'" />
+		<NuxtLoadingIndicator color="#fbbf24" height="4" throttle="500"/>
 	</header>
 </template>
 

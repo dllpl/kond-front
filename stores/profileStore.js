@@ -47,10 +47,13 @@ export const useProfileStore = defineStore('profileStore', {
             try {
                 const {data: profile} = await useFetch(`${config.backOptions.api}/user/profile`, {headers: {'Authorization': `Bearer ${this.credentials.token}`}})
 
+                console.log(profile)
+
                 this.setProfile(profile.value)
 
             } catch (error) {
                 if (error.status === 401) {
+                    useCookie('auth_token').value = null
                     return navigateTo('/login', {redirectCode: 401})
                 }
 

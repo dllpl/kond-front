@@ -8,10 +8,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
         } else {
             //TODO либо переделать на хранения в куках инфы о пользователе чтобы избежать лишних запросов
             if(!profileStore.profile_is_set) {
-                console.log('profile not set')
                 await profileStore.getProfile()
-            } else {
-                console.log('profile set')
             }
         }
 
