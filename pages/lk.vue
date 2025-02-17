@@ -4,7 +4,7 @@
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
         </section>
         <main class="wrapper-container pt-2 pb-16">
-            <p class="text-2xl font-semibold mb-8">Здравствуйте, {{ first_name }}</p>
+            <p class="text-2xl font-semibold mb-4">Здравствуйте, {{ first_name }}</p>
             <TabGroup as="div" class="overflow-hidden">
                 <div class="border-b border-gray-200 sm:snap-x">
                     <TabList class="-mb-px flex space-x-8 sm:flex-col sm:space-x-0 sm:space-y-1 ">

@@ -208,7 +208,7 @@
 		<ElementsSearch />
 		<ElementsDrawer />
 		<ElementsBurger :data="navBurger" />
-		<NuxtLoadingIndicator color="#fbbf24" height="4" throttle="500"/>
+		<NuxtLoadingIndicator color="#fbbf24" :height="4" throttle="500"/>
 	</header>
 </template>
 

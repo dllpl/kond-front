@@ -125,6 +125,27 @@ export const useProfileStore = defineStore('profileStore', {
                 popupStore.toggle('toast', {title: response._data.message, timeout: 6000, type: 'error'})
             })
         },
+
+        async logout() {
+
+            const {public: config} = useRuntimeConfig();
+            const profileStore = useProfileStore()
+            const popupStore = usePopupStore();
+
+            await $fetch(`${config.backOptions.api}/logout`, {
+                    method: 'POST',
+                    headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}
+                }
+            ).then((data) => {
+                useCookie('auth_token').value = null
+                popupStore.toggle('toast', {title: 'Вы вышли из аккаунта. Приходите снова', timeout: 2000, type: 'success'})
+                navigateTo('/login', {redirectCode: 302})
+                profileStore.$reset()
+            }).catch(({response}) => {
+                popupStore.toggle('toast', {title: response._data.message, timeout: 6000, type: 'error'})
+            })
+
+        }
     },
 
     getters: {},

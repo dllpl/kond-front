@@ -92,7 +92,12 @@
                 </ul>
 
             </div>
-            <div class="mt-6 flex items-center gap-x-6">
+            <div class="mt-6 flex justify-between gap-x-6">
+                <button @click.prevent="profileStore.logout()"
+                        class="flex items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-base hover:bg-red-500 focus-visible:bg-red-500">
+                    Выйти
+                </button>
+
                 <button type="submit" :disabled="disabled"
                         class="inline-flex justify-center rounded-md bg-amber-300 px-3 py-2 text-sm font-semibold  shadow-sm hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all">
                     <svg v-if="disabled" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
