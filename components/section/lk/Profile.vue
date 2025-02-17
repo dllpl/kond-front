@@ -70,10 +70,12 @@
                     <li class="">
                         <label for="email" class="block text-sm font-medium leading-6 mb-2 ">Email</label>
 
-                        <input id="email" name="email" type="email" autocomplete="email" v-model="profile.email"
+                        <input id="email" name="email" type="email" autocomplete="email" v-model="profile.email" disabled
                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                                placeholder="Email"/>
-
+                        <span v-if="errors?.email" class="absolute text-[11px]">
+                            {{ errors.email[0] }}
+                        </span>
                     </li>
 
                     <li class="lg:col-span-2 xs:col-auto">
@@ -83,6 +85,9 @@
                                v-model="profile.full_address"
                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"/>
 
+                        <span v-if="errors?.full_address" class="absolute text-[11px]">
+                            {{ errors.full_address[0] }}
+                        </span>
                     </li>
                 </ul>
 
