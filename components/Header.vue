@@ -96,7 +96,7 @@
                                 </template>
                                 <template v-else>
                                     <span class="flex items-center gap-2">
-                                        {{ profileStore.profile.first_name }}
+                                        {{ first_name }}
                                         <Icon name="hugeicons:user-circle" class="w-6 h-6"/>
                                     </span>
                                 </template>
@@ -220,6 +220,8 @@ const cartStore = useCartStore();
 const { contacts } = useContactsStore();
 const popupStore = usePopupStore();
 const profileStore = useProfileStore();
+
+const first_name = profileStore.profile?.first_name ?? 'Кабинет'
 
 const navTop = [
 	{ name: 'О магазине', slug: '/about' },
