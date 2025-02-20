@@ -28,12 +28,14 @@ export const useProfileStore = defineStore('profileStore', {
 
             const maxAge = data.credentials.expires_at * 60
 
+            console.log(process.dev)
+
             useCookie('auth_token', {
                 maxAge: maxAge,
                 path: '/',
                 domain: process.dev ? 'localhost' : '.dljakonditera.ru',
                 secure:  !process.dev,
-                sameSite: 'none',
+                ...(!process.dev ? {sameSite: 'none'} : {}),
                 httpOnly: false,
             }).value = data.credentials.token
         },
