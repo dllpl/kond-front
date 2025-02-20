@@ -71,7 +71,7 @@ export const useAuthStore = defineStore('authStore', {
                 body: form
             }).then((data) => {
 
-                popupStore.toggle('toast', {title: 'Успешная авторизация', timeout: 2000})
+                popupStore.toggle('toast', {title: 'Успешная авторизация', timeout: 2000, type: 'success'})
                 profileStore.setAuth(data)
                 navigateTo('/lk')
 
