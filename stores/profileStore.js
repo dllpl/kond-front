@@ -143,8 +143,14 @@ export const useProfileStore = defineStore('profileStore', {
                 }
             ).then((data) => {
 
-                const auth_token = useCookie('auth_token')
-                auth_token.value = null
+                useCookie('auth_token', {
+                    maxAge: 0,
+                    path: '/',
+                    domain: process.dev ? 'localhost' : '.dljakonditera.ru',
+                    secure:  !process.dev,
+                    httpOnly: false,
+                    ...(!process.dev ? {sameSite: 'none'} : {}),
+                })
 
                 popupStore.toggle('toast', {title: 'Вы вышли из аккаунта. Приходите снова', timeout: 2000, type: 'success'})
                 navigateTo('/login', {redirectCode: 302})
