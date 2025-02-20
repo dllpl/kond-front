@@ -56,7 +56,7 @@ export const useProfileStore = defineStore('profileStore', {
 
             } catch (error) {
                 if (error.status === 401) {
-                    useCookie('auth_token').value = null
+                    useCookie('auth_token').value = undefined
                     return navigateTo('/login', {redirectCode: 401})
                 }
 
@@ -140,7 +140,7 @@ export const useProfileStore = defineStore('profileStore', {
                     headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}
                 }
             ).then((data) => {
-                useCookie('auth_token').value = null
+                useCookie('auth_token').value = undefined
                 popupStore.toggle('toast', {title: 'Вы вышли из аккаунта. Приходите снова', timeout: 2000, type: 'success'})
                 navigateTo('/login', {redirectCode: 302})
                 profileStore.$reset()
