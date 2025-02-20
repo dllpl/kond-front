@@ -33,7 +33,7 @@ export const useProfileStore = defineStore('profileStore', {
                 path: '/',
                 domain: process.dev ? 'localhost' : '.dljakonditera.ru',
                 secure:  !process.dev,
-                sameSite: 'Lax',
+                sameSite: 'none',
                 httpOnly: false,
             }).value = data.credentials.token
         },
