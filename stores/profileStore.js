@@ -28,16 +28,16 @@ export const useProfileStore = defineStore('profileStore', {
 
             const maxAge = data.credentials.expires_at * 60
 
-            console.log(process.dev)
-
-            useCookie('auth_token', {
+            const auth_token = useCookie('auth_token', {
                 maxAge: maxAge,
                 path: '/',
                 domain: process.dev ? 'localhost' : '.dljakonditera.ru',
                 secure:  !process.dev,
                 ...(!process.dev ? {sameSite: 'none'} : {}),
                 httpOnly: false,
-            }).value = data.credentials.token
+            })
+
+            auth_token.value = data.credentials.token
         },
 
         setProfile(data) {
@@ -142,7 +142,10 @@ export const useProfileStore = defineStore('profileStore', {
                     headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}
                 }
             ).then((data) => {
-                useCookie('auth_token').value = undefined
+
+                const auth_token = useCookie('auth_token')
+                auth_token.value = null
+
                 popupStore.toggle('toast', {title: 'Вы вышли из аккаунта. Приходите снова', timeout: 2000, type: 'success'})
                 navigateTo('/login', {redirectCode: 302})
                 profileStore.$reset()
