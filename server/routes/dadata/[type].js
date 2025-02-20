@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event)
 
     const uri = `https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/${type}`
-    console.log(body, type)
+    // console.log(body, type)
     const data = await $fetch(uri, {
         method: 'POST', body,
         headers: {
@@ -23,6 +23,6 @@ export default defineEventHandler(async (event) => {
             })
         }
     }
-    console.log(array)
+    // console.log(array)
     return array
 })

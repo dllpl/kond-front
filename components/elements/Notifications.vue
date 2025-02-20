@@ -7,7 +7,7 @@
                 leave-to-class="opacity-0">
 
                 <div v-if="toast.open"
-                    @click="toast.options?.callback ? toast.options.callback() : () => console.log('click')"
+                    @click="toast.options?.callback ? toast.options.callback() : () => {}"
                     class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-amber-100 shadow-lg ring-2 ring-amber-400 cursor-pointer">
                     <div class="p-4">
                         <div class="flex items-start">
