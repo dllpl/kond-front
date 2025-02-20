@@ -307,7 +307,7 @@ const selected = ref({})
 
 const adresess = ref([])
 const searchAdress = async (value) => {
-    console.log(value)
+    // console.log(value)
     const { data } = await useFetch('dadata/address', {
         method: 'POST',
         body: {

@@ -96,7 +96,7 @@
                                 </template>
                                 <template v-else>
                                     <span class="flex items-center gap-2">
-                                        {{ first_name }}
+                                        {{ profileStore.profile?.first_name ?? 'Кабинет' }}
                                         <Icon name="hugeicons:user-circle" class="w-6 h-6"/>
                                     </span>
                                 </template>
@@ -139,8 +139,7 @@
 
 						<NuxtLink :to="item.slug" v-for="item in nav" :key="item.name"
 							class="text-base font-semibold text-gray-900 transition-base hover:text-red-600 focus:text-red-600 lg:hidden">
-							{{
-								item.name }}
+							{{item.name }}
 						</NuxtLink>
 					</nav>
 
@@ -208,7 +207,7 @@
 		<ElementsSearch />
 		<ElementsDrawer />
 		<ElementsBurger :data="navBurger" />
-		<NuxtLoadingIndicator color="#fbbf24" :height="4" throttle="500"/>
+		<NuxtLoadingIndicator color="#fbbf24" :height="4" :throttle="500"/>
 	</header>
 </template>
 
@@ -220,8 +219,6 @@ const cartStore = useCartStore();
 const { contacts } = useContactsStore();
 const popupStore = usePopupStore();
 const profileStore = useProfileStore();
-
-const first_name = profileStore.profile?.first_name ?? 'Кабинет'
 
 const navTop = [
 	{ name: 'О магазине', slug: '/about' },

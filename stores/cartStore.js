@@ -104,7 +104,7 @@ export const useCartStore = defineStore('cartStore', {
 
 
         saveToLocalStorage(items) {
-            console.log(items)
+            // console.log(items)
             localStorage.setItem('cart', JSON.stringify(items))
         },
 
