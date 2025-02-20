@@ -1,5 +1,3 @@
-import {usePopupStore} from "~/stores/popupStore.js";
-
 export const useProfileStore = defineStore('profileStore', {
     state: () => ({
         credentials: {
@@ -32,6 +30,11 @@ export const useProfileStore = defineStore('profileStore', {
 
             useCookie('auth_token', {
                 maxAge: maxAge,
+                path: '/',
+                domain: process.dev ? 'localhost' : '.dljakonditera.ru',
+                secure:  !process.dev,
+                sameSite: 'strict',
+                httpOnly: false,
             }).value = data.credentials.token
         },
 
