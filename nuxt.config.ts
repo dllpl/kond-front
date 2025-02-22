@@ -56,7 +56,7 @@ export default defineNuxtConfig({
 
   site: {
     url: '',
-    name: 'Все для кондитера',
+    name: 'Всё для кондитера',
     defaultLocal: 'ru'
   },
 
@@ -69,9 +69,9 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       title: '',
       viewport: 'width=device-width, initial-scale=1',
-      templateParams: {
-        separator: ' - '
-      },
+      // templateParams: {
+      //   separator: ' - '
+      // },
       script: [
         // {src: 'https://www.googletagmanager.com/gtag/js?id=G-5H3XLN9HST', async: true},
       ]

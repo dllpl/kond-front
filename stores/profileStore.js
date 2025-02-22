@@ -32,7 +32,7 @@ export const useProfileStore = defineStore('profileStore', {
                 maxAge: maxAge,
                 path: '/',
                 domain: process.dev ? 'localhost' : '.dljakonditera.ru',
-                secure:  !process.dev,
+                secure: !process.dev,
                 ...(!process.dev ? {sameSite: 'none'} : {}),
                 httpOnly: false,
             })
@@ -147,14 +147,18 @@ export const useProfileStore = defineStore('profileStore', {
                     maxAge: -1,
                     path: '/',
                     domain: process.dev ? 'localhost' : '.dljakonditera.ru',
-                    secure:  !process.dev,
+                    secure: !process.dev,
                     httpOnly: false,
                     ...(!process.dev ? {sameSite: 'none'} : {}),
                 })
 
                 auth_token.value = null
 
-                popupStore.toggle('toast', {title: 'Вы вышли из аккаунта. Приходите снова', timeout: 2000, type: 'success'})
+                popupStore.toggle('toast', {
+                    title: 'Вы вышли из аккаунта. Приходите снова',
+                    timeout: 2000,
+                    type: 'success'
+                })
                 navigateTo('/login', {redirectCode: 302})
                 profileStore.$reset()
             }).catch(({response}) => {

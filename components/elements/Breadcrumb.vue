@@ -22,8 +22,27 @@
 </template>
 
 <script setup>
-
-defineProps({
+const props = defineProps({
     data: Array
 })
+
+const itemListElement = props.data.map((item, i) => {
+    if(i === props.data.length - 1) {
+        return {
+            name: item.name,
+        }
+    } else {
+        return {
+            name: item.name,
+            item: `/${item.uri}`,
+        }
+    }
+})
+
+useSchemaOrg([
+    defineBreadcrumb({
+        itemListElement: itemListElement,
+        numberOfItems: itemListElement.length
+    })
+])
 </script>
