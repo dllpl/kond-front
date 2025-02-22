@@ -1,3 +1,29 @@
+<script setup>
+useHead({
+    title: 'Интернет-магазин для кондитеров с доставкой по г. Набережные Челны и России',
+    meta: [
+        {
+            name: 'description',
+            content: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России'
+        }
+    ],
+    link: [
+        {
+            rel: 'canonical',
+            href: '/'
+        }
+    ],
+})
+
+const { public: config } = useRuntimeConfig();
+
+const { data: banners } = await useFetch(config.backOptions.api + '/banners');
+const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
+
+const { status: productsNewStatus, data: productsNew } = await useFetch(config.backOptions.api + '/products/new', { server: false, lazy: true });
+const { status: productsOffersStatus, data: productsOffers } = await useFetch(config.backOptions.api + '/products/spec', { server: false, lazy: true });
+const { status: productsSetsStatus, data: productsSets } = await useFetch(config.backOptions.api + '/products-sets', { server: false, lazy: true });
+</script>
 <template>
 
   <section class="flex items-center wrapper-container">
@@ -39,14 +65,3 @@
 
   </main>
 </template>
-
-<script setup>
-const { public: config } = useRuntimeConfig();
-
-const { data: banners } = await useFetch(config.backOptions.api + '/banners');
-const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
-
-const { status: productsNewStatus, data: productsNew } = await useFetch(config.backOptions.api + '/products/new', { server: false, lazy: true });
-const { status: productsOffersStatus, data: productsOffers } = await useFetch(config.backOptions.api + '/products/spec', { server: false, lazy: true });
-const { status: productsSetsStatus, data: productsSets } = await useFetch(config.backOptions.api + '/products-sets', { server: false, lazy: true });
-</script>

@@ -24,6 +24,7 @@
 <script setup>
 const route = useRoute();
 const { public: config } = useRuntimeConfig();
+const { storage } = useRuntimeConfig().public.backOptions;
 
 const uri = route.params?.slug ? route.params.slug.join('/') : '';
 
@@ -38,4 +39,36 @@ const breadcrumbs = [
   },
   ...data.value.breadcrumbs,
 ]
+
+let current_title = 'Каталог'
+if(data.value.breadcrumbs.length) {
+    current_title = data.value.breadcrumbs[data.value.breadcrumbs.length - 1].name
+}
+
+const id_product_page = !!data.value.product
+
+useHead({
+    title: current_title,
+    meta: [
+        {
+            name: 'description',
+            content: current_title === 'Каталог' ? 'Каталог товаров интернет-магазина' : 'Купить ' + current_title + ' онлайн в интернет-магазине Всё для кондитера'
+        }
+    ],
+})
+
+if(id_product_page) {
+    useSchemaOrg([
+        defineProduct({
+            name: data.value.product.title,
+            image:  storage + data.value.product.images[0],
+            sku: data.value.product.id,
+            brand: 'Всё для кондитера',
+            offers: [
+                { price: data.value.product.price, priceCurrency: 'RUB' }
+            ],
+        })
+    ])
+}
+
 </script>
