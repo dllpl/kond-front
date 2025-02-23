@@ -281,6 +281,22 @@ const breadcrumbs = [
     },
 ]
 
+useHead({
+    title: 'Оформление заказа',
+    meta: [
+        {
+            name: 'description',
+            content: 'Оформление и оплата заказа в интернет магазине Всё для кондитера.'
+        }
+    ],
+    link: [
+        {
+            // rel: 'canonical',
+            href: '/'
+        }
+    ],
+})
+
 const { public: config } = useRuntimeConfig();
 
 const { storage } = useRuntimeConfig().public.backOptions;

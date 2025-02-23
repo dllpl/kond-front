@@ -20,8 +20,9 @@
                   Телефон
                 </label>
                 <div class="mt-2">
-                  <input v-model="register.form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel" placeholder="+7 (___) ___-__-__"
-                    autocomplete="tel" required :class="register.errors?.phone ? 'ring-2 ring-red-400' : ''"
+                  <input v-model="register.form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel"
+                    placeholder="+7 (___) ___-__-__" autocomplete="tel" required
+                    :class="register.errors?.phone ? 'ring-2 ring-red-400' : ''"
                     class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
                   <span v-if="register.errors?.phone" class="absolute text-[11px]">
                     {{ register.errors.phone[0] }}
@@ -34,8 +35,8 @@
                   Email адрес
                 </label>
                 <div class="mt-2">
-                  <input v-model="register.form.email" name="email" type="email" autocomplete="email" required placeholder="Укажите электронную почту"
-                    :class="register.errors?.email ? 'ring-2 ring-red-400' : ''"
+                  <input v-model="register.form.email" name="email" type="email" autocomplete="email" required
+                    placeholder="Укажите электронную почту" :class="register.errors?.email ? 'ring-2 ring-red-400' : ''"
                     class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
                   <span v-if="register.errors?.email" class="absolute text-[11px]">
                     {{ register.errors.email[0] }}
@@ -61,8 +62,8 @@
               <div>
                 <button type="submit" :disabled="register.disabled"
                   class="flex w-full items-center justify-center rounded-md bg-amber-400 px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all ">
-                  <svg v-if="register.disabled" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24">
+                  <svg v-if="register.disabled" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor"
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
@@ -81,7 +82,7 @@
                   <span class="bg-white px-6">Или через</span>
                 </div>
               </div>
-              <ElementsQuickLogin/>
+              <ElementsQuickLogin />
             </div>
           </div>
         </div>
@@ -106,4 +107,19 @@ const breadcrumbs = [
   },
 ]
 
+useHead({
+  title: 'Регистрация',
+  meta: [
+    {
+      name: 'description',
+      content: 'Регистрация на сайте Всё для кондитера.'
+    }
+  ],
+  link: [
+    {
+      // rel: 'canonical',
+      href: '/'
+    }
+  ],
+})
 </script>

@@ -1,18 +1,18 @@
 <script setup>
 useHead({
-    title: 'Интернет-магазин для кондитеров с доставкой по г. Набережные Челны и России',
-    meta: [
-        {
-            name: 'description',
-            content: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России'
-        }
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: '/'
-        }
-    ],
+  title: 'Интернет-магазин для кондитеров с доставкой по г. Набережные Челны и России',
+  meta: [
+    {
+      name: 'description',
+      content: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России'
+    }
+  ],
+  link: [
+    {
+      rel: 'canonical',
+      href: '/'
+    }
+  ],
 })
 
 const { public: config } = useRuntimeConfig();
@@ -49,7 +49,7 @@ const { status: productsSetsStatus, data: productsSets } = await useFetch(config
         <ElementsSliderProduct v-if="productsOffersStatus !== 'pending'" :data="productsOffers.data"
           title="Спецпредложения" class="col-span-2 lg:grid-cols-1 relative" />
         <SectionProductTop v-if="productsSetsStatus === 'success'" :data="productsSets.data"
-          class="col-span-2 lg:grid-cols-1 " title="Популярные категории" />
+          class="col-span-2 lg:grid-cols-1 " title="Праздничные предложения" />
       </ClientOnly>
 
 

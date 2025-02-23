@@ -72,4 +72,19 @@ const breadcrumbs = [
         name: 'Восстановление', slug: '/recovery'
     },
 ]
+useHead({
+    title: 'Восстановление пароля',
+    meta: [
+        {
+            name: 'description',
+            content: 'Восстановление пароля в личный кабинет Всё для кондитера.'
+        }
+    ],
+    link: [
+        {
+            // rel: 'canonical',
+            href: '/'
+        }
+    ],
+})
 </script>
