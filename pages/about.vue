@@ -51,9 +51,9 @@
             </div>
             <div class="grid grid-cols-3 items-center gap-14 mb-28 lg:grid-cols-1 xl:mb-20 xs:mb-10">
                 <div class=" col-span-2 lg:col-span-1">
-                    <h2 class="text-3xl font-bold tracking-tight mb-8 xs:text-2xl"> В нашем интернет-магазине вы найдете
+                    <h2 class="text-3xl font-bold tracking-tight mb-8 xs:text-2xl">В нашем интернет-магазине вы найдете
                     </h2>
-                    <ul class="space-y-6 xs:space-y-4">
+                    <ul class="space-y-6 xs:space-y-4 mb-8">
                         <li v-for="item in withUs" :key="withUs.id" class="flex gap-x-3">
                             <Icon name="hugeicons:checkmark-badge-04" class="w-6 h-6 text-red-500 shrink-0" />
                             <div class="">
@@ -63,6 +63,12 @@
                             </div>
                         </li>
                     </ul>
+                    <NuxtLink :to="'/catalog'"
+                        class="group inline-flex items-center gap-x-1 justify-center rounded-lg bg-amber-400 px-10 py-2 hover:bg-amber-300 transition-base lg:inline-flex sm:flex">
+                        Перейти в каталог
+                        <icon name="hugeicons:arrow-right-double"
+                            class="w-5 h-5 group-hover:translate-x-1 transition-base"></icon>
+                    </NuxtLink>
                 </div>
 
                 <div class="overflow-hidden rounded-lg h-full lg:h-80 xs:h-auto">
@@ -73,9 +79,6 @@
                             class="object-cover object-center h-full w-full" />
                     </picture>
                 </div>
-
-
-
             </div>
 
             <div class="mb-28 xl:mb-20 xs:mb-10">
@@ -183,9 +186,24 @@ const incentives = [
 ]
 const breadcrumbs = [
     {
-        name: 'О нас',
+        name: 'О магазине',
         href: '/about',
     },
 ]
+useHead({
+    title: 'О магазине',
+    meta: [
+        {
+            name: 'description',
+            content: 'О магазине Всё для кондитера - один из лучших оптово розничных магазинов товаров для кондитеров в России.'
+        }
+    ],
+    link: [
+        {
+            // rel: 'canonical',
+            href: '/'
+        }
+    ],
+})
 
 </script>

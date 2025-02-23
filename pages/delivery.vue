@@ -233,5 +233,20 @@ const breadcrumbs = [
         href: '/delivery',
     },
 ]
+useHead({
+    title: 'Доставка и оплата',
+    meta: [
+        {
+            name: 'description',
+            content: 'Всё для кондитера: доставка товаров по Набережным Челнам и всей России, оплата по карте, в СПб и расчетным счетом для юридических лиц.'
+        }
+    ],
+    link: [
+        {
+            // rel: 'canonical',
+            href: '/'
+        }
+    ],
+})
 
 </script>

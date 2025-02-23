@@ -30,4 +30,19 @@ const breadcrumbs = [
         name: 'Вход', slug: '/login'
     },
 ]
+useHead({
+    title: 'Вход в личный кабинет',
+    meta: [
+        {
+            name: 'description',
+            content: 'Вход в личный кабинет Всё для кондитера.'
+        }
+    ],
+    link: [
+        {
+            // rel: 'canonical',
+            href: '/'
+        }
+    ],
+})
 </script>

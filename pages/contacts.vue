@@ -148,4 +148,19 @@ const breadcrumbs = [
 ]
 const { contacts } = useContactsStore();
 
+useHead({
+    title: 'Контакты',
+    meta: [
+        {
+            name: 'description',
+            content: 'Наш адрес, номер телефона, е-маил адрес, режим работы и социальные сети Всё для кондитера.'
+        }
+    ],
+    link: [
+        {
+            // rel: 'canonical',
+            href: '/'
+        }
+    ],
+})
 </script>
