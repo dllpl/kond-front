@@ -115,11 +115,5 @@ useHead({
       content: 'Регистрация на сайте Всё для кондитера.'
     }
   ],
-  link: [
-    {
-      // rel: 'canonical',
-      href: '/'
-    }
-  ],
 })
 </script>

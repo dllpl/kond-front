@@ -38,11 +38,5 @@ useHead({
             content: 'Вход в личный кабинет Всё для кондитера.'
         }
     ],
-    link: [
-        {
-            // rel: 'canonical',
-            href: '/'
-        }
-    ],
 })
 </script>

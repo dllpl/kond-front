@@ -1,5 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-// @ts-ignore
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: {enabled: false},
@@ -99,11 +97,10 @@ export default defineNuxtConfig({
     useStylesheet: true,
   },
 
-  // @ts-ignore
   yandexMetrika: {
     id: process.env.YANDEX_METRIKA_ID || '65355439',
     webvisor: true,
-    consoleLog: true,
+    consoleLog: false,
     defer: true
   },
 
