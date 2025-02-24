@@ -61,7 +61,11 @@ if (id_product_page) {
   useSchemaOrg([
     defineProduct({
       name: data.value.product.title,
-      image: storage + data.value.product.images[0],
+      ...(data.value.product.images?.length ? {
+          image: storage + data.value.product.images[0]
+      }: {
+          image : '/assets/img/default-product-img.webp'
+      }),
       sku: data.value.product.id,
       brand: 'Всё для кондитера',
       offers: [
