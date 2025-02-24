@@ -289,12 +289,6 @@ useHead({
             content: 'Оформление и оплата заказа в интернет магазине Всё для кондитера.'
         }
     ],
-    link: [
-        {
-            // rel: 'canonical',
-            href: '/'
-        }
-    ],
 })
 
 const { public: config } = useRuntimeConfig();
