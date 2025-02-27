@@ -20,7 +20,12 @@
                                     <Icon name="hugeicons:cancel-01" class="h-5 w-5" aria-hidden="true" />
                                 </button>
                                 <ElementsLogin v-if="modal.options.type === 'login'" :title="modal.options.title" :subtitle="modal.options.subtitle" />
-                                <ElementsOrderProducts v-if="modal.options.type === 'order'" :products="modal.options.products" :title="modal.options.title"/>
+                                <ElementsOrderProducts
+                                    v-if="modal.options.type === 'order'"
+                                    :products="modal.options.products"
+                                    :title="modal.options.title"
+                                    :formUrl="modal.options.formUrl"
+                                />
                             </div>
                         </DialogPanel>
                     </TransitionChild>

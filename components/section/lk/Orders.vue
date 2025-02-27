@@ -29,7 +29,7 @@
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" v-if="order.payment_status.id === 1">
                                   {{ order.payment_status.name }}
                                 </span>
-                                <span v-else class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                <span v-else class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-red-800">
                                   {{ order.payment_status.name }}
                                 </span>
 
