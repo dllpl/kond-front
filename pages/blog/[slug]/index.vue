@@ -1,15 +1,9 @@
 <template>
-	<div class="">
-		<section class="flex items-center wrapper-container">
-			<ElementsMobileCatalogPopover />
-		</section>
+	<div>
 		<section>
 			<ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
 		</section>
-
-
 		<main class="wrapper-container pt-3 pb-16">
-
 			<div class="text-white relative min-h-96 py-12 px-12 flex flex-col justify-center gap-5 mb-20
                 md:py-10 md:px-8 md:min-h-80 
                 sm:min-h-72 
@@ -19,12 +13,6 @@
 				<p class="text-lg max-w-4xl xs:drop-shadow-md ">
 					{{ post.data.excerpt }}
 				</p>
-
-				<!-- <picture class="absolute inset-0 -z-20">
-                    <source srcset="/assets/img/delivery-1440.jpg" media="(max-width: 1440px)">
-                    <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl"
-                        src="/assets/img/delivery-1920.jpg" alt="">
-                </picture> -->
 
 				<img :src="storage + post.data.image_large" :alt="post.data.title"
 					class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl" />
