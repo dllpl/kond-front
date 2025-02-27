@@ -125,7 +125,7 @@ export const useProfileStore = defineStore('profileStore', {
             const popupStore = usePopupStore();
 
             await $fetch(`${config.backOptions.api}/orders/${id}`, {headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}}).then((data) => {
-                popupStore.toggle('modal', {type: 'order', products: data, width: 'max-w-full', title: `Заказ ${order_number}`})
+                popupStore.toggle('modal', {type: 'order', products: data.products, width: 'max-w-full', title: `Заказ ${order_number}`, formUrl: data.formUrl})
             }).catch(({response}) => {
                 popupStore.toggle('toast', {title: response?._data?.message ?? 'Ошибка сервера', timeout: 6000, type: 'error'})
             })

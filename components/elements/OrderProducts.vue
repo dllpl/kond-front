@@ -7,6 +7,10 @@ const props = defineProps({
   title: {
     type: String,
     default: ''
+  },
+  formUrl: {
+    type: String,
+    default: ''
   }
 })
 
@@ -21,7 +25,7 @@ const totalSum = computed(() => {
 <template>
   <div>
     <div class="text-lg font-semibold mb-1" v-if="title.length">{{ title }}</div>
-    <div class="max-h-80 overflow-y-auto border border-gray-200 rounded-lg mt-10">
+    <div class="max-h-80 overflow-y-auto border border-gray-200 rounded-lg my-10">
       <table class="min-w-full divide-y divide-gray-300 border-collapse pr-1">
         <thead class="bg-amber-300 sticky top-0 z-10">
         <tr>
@@ -61,6 +65,17 @@ const totalSum = computed(() => {
         </tr>
         </tfoot>
       </table>
+    </div>
+    <div class="flex justify-end">
+      <NuxtLink
+          v-if="formUrl"
+          class="rounded-md border border-transparent px-6 py-3 bg-amber-400 hover:bg-amber-300 transition-base"
+          :to="formUrl"
+          target="_blank"
+          external
+      >
+        Оплатить
+      </NuxtLink>
     </div>
   </div>
 </template>
