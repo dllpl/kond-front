@@ -118,16 +118,16 @@ export const useProfileStore = defineStore('profileStore', {
             })
         },
 
-        async goToOrder(id) {
+        async goToOrder(id, order_number) {
 
             const {public: config} = useRuntimeConfig();
             const profileStore = useProfileStore()
             const popupStore = usePopupStore();
 
             await $fetch(`${config.backOptions.api}/orders/${id}`, {headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}}).then((data) => {
-                popupStore.toggle('modal', {type: 'order', products: data, width: 'max-w-full'})
+                popupStore.toggle('modal', {type: 'order', products: data, width: 'max-w-full', title: `Заказ ${order_number}`})
             }).catch(({response}) => {
-                popupStore.toggle('toast', {title: response._data.message, timeout: 6000, type: 'error'})
+                popupStore.toggle('toast', {title: response?._data?.message ?? 'Ошибка сервера', timeout: 6000, type: 'error'})
             })
         },
 

@@ -70,11 +70,11 @@ useSeoMeta({
 </script>
 <template>
     <NuxtLayout>
-        <Header />
-        <NuxtPage />
-        <Footer />
-        <ElementsNotifications />
-        <ElementsModal />
-        <ElementsMobileCatalogPopover />
+      <Header />
+      <ElementsMobileCatalogPopover />
+      <NuxtPage />
+      <Footer />
+      <ElementsNotifications />
+      <ElementsModal />
     </NuxtLayout>
 </template>

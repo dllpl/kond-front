@@ -1,9 +1,5 @@
 <template>
-
-  <div class="">
-    <section class="flex items-center wrapper-container">
-      <ElementsMobileCatalogPopover />
-    </section>
+  <div>
     <section>
       <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
     </section>
