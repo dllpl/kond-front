@@ -3,7 +3,7 @@
         <section>
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
         </section>
-        <main class="wrapper-container pt-2 pb-16">
+        <main class="wrapper-container pt-2 pb-16 min-h-[40vh]">
             <p class="text-2xl font-semibold mb-4">Здравствуйте, {{ first_name }}</p>
             <TabGroup as="div" class="overflow-hidden">
                 <div class="border-b border-gray-200 sm:snap-x">
