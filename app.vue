@@ -75,5 +75,6 @@ useSeoMeta({
         <Footer />
         <ElementsNotifications />
         <ElementsModal />
+        <ElementsMobileCatalogPopover />
     </NuxtLayout>
 </template>
