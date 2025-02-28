@@ -125,9 +125,19 @@ export const useProfileStore = defineStore('profileStore', {
             const popupStore = usePopupStore();
 
             await $fetch(`${config.backOptions.api}/orders/${id}`, {headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}}).then((data) => {
-                popupStore.toggle('modal', {type: 'order', products: data.products, width: 'max-w-full', title: `Заказ ${order_number}`, formUrl: data.formUrl})
+                popupStore.toggle('modal', {
+                    type: 'order',
+                    products: data.products,
+                    width: 'max-w-full',
+                    title: `Заказ ${order_number}`,
+                    formUrl: data.formUrl
+                })
             }).catch(({response}) => {
-                popupStore.toggle('toast', {title: response?._data?.message ?? 'Ошибка сервера', timeout: 6000, type: 'error'})
+                popupStore.toggle('toast', {
+                    title: response?._data?.message ?? 'Ошибка сервера',
+                    timeout: 6000,
+                    type: 'error'
+                })
             })
         },
 
@@ -141,7 +151,7 @@ export const useProfileStore = defineStore('profileStore', {
                     method: 'POST',
                     headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}
                 }
-            ).then((data) => {
+            ).then(async (data) => {
 
                 const auth_token = useCookie('auth_token', {
                     maxAge: -1,
@@ -154,12 +164,13 @@ export const useProfileStore = defineStore('profileStore', {
 
                 auth_token.value = null
 
+                await navigateTo('/login', {redirectCode: 302})
+
                 popupStore.toggle('toast', {
                     title: 'Вы вышли из аккаунта. Приходите снова',
                     timeout: 2000,
                     type: 'success'
                 })
-                navigateTo('/login', {redirectCode: 302})
                 profileStore.$reset()
             }).catch(({response}) => {
                 popupStore.toggle('toast', {title: response._data.message, timeout: 6000, type: 'error'})

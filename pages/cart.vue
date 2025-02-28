@@ -12,7 +12,7 @@
 
                 <section class="col-span-4 ">
                     <ul class="divide-y divide-gray-200 border-b border-t border-gray-200 ">
-                        <li v-for="product in products" :key="product.id"
+                        <li v-if="products.length" v-for="product in products" :key="product.id"
                             class="flex py-4 gap-4 relative xs:flex-col xs:items-center">
                             <div class="size-16 shrink-0 overflow-hidden rounded-md border border-gray-200 xs:size-28">
                                 <img v-if="product.images && product.images.length" :src="storage + product.images[0]"
@@ -58,6 +58,9 @@
 
                             </div>
                         </li>
+                        <li v-else class="py-4">
+                            <span>Корзина пуста, <NuxtLink to="/catalog" class="text-base font-semibold text-red-600">перейти в каталог</NuxtLink></span>
+                        </li>
                     </ul>
                 </section>
 
@@ -72,49 +75,51 @@
                         <ul class="grid grid-cols-2 gap-x-8 gap-y-6 lg:gap-6 md:grid-cols-2 xs:grid-cols-1 xs:gap-4">
 
                             <li class="">
-                                <label for="surname" class="block text-sm font-medium leading-6 mb-2 pl-2.5">
+                                <label for="surname" class="block text-sm font-medium leading-6 mb-2 ">
                                     Фамилия
                                 </label>
 
-                                <input v-model='form.surname' type="text" name="surname" autocomplete="surname" required
-                                    minlength='5' v-maska=maskaOptions.cyrillic_and_upper_case
+                                <input v-model='form.last_name' type="text" name="surname" autocomplete="surname" required
+                                    minlength='5' v-maska="maskaOptions.cyrillic_and_upper_case"
                                     class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
                             </li>
 
                             <li class="">
-                                <label for="first-name" class="block text-sm font-medium leading-6 mb-2 pl-2.5">
-                                    Имя
+                                <label for="first-name" class="block text-sm font-medium leading-6 mb-2 ">
+                                    Имя <span class="text-red-500">*</span>
                                 </label>
 
                                 <input v-maska=maskaOptions.cyrillic_and_upper_case name="name" autocomplete="name"
-                                    required=""
+                                       v-model="form.first_name"
+                                    required
                                     class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
                             </li>
 
                             <li class="">
-                                <label for="patronymic" class="block text-sm font-medium leading-6 mb-2 pl-2.5">
+                                <label for="patronymic" class="block text-sm font-medium leading-6 mb-2 ">
                                     Отчество
                                 </label>
 
-                                <input v-maska=maskaOptions.cyrillic_and_upper_case name="patronymic"
+                                <input v-maska="maskaOptions.cyrillic_and_upper_case" name="patronymic"
+                                       v-model="form.patronymic"
                                     autocomplete="patronymic" required=""
                                     class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
                             </li>
 
                             <li class="row-start-3 xs:row-auto">
                                 <label for="phone"
-                                    class="block text-sm font-medium leading-6 mb-2 pl-2.5">Телефон</label>
+                                    class="block text-sm font-medium leading-6 mb-2 ">Телефон <span class="text-red-500">*</span></label>
 
-                                <input v-maska=maskaOptions.phone.mask name="phone" autocomplete="phone" required=""
+                                <input v-maska="maskaOptions.phone.mask" name="phone" autocomplete="phone" required v-model="form.phone"
                                     class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                                     placeholder="+7 (___) ___-__-__" />
 
                             </li>
 
                             <li class="row-start-3 xs:row-auto">
-                                <label for="email" class="block text-sm font-medium leading-6 mb-2 pl-2.5">Email</label>
+                                <label for="email" class="block text-sm font-medium leading-6 mb-2">Email <span class="text-red-500">*</span></label>
 
-                                <input id="email" name="email" type="email" autocomplete="email"
+                                <input id="email" name="email" type="email" autocomplete="email" v-model="form.email"
                                     class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                                     placeholder="Email" />
 
@@ -202,43 +207,43 @@
                                 formatNumber(cartStore.totalPriceAllProducts) }}</span>
                         </li>
 
-                        <li
-                            class="flex flex-wrap gap-4 items-center justify-between relative border-t border-gray-200 pt-4 xs:text-sm">
-                            <label for="coupon" class="text-gray-600 ">Введите код купона для скидки:</label>
-                            <div class="relative w-72 md:w-full">
-                                <input name="coupon" type="text" required
-                                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all ">
-                                <button type="submit"
-                                    class="absolute right-0 top-0 shadow-sm flex items-center justify-center rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all h-full">
-                                    <Icon name="hugeicons:arrow-right-02" class="h-5 w-5 text-grey-900" />
-                                </button>
-                            </div>
-                        </li>
+<!--                        <li-->
+<!--                            class="flex flex-wrap gap-4 items-center justify-between relative border-t border-gray-200 pt-4 xs:text-sm">-->
+<!--                            <label for="coupon" class="text-gray-600 ">Введите код купона для скидки:</label>-->
+<!--                            <div class="relative w-72 md:w-full">-->
+<!--                                <input name="coupon" type="text" required-->
+<!--                                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all ">-->
+<!--                                <button type="submit"-->
+<!--                                    class="absolute right-0 top-0 shadow-sm flex items-center justify-center rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all h-full">-->
+<!--                                    <Icon name="hugeicons:arrow-right-02" class="h-5 w-5 text-grey-900" />-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </li>-->
 
-                        <li
-                            class="flex items-end justify-between border-t border-gray-200 pt-4 gap-4 xs:flex-wrap xs:text-sm">
-                            <span class="flex flex-col">
-                                <span class="font-medium mb-1">Бонусы</span>
-                                <span class="text-gray-600 ">
-                                    Доспупно для списания:
-                                    <span class="text-gray-900 font-medium text-lg">
-                                        {{ formatNumber(220) }}
-                                    </span>
-                                </span>
-                            </span>
-                            <button
-                                class="shadow-sm text-sm rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all xs:w-full">
-                                Применить
-                            </button>
-                        </li>
+<!--                        <li-->
+<!--                            class="flex items-end justify-between border-t border-gray-200 pt-4 gap-4 xs:flex-wrap xs:text-sm">-->
+<!--                            <span class="flex flex-col">-->
+<!--                                <span class="font-medium mb-1">Бонусы</span>-->
+<!--                                <span class="text-gray-600 ">-->
+<!--                                    Доспупно для списания:-->
+<!--                                    <span class="text-gray-900 font-medium text-lg">-->
+<!--                                        {{ formatNumber(220) }}-->
+<!--                                    </span>-->
+<!--                                </span>-->
+<!--                            </span>-->
+<!--                            <button-->
+<!--                                class="shadow-sm text-sm rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all xs:w-full">-->
+<!--                                Применить-->
+<!--                            </button>-->
+<!--                        </li>-->
 
-                        <li class="flex items-center justify-between border-t border-gray-200 pt-4  xs:text-sm ">
-                            <span class="flex items-center  text-gray-600 ">
-                                <span>Сумма скидки:</span>
-                            </span>
-                            <span class=" font-medium text-gray-900 text-lg">{{
-                                formatNumber(15) }}</span>
-                        </li>
+<!--                        <li class="flex items-center justify-between border-t border-gray-200 pt-4  xs:text-sm ">-->
+<!--                            <span class="flex items-center  text-gray-600 ">-->
+<!--                                <span>Сумма скидки:</span>-->
+<!--                            </span>-->
+<!--                            <span class=" font-medium text-gray-900 text-lg">{{-->
+<!--                                formatNumber(15) }}</span>-->
+<!--                        </li>-->
 
 
 
@@ -251,17 +256,22 @@
                         </li>
                     </ul>
 
+                    <ClientOnly>
                     <div class="space-y-4 w-1/3 flex flex-col ml-auto mt-8 md:w-full md:mx-0">
+                        <span v-if="!profileStore.isAuth()" class="text-end"><NuxtLink to="/login" class="text-base font-semibold text-amber-400">Авторизуйтесь</NuxtLink>, чтобы продолжить</span>
                         <button
-                            class=" block text-white shadow-lg font-medium rounded-md ring-1 ring-inset ring-green-600 bg-green-500 px-2.5 py-2 hover:bg-green-600 focus:ring-2 focus:ring-inset focus:ring-green-600 transition-all">
+                            :disabled="disabledPay"
+                            class="block text-white shadow-lg font-medium rounded-md bg-green-500 px-2.5 py-2 hover:bg-green-600 focus:ring-2 focus:ring-inset focus:ring-green-600 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 transition-all">
                             Оплатить заказ
                         </button>
 
                         <button
-                            class=" block shadow-sm rounded-lg ring-1 text-gray-300 font-medium ring-inset ring-gray-900 bg-gray-900 px-2.5 py-2  hover:text-white focus:ring-2 focus:ring-inset focus:text-white transition-all">
+                            :disabled="disabledPay"
+                            class="block shadow-sm rounded-lg text-gray-300 font-medium bg-gray-900 px-2.5 py-2  hover:text-white focus:ring-2 focus:ring-inset focus:text-white transition-all disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500">
                             Сформировать счет
                         </button>
                     </div>
+                    </ClientOnly>
 
                 </section>
 
@@ -290,9 +300,9 @@ useHead({
 })
 
 const { public: config } = useRuntimeConfig();
-
 const { storage } = useRuntimeConfig().public.backOptions;
 const { data: productsOffers } = await useFetch(config.backOptions.api + '/products/spec');
+const profileStore = useProfileStore();
 
 const cartStore = useCartStore();
 const { contacts } = useContactsStore();
@@ -301,21 +311,13 @@ const { products } = storeToRefs(cartStore);
 const maskaOptions = useMaskaOptions();
 const is_pickup = ref(true)
 
-const form = ref({
-    surname: '',
-    name: '',
-    patronymic: '',
-    phone: '',
-    email: '',
-    city: ''
-})
+const form = profileStore.profile
 
 const query = ref('')
 const selected = ref({})
 
 const adresess = ref([])
 const searchAdress = async (value) => {
-    // console.log(value)
     const { data } = await useFetch('dadata/address', {
         method: 'POST',
         body: {
@@ -325,4 +327,9 @@ const searchAdress = async (value) => {
     })
     adresess.value = data.value
 }
+
+const disabledPay = computed(() => {
+    return !products.value.length || !profileStore.isAuth()
+})
+
 </script>

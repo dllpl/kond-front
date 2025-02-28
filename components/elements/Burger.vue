@@ -40,7 +40,7 @@
                                         </template>
                                         <template v-else>
                                           <span class="flex items-center gap-2">
-                                              {{ profileStore.profile.first_name }}
+                                              Профиль
                                               <Icon name="hugeicons:user-circle" class="w-6 h-6"/>
                                           </span>
                                         </template>
