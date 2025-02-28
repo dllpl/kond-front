@@ -146,7 +146,7 @@
                                     <input name="pickup" type="radio" value="pickup" id="pickup"
                                            :checked="is_pickup === true" @change="is_pickup = !is_pickup"
                                            class="relative cursor-pointer size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-amber-400 checked:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-                                    <label for="pickup" class="block text-sm font-medium cursor-pointer">
+                                    <label for="pickup" class="block text-sm font-medium cursor-pointer w-full">
                                         Самовывоз
                                     </label>
                                 </div>
@@ -162,7 +162,7 @@
                                     <input name="delivery" type="radio" value="delivery" id="delivery"
                                            :checked="is_pickup === false" @change="is_pickup = !is_pickup"
                                            class="relative cursor-pointer size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-amber-400 checked:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden">
-                                    <label for="delivery" class="block text-sm font-medium cursor-pointer">
+                                    <label for="delivery" class="block text-sm font-medium cursor-pointer w-full">
                                         Доставка
                                     </label>
                                 </div>
@@ -272,15 +272,17 @@
                             <span v-if="!profileStore.isAuth()" class="text-end"><NuxtLink to="/login"
                                                                                            class="text-base font-semibold text-amber-400">Авторизуйтесь</NuxtLink>, чтобы продолжить</span>
                             <button
+                                @click="makePay(1)"
                                 :disabled="disabledPay"
                                 class="block text-white shadow-lg font-medium rounded-md bg-green-500 px-2.5 py-2 hover:bg-green-600 focus:ring-2 focus:ring-inset focus:ring-green-600 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 transition-all">
                                 Оплатить заказ
                             </button>
 
                             <button
+                                @click="makePay(2)"
                                 :disabled="disabledPay"
                                 class="block shadow-sm rounded-lg text-gray-300 font-medium bg-gray-900 px-2.5 py-2  hover:text-white focus:ring-2 focus:ring-inset focus:text-white transition-all disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500">
-                                Сформировать счет
+                                Сформировать счет (для юр. лиц)
                             </button>
                         </div>
                     </ClientOnly>
@@ -343,5 +345,14 @@ const searchAdress = async (value) => {
 const disabledPay = computed(() => {
     return !products.value.length || !profileStore.isAuth()
 })
+
+const makePay = (order_type_id) => {
+    cartStore.makePay({
+        ...form,
+        is_pickup: is_pickup.value,
+        products: cartStore.products,
+        order_type_id: order_type_id
+    })
+}
 
 </script>

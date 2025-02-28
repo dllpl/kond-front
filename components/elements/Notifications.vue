@@ -13,6 +13,7 @@
                         <div class="flex items-start">
                             <div class="flex-shrink-0">
                                 <Icon v-if="toast.options.type === 'error'" name="material-symbols:warning-rounded" class="h-6 w-6 bg-red-500"/>
+                                <Icon v-else-if="toast.options.type === 'warning'" name="material-symbols:warning-rounded" class="h-6 w-6 bg-amber-500"/>
                                 <Icon v-else name="material-symbols:check-circle-rounded" class="h-6 w-6 bg-green-500"/>
                             </div>
                             <div class="ml-3 w-0 flex-1 pt-0.5">
