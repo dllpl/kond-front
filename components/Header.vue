@@ -218,7 +218,6 @@ const cartStore = useCartStore();
 const { contacts } = useContactsStore();
 const popupStore = usePopupStore();
 const profileStore = useProfileStore();
-const first_name = profileStore.profile?.first_name ?? 'Кабинет'
 
 const navTop = [
 	{ name: 'О магазине', slug: '/about' },
