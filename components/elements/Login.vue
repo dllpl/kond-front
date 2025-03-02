@@ -1,15 +1,8 @@
 <template>
 
     <div class="flex min-h-full flex-1 flex-col justify-center">
-
-        <!-- <h1 class="text-center text-3xl font-semibold mb-8 md:mb-4">Вход</h1>
-
-        <div class="mx-auto w-full max-w-lg"> -->
-
-        <!-- <div class=""> -->
-
-        <p class="text-center text-lg font-semibold mb-1 ">{{ title }}</p>
-        <p class="text-center text-sm text-gray-500 mb-4">{{ subtitle }}</p>
+        <div class="text-center text-lg font-semibold mb-1" v-if="title.length">{{ title }}</div>
+        <div class="text-center text-sm text-gray-500 mb-4" v-if="subtitle.length">{{ subtitle }}</div>
 
         <form class="space-y-6" @submit.prevent="authStore.makeLogin()">
             <div class="relative">
@@ -84,9 +77,7 @@
             </div>
             <ElementsQuickLogin/>
         </div>
-        <!-- </div> -->
     </div>
-    <!-- </div> -->
 </template>
 
 <script setup>
@@ -98,8 +89,14 @@ const popupStore = usePopupStore();
 
 
 const props = defineProps({
-    title: String,
-    subtitle: String,
+    title: {
+        type: String,
+        default: '',
+    },
+    subtitle: {
+        type: String,
+        default: '',
+    },
 })
 
 </script>

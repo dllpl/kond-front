@@ -1,9 +1,5 @@
 <template>
-
-  <div class="">
-    <section class="flex items-center wrapper-container">
-      <ElementsMobileCatalogPopover />
-    </section>
+  <div>
     <section>
       <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
     </section>
@@ -56,7 +52,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: current_title === 'Каталог товаров' ? 'Каталог товаров интернет-магазина Всё для кондитера' : 'Купить ' + current_title + ' интернет-магазин Всё для кондитера'
+      content: current_title === 'Каталог товаров' ? 'Каталог товаров интернет-магазина Всё для кондитера' : 'Купить ' + current_title + 'онлайн в интернет-магазине Всё для кондитера. Доставка по г. Набережные Челны и всей России'
     }
   ],
 })
@@ -65,7 +61,11 @@ if (id_product_page) {
   useSchemaOrg([
     defineProduct({
       name: data.value.product.title,
-      image: storage + data.value.product.images[0],
+      ...(data.value.product.images?.length ? {
+          image: storage + data.value.product.images[0]
+      }: {
+          image : '/assets/img/default-product-img.webp'
+      }),
       sku: data.value.product.id,
       brand: 'Всё для кондитера',
       offers: [

@@ -1,8 +1,6 @@
 <template>
     <div class="">
-        <section class="flex items-center wrapper-container">
-            <ElementsMobileCatalogPopover />
-        </section>
+
         <section>
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
         </section>
@@ -154,12 +152,6 @@ useHead({
         {
             name: 'description',
             content: 'Наш адрес, номер телефона, е-маил адрес, режим работы и социальные сети Всё для кондитера.'
-        }
-    ],
-    link: [
-        {
-            // rel: 'canonical',
-            href: '/'
         }
     ],
 })

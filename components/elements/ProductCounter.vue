@@ -60,7 +60,7 @@ const numberClass = computed(() => {
 
                 <button :disabled="cartStore.getCountProductInCart(item.id) >= item.count"
                     @click="cartStore.increment(item)"
-                    class="flex items-center rounded-lg bg-amber-400 hover:bg-amber-300 transition-base "
+                    class="flex items-center rounded-lg bg-amber-400 hover:bg-amber-300 transition-base disabled:bg-amber-200 disabled:cursor-not-allowed"
                     :class="buttonClass">
                     <Icon name="hugeicons:plus-sign" class="shrink-0" :class="iconClass" />
                 </button>

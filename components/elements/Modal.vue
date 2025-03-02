@@ -7,8 +7,7 @@
             </TransitionChild>
 
             <div class="fixed inset-0 z-40 w-screen overflow-y-auto p-4">
-                <div
-                    class="flex flex-col items-center min-h-full justify-center text-center sm:items-center sm:px-0 lg:px-8 ">
+                <div class="flex flex-col items-center min-h-full justify-center text-center sm:items-center sm:px-0 lg:px-8 ">
                     <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 scale-95"
                         enter-to="opacity-100 scale-100" leave="ease-in duration-200" leave-from="opacity-100 scale-100"
                         leave-to="opacity-0 scale-95">
@@ -21,7 +20,12 @@
                                     <Icon name="hugeicons:cancel-01" class="h-5 w-5" aria-hidden="true" />
                                 </button>
                                 <ElementsLogin v-if="modal.options.type === 'login'" :title="modal.options.title" :subtitle="modal.options.subtitle" />
-                                <ElementsOrderProducts v-if="modal.options.type === 'order'" :products="modal.options.products"/>
+                                <ElementsOrderProducts
+                                    v-if="modal.options.type === 'order'"
+                                    :products="modal.options.products"
+                                    :title="modal.options.title"
+                                    :formUrl="modal.options.formUrl"
+                                />
                             </div>
                         </DialogPanel>
                     </TransitionChild>

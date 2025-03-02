@@ -85,9 +85,8 @@
 					<div class="flex items-center gap-x-12 2xl:gap-x-4 md:w-auto xs:order-last">
 						<div class="flex items-center gap-x-12 2xl:gap-x-4 lg:hidden">
 							<NuxtLink :to="item.slug" v-for="item in navTop" :key="item.name"
-								class="text-sm transition-base hover:text-red-600 focus:text-red-600">{{
-									item.name
-								}}
+								class="text-sm transition-base hover:text-red-600 focus:text-red-600">
+                                {{ item.name }}
 							</NuxtLink>
 							<NuxtLink  :to="`/login`"
 								class="text-sm transition-base hover:text-red-600 focus:text-red-600">
@@ -96,7 +95,7 @@
                                 </template>
                                 <template v-else>
                                     <span class="flex items-center gap-2">
-                                        {{ first_name }}
+                                        Профиль
                                         <Icon name="hugeicons:user-circle" class="w-6 h-6"/>
                                     </span>
                                 </template>
@@ -219,7 +218,6 @@ const cartStore = useCartStore();
 const { contacts } = useContactsStore();
 const popupStore = usePopupStore();
 const profileStore = useProfileStore();
-const first_name = profileStore.profile?.first_name ?? 'Кабинет'
 
 const navTop = [
 	{ name: 'О магазине', slug: '/about' },

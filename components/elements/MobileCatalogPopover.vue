@@ -1,5 +1,5 @@
 <template>
-
+  <section class="flex items-center wrapper-container">
     <Popover class="relative isolate z-10 pt-4 w-full hidden xs:block">
 
         <PopoverButton type="button"
@@ -43,13 +43,10 @@
             </PopoverPanel>
         </transition>
     </Popover>
-
+  </section>
 </template>
-
-
 <script setup>
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
 const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
-
 </script>

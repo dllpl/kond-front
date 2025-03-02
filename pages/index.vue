@@ -25,11 +25,6 @@ const { status: productsOffersStatus, data: productsOffers } = await useFetch(co
 const { status: productsSetsStatus, data: productsSets } = await useFetch(config.backOptions.api + '/products-sets', { server: false, lazy: true });
 </script>
 <template>
-
-  <section class="flex items-center wrapper-container">
-    <ElementsMobileCatalogPopover />
-  </section>
-
   <main class="wrapper-container py-16 sm:pb-8 sm:pt-4">
     <div class="grid grid-cols-custom gap-y-20 gap-x-8 lg:grid-cols-1 lg:gap-y-20 lg:gap-x-0">
 

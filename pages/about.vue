@@ -1,9 +1,7 @@
 <template>
     <div class="">
 
-        <section class="flex items-center wrapper-container">
-            <ElementsMobileCatalogPopover />
-        </section>
+
 
         <section>
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
@@ -196,12 +194,6 @@ useHead({
         {
             name: 'description',
             content: 'О магазине Всё для кондитера - один из лучших оптово розничных магазинов товаров для кондитеров в России.'
-        }
-    ],
-    link: [
-        {
-            // rel: 'canonical',
-            href: '/'
         }
     ],
 })

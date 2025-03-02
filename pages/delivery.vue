@@ -1,8 +1,6 @@
 <template>
     <div class="">
-        <section class="flex items-center wrapper-container">
-            <ElementsMobileCatalogPopover />
-        </section>
+
 
         <section>
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
@@ -239,12 +237,6 @@ useHead({
         {
             name: 'description',
             content: 'Всё для кондитера: доставка товаров по Набережным Челнам и всей России, оплата по карте, в СПб и расчетным счетом для юридических лиц.'
-        }
-    ],
-    link: [
-        {
-            // rel: 'canonical',
-            href: '/'
         }
     ],
 })
