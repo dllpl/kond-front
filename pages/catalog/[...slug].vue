@@ -25,12 +25,16 @@
 const route = useRoute();
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
+const profileStore = useProfileStore();
 
 const uri = route.params?.slug ? route.params.slug.join('/') : '';
 
 const full_url = config.backOptions.api + '/products-categories/' + uri;
 
-const { data } = await useFetch(full_url);
+// const { data } = await useFetch(full_url);
+const { data } = await useFetch(full_url,
+  ...(profileStore.isAuth() ? [{ headers: { Authorization: 'Bearer ' + profileStore.credentials.token } }] : []),
+);
 
 const breadcrumbs = [
   {
