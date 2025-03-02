@@ -8,7 +8,7 @@ const { storage } = useRuntimeConfig().public.backOptions;
 const props = defineProps({
     product: Object
 })
-
+console.log(props.product);
 </script>
 
 
@@ -58,17 +58,20 @@ const props = defineProps({
                         <span v-else class="text-red-600 ml-auto">Нет в наличии</span>
                     </div>
 
-                    <div class="mt-10 grid gap-x-6 gap-y-4 grid-cols-2  sm:grid-cols-1">
-                        <button type="button"
-                            class="flex items-center gap-x-2 w-full justify-center rounded-lg px-2.5 py-2 transition-base ring-2 ring-gray-300/20 hover:text-white hover:ring-red-500 hover:bg-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-500">
+                    <div class="mt-10 grid gap-x-6 gap-y-4 grid-cols-2 sm:grid-cols-1">
+                        <!-- <ElementsProductfavorits class="gap-x-2 ring-2 transition-base " /> -->
+                        <button type="button" :class="product.is_favorite ? 'bg-red-600 ring-red-500 text-white' : ''"
+                            class="flex gap-x-2 items-center justify-center rounded-md ring-2 ring-gray-300/20 bg-white/70 hover:text-white hover:ring-red-500 hover:bg-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-500 transition-base">
 
                             <Icon name="hugeicons:heart-add"
-                                class="w-6 h-6 group-hover:text-white text-red-500 transition-base">
+                                class="w-6 h-6 text-red-500 transition-base group-hover:text-white ">
                             </Icon>
-                            В избранное
-                        </button>
-                        <ElementsProductCounter :item="product" />
 
+                            <span v-if="product.is_favorite">В избранном</span>
+                            <span v-else>В избранное</span>
+                        </button>
+
+                        <ElementsProductCounter :item="product" />
                     </div>
 
                     <ElementsCallsToAction />

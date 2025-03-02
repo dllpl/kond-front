@@ -59,7 +59,7 @@
 
                     <TabPanel>
                         <h2 class="sr-only">Избранное</h2>
-                        <SectionLkFavorites />
+                        <SectionLkFavorites :favorites="favorites" />
                     </TabPanel>
 
                     <TabPanel>

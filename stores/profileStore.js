@@ -33,7 +33,7 @@ export const useProfileStore = defineStore('profileStore', {
                 path: '/',
                 domain: process.dev ? 'localhost' : '.dljakonditera.ru',
                 secure: !process.dev,
-                ...(!process.dev ? {sameSite: 'none'} : {}),
+                ...(!process.dev ? { sameSite: 'none' } : {}),
                 httpOnly: false,
             })
 
@@ -47,10 +47,10 @@ export const useProfileStore = defineStore('profileStore', {
 
         async getProfile() {
 
-            const {public: config} = useRuntimeConfig();
+            const { public: config } = useRuntimeConfig();
 
             try {
-                const {data: profile} = await useFetch(`${config.backOptions.api}/user/profile`, {headers: {'Authorization': `Bearer ${this.credentials.token}`}})
+                const { data: profile } = await useFetch(`${config.backOptions.api}/user/profile`, { headers: { 'Authorization': `Bearer ${this.credentials.token}` } })
 
                 // console.log(profile)
 
@@ -59,7 +59,7 @@ export const useProfileStore = defineStore('profileStore', {
             } catch (error) {
                 if (error.status === 401) {
                     useCookie('auth_token').value = undefined
-                    return navigateTo('/login', {redirectCode: 401})
+                    return navigateTo('/login', { redirectCode: 401 })
                 }
 
                 throw createError({
@@ -69,12 +69,11 @@ export const useProfileStore = defineStore('profileStore', {
             }
         },
 
+
         isAuth() {
             const auth_token = useCookie('auth_token').value
             if (auth_token) {
-
                 this.credentials.token = auth_token
-
                 return true
             }
             return false
@@ -86,8 +85,8 @@ export const useProfileStore = defineStore('profileStore', {
 
             this.disabled = true
 
-            const {public: config} = useRuntimeConfig();
-            const {phoneClear} = useHelper()
+            const { public: config } = useRuntimeConfig();
+            const { phoneClear } = useHelper()
             const profileStore = useProfileStore();
             const popupStore = usePopupStore();
 
@@ -102,14 +101,14 @@ export const useProfileStore = defineStore('profileStore', {
             }).then((data) => {
                 this.profile = data.profile
                 this.errors = null
-                popupStore.toggle('toast', {title: 'Профиль обновлен', timeout: 2000})
-            }).catch(({response}) => {
+                popupStore.toggle('toast', { title: 'Профиль обновлен', timeout: 2000 })
+            }).catch(({ response }) => {
 
                 if (response.status === 422) {
-                    popupStore.toggle('toast', {title: 'Проверьте введенные данные', timeout: 2000, type: 'error'})
+                    popupStore.toggle('toast', { title: 'Проверьте введенные данные', timeout: 2000, type: 'error' })
                     this.errors = response._data.errors
                 } else {
-                    popupStore.toggle('toast', {title: response._data.message, timeout: 6000, type: 'error'})
+                    popupStore.toggle('toast', { title: response._data.message, timeout: 6000, type: 'error' })
                     this.errors = null
                 }
 
@@ -120,10 +119,16 @@ export const useProfileStore = defineStore('profileStore', {
 
         async goToOrder(id, order_number) {
 
-            const {public: config} = useRuntimeConfig();
+            const { public: config } = useRuntimeConfig();
             const profileStore = useProfileStore()
             const popupStore = usePopupStore();
 
+<<<<<<< HEAD
+            await $fetch(`${config.backOptions.api}/orders/${id}`, { headers: { 'Authorization': `Bearer ${profileStore.credentials.token}` } }).then((data) => {
+                popupStore.toggle('modal', { type: 'order', products: data, width: 'max-w-full' })
+            }).catch(({ response }) => {
+                popupStore.toggle('toast', { title: response._data.message, timeout: 6000, type: 'error' })
+=======
             await $fetch(`${config.backOptions.api}/orders/${id}`, {headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}}).then((data) => {
                 popupStore.toggle('modal', {
                     type: 'order',
@@ -138,20 +143,27 @@ export const useProfileStore = defineStore('profileStore', {
                     timeout: 6000,
                     type: 'error'
                 })
+>>>>>>> 4773439725234fcdccaf4cf98f092dffcc457e34
             })
         },
 
         async logout() {
-
-            const {public: config} = useRuntimeConfig();
+            const { public: config } = useRuntimeConfig();
             const profileStore = useProfileStore()
             const popupStore = usePopupStore();
 
             await $fetch(`${config.backOptions.api}/logout`, {
+<<<<<<< HEAD
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${profileStore.credentials.token}` }
+            }
+            ).then((data) => {
+=======
                     method: 'POST',
                     headers: {'Authorization': `Bearer ${profileStore.credentials.token}`}
                 }
             ).then(async (data) => {
+>>>>>>> 4773439725234fcdccaf4cf98f092dffcc457e34
 
                 const auth_token = useCookie('auth_token', {
                     maxAge: -1,
@@ -159,7 +171,7 @@ export const useProfileStore = defineStore('profileStore', {
                     domain: process.dev ? 'localhost' : '.dljakonditera.ru',
                     secure: !process.dev,
                     httpOnly: false,
-                    ...(!process.dev ? {sameSite: 'none'} : {}),
+                    ...(!process.dev ? { sameSite: 'none' } : {}),
                 })
 
                 auth_token.value = null
@@ -171,13 +183,19 @@ export const useProfileStore = defineStore('profileStore', {
                     timeout: 2000,
                     type: 'success'
                 })
+<<<<<<< HEAD
+                navigateTo('/login', { redirectCode: 302 })
+=======
+>>>>>>> 4773439725234fcdccaf4cf98f092dffcc457e34
                 profileStore.$reset()
-            }).catch(({response}) => {
-                popupStore.toggle('toast', {title: response._data.message, timeout: 6000, type: 'error'})
+            }).catch(({ response }) => {
+                popupStore.toggle('toast', { title: response._data.message, timeout: 6000, type: 'error' })
             })
+        },
 
-        }
+
     },
+
 
     getters: {},
 })
