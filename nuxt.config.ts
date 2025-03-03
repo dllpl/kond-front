@@ -54,6 +54,7 @@ export default defineNuxtConfig({
 
   delayHydration: {
     mode: 'init',
+    debug: true,
   },
 
   postcss: {
