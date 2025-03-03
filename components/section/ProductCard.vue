@@ -12,7 +12,7 @@
 
             <div class="flex flex-col h-full pb-4 pt-10 text-center lg:pt-6">
                 <h3 class="text-sm mb-4">
-                    <NuxtLink :to="'/catalog/' + product.slug_path">
+                    <NuxtLink :to="'/catalog/' + product.slug_path" :prefetch="false">
                         <span aria-hidden="true" class="absolute inset-0"/>
                         {{ product.title }}
                     </NuxtLink>
@@ -49,7 +49,7 @@ const props = defineProps({
     product: Object
 });
 
-console.log(props.product.is_favorite);
+// console.log(props.product.is_favorite);
 
 
 </script>

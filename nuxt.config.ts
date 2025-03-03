@@ -55,7 +55,6 @@ export default defineNuxtConfig({
 
   image: {
     dir: 'assets/img',
-    provider: 'vercel',
     domains: ['lk.dljakonditera.ru', 'admin.dljakonditera.ru', 'dljakonditera.ru'],
     format: ['webp'],
     quality: 80,
