@@ -12,10 +12,16 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/": { isr: 300, headers: { "Cache-Control": "public, max-age=300" } },
-    "/_nuxt/**": { headers: { "Cache-Control": "public, max-age=31536000, immutable" } },
-    "/static/**": { headers: { "Cache-Control": "public, max-age=86400" } },
-    "/api/**": { swr: 300, headers: { "Cache-Control": "public, max-age=300" } },
+    "/": {isr: 300, headers: {"Cache-Control": "public, max-age=300"}},
+    "/_nuxt/**": {headers: {"Cache-Control": "public, max-age=31536000, immutable"}},
+    "/static/**": {headers: {"Cache-Control": "public, max-age=86400"}},
+
+    "/api/user/**": {headers: {"Cache-Control": "no-store, no-cache, must-revalidate"}},
+    "/api/orders/**": {headers: {"Cache-Control": "no-store, no-cache, must-revalidate"}},
+
+    "/api/**": {swr: 300, headers: {"Cache-Control": "public, max-age=300"}},
+
+    "/lk/**": {headers: {"Cache-Control": "private, max-age=0, no-cache,no-store, must-revalidate"}},
   },
 
   icon: {
