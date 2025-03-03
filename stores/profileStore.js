@@ -79,6 +79,16 @@ export const useProfileStore = defineStore('profileStore', {
             return false
         },
 
+        getAuthHeader() {
+            if(this.isAuth()) {
+                return {
+                    'Authorization': `Bearer ${this.credentials.token}`
+                }
+            } else {
+                return {}
+            }
+        },
+
         async updateProfile() {
 
             const form = this.profile
