@@ -44,12 +44,27 @@ export default defineNuxtConfig({
     'yandex-metrika-module-nuxt3',
     'nuxt-headlessui',
     "nuxt-delay-hydration",
+    '@nuxt/image',
   ],
 
   css: ['~/assets/css/main.css'],
 
   headlessui: {
     prefix: ''
+  },
+
+  image: {
+    dir: 'assets/img',
+    provider: 'vercel',
+    domains: ['lk.dljakonditera.ru', 'admin.dljakonditera.ru', 'dljakonditera.ru'],
+    format: ['webp'],
+    quality: 80,
+    screens: {
+      sm: 320,
+      md: 640,
+      lg: 1024,
+      xl: 1280
+    }
   },
 
   delayHydration: {
