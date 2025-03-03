@@ -40,7 +40,7 @@ export const useAuthStore = defineStore('authStore', {
 
                 popupStore.toggle('toast', {title: 'Вы успешно зарегистрировались', timeout: 2000})
                 profileStore.setAuth(res)
-                navigateTo('/lk')
+                navigateTo('/lk', {external: true})
 
             }).catch(({response}) => {
                 if(response.status === 422) {
@@ -73,7 +73,7 @@ export const useAuthStore = defineStore('authStore', {
 
                 popupStore.toggle('toast', {title: 'Успешная авторизация', timeout: 2000, type: 'success'})
                 profileStore.setAuth(data)
-                navigateTo('/lk')
+                navigateTo('/lk', {external: true})
 
             }).catch(({response}) => {
 

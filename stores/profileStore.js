@@ -179,7 +179,7 @@ export const useProfileStore = defineStore('profileStore', {
                     timeout: 2000,
                     type: 'success'
                 })
-                profileStore.$reset()
+                // profileStore.$reset()
             }).catch(({ response }) => {
                 popupStore.toggle('toast', { title: response._data.message, timeout: 6000, type: 'error' })
             })
