@@ -24,7 +24,7 @@
 
             <button @click="favoriteStore.toggle(product)"
                 :class="product.is_favorite ? 'bg-red-600 ring-red-500 text-white' : 'bg-white/70 text-indigo-950 ring-gray-300/20 '"
-                class="group absolute top-2.5 right-2.5 flex items-center justify-center transition-all p-1 rounded-md ring-1 
+                class="group absolute top-2.5 right-2.5 flex items-center justify-center transition-all p-1 rounded-md ring-1
             hover:bg-red-600 hover:ring-red-500 hover:text-white 
             focus:ring-red-500 focus:text-text-white  
             ">
@@ -34,14 +34,11 @@
             <!-- <ElementsProductfavorits class="absolute top-2.5 right-2.5  transition-all p-1 ring-1" /> -->
         </div>
 
-        <div class="">
-            <ElementsProductCounter :item="product" />
-        </div>
+        <ElementsProductCounter :item="product" />
     </div>
 </template>
 
 <script setup>
-
 const { storage } = useRuntimeConfig().public.backOptions;
 const favoriteStore = useFavoriteStore();
 
