@@ -24,7 +24,7 @@
                 <picture class="absolute inset-0 -z-20">
                     <source srcset="/assets/img/delivery-576.webp" media="(max-width: 576px)">
                     <source srcset="/assets/img/delivery-1440.webp" media="(max-width: 1440px)">
-                    <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl xs:object-center"
+                    <img loading="lazy" class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl xs:object-center"
                         src="/assets/img/delivery-1920.webp" alt="Доставка и оплата">
                 </picture>
 
