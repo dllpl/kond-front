@@ -6,12 +6,12 @@
 
     <main class="wrapper-container pb-16">
       <template v-if="!data.product">
-        <SectionCatalogList :data="data.data"
+        <LazySectionCatalogList :data="data.data"
           :class="data.data[0].children.length === 0 || data.products.length === 0 ? 'mb-0' : 'mb-20'" />
-        <SectionProductList :data="data.products" v-if="data.products.length" />
+        <LazySectionProductList :data="data.products" v-if="data.products.length" />
       </template>
 
-      <SectionProductPage v-else :product="data.product" />
+      <LazySectionProductPage v-else :product="data.product" />
     </main>
   </div>
 </template>
@@ -27,10 +27,7 @@ const uri = route.params?.slug ? route.params.slug.join('/') : '';
 
 const full_url = config.backOptions.api + '/products-categories/' + uri;
 
-// const { data } = await useFetch(full_url);
-const { data } = await useFetch(full_url,
-  ...(profileStore.isAuth() ? [{ headers: { Authorization: 'Bearer ' + profileStore.credentials.token } }] : []),
-);
+const { data } = await useFetch(full_url, {headers: { ...profileStore.getAuthHeader()}},);
 
 const breadcrumbs = [
   {

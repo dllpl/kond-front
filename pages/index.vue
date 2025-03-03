@@ -1,6 +1,4 @@
 <script setup>
-import {useProfileStore} from "~/stores/profileStore.js";
-
 useHead({
     title: 'Интернет-магазин для кондитеров с доставкой по г. Набережные Челны и России',
     meta: [
@@ -50,9 +48,9 @@ const {
 
 
             <ClientOnly>
-                <ElementsSliderProduct v-if="productsOffersStatus !== 'pending'" :data="productsOffers.data"
+                <LazyElementsSliderProduct v-if="productsOffersStatus !== 'pending'" :data="productsOffers.data"
                                        title="Спецпредложения" class="col-span-2 lg:grid-cols-1 relative"/>
-                <SectionProductTop v-if="productsSetsStatus === 'success'" :data="productsSets.data"
+                <LazySectionProductTop v-if="productsSetsStatus === 'success'" :data="productsSets.data"
                                    class="col-span-2 lg:grid-cols-1 " title="Праздничные предложения"/>
             </ClientOnly>
 

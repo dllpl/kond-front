@@ -1,16 +1,12 @@
 <script setup>
-// const { public: config } = useRuntimeConfig();
 const { contacts } = useContactsStore();
 const { storage } = useRuntimeConfig().public.backOptions;
-// const { data: productNews } = await useFetch(config.backOptions.api + '/products/spec');
-
 
 const props = defineProps({
     product: Object
 })
 console.log(props.product);
 </script>
-
 
 <template>
 
@@ -23,15 +19,13 @@ console.log(props.product);
                 <!-- Product image -->
                 <div class="col-span-3 row-end-1  xl:col-span-4 lg:col-span-1 ">
                     <div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-white ring-2 ring-gray-300/20">
-
-                        <img v-if="product.images && product.images.length" :src="storage + product.images[0]"
+                        <NuxtImg
+                            v-if="product.images && product.images.length"
+                            loading="lazy" width="400" height="400" format="webp" sizes="sm:100vw md:50vw lg:400px" :src="storage + product.images[0]"
                             :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full" />
 
-                        <img v-else src="/assets/img/default-product-img.webp" :alt="product.title"
-                            class="object-cover max-h-[535px] object-center rounded-lg w-full">
-
-                        <!-- <img :src="storage + product.images[0]" :alt="product.title"
-                            class="object-cover max-h-[535px] object-center rounded-lg w-full" /> -->
+                        <NuxtImg loading="lazy" width="200" height="200" format="webp" sizes="sm:100vw md:50vw lg:400px" v-else src="/default-product-img.webp" :alt="product.title"
+                            class="object-cover max-h-[535px] object-center rounded-lg w-full"/>
                     </div>
                 </div>
 
@@ -215,7 +209,7 @@ console.log(props.product);
 
                 <!-- Product others -->
                 <div class="relative col-span-8 mt-8 lg:col-span-1 lg:mt-0">
-                    <ElementsSliderProduct v-if="product.similars?.length" class="col-span-2 lg:grid-cols-1"
+                    <LazyElementsSliderProduct v-if="product.similars?.length" class="col-span-2 lg:grid-cols-1"
                         :data="product.similars" title="Похожие товары" />
                 </div>
             </div>

@@ -45,6 +45,7 @@ export default defineNuxtConfig({
     'nuxt-headlessui',
     "nuxt-delay-hydration",
     '@nuxt/image',
+    'nuxt-vitalizer',
   ],
 
   css: ['~/assets/css/main.css'],
@@ -54,6 +55,7 @@ export default defineNuxtConfig({
   },
 
   image: {
+    provider: 'vercel',
     dir: 'assets/img',
     domains: ['lk.dljakonditera.ru', 'admin.dljakonditera.ru', 'dljakonditera.ru'],
     format: ['webp'],
@@ -69,6 +71,11 @@ export default defineNuxtConfig({
   delayHydration: {
     mode: 'mount',
     debug: process.env.NODE_ENV === 'development',
+  },
+
+  vitalizer: {
+    // Remove the render-blocking entry CSS
+    disableStylesheets: 'entry'
   },
 
   postcss: {
