@@ -11,7 +11,7 @@
                 </label>
                 <div class="mt-2">
 
-                    <input v-model="login.form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel"
+                    <input v-model="login.form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel" v-autofocus
                         autocomplete="tel" required :class="login.errors?.phone ? 'ring-2 ring-red-400' : ''"
                         class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm"
                         placeholder="+7 (___) ___-__-__" />
