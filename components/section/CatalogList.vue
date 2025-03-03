@@ -7,9 +7,9 @@
         lg:h-50 
         md:h-45 md:p-4
         xs:h-40
-        ">
+        " :prefetch="false">
         <span aria-hidden="true" class="absolute inset-0">
-          <img :src="storage + category.img" :alt="category.title" class="h-full w-full object-cover object-center" />
+          <NuxtImg loading="lazy" format="webp" sizes="sm:100vw md:50vw lg:400px" width="200" height="200" :src="storage + category.img" :alt="category.title" class="h-full w-full object-cover object-center" />
         </span>
 
         <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50" />
