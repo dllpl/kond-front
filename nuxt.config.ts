@@ -43,12 +43,17 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     'yandex-metrika-module-nuxt3',
     'nuxt-headlessui',
+    "nuxt-delay-hydration",
   ],
 
   css: ['~/assets/css/main.css'],
 
   headlessui: {
     prefix: ''
+  },
+
+  delayHydration: {
+    mode: 'init',
   },
 
   postcss: {
