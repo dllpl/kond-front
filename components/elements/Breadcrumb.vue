@@ -2,7 +2,7 @@
     <div class="flex items-center" aria-label="Breadcrumb">
         <ol role="list" class="flex items-center space-x-1 overflow-x-scroll no-scrollbar">
             <li>
-                <NuxtLink :to="`/`" class="flex items-center text-gray-400 hover:text-gray-500 transition-all">
+                <NuxtLink to="/" class="flex items-center text-gray-400 hover:text-gray-500 transition-all">
                     <Icon name="hugeicons:home-05" class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
                     <span class="sr-only">Главная</span>
                 </NuxtLink>

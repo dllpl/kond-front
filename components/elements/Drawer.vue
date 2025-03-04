@@ -43,10 +43,10 @@
                                                             class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                             <!-- <img :src="product.imageSrc" :alt="product.imageAlt"
                                                                 class="h-full w-full object-cover object-center" /> -->
-                                                            <img v-if="product.images && product.images.length"
+                                                            <img loading="lazy" width="44" height="44" v-if="product.images && product.images.length"
                                                                 :src="storage + product.images[0]" :alt="product.title"
                                                                 class="h-full w-full object-cover object-center" />
-                                                            <img v-else src="/assets/img/default-product-img.webp"
+                                                            <img loading="lazy" width="400" height="400" v-else src="/assets/img/default-product-img.webp"
                                                                 :alt="product.title"
                                                                 class="h-full w-full object-cover object-center">
                                                         </div>
@@ -70,11 +70,6 @@
                                                                     </p>
                                                                     <ElementsProductCounter :item="product"
                                                                         context="small" />
-                                                                    <!-- <p class="text-base font-medium">
-                                                                        <span
-                                                                            class="text-gray-500 text-sm">Кол-во:</span>
-                                                                        {{ product.inCart }}
-                                                                    </p> -->
 
                                                                     <p v-if="product.inCart > 1"
                                                                         class="text-base font-medium">

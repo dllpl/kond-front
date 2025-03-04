@@ -8,7 +8,7 @@
             isAdaptive: false,
         }" :pagination="{ type: 'scroll' }" :autoplay="{ duration: 5000, stopOnHover: true }">
 
-            <div class="w-full mr-5" v-for="item in data" :key="item.id">
+            <div class="w-full mr-5" v-for="(item, i) in data" :key="item.id">
                 <div class=" text-white relative h-96 py-12 px-12 flex flex-col justify-center gap-5 
                 md:h-80 md:py-10 md:px-8 
                 sm:h-72
@@ -30,7 +30,7 @@
 
                     <picture class="absolute inset-0 -z-20">
                         <source :src="storage + item.image_small" media="(max-width: 1440px)">
-                        <img class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl"
+                        <img :loading="i === 0 ? 'eager' : 'lazy'" width="1200" height="380" class="absolute inset-0 object-cover object-right h-full w-full -z-10 rounded-2xl"
                             :src="storage + item.image_large" :alt="item.title">
                     </picture>
                 </div>

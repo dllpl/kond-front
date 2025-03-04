@@ -1,13 +1,11 @@
 <template>
     <footer class="bg-gray-900" aria-labelledby="footer-heading">
-        <h2 id="footer-heading" class="sr-only">Footer</h2>
-
         <div class="wrapper-container ">
-
             <div class="grid grid-cols-2 gap-12 py-16 sm:grid-cols-1 sm:gap-8 sm:py-8">
-                <div class="">
-                    <img class="h-12 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
-
+                <div>
+                    <NuxtLink to="/">
+                        <img loading="lazy" width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
+                    </NuxtLink>
                     <div>
                         <ul role="list" class="mt-6 space-y-4">
                             <li>
@@ -36,9 +34,8 @@
                     </div>
                 </div>
 
-                <div class="
-                grid grid-cols-2 gap-8 sm:gap-4">
-                    <div class="">
+                <div class="grid grid-cols-2 gap-8 sm:gap-4">
+                    <div>
                         <h3 class=" font-semibold leading-6 text-white">Навигация</h3>
                         <ul role="list" class="mt-6 space-y-4">
                             <li v-for="item in navigation.menu" :key="item.name">
@@ -51,7 +48,7 @@
                         </ul>
                     </div>
 
-                    <div class="">
+                    <div>
                         <ul role="list" class="mt-12 space-y-4">
                             <li v-for="item in navigation.other" :key="item.name">
 
@@ -72,7 +69,6 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </div>
 
@@ -86,16 +82,15 @@
                 </div>
 
                 <form class="flex space-x-4 mt-0 shrink-0 sm:flex-col sm:space-x-0 sm:space-y-2 sm:w-full">
-                    <div class="">
+                    <div>
                         <label for="name" class="sr-only">Имя</label>
-                        <input v-maska=maskaOptions.cyrillic_and_upper_case name="name" id="name" autocomplete="name"
-                            required=""
-                            class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-2 ring-inset transition-base  ring-white/10 placeholder:text-gray-500 hover:ring-red-500  focus:ring-red-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
+                        <input v-maska="maskaOptions.cyrillic_and_upper_case" name="name" id="name"
+                            required class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-2 ring-inset transition-base  ring-white/10 placeholder:text-gray-500 hover:ring-red-500  focus:ring-red-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
                             placeholder="Имя" />
                     </div>
-                    <div class="">
+                    <div>
                         <label for="phone" class="sr-only">Телефон</label>
-                        <input v-maska=maskaOptions.phone.mask name="phone" id="phone" autocomplete="phone" required=""
+                        <input v-maska="maskaOptions.phone.mask" name="phone" id="phone" required
                             class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-2 ring-inset transition-base  ring-white/10 placeholder:text-gray-500 hover:ring-red-500  focus:ring-red-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
                             placeholder="Номер телефона" />
                     </div>
@@ -108,7 +103,7 @@
 
             <div
                 class="border-t border-white/10 py-8 flex items-center justify-between xs:flex-col-reverse xs:items-center xs:gap-4">
-                <div class="">
+                <div>
                     <ul class="text-xs leading-5 text-gray-400 mt-0 mb-2">
                         <li>ИП&nbsp;&mdash; ЕВГЕНЬЕВА ДИАНА ЕВГЕНЬЕВНА</li>
                         <li>ИНН&nbsp;&mdash; 165033847201</li>
@@ -154,7 +149,6 @@
 const { contacts } = useContactsStore();
 const maskaOptions = useMaskaOptions();
 const popupStore = usePopupStore();
-
 
 const navigation = {
     menu: [

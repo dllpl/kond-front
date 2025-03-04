@@ -26,11 +26,11 @@
 
                                 <div class="flex flex-col space-y-8 space-x-0 lg:space-y-6 ">
                                     <div class="flex-shrink-0">
-                                        <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-2.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                     <div class="mt-6 flex-shrink-0">
-                                        <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-3.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
@@ -38,22 +38,22 @@
                                 <div class="flex flex-col space-y-8 space-x-0 -mt-20 lg:space-y-6
                                     ">
                                     <div class="flex-shrink-0">
-                                        <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-1.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                     <div class="mt-6 flex-shrink-0">
-                                        <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-4.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
 
                                 <div class="flex flex-col space-y-8 space-x-0 lg:space-y-6 ">
                                     <div class="flex-shrink-0">
-                                        <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-5.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                     <div class="mt-6 flex-shrink-0">
-                                        <img class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-4.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
@@ -65,3 +65,5 @@
         </div>
     </div>
 </template>
+<script setup>
+</script>

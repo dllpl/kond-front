@@ -23,7 +23,7 @@
 
                         <div
                             class="flex h-11 w-11 flex-none items-center justify-center rounded-lg group-hover:bg-white">
-                            <img :src="storage + item.img" :alt="item.title">
+                            <img loading="lazy" width="44" height="44" :src="storage + item.img" :alt="item.title">
                         </div>
                         <div>
                             <NuxtLink @click="close()" :to="`/catalog/${item.slug}`"
