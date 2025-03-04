@@ -4,15 +4,15 @@
             <div
                 class="flex items-center shrink-0 justify-center h-48 aspect-h-1 aspect-w-1 overflow-hidden rounded-lg ring-1 bg-white ring-gray-200 transition-base group-hover:opacity-75">
 
-                <img v-if="product.images && product.images.length" :src="storage + product.images[0]"
+                <img loading="lazy" width="200" height="200" v-if="product.images && product.images.length" :src="storage + product.images[0]"
                     :alt="product.title" class="object-cover w-full object-center h-full xs:object-contain" />
-                <img v-else src="/assets/img/default-product-img.webp" :alt="product.title"
+                <img loading="lazy" width="200" height="200" v-else src="/assets/img/default-product-img.webp" :alt="product.title"
                     class="object-cover object-center h-full xs:object-contain">
             </div>
 
             <div class="flex flex-col h-full pb-4 pt-10 text-center lg:pt-6">
                 <h3 class="text-sm mb-4">
-                    <NuxtLink :to="'/catalog/' + product.slug_path">
+                    <NuxtLink :to="'/catalog/' + product.slug_path" >
                         <span aria-hidden="true" class="absolute inset-0" />
                         {{ product.title }}
                     </NuxtLink>

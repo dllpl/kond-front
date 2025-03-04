@@ -28,22 +28,22 @@
                 </div>
                 <div class="contents lg:gap-8 lg:flex lg:flex-wrap lg:items-start lg:justify-end sm:gap-6 sm:-mt-10">
                     <div class="self-end ml-auto flex-none w-auto lg:hidden lg:flex-auto lg:w-0 sm:block">
-                        <img src="assets/img/cooking-1.4.webp" alt="Все для Кондитера"
+                        <img loading="lazy" width="1500" height="1000" src="assets/img/cooking-1.4.webp" alt="Все для Кондитера"
                             class="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover" />
                     </div>
                     <div
                         class="flex col-span-2 col-end-2 ml-auto w-[37rem] items-start justify-end gap-x-8 sm:contents">
                         <div class="flex justify-end self-end order-first flex-none lg:w-64">
-                            <img src="assets/img/cooking-1.3.webp" alt="Все для Кондитера"
+                            <img loading="lazy" width="1500" height="1000" src="assets/img/cooking-1.3.webp" alt="Все для Кондитера"
                                 class="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover" />
                         </div>
                         <div class="flex justify-end flex-none lg:flex-none lg:w-auto sm:w-96 sm:flex-auto">
-                            <img src="assets/img/cooking-1.2.webp" alt="Все для Кондитера"
+                            <img loading="lazy" width="1500" height="1000" src="assets/img/cooking-1.2.webp" alt="Все для Кондитера"
                                 class="aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover" />
                         </div>
 
                         <div class="w-auto flex-none block lg:flex-auto lg:w-0 lg:hidden">
-                            <img src="assets/img/cooking-1.1.webp" alt="Все для Кондитера"
+                            <img loading="lazy" width="1500" height="1000" src="assets/img/cooking-1.1.webp" alt="Все для Кондитера"
                                 class="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover" />
                         </div>
                     </div>

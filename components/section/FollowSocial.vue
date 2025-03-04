@@ -5,10 +5,10 @@
         <div class="relative mx-auto grid grid-cols-3 items-center gap-x-12 
         xl:grid-cols-5 lg:gap-x-6 md:grid-cols-1">
 
-            <img src="assets/img/iphones.png" alt="Мы в социальных сетях"
-                class="object-cover h-auto xl:col-span-2 xl:col-start-4 xl:row-start-1 xl:mb-auto md:hidden" />
+            <img loading="lazy" width="819" height="964" src="assets/img/iphones.png" alt="Мы в социальных сетях"
+                 class="object-cover h-auto xl:col-span-2 xl:col-start-4 xl:row-start-1 xl:mb-auto md:hidden" />
 
-            <img src="assets/img/social.png" alt="Мы в социальных сетях"
+            <img loading="lazy" width="594" height="500" src="assets/img/social.png" alt="Мы в социальных сетях"
                 class="hidden absolute -top-16 h-32 right-0 rotate-12 md:block">
 
             <div class="col-span-2 w-full xl:col-span-3 z-10 md:col-span-1 md:pt-2.5">

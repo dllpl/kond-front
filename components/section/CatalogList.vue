@@ -9,7 +9,7 @@
         xs:h-40
         ">
         <span aria-hidden="true" class="absolute inset-0">
-          <img :src="storage + category.img" :alt="category.title" class="h-full w-full object-cover object-center" />
+          <img loading="lazy" width="228" height="240" :src="storage + category.img" :alt="category.title" class="h-full w-full object-cover object-center" />
         </span>
 
         <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50" />

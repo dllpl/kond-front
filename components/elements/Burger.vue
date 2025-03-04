@@ -17,9 +17,9 @@
                     <DialogPanel
                         class="flex flex-col fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white pt-4 lg:max-w-sm lg:ring-1 lg:ring-gray-900/10 sm:max-w-full">
                         <div class="flex items-center justify-between px-6 ">
-                            <NuxtLink :to="'/'" class="-m-1.5 p-1.5">
+                            <NuxtLink to="/" class="-m-1.5 p-1.5">
                                 <span class="sr-only">Все для кондитера</span>
-                                <img class="h-8 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
+                                <img loading="lazy" width="250" height="66" class="h-8 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
                             </NuxtLink>
 
                             <button type="button" @click="popupStore.close('burger')"
@@ -33,7 +33,7 @@
                         <div class="mt-6 px-6  flow-root">
                             <div class=" divide-y divide-gray-500/10">
                                 <div class="">
-                                    <NuxtLink :to="'/login'" @click="popupStore.close('burger')"
+                                    <NuxtLink to="/login" @click="popupStore.close('burger')"
                                         class="-mx-3 block rounded-lg px-3 py-2.5 text-sm font-semibold leading-7  hover:text-red-600 focus:text-red-600">
                                         <template v-if="!profileStore.isAuth()">
                                             Вход | Регистрация
@@ -47,7 +47,7 @@
                                     </NuxtLink>
                                 </div>
                                 <div class="hidden py-4 lg:block">
-                                    <NuxtLink :to="item.slug" v-for="item in nav" :key="item.name"
+                                    <NuxtLink :to="item.slug" v-for="item in data" :key="item.name"
                                         @click="popupStore.close('burger')"
                                         class="-mx-3 block rounded-lg px-3 py-2 text-sm  hover:text-red-600 focus:text-red-600">
                                         {{ item.name }}
@@ -57,11 +57,6 @@
                         </div>
 
                         <div class="mt-auto ">
-                            <!-- <NuxtLink :to="item.href" v-for="item in calls" :key="item.name"
-                                class="flex items-center gap-x-2.5 p-3 px-6 text-sm font-semibold leading-6  bg-gray-100 sm:justify-center sm:px-0">
-                                <component :is="item.icon" class="h-5 w-5 flex-none " aria-hidden="true" />
-                                {{ item.name }}
-                            </NuxtLink> -->
                             <ElementsCallsToAction />
                         </div>
                     </DialogPanel>
@@ -80,10 +75,7 @@ const { burger } = storeToRefs(popupStore);
 const profileStore = useProfileStore();
 
 const props = defineProps({
-    show: Boolean,
     data: Array,
 })
-
-let nav = props.data
 
 </script>

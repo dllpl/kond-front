@@ -8,7 +8,7 @@
 
             <div v-for="item in data" :key="item.id" :class="item.is_big ? 'row-span-2 xs:row-span-auto' : ''"
                 class="relative group overflow-hidden rounded-2xl transition-all xs:h-40">
-                <img :src="storage + item.image" :alt="item.title"
+                <img loading="lazy" width="300" height="300" :src="storage + item.image" :alt="item.title"
                     class="object-cover object-center group-hover:opacity-75 transition-all h-full w-full" />
                 <div aria-hidden="true"
                     class="bg-gradient-to-b from-transparent to-black opacity-50 absolute inset-0" />

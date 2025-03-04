@@ -4,7 +4,6 @@ const { products } = storeToRefs(cartStore);
 
 const popupStore = usePopupStore();
 
-
 const props = defineProps({
     item: {
         type: Object,

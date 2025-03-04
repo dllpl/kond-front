@@ -1,6 +1,4 @@
 <script setup>
-import {useProfileStore} from "~/stores/profileStore.js";
-
 useHead({
     title: 'Интернет-магазин для кондитеров с доставкой по г. Набережные Челны и России',
     meta: [
@@ -67,6 +65,5 @@ const {
             <SectionFollowSocial class="col-span-2 lg:grid-cols-1 "/>
             <SectionPromoCook class="col-span-2 lg:grid-cols-1 "/>
         </div>
-
     </main>
 </template>
