@@ -20,7 +20,7 @@
                             </div>
                         </div>
 
-                        <div class="absolute top-6 left-1/2 translate-x-0 transform sm:brightness-[0.85] xs:blur-[1px]">
+                        <div class="absolute top-6 left-1/2 translate-x-0 transform sm:brightness-[0.85] xs:blur-[1px] sm:hidden">
 
                             <div class="ml-3 flex min-w-max space-x-8 lg:space-x-6 ">
 

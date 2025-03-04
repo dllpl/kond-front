@@ -91,7 +91,7 @@
 				<div class="relative flex items-center justify-between py-4">
 					<NuxtLink to="/" class="-m-1.5 p-1.5" >
 						<span class="sr-only">Все для кондитера</span>
-						<img class="h-12 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
+						<img width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
 					</NuxtLink>
 
 					<nav class="flex items-center justify-between  gap-x-12" aria-label="Основное меню">
@@ -103,7 +103,7 @@
 							Каталог
 						</PopoverButton>
 
-						<NuxtLink :to="item.slug" v-for="item in nav" :key="item.name"
+						<NuxtLink :to="item.slug" v-for="(item, i) in nav" :key="i"
 							class="text-base font-semibold text-gray-900 transition-base hover:text-red-600 focus:text-red-600 lg:hidden">
 							{{item.name }}
 						</NuxtLink>
@@ -146,7 +146,7 @@
 						ring-gray-900/5 py-6 px-2">
 						<div
 							class="wrapper-container grid grid-cols-3 gap-4 overflow-y-auto custom-scroll px-6 mb-6">
-							<div v-for="item in categories.data" :key="item.name"
+							<div v-for="(item,i) in categories.data" :key="i"
 								class="group relative flex items-center gap-2 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50 sm:flex-col sm:p-2 sm:text-center">
 								<div
 									class="flex h-11 w-11 flex-none items-center justify-center rounded-lg group-hover:bg-white">
