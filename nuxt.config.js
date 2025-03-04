@@ -83,6 +83,7 @@ export default defineNuxtConfig({
   },
 
   router: {
+    prefetchLinks: false,
     options: {
       scrollBehaviorType: 'smooth'
     },

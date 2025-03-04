@@ -21,15 +21,15 @@ const profileStore = useProfileStore();
 const {data: banners} = await useFetch(config.backOptions.api + '/banners');
 const {data: categories} = await useFetch(config.backOptions.api + '/products-categories');
 
-const {status: productsNewStatus, data: productsNew} = await useFetch(config.backOptions.api + '/products/new', {server: false, lazy: true, headers: {...profileStore.getAuthHeader()},});
+const {status: productsNewStatus, data: productsNew} = await useFetch(config.backOptions.api + '/products/new', {headers: {...profileStore.getAuthHeader()},});
 const {
     status: productsOffersStatus,
     data: productsOffers
-} = await useFetch(config.backOptions.api + '/products/spec', {server: false, lazy: true, headers: {...profileStore.getAuthHeader()},});
+} = await useFetch(config.backOptions.api + '/products/spec', {headers: {...profileStore.getAuthHeader()},});
 const {
     status: productsSetsStatus,
     data: productsSets
-} = await useFetch(config.backOptions.api + '/products-sets', {server: false, lazy: true});
+} = await useFetch(config.backOptions.api + '/products-sets', );
 </script>
 <template>
     <main class="wrapper-container py-16 sm:pb-8 sm:pt-4">
@@ -46,21 +46,17 @@ const {
                 <SectionAdvantages class="lg:hidden"/>
             </div>
 
-
-            <ClientOnly>
-                <ElementsSliderProduct v-if="productsOffersStatus !== 'pending'" :data="productsOffers.data"
+                <LazyElementsSliderProduct v-if="productsOffersStatus !== 'pending'" :data="productsOffers.data"
                                        title="Спецпредложения" class="col-span-2 lg:grid-cols-1 relative"/>
-                <SectionProductTop v-if="productsSetsStatus === 'success'" :data="productsSets.data"
+                <LazySectionProductTop v-if="productsSetsStatus !== 'pending'" :data="productsSets.data"
                                    class="col-span-2 lg:grid-cols-1 " title="Праздничные предложения"/>
-            </ClientOnly>
-
 
             <SectionPromoPrice class="col-span-2 lg:grid-cols-1 "/>
-            <ClientOnly>
-                <LazyElementsSliderProduct v-if="productsNewStatus === 'success'" :data="productsNew.data"
+
+                <LazyElementsSliderProduct v-if="productsNewStatus !== 'pending'" :data="productsNew.data"
                                            title="Новинки"
                                            class="col-span-2 lg:grid-cols-1  relative"/>
-            </ClientOnly>
+
             <SectionAdvantages class="hidden lg:block"/>
             <SectionFollowSocial class="col-span-2 lg:grid-cols-1 "/>
             <SectionPromoCook class="col-span-2 lg:grid-cols-1 "/>

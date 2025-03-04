@@ -10,7 +10,7 @@
 
                 <NuxtLink :to="`/catalog/${item.slug}`" class=" inline-flex justify-between items-center w-full py-4">
                     <div class="flex items-center gap-2 transition-all group-hover:translate-x-1">
-                        <img :src="storage + item.img" :alt="item.title" class="w-8 h-auto">
+                        <img loading="lazy" width="44" height="44" :src="storage + item.img" :alt="item.title" class="w-8 h-auto">
                         <span class="leading-normal">{{ item.title }}</span>
                     </div>
                     <Icon name="hugeicons:arrow-down-01" class="w-6 h-6 transition-base group-hover:-rotate-90 shrink-0"
