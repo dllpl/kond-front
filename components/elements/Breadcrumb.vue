@@ -27,16 +27,20 @@ const props = defineProps({
 })
 
 const itemListElement = props.data.map((item, i) => {
-    if(i === props.data.length - 1) {
+    // if(i === props.data.length - 1) {
+    //     return {
+    //         name: item.name,
+    //     }
+    // } else {
         return {
-            name: item.name,
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+                "@id": `https://dljakonditera.ru/${item.uri}`,
+                name: item.name
+            }
         }
-    } else {
-        return {
-            name: item.name,
-            item: `/${item.uri}`,
-        }
-    }
+    // }
 })
 
 useSchemaOrg([
