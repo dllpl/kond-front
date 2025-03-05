@@ -4,10 +4,10 @@
             <div
                 class="flex items-center shrink-0 justify-center h-48 aspect-h-1 aspect-w-1 overflow-hidden rounded-lg ring-1 bg-white ring-gray-200 transition-base group-hover:opacity-75">
 
-                <img loading="lazy" width="200" height="200" v-if="product.images && product.images.length"
+                <img :loading="index > 1 ? 'lazy' : 'eager'" width="200" height="200" v-if="product.images && product.images.length"
                     :src="storage + product.images[0]" :alt="product.title"
                     class="object-cover w-full object-center h-full xs:object-contain" />
-                <img loading="lazy" width="200" height="200" v-else src="/assets/img/default-product-img.webp"
+                <img :loading="index > 1 ? 'lazy' : 'eager'" width="200" height="200" v-else src="/assets/img/default-product-img.webp"
                     :alt="product.title" class="object-cover object-center h-full xs:object-contain">
             </div>
 
@@ -41,12 +41,11 @@
 </template>
 
 <script setup>
-
 const { storage } = useRuntimeConfig().public.backOptions;
 const favoriteStore = useFavoriteStore();
 
-const props = defineProps({
-    product: Object
+defineProps({
+    product: Object,
+    index: Number
 });
-
 </script>

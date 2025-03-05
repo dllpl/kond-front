@@ -180,7 +180,6 @@
 
 
 <script setup>
-
 const cartStore = useCartStore();
 const { contacts } = useContactsStore();
 const popupStore = usePopupStore();

@@ -31,10 +31,10 @@ export default defineNuxtConfig({
     }
   },
 
-  experimental: {
-    payloadExtraction: true,
-    viewTransition: true, // Плавные переходы между страницами
-  },
+  // experimental: {
+    // payloadExtraction: true,
+    // viewTransition: true, // Плавные переходы между страницами
+  // },
 
   modules: [
     '@nuxt/icon',
@@ -80,7 +80,7 @@ export default defineNuxtConfig({
       script: [
         // {src: 'https://www.googletagmanager.com/gtag/js?id=G-5H3XLN9HST', async: true},
       ]
-    }
+    },
   },
 
   router: {
