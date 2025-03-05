@@ -4,7 +4,7 @@
             <div class="grid grid-cols-2 gap-12 py-16 sm:grid-cols-1 sm:gap-8 sm:py-8">
                 <div>
                     <NuxtLink to="/">
-                        <img loading="lazy" width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
+                        <img loading="lazy" width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp" alt="Все для кондитера" />
                     </NuxtLink>
                     <div>
                         <ul role="list" class="mt-6 space-y-4">
