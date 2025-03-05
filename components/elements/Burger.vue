@@ -19,7 +19,7 @@
                         <div class="flex items-center justify-between px-6 ">
                             <NuxtLink to="/" class="-m-1.5 p-1.5">
                                 <span class="sr-only">Все для кондитера</span>
-                                <img loading="lazy" width="250" height="66" class="h-8 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
+                                <img loading="lazy" width="250" height="66" class="h-8 w-auto" src="/assets/img/logo.webp" alt="Все для кондитера" />
                             </NuxtLink>
 
                             <button type="button" @click="popupStore.close('burger')"

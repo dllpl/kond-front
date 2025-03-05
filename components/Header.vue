@@ -19,7 +19,7 @@
 					<!-- MOBILE VISIBLE XS-->
 					<NuxtLink to="/" class="hidden xs:block xs:-m-1.5 xs:p-1.5 xs:mr-auto xs:order-first">
 						<span class="sr-only">Все для кондитера</span>
-						<img loading="lazy" width="250" height="66" class="max-h-8 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
+						<img loading="lazy" width="250" height="66" class="max-h-8 w-auto" src="/assets/img/logo.webp" alt="Все для кондитера" />
 					</NuxtLink>
 
 					<div class="hidden xs:flex xs:gap-3 ">
@@ -91,7 +91,7 @@
 				<div class="relative flex items-center justify-between py-4">
 					<NuxtLink to="/" class="-m-1.5 p-1.5" >
 						<span class="sr-only">Все для кондитера</span>
-						<img width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.png" alt="Все для кондитера" />
+						<img width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp" alt="Все для кондитера" />
 					</NuxtLink>
 
 					<nav class="flex items-center justify-between  gap-x-12" aria-label="Основное меню">
