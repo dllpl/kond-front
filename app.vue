@@ -45,17 +45,17 @@ useSchemaOrg([
             addressLocality: 'Набережные Челны',
             addressRegion: 'Республика Татарстан',
             postalCode: '423812',
-            addressCountry: 'Россия',
+            addressCountry: 'RU',
         },
         telephone: '+7(958)6281044',
         email: 'zakazkonditer.nch@gmail.com',
         description: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России.',
     }),
-    defineWebSite({
-        name: 'Всё для кондитера',
-        description: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России.',
-        inLanguage: ['ru-RU'],
-    })
+    // defineWebSite({
+    //     name: 'Всё для кондитера',
+    //     description: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России.',
+    //     inLanguage: ['ru-RU'],
+    // })
 ])
 
 useSeoMeta({
