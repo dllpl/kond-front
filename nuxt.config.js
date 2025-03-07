@@ -79,6 +79,11 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
+    defaults: {
+      changefreq: 'daily',
+      priority: 0.5,
+      lastmod: new Date().toISOString(),
+    },
     sources: [process.env.API_URL + '/sitemap/generate'],
     // sitemaps: true,
   },
