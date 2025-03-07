@@ -85,7 +85,6 @@ export default defineNuxtConfig({
       lastmod: new Date().toISOString(),
     },
     sources: [process.env.API_URL + '/sitemap/generate'],
-    // sitemaps: true,
   },
 
   app: {
