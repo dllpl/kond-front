@@ -81,13 +81,13 @@ export default defineNuxtConfig({
   sitemap: {
     sitemaps: {
       products: {
-        source: ['https://lk.dljakonditera.ru/api/sitemap/products'],
+        source: [ process.env.API_URL + '/sitemap/products'],
       },
       categories: {
-        source: ['https://lk.dljakonditera.ru/api/sitemap/categories'],
+        source: [process.env.API_URL + '/sitemap/categories'],
       },
       blog: {
-        source: ['https://lk.dljakonditera.ru/api/sitemap/blog'],
+        source: [ process.env.API_URL + '/sitemap/blog'],
       },
     },
   },
