@@ -79,17 +79,8 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    sitemaps: {
-      products: {
-        source: [ process.env.API_URL + '/sitemap/products'],
-      },
-      categories: {
-        source: [process.env.API_URL + '/sitemap/categories'],
-      },
-      blog: {
-        source: [ process.env.API_URL + '/sitemap/blog'],
-      },
-    },
+    sources: [process.env.API_URL + '/sitemap/generate'],
+    // sitemaps: true,
   },
 
   app: {
