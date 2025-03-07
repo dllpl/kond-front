@@ -7,7 +7,7 @@ const { storage } = useRuntimeConfig().public.backOptions;
 const props = defineProps({
     product: Object
 })
-console.log(props.product);
+// console.log(props.product);
 </script>
 
 

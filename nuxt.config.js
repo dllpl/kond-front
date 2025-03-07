@@ -75,9 +75,22 @@ export default defineNuxtConfig({
     indexable: false, // запретить индексацию
     url: '',
     name: 'Всё для кондитера',
-    defaultLocal: 'ru'
+    defaultLocal: 'ru',
   },
 
+  sitemap: {
+    sitemaps: {
+      products: {
+        source: ['https://lk.dljakonditera.ru/api/sitemap/products'],
+      },
+      categories: {
+        source: ['https://lk.dljakonditera.ru/api/sitemap/categories'],
+      },
+      blog: {
+        source: ['https://lk.dljakonditera.ru/api/sitemap/blog'],
+      },
+    },
+  },
 
   app: {
     head: {
