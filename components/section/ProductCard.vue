@@ -41,11 +41,11 @@
 </template>
 
 <script setup>
-const { storage } = useRuntimeConfig().public.backOptions;
-const favoriteStore = useFavoriteStore();
-
 defineProps({
     product: Object,
     index: Number
 });
+
+const { storage } = useRuntimeConfig().public.backOptions;
+const favoriteStore = useFavoriteStore();
 </script>

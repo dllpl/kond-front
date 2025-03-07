@@ -5,7 +5,7 @@
         </section>
         <main class="wrapper-container pt-2 pb-16 min-h-[40vh]">
             <p class="text-2xl font-semibold mb-4">Здравствуйте, {{ first_name }}</p>
-            <TabGroup as="div" class="overflow-hidden">
+            <TabGroup :selectedIndex="selectedTab" @change="changeTab" as="div" class="overflow-hidden" >
                 <div class="border-b border-gray-200 sm:snap-x">
                     <TabList class="-mb-px flex space-x-8 sm:flex-col sm:space-x-0 sm:space-y-1 ">
                         <Tab as="template" v-slot="{ selected }" class="scroll-ml-6 snap-start">
@@ -54,21 +54,24 @@
 
                     <TabPanel>
                         <h2 class="sr-only">Заказы</h2>
-                        <SectionLkOrders :orders="orders" />
+                        <LazySectionLkOrders :orders="orders" />
                     </TabPanel>
 
                     <TabPanel>
                         <h2 class="sr-only">Избранное</h2>
-                        <SectionLkFavorites :favorites="favorites" />
+                        <LazySectionLkFavorites :favorites="favorites" />
                     </TabPanel>
 
                     <TabPanel>
                         <h2 class="sr-only">Профиль</h2>
-                        <SectionLkProfile />
+                        <LazySectionLkProfile />
                     </TabPanel>
                     <TabPanel>
                         <h2 class="sr-only">Бонусы</h2>
-                        <SectionLkLoyalty />
+                        <LazySectionLkLoyalty />
+                    </TabPanel>
+                    <TabPanel>
+                        Загрузка...
                     </TabPanel>
                 </TabPanels>
             </TabGroup>
@@ -77,18 +80,19 @@
 </template>
 
 <script setup>
-// definePageMeta({
-//     middleware: 'auth',
-// })
-
+const selectedTab = ref(4)
 const { profile, orders, favorites } = useProfileStore();
-
 const first_name = profile.first_name
+const changeTab = (index) => {
+    selectedTab.value = index
+    window.location.hash = tabs[index].href
+}
 
 const tabs = [
-    { name: 'Заказы', href: '#', current: true, icon: 'material-symbols:shopping-bag-outline', },
-    { name: 'Избранное', href: '#', current: false, icon: 'material-symbols:favorite-outline-rounded', },
-    { name: 'Профиль', href: '#', current: true, icon: 'material-symbols:account-circle-outline', },
+    { name: 'Заказы', href: 'orders'},
+    { name: 'Избранное', href: 'favorites' },
+    { name: 'Профиль', href: 'profile'},
+    { name: 'Бонусы', href: 'bonuses'},
 ]
 
 const breadcrumbs = [
@@ -104,4 +108,17 @@ useHead({
         }
     ],
 })
+
+const route = useRoute();
+
+onMounted(() => {
+    if (route.hash) {
+        const index = tabs.findIndex((tab) => tab.href === route.hash.slice(1))
+        if (index !== -1) {
+            selectedTab.value = index
+        }
+    }
+})
+
+
 </script>
