@@ -7,7 +7,7 @@ export const useFavoriteStore = defineStore('favoriteStore', {
             const profileStore = useProfileStore();
             const popupStore = usePopupStore();
 
-            console.log(product.is_favorite)
+            // console.log(product.is_favorite)
             //проверка на наличие is_favorite в товаре=авторизацию
             //если делать проверку в catch идет задержка так как уходит запрос и еще срет в консоль
             if (product.is_favorite === undefined) {

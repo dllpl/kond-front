@@ -170,7 +170,7 @@ export const useCartStore = defineStore('cartStore', {
                 navigateTo('/lk')
                 navigateTo(data.formUrl, {open: true})
             }).catch(({response}) => {
-                console.log(response._data)
+                // console.log(response._data)
                 if (response.status === 422) {
                     popupStore.toggle('toast', {title: 'Проверьте введенные данные', timeout: 2000, type: 'error'})
                     // this.errors = response._data.errors

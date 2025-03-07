@@ -118,7 +118,7 @@
 						</button>
 
 						<!-- Like -->
-						<NuxtLink to="/lk"
+						<NuxtLink to="/lk#favorites"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 
 							<Icon name="hugeicons:heart-check" class="w-6 h-6 group-hover:stroke-red-600">

@@ -109,13 +109,16 @@ useHead({
     ],
 })
 
-const route = useRoute();
+// const route = useRoute();
 
 onMounted(() => {
-    if (route.hash) {
-        const index = tabs.findIndex((tab) => tab.href === route.hash.slice(1))
+    const url = window.location.hash
+    if (url) {
+        const index = tabs.findIndex((tab) => tab.href === url.slice(1))
         if (index !== -1) {
             selectedTab.value = index
+        } else {
+            selectedTab.value = 0
         }
     }
 })
