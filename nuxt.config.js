@@ -11,6 +11,19 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  nitro: {
+      routeRules: {
+        '/**': {
+          headers: {
+            'X-Frame-Options': 'SAMEORIGIN',
+            'X-Content-Type-Options': 'nosniff',
+            'Referrer-Policy': 'strict-origin-when-cross-origin',
+          }
+        },
+      }
+  },
+
   routeRules: {
     "/": {isr: 300, headers: {"Cache-Control": "public, max-age=300"}},
     "/_nuxt/**": {headers: {"Cache-Control": "public, max-age=31536000, immutable"}},

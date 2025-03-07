@@ -1,5 +1,6 @@
 <template>
       <div class="mt-6 flow-root">
+          <h2 class="text-base font-semibold leading-7 mb-6">Мои заказы</h2>
           <div class="overflow-x-auto">
               <div class="inline-block min-w-full align-middle py-1 px-1 ">
                   <div class="overflow-hidden  ring-1 ring-black shadow ring-opacity-5 rounded-lg
