@@ -2,6 +2,7 @@
 // const { public: config } = useRuntimeConfig();
 const { contacts } = useContactsStore();
 const { storage } = useRuntimeConfig().public.backOptions;
+const favoriteStore = useFavoriteStore();
 // const { data: productNews } = await useFetch(config.backOptions.api + '/products/spec');
 
 const props = defineProps({
@@ -23,18 +24,19 @@ const props = defineProps({
                 <div class="col-span-3 row-end-1  xl:col-span-4 lg:col-span-1 ">
                     <div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-white ring-2 ring-gray-300/20">
 
-                        <img width="600" height="535" v-if="product.images && product.images.length" :src="storage + product.images[0]"
-                            :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full" />
+                        <img width="600" height="535" v-if="product.images && product.images.length"
+                            :src="storage + product.images[0]" :alt="product.title"
+                            class="object-cover max-h-[535px] object-center rounded-lg w-full" />
 
-                        <img width="400" height="400" v-else src="/assets/img/default-product-img.webp" :alt="product.title"
-                            class="object-cover max-h-[535px] object-center rounded-lg w-full">
+                        <img width="400" height="400" v-else src="/assets/img/default-product-img.webp"
+                            :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full">
 
                     </div>
                 </div>
 
                 <!-- Product details -->
                 <div class="col-span-4 xl:col-span-3 lg:col-span-1">
-                    <h1 class="text-3xl font-bold tracking-tight mt-4 xs:text-2xl">{{product.title }}</h1>
+                    <h1 class="text-3xl font-bold tracking-tight mt-4 xs:text-2xl">{{ product.title }}</h1>
 
                     <p class="mt-6 mb-auto text-gray-500">
                         Купить {{ product.title }} вы можете в компании &laquo;Bce для Koндитeрa&raquo;, оформив
@@ -55,20 +57,20 @@ const props = defineProps({
 
                     <div class="mt-10 grid gap-x-6 gap-y-4 grid-cols-2 sm:grid-cols-1">
                         <!-- <ElementsProductfavorits class="gap-x-2 ring-2 transition-base " /> -->
-                        <button type="button" :class="product.is_favorite ? 'bg-red-600 ring-red-500 text-white' : ''"
-                            class="flex gap-x-2 items-center justify-center rounded-md ring-2 ring-gray-300/20 bg-white/70 hover:text-white hover:ring-red-500 hover:bg-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-500 transition-base">
 
-                            <Icon name="hugeicons:heart-add"
-                                class="w-6 h-6 text-red-500 transition-base group-hover:text-white ">
+                        <button @click="favoriteStore.toggle(product)"
+                            :class="product.is_favorite ? 'bg-red-600 ring-red-500 text-white' : 'bg-white/70 text-indigo-950 ring-gray-900/5 '"
+                            class="flex gap-x-2 group items-center justify-center transition-all p-1 rounded-md 
+                            ring-2  
+            hover:bg-red-600 hover:ring-red-500 hover:text-white 
+            focus:ring-red-500 focus:text-text-white">
+                            <Icon name="hugeicons:heart-add" class="w-6 h-6 ">
                             </Icon>
-
                             <span v-if="product.is_favorite">В избранном</span>
                             <span v-else>В избранное</span>
                         </button>
-
                         <ElementsProductCounter :item="product" />
                     </div>
-
                     <ElementsCallsToAction />
 
                     <!-- social -->
