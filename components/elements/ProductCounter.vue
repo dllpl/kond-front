@@ -2,8 +2,9 @@
 const cartStore = useCartStore();
 const { products } = storeToRefs(cartStore);
 
-const popupStore = usePopupStore();
-
+// const popupStore = usePopupStore();
+// const profileStore = useProfileStore();
+const notificationStore = useNotificationStore();
 const props = defineProps({
     item: {
         type: Object,
@@ -67,9 +68,11 @@ const numberClass = computed(() => {
 
         </template>
 
+        <!-- v-if="!profileStore.isAuth()" -->
+        <!-- @click="popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы получить уведомление о поступлении товара', type: 'login' })" -->
+
         <!-- Уведомить о наличии -->
-        <button v-else type="button"
-            @click="popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы получить уведомление о поступлении товара', type: 'login' })"
+        <button v-else type="button" @click="notificationStore.push(item.id)"
             class="flex items-center gap-x-2 w-full justify-center rounded-lg px-2.5 py-2 transition-base ring-2 ring-gray-900/20 bg-gray-900 text-white hover:text-white hover:ring-red-500 hover:bg-red-500 group focus:rounded-md focus:ring-red-500 focus:text-white">
 
             <Icon name="hugeicons:notification-01" class="w-6 h-6 group-hover:text-white text-red-500 transition-base">
