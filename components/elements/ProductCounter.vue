@@ -2,7 +2,7 @@
 const cartStore = useCartStore();
 const { products } = storeToRefs(cartStore);
 
-// const popupStore = usePopupStore();
+const popupStore = usePopupStore();
 // const profileStore = useProfileStore();
 const notificationStore = useNotificationStore();
 const props = defineProps({
