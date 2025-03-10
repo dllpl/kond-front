@@ -1,8 +1,5 @@
 <template>
     <div class="">
-
-
-
         <section>
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
         </section>
@@ -29,7 +26,6 @@
 
                 <span class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 rounded-2xl"></span>
             </div>
-
 
             <div class="mb-20 flex gap-6 sm:flex-col xs:mb-10">
                 <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-500 shrink-0">
