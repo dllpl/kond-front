@@ -17,13 +17,13 @@
                 </p>
                 <div class="flex gap-6 mt-8 xs:flex-col-reverse xs:mt-0 xs:gap-2">
                     <NuxtLink :to="'/'"
-                        class="group flex items-center gap-x-1 w-auto mr-auto justify-center rounded-lg bg-amber-400 px-5 py-2 hover:bg-amber-300 transition-base lg:inline-flex lg:px-10">
+                        class="group flex items-center gap-x-1 w-auto justify-center rounded-lg bg-amber-400 px-5 py-2 hover:bg-amber-300 transition-base lg:inline-flex lg:px-10">
                         <Icon name="hugeicons:home-05" class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
                         На главную
                     </NuxtLink>
 
                     <NuxtLink :to="'/lk#orders'"
-                        class="group flex items-center gap-x-1 w-auto mr-auto justify-center rounded-lg bg-amber-400 px-5 py-2 hover:bg-amber-300 transition-base lg:inline-flex lg:px-10">
+                        class="group flex items-center gap-x-1 w-auto justify-center rounded-lg bg-amber-400 px-5 py-2 hover:bg-amber-300 transition-base lg:inline-flex lg:px-10">
                         <Icon name="hugeicons:shopping-basket-done-01" class="h-5 w-5 flex-shrink-0"
                             aria-hidden="true" />
                         Мои заказы
@@ -40,4 +40,13 @@ const breadcrumbs = [
         name: 'Оплачен', slug: '/successPayment'
     },
 ]
+useHead({
+    title: 'Успешная оплата',
+    meta: [
+        {
+            name: 'description',
+            content: 'Заказ успешно оплачен. Спасибо за покупку | Всё для кондитера'
+        }
+    ],
+})
 </script>
