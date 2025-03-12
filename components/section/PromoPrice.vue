@@ -20,17 +20,19 @@
                             </div>
                         </div>
 
-                        <div class="absolute top-6 left-1/2 translate-x-0 transform sm:brightness-[0.85] xs:blur-[1px] sm:hidden">
+                        <div class="absolute top-6 left-1/2 translate-x-0 transform sm:brightness-[0.85] xs:blur-[1px]">
 
                             <div class="ml-3 flex min-w-max space-x-8 lg:space-x-6 ">
 
                                 <div class="flex flex-col space-y-8 space-x-0 lg:space-y-6 ">
                                     <div class="flex-shrink-0">
-                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840"
+                                            class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-2.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                     <div class="mt-6 flex-shrink-0">
-                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840"
+                                            class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-3.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
@@ -38,22 +40,26 @@
                                 <div class="flex flex-col space-y-8 space-x-0 -mt-20 lg:space-y-6
                                     ">
                                     <div class="flex-shrink-0">
-                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840"
+                                            class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-1.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                     <div class="mt-6 flex-shrink-0">
-                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840"
+                                            class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-4.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
 
                                 <div class="flex flex-col space-y-8 space-x-0 lg:space-y-6 ">
                                     <div class="flex-shrink-0">
-                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840"
+                                            class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-5.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                     <div class="mt-6 flex-shrink-0">
-                                        <img loading="lazy" width="840" height="840" class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
+                                        <img loading="lazy" width="840" height="840"
+                                            class="h-72 w-72 rounded-lg object-cover lg:h-60 lg:w-60"
                                             src="assets/img/promo-action-4.webp" alt="Скидки! Все для кондитера" />
                                     </div>
                                 </div>
