@@ -9,15 +9,15 @@
 
             <main class="wrapper-container pt-3 pb-16">
 
-                <div class="relative min-h-96 py-12 px-12 flex flex-col justify-center gap-5 mb-20 items-center
+                <div class="relative min-h-96 py-12 px-12 flex flex-col justify-center gap-5 mb-20 items-center text-center
                 md:py-10 md:px-8 md:min-h-80 
                 sm:min-h-72 
                 xs:min-h-80 xs:py-4 xs:px-4 xs:mb-10">
                     <Icon name="noto:crying-cat" class="h-20 w-20 " />
                     <!-- <h1 class="text-4xl font-semibold 2xl:text-3xl xs:text-2xl">{{ error?.statusCode ?? 500 }}</h1> -->
-                    <h1 class="text-4xl font-semibold 2xl:text-3xl xs:text-2xl">Страница не найдена</h1>
+                    <h1 class="text-4xl font-semibold 2xl:text-3xl xs:text-2xl ">Страница не найдена</h1>
 
-                    <p class="text-lg text-center max-w-4xl  ">
+                    <p class="text-lg  max-w-4xl">
                         К сожалению, такой страницы не существует
                     </p>
                     <div class="flex gap-6 mt-8 xs:flex-col-reverse xs:mt-0 xs:gap-2">
