@@ -54,6 +54,8 @@ const { data: contacts } = await useFetch(config.backOptions.api + '/contacts');
 const contactsStore = useContactsStore();
 contactsStore.setContacts(contacts.value.data);
 
+const error = useError();
+
 useHead({
     title: 'Страница не найдена',
     statusCode: error?.statusCode ?? 500,
