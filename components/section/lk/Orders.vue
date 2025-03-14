@@ -44,7 +44,7 @@
                           </tr>
                           <tr v-else>
                               <td colspan="4" class="text-center text-gray-500">
-                                  Заказов нет
+                                  Заказов нет, <NuxtLink to="/catalog" class="text-amber-500">перейти</NuxtLink> к покупкам
                               </td>
                           </tr>
                           </tbody>

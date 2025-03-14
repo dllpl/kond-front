@@ -1,3 +1,5 @@
+import {reloadNuxtApp} from "#app";
+
 export const useProfileStore = defineStore('profileStore', {
     state: () => ({
         credentials: {
@@ -112,6 +114,7 @@ export const useProfileStore = defineStore('profileStore', {
                 this.profile = data.profile
                 this.errors = null
                 popupStore.toggle('toast', { title: 'Профиль обновлен', timeout: 2000 })
+                reloadNuxtApp()
             }).catch(({ response }) => {
 
                 if (response.status === 422) {
@@ -179,7 +182,8 @@ export const useProfileStore = defineStore('profileStore', {
                     timeout: 2000,
                     type: 'success'
                 })
-                // profileStore.$reset()
+
+                profileStore.$reset()
             }).catch(({ response }) => {
                 popupStore.toggle('toast', { title: response._data.message, timeout: 6000, type: 'error' })
             })
