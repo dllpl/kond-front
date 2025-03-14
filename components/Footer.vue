@@ -4,7 +4,8 @@
             <div class="grid grid-cols-2 gap-12 py-16 sm:grid-cols-1 sm:gap-8 sm:py-8">
                 <div>
                     <NuxtLink to="/">
-                        <img loading="lazy" width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp" alt="Все для кондитера" />
+                        <img loading="lazy" width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp"
+                            alt="Все для кондитера" />
                     </NuxtLink>
                     <div>
                         <ul role="list" class="mt-6 space-y-4">
@@ -72,7 +73,7 @@
                 </div>
             </div>
 
-            <div
+            <!-- <div
                 class="border-t border-white/10 py-8 flex items-end gap-4 justify-between lg:flex-col lg:items-start lg:justify-start ">
                 <div>
                     <h3 class="text-sm font-semibold leading-6 text-white">Остались вопросы?</h3>
@@ -84,22 +85,26 @@
                 <form class="flex space-x-4 mt-0 shrink-0 sm:flex-col sm:space-x-0 sm:space-y-2 sm:w-full">
                     <div>
                         <label for="name" class="sr-only">Имя</label>
-                        <input v-maska="maskaOptions.cyrillic_and_upper_case" name="name" id="name"
-                            required class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-2 ring-inset transition-base  ring-white/10 placeholder:text-gray-500 hover:ring-red-500  focus:ring-red-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
+                        <input v-maska="maskaOptions.cyrillic_and_upper_case" name="name" id="name" required
+                            class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-2 ring-inset transition-base  ring-white/10 placeholder:text-gray-500 hover:ring-red-500  focus:ring-red-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
                             placeholder="Имя" />
                     </div>
                     <div>
                         <label for="phone" class="sr-only">Телефон</label>
                         <input v-maska="maskaOptions.phone.mask" name="phone" id="phone" required
                             class="min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-white shadow-sm ring-2 ring-inset transition-base  ring-white/10 placeholder:text-gray-500 hover:ring-red-500  focus:ring-red-500 w-56 text-sm leading-6 lg:w-full lg:text-base"
-                            placeholder="Номер телефона" />
+                            placeholder="+7 (___) ___-__-__" />
                     </div>
                     <div class="flex-shrink-0 ">
                         <button type="submit" class="flex w-full items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-base  hover:bg-red-500 
                             focus-visible:bg-red-500">Отправить</button>
                     </div>
                 </form>
-            </div>
+            </div> -->
+
+            <!--если в строку = space-x-4 -->
+            <!-- если в колонку = flex-col space-y-4 -->
+            <ElementsCallback flexDirection="flex-col space-y-4"></ElementsCallback>
 
             <div
                 class="border-t border-white/10 py-8 flex items-center justify-between xs:flex-col-reverse xs:items-center xs:gap-4">
