@@ -19,7 +19,8 @@
                         <div class="flex items-center justify-between px-6 ">
                             <NuxtLink to="/" class="-m-1.5 p-1.5">
                                 <span class="sr-only">Все для кондитера</span>
-                                <img loading="lazy" width="250" height="66" class="h-8 w-auto" src="/assets/img/logo.webp" alt="Все для кондитера" />
+                                <img loading="lazy" width="250" height="66" class="h-8 w-auto"
+                                    src="/assets/img/logo.webp" alt="Все для кондитера" />
                             </NuxtLink>
 
                             <button type="button" @click="popupStore.close('burger')"
@@ -39,10 +40,10 @@
                                             Вход | Регистрация
                                         </template>
                                         <template v-else>
-                                          <span class="flex items-center gap-2">
-                                              Профиль
-                                              <Icon name="hugeicons:user-circle" class="w-6 h-6"/>
-                                          </span>
+                                            <span class="flex items-center gap-2">
+                                                Профиль
+                                                <Icon name="hugeicons:user-circle" class="w-6 h-6" />
+                                            </span>
                                         </template>
                                     </NuxtLink>
                                 </div>
@@ -57,7 +58,7 @@
                         </div>
 
                         <div class="mt-auto ">
-                            <ElementsCallsToAction />
+                            <ElementsCallsToAction @click="popupStore.close('burger')" />
                         </div>
                     </DialogPanel>
 
@@ -68,7 +69,6 @@
     </div>
 </template>
 
-
 <script setup>
 const popupStore = usePopupStore();
 const { burger } = storeToRefs(popupStore);
@@ -77,5 +77,4 @@ const profileStore = useProfileStore();
 const props = defineProps({
     data: Array,
 })
-
 </script>
