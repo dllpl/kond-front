@@ -19,7 +19,8 @@
 					<!-- MOBILE VISIBLE XS-->
 					<NuxtLink to="/" class="hidden xs:block xs:-m-1.5 xs:p-1.5 xs:mr-auto xs:order-first">
 						<span class="sr-only">Все для кондитера</span>
-						<img loading="lazy" width="250" height="66" class="max-h-8 w-auto" src="/assets/img/logo.webp" alt="Все для кондитера" />
+						<img loading="lazy" width="250" height="66" class="max-h-8 w-auto" src="/assets/img/logo.webp"
+							alt="Все для кондитера" />
 					</NuxtLink>
 
 					<div class="hidden xs:flex xs:gap-3 ">
@@ -53,19 +54,18 @@
 						<div class="flex items-center gap-x-12 2xl:gap-x-4 lg:hidden">
 							<NuxtLink :to="item.slug" v-for="item in navTop" :key="item.name"
 								class="text-sm transition-base hover:text-red-600 focus:text-red-600">
-                                {{ item.name }}
+								{{ item.name }}
 							</NuxtLink>
-							<NuxtLink  to="/login"
-								class="text-sm transition-base hover:text-red-600 focus:text-red-600">
-                                <template v-if="!profileStore.isAuth()">
-                                    Вход | Регистрация
-                                </template>
-                                <template v-else>
-                                    <span class="flex items-center gap-2">
-                                        Профиль
-                                        <Icon name="hugeicons:user-circle" class="w-6 h-6"/>
-                                    </span>
-                                </template>
+							<NuxtLink to="/login" class="text-sm transition-base hover:text-red-600 focus:text-red-600">
+								<template v-if="!profileStore.isAuth()">
+									Вход | Регистрация
+								</template>
+								<template v-else>
+									<span class="flex items-center gap-2">
+										Профиль
+										<Icon name="hugeicons:user-circle" class="w-6 h-6" />
+									</span>
+								</template>
 							</NuxtLink>
 
 						</div>
@@ -89,9 +89,10 @@
 			<div class="wrapper-container ">
 
 				<div class="relative flex items-center justify-between py-4">
-					<NuxtLink to="/" class="-m-1.5 p-1.5" >
+					<NuxtLink to="/" class="-m-1.5 p-1.5">
 						<span class="sr-only">Все для кондитера</span>
-						<img width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp" alt="Все для кондитера" />
+						<img width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp"
+							alt="Все для кондитера" />
 					</NuxtLink>
 
 					<nav class="flex items-center justify-between  gap-x-12" aria-label="Основное меню">
@@ -105,7 +106,7 @@
 
 						<NuxtLink :to="item.slug" v-for="(item, i) in nav" :key="i"
 							class="text-base font-semibold text-gray-900 transition-base hover:text-red-600 focus:text-red-600 lg:hidden">
-							{{item.name }}
+							{{ item.name }}
 						</NuxtLink>
 					</nav>
 
@@ -118,12 +119,11 @@
 						</button>
 
 						<!-- Like -->
-						<NuxtLink to="/lk#favorites"
+						<button @click="handleFavorite()"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
-
 							<Icon name="hugeicons:heart-check" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
-						</NuxtLink>
+						</button>
 
 						<!-- Basket -->
 						<button @click="popupStore.toggle('drawer')"
@@ -144,16 +144,16 @@
 
 					<PopoverPanel v-slot="{ close }" class="absolute z-10 w-full overflow-y-auto inset-x-0 top-20 bg-white shadow-lg ring-1
 						ring-gray-900/5 py-6 px-2">
-						<div
-							class="wrapper-container grid grid-cols-3 gap-4 overflow-y-auto custom-scroll px-6 mb-6">
-							<div v-for="(item,i) in categories.data" :key="i"
+						<div class="wrapper-container grid grid-cols-3 gap-4 overflow-y-auto custom-scroll px-6 mb-6">
+							<div v-for="(item, i) in categories.data" :key="i"
 								class="group relative flex items-center gap-2 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50 sm:flex-col sm:p-2 sm:text-center">
 								<div
 									class="flex h-11 w-11 flex-none items-center justify-center rounded-lg group-hover:bg-white">
-									<img loading="lazy" width="44" height="44" :src="storage + item.img" :alt="item.title">
+									<img loading="lazy" width="44" height="44" :src="storage + item.img"
+										:alt="item.title">
 								</div>
 								<div>
-									<NuxtLink @click="close()" :to="`/catalog/${item.slug}`" class="font-medium" >
+									<NuxtLink @click="close()" :to="`/catalog/${item.slug}`" class="font-medium">
 										{{ item.title }}
 										<span class="absolute inset-0" />
 									</NuxtLink>
@@ -173,17 +173,28 @@
 		<ElementsSearch />
 		<ElementsDrawer />
 		<ElementsBurger :data="navBurger" />
-		<NuxtLoadingIndicator color="#fbbf24" :height="4" :throttle="500"/>
+		<NuxtLoadingIndicator color="#fbbf24" :height="4" :throttle="500" />
 	</header>
 </template>
 
 
 
 <script setup>
-const cartStore = useCartStore();
+const { public: config } = useRuntimeConfig();
+const { storage } = useRuntimeConfig().public.backOptions;
+const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
 const { contacts } = useContactsStore();
+const cartStore = useCartStore();
 const popupStore = usePopupStore();
 const profileStore = useProfileStore();
+
+// проверка на авторизацию при клики на избранное в шапке
+const router = useRouter();
+function handleFavorite() {
+	profileStore.isAuth()
+		? router.push('/lk#favorites')
+		: popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы перейти в избранное', timeout: 1000, type: 'login' })
+}
 
 const navTop = [
 	{ name: 'О магазине', slug: '/about' },
@@ -213,9 +224,4 @@ const city = [
 	{ id: 5, name: 'Нижний Новгород' },
 	{ id: 6, name: 'Санкт-Петербург' },
 ]
-
-const { public: config } = useRuntimeConfig();
-const { storage } = useRuntimeConfig().public.backOptions;
-const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
-
 </script>
