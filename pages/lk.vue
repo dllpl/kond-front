@@ -53,21 +53,17 @@
                 <TabPanels as="template">
 
                     <TabPanel>
-                        <h2 class="sr-only">Заказы</h2>
                         <LazySectionLkOrders :orders="orders"/>
                     </TabPanel>
 
-                    <TabPanel>
-                        <h2 class="sr-only">Избранное</h2>
+                    <TabPanel>                       
                         <LazySectionLkFavorites :favorites="favorites"/>
                     </TabPanel>
 
                     <TabPanel>
-                        <h2 class="sr-only">Профиль</h2>
                         <LazySectionLkProfile/>
                     </TabPanel>
                     <TabPanel>
-                        <h2 class="sr-only">Бонусы</h2>
                         <LazySectionLkLoyalty/>
                     </TabPanel>
                     <TabPanel>

@@ -1,6 +1,5 @@
 <template>
     <button type="button" class="
-
 flex items-center justify-center bg-white/70 ring-gray-300/20 hover:text-white hover:bg-red-500
 rounded-md group hover:ring-red-500 focus:ring-red-500 focus:text-red-500
  ">
@@ -10,5 +9,3 @@ rounded-md group hover:ring-red-500 focus:ring-red-500 focus:text-red-500
         В избранное
     </button>
 </template>
-<!--   gap-x-2 ring-2  transition-base -->
-<!-- absolute top-2.5 right-2.5  transition-all p-1 ring-1 -->
