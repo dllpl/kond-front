@@ -33,7 +33,7 @@
     "autoprefixer": "^10.4.20",
     "lvovich": "^2.0.2",
     "maska": "^3.0.3",
-    "nuxt": "^3.13.2",
+    "nuxt": "3.15.4",
     "nuxt-headlessui": "^1.2.0",
     "postcss": "^8.4.47",
     "sass-embedded": "^1.81.0",
