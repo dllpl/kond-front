@@ -58,8 +58,13 @@
                   </span>
                 </div>
               </div>
-
-              <div>
+              <!-- <div class="">
+                <span class="text-xs text-gray-500">Отправляя форму, вы соглашаетесь
+                  c <NuxtLink @click="popupStore.close('modal')" :to="`/policy`">политикой конфиденциальности
+                  </NuxtLink>
+                </span>
+              </div> -->
+              <div class="">
                 <button type="submit" :disabled="register.disabled"
                   class="flex w-full items-center justify-center rounded-md bg-amber-400 px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all ">
                   <svg v-if="register.disabled" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
