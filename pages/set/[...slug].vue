@@ -26,23 +26,23 @@ const route = useRoute();
 const { public: config } = useRuntimeConfig();
 
 let uri = route.params?.slug ? route.params.slug.join('/') : '';
-const { data } = await useFetch(config.backOptions.api + '/products-sets/' + uri);
+const data = await $fetch(config.backOptions.api + '/products-sets/' + uri);
 
 const breadcrumbs = [
     {
         name: 'Подборки',
         uri: 'set',
     },
-    ...data.value.breadcrumbs
+    ...data.breadcrumbs
 ]
 
 
 let current_title = 'Каталог праздничных предложений'
-if (data.value.breadcrumbs.length) {
-    current_title = 'Товары для кондитеров на ' + data.value.breadcrumbs[data.value.breadcrumbs.length - 1].name
+if (data.breadcrumbs.length) {
+    current_title = 'Товары для кондитеров на ' + data.breadcrumbs[data.breadcrumbs.length - 1].name
 }
 
-// const id_product_page = !!data.value.product
+// const id_product_page = !!data.product
 
 useHead({
     title: current_title,

@@ -59,13 +59,13 @@ const searchResult = ref([]);
 
 async function goToSearch(i) {
     if (i.length >= 2) {
-        const { data: result } = await useFetch(config.backOptions.api + '/products/search', {
+        const result = await $fetch(config.backOptions.api + '/products/search', {
             method: 'POST', body: {
                 "query": i,
                 "limit": 15
             }
         });
-        searchResult.value = result.value.data
+        searchResult.value = result.data
     }
 }
 

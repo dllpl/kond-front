@@ -1,9 +1,7 @@
 <script setup>
-// const { public: config } = useRuntimeConfig();
 const { contacts } = useContactsStore();
 const { storage } = useRuntimeConfig().public.backOptions;
 const favoriteStore = useFavoriteStore();
-// const { data: productNews } = await useFetch(config.backOptions.api + '/products/spec');
 
 const props = defineProps({
     product: Object

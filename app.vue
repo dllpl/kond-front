@@ -3,10 +3,10 @@ const contactsStore = useContactsStore(); // Получаем доступ к st
 const cartStore = useCartStore();
 
 const { public: config } = useRuntimeConfig();
-const { data: contacts } = await useFetch(config.backOptions.api + '/contacts');
+const {data} = await $fetch(config.backOptions.api + '/contacts');
 
 // Функция для загрузки контактов с API
-contactsStore.setContacts(contacts.value.data); // Записываем полученные данные в store
+contactsStore.setContacts(data); // Записываем полученные данные в store
 
 if (process.client) {
     cartStore.loadFromLocalStorage();
