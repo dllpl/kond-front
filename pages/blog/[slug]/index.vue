@@ -35,18 +35,18 @@
 <script setup>
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
-const { data: post } = await useFetch(config.backOptions.api + '/blog/' + useRoute().params.slug);
+const post = await $fetch(config.backOptions.api + '/blog/' + useRoute().params.slug);
 
 const breadcrumbs = [
 	{
 		name: 'Блог',
 		uri: 'blog',
 	},
-	...post.value.breadcrumbs
+	...post.breadcrumbs
 ]
 
-let current_title = post.value.breadcrumbs[post.value.breadcrumbs.length - 1].name
-let current_description = post.value.data.is_recipe ? current_title + ' - Ингредиенты, способ приготовления и товары для приготовления. Подробнее читайте на странице.' : current_title + '. Новости и статьи интернет-магазина Всё для кондитера. Подробнее читайте на странице.'
+let current_title = post.breadcrumbs[post.value.breadcrumbs.length - 1].name
+let current_description = post.data.is_recipe ? current_title + ' - Ингредиенты, способ приготовления и товары для приготовления. Подробнее читайте на странице.' : current_title + '. Новости и статьи интернет-магазина Всё для кондитера. Подробнее читайте на странице.'
 
 
 useHead({

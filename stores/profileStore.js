@@ -52,11 +52,11 @@ export const useProfileStore = defineStore('profileStore', {
             const { public: config } = useRuntimeConfig();
 
             try {
-                const { data: profile } = await useFetch(`${config.backOptions.api}/user/profile`, { headers: { 'Authorization': `Bearer ${this.credentials.token}` } })
+                const profile  = await $fetch(`${config.backOptions.api}/user/profile`, { headers: { 'Authorization': `Bearer ${this.credentials.token}` } })
 
                 // console.log(profile)
 
-                this.setProfile(profile.value)
+                this.setProfile(profile)
 
             } catch (error) {
                 if (error.status === 401) {

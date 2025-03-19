@@ -310,7 +310,7 @@ useHead({
 
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
-const { data: productsOffers } = await useFetch(config.backOptions.api + '/products/spec');
+const productsOffers = await $fetch(config.backOptions.api + '/products/spec');
 const profileStore = useProfileStore();
 const popupStore = usePopupStore();
 const cartStore = useCartStore();
@@ -327,14 +327,14 @@ const selected = ref({})
 
 const adresess = ref([])
 const searchAdress = async (value) => {
-    const { data } = await useFetch('dadata/address', {
+    const data  = await $fetch('dadata/address', {
         method: 'POST',
         body: {
             query: value,
             count: 5,
         }
     })
-    adresess.value = data.value
+    adresess.value = data
 }
 
 const disabledPay = computed(() => {

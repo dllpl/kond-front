@@ -182,7 +182,8 @@
 <script setup>
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
-const { data: categories } = await useFetch(config.backOptions.api + '/products-categories');
+const categories = await $fetch(config.backOptions.api + '/products-categories');
+
 const { contacts } = useContactsStore();
 const cartStore = useCartStore();
 const popupStore = usePopupStore();

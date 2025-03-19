@@ -23,7 +23,7 @@ const uri = route.params?.slug ? route.params.slug.join('/') : '';
 
 const full_url = config.backOptions.api + '/products-categories/' + uri;
 
-const {data} = await useFetch(full_url,
+const data = await $fetch(full_url,
     {headers: {...profileStore.getAuthHeader()},},
 );
 
@@ -32,17 +32,17 @@ const breadcrumbs = [
         name: 'Каталог',
         uri: 'catalog',
     },
-    ...data.value.breadcrumbs,
+    ...data.breadcrumbs,
 ]
 
 let current_title = 'Каталог товаров'
-if (data.value.breadcrumbs.length) {
-    current_title = data.value.breadcrumbs[data.value.breadcrumbs.length - 1].name
+if (data.breadcrumbs.length) {
+    current_title = data.breadcrumbs[data.breadcrumbs.length - 1].name
 }
 
 const description = current_title === 'Каталог товаров' ? 'Каталог товаров интернет-магазина Всё для кондитера' : 'Купить ' + current_title + ' онлайн в интернет-магазине Всё для кондитера. Доставка по г. Набережные Челны и всей России'
 
-const is_product_page = !!data.value.product
+const is_product_page = !!data.product
 
 useHead({
     title: current_title,
@@ -57,9 +57,9 @@ useHead({
 if (is_product_page) {
     useSchemaOrg([
         defineProduct({
-            name: data.value.product.title,
-            ...(data.value.product.images?.length ? {
-                image: storage + data.value.product.images[0]
+            name: data.product.title,
+            ...(data.product.images?.length ? {
+                image: storage + data.product.images[0]
             } : {
                 image: '/assets/img/default-product-img.webp'
             }),
@@ -68,7 +68,7 @@ if (is_product_page) {
                 reviewCount: 24
             },
             description: description,
-            sku: data.value.product.id,
+            sku: data.product.id,
             brand: {
                 "@type": "Brand",
                 name: 'Всё для кондитера'
@@ -76,11 +76,11 @@ if (is_product_page) {
             offers: [
                 {
                     "@type": "Offer",
-                    price: data.value.product.price,
+                    price: data.product.price,
                     priceCurrency: 'RUB',
                     availability: 'https://schema.org/InStock',
                     itemCondition: 'https://schema.org/NewCondition',
-                    url: 'https://dljakonditera.ru/catalog/' + data.value.product.slug_path,
+                    url: 'https://dljakonditera.ru/catalog/' + data.product.slug_path,
                     seller: {
                         "@type": "Organization",
                         name: 'Всё для кондитера dljakonditera.ru'

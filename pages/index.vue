@@ -18,8 +18,8 @@ useHead({
 const {public: config} = useRuntimeConfig();
 const profileStore = useProfileStore();
 
-const {data: banners} = await useFetch(config.backOptions.api + '/banners');
-const {data: categories} = await useFetch(config.backOptions.api + '/products-categories');
+const banners = await $fetch(config.backOptions.api + '/banners');
+const categories = await $fetch(config.backOptions.api + '/products-categories');
 
 const {status: productsNewStatus, data: productsNew} = await useFetch(config.backOptions.api + '/products/new', {headers: {...profileStore.getAuthHeader()},});
 const {

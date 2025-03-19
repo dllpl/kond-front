@@ -51,7 +51,7 @@
 <script setup>
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
-const { data: blog } = await useFetch(config.backOptions.api + '/blog');
+const blog = await $fetch(config.backOptions.api + '/blog');
 
 const breadcrumbs = [
     {
