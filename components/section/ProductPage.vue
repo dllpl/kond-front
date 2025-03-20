@@ -12,7 +12,7 @@ const props = defineProps({
 
 <template>
 
-    <div class="bg-white  rounded-lg">
+    <div class="bg-white rounded-lg">
         <div class="mx-auto px-4 py-4">
 
             <!-- Product -->

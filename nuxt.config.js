@@ -116,8 +116,6 @@ export default defineNuxtConfig({
       'Open Sans': '400..600',
       Montserrat: '400..600',
     },
-    // text: "Привет мир",
-    // subsets: 'cyrillic',
     overwriting: true,
     display: 'swap',
     preload: true,

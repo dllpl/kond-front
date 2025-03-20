@@ -1,8 +1,33 @@
+<script setup>
+const props = defineProps({
+  error: Object
+});
+
+const title = props.error.statusCode === 404 ? 'Страница не найдена' : 'Ошибка';
+const description = props.error.statusCode === 404 ? 'Мы не можем найти запрашиваемую страницу' : 'Произошла внутренняя ошибка';
+
+const breadcrumbs = [
+  {
+    name: title,
+  },
+];
+
+useHead({
+  title: title,
+  meta: [
+    {
+      name: 'description',
+      content: description
+    }
+  ],
+})
+
+</script>
 <template>
   <NuxtLayout>
-    <Header/>
-    <ElementsMobileCatalogPopover/>
-
+    <section>
+      <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs"/>
+    </section>
     <main class="wrapper-container pt-3 pb-16">
 
       <div class="relative min-h-96 py-12 px-12 flex flex-col justify-center gap-5 mb-20 items-center text-center
@@ -43,31 +68,5 @@
         </div>
       </div>
     </main>
-    <Footer/>
-    <ElementsNotifications/>
-    <ElementsModal/>
   </NuxtLayout>
 </template>
-
-
-<script setup>
-const props = defineProps({
-  error: Object
-});
-
-const {public: config} = useRuntimeConfig();
-const {data: contacts} = await useFetch(config.backOptions.api + '/contacts');
-
-const contactsStore = useContactsStore();
-contactsStore.setContacts(contacts.value.data);
-
-useHead({
-  title: 'Страница не найдена',
-  meta: [
-    {
-      name: 'description',
-      content: 'Страница не найдена | Всё для кондитера'
-    }
-  ],
-})
-</script>
