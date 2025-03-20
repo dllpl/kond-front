@@ -1,15 +1,7 @@
 <script setup>
-const contactsStore = useContactsStore(); // Получаем доступ к store
-const cartStore = useCartStore();
-
-const { public: config } = useRuntimeConfig();
-const {data} = await $fetch(config.backOptions.api + '/contacts');
-
-// Функция для загрузки контактов с API
-contactsStore.setContacts(data); // Записываем полученные данные в store
 
 if (process.client) {
-    cartStore.loadFromLocalStorage();
+  useCartStore().loadFromLocalStorage();
 }
 
 useSchemaOrg([
@@ -68,12 +60,7 @@ useSeoMeta({
 })
 </script>
 <template>
-    <NuxtLayout>
-      <Header />
-      <ElementsMobileCatalogPopover />
-      <NuxtPage />
-      <Footer />
-      <ElementsNotifications />
-      <ElementsModal />
-    </NuxtLayout>
+  <NuxtLayout name="default">
+    <NuxtPage/>
+  </NuxtLayout>
 </template>

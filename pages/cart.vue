@@ -267,7 +267,7 @@
                             <p v-if="!profileStore.isAuth()"
                                 @click="popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы получить уведомление о поступлении товара', type: 'login' })"
                                 class="text-end">
-                                <span class="text-base font-semibold text-amber-400"> Авторизуйтесь</span>, чтобы
+                                <span class="text-base font-semibold text-amber-400 cursor-pointer"> Авторизуйтесь</span>, чтобы
                                 продолжить
                             </p>
                             <button @click="makePay(1)" :disabled="disabledPay"

@@ -58,7 +58,7 @@
 
 const breadcrumbs = [
     {
-        name: 'Съедобная печать', slug: '/foodseal'
+        name: 'Съедобная печать', slug: '/foodSeal'
     },
 ]
 const { contacts } = useContactsStore();
