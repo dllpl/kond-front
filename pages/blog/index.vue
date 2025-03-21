@@ -49,9 +49,11 @@
 </template>
 
 <script setup>
+import HttpClient from "~/server/utils/httpClient.js";
+
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
-const blog = await $fetch(config.backOptions.api + '/blog');
+const {data: blog} = await HttpClient('blog');
 
 const breadcrumbs = [
     {
