@@ -1,20 +1,18 @@
 <template>
 
-    <div class="">
-
-
+    <div>
         <section>
             <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
         </section>
 
         <main class="wrapper-container  pb-16">
             <h1 class="mb-8 font-bold text-4xl 2xl:text-3xl xs:text-2xl">{{
-                data.data.title ?? 'Каталог праздничных предложений'
+                sets.data.title ?? 'Каталог праздничных предложений'
             }}
             </h1>
-            <SectionProductTop :data="data.data" class="mb-20" v-if="data.data?.length" />
+            <SectionProductTop :data="sets.data" class="mb-20" v-if="sets.data?.length" />
 
-            <SectionProductList :data="data.data.products" v-if="data.data?.products" />
+            <SectionProductList :data="sets.data.products" v-if="sets.data?.products" />
 
         </main>
     </div>
@@ -22,24 +20,26 @@
 
 
 <script setup>
+import HttpClient from "~/server/utils/httpClient.js";
+
 const route = useRoute();
 const { public: config } = useRuntimeConfig();
 
 let uri = route.params?.slug ? route.params.slug.join('/') : '';
-const data = await $fetch(config.backOptions.api + '/products-sets/' + uri);
+const {data: sets} = await HttpClient('products-sets/' + uri);
 
 const breadcrumbs = [
     {
         name: 'Подборки',
         uri: 'set',
     },
-    ...data.breadcrumbs
+    ...sets.value.breadcrumbs
 ]
 
 
 let current_title = 'Каталог праздничных предложений'
-if (data.breadcrumbs.length) {
-    current_title = 'Товары для кондитеров на ' + data.breadcrumbs[data.breadcrumbs.length - 1].name
+if (sets.value.breadcrumbs.length) {
+    current_title = 'Товары для кондитеров на ' + sets.value.breadcrumbs[sets.value.breadcrumbs.length - 1].name
 }
 
 // const id_product_page = !!data.product

@@ -1,4 +1,6 @@
 <script setup>
+import HttpClient from "~/server/utils/httpClient.js";
+
 const route = useRoute();
 const {public: config} = useRuntimeConfig();
 const {storage} = useRuntimeConfig().public.backOptions;
@@ -6,9 +8,7 @@ const profileStore = useProfileStore();
 
 const uri = route.params?.slug ? route.params.slug.join('/') : '';
 
-const full_url = config.backOptions.api + '/products-categories/' + uri;
-
-const {data} = await useFetch(full_url, {headers: {...profileStore.getAuthHeader()},},);
+const {data} = await HttpClient('products-categories/' + uri)
 
 const breadcrumbs = [
   {
@@ -93,7 +93,8 @@ if (is_product_page) {
     </section>
     <main class="wrapper-container pb-16">
       <template v-if="!data.product">
-        <SectionCatalogList :data="data.data" :class="data.data[0].children.length === 0 || data.products.length === 0 ? 'mb-0' : 'mb-20'"/>
+        <SectionCatalogList :data="data.data"
+                            :class="data.data[0].children.length === 0 || data.products.length === 0 ? 'mb-0' : 'mb-20'"/>
         <LazySectionProductList :data="data.products" v-if="data.products.length"/>
       </template>
       <LazySectionProductPage v-else :product="data.product"/>

@@ -1,10 +1,12 @@
 <script setup>
+import HttpClient from "~/server/utils/httpClient.js";
+
 const {public: config} = useRuntimeConfig();
 const contactsStore = useContactsStore(); // Получаем доступ к store
 
-const {data} = await $fetch(config.backOptions.api + '/contacts');
+const {data: response} = await HttpClient('contacts');
 // Функция для загрузки контактов с API
-contactsStore.setContacts(data); // Записываем полученные данные в store
+contactsStore.setContacts(response.value.data); // Записываем полученные данные в store
 </script>
 <template>
   <Header/>

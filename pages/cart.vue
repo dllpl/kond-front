@@ -291,6 +291,8 @@
 
 <script setup>
 
+import HttpClient from "~/server/utils/httpClient.js";
+
 const breadcrumbs = [
     {
         name: 'Оформление заказа',
@@ -310,7 +312,7 @@ useHead({
 
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
-const productsOffers = await $fetch(config.backOptions.api + '/products/spec');
+const {data: productsOffers} = await HttpClient('products/spec');
 const profileStore = useProfileStore();
 const popupStore = usePopupStore();
 const cartStore = useCartStore();

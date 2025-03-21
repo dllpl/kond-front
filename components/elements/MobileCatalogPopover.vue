@@ -46,7 +46,9 @@
   </section>
 </template>
 <script setup>
+import HttpClient from "~/server/utils/httpClient.js";
+
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
-const categories = await $fetch(config.backOptions.api + '/products-categories');
+const {data: categories} = await HttpClient('products-categories');
 </script>
