@@ -50,7 +50,7 @@ const numberClass = computed(() => {
             <div v-if="cartStore.issetInCart(item.id)"
                 class="flex items-center justify-between w-full bg-amber-100 p-0.5 rounded-lg">
 
-                <button @click="cartStore.decrement(item)"
+                <button aria-label="Убавить" @click="cartStore.decrement(item)"
                     class="flex items-center rounded-lg bg-amber-400 hover:bg-amber-300 transition-base"
                     :class="buttonClass">
                     <Icon name="hugeicons:minus-sign" class="shrink-0" :class="iconClass" />
@@ -58,7 +58,7 @@ const numberClass = computed(() => {
 
                 <span class="tabular-nums" :class="numberClass">{{ cartStore.getCountProductInCart(item.id) }}</span>
 
-                <button :disabled="cartStore.getCountProductInCart(item.id) >= item.count"
+                <button aria-label="Прибавить" :disabled="cartStore.getCountProductInCart(item.id) >= item.count"
                     @click="cartStore.increment(item)"
                     class="flex items-center rounded-lg bg-amber-400 hover:bg-amber-300 transition-base disabled:bg-amber-200 disabled:cursor-not-allowed"
                     :class="buttonClass">
