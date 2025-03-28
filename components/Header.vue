@@ -20,12 +20,12 @@
 					<NuxtLink to="/" class="hidden xs:block xs:-m-1.5 xs:p-1.5 xs:mr-auto xs:order-first">
 						<span class="sr-only">Все для кондитера</span>
 						<img loading="lazy" width="250" height="66" class="max-h-8 w-auto" src="/assets/img/logo.webp"
-							alt="Все для кондитера" />
+							alt="Меню | Все для кондитера" />
 					</NuxtLink>
 
 					<div class="hidden xs:flex xs:gap-3 ">
 						<!-- Search -->
-						<button type="button" @click="popupStore.toggle('search')"
+						<button aria-label="Поиск" type="button" @click="popupStore.toggle('search')"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="hugeicons:search-01" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
@@ -40,7 +40,7 @@
 						</a> -->
 
 						<!-- Basket -->
-						<button @click="popupStore.toggle('drawer')"
+						<button aria-label="Корзина" @click="popupStore.toggle('drawer')"
 							class=" relative flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="hugeicons:shopping-cart-02" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
@@ -72,7 +72,7 @@
 
 						<!-- BURGER -->
 						<div class="hidden lg:flex">
-							<button type="button" @click="popupStore.toggle('burger')"
+							<button aria-label="Меню" type="button" @click="popupStore.toggle('burger')"
 								class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 								<span class="sr-only">Открыть меню</span>
 								<Icon name="hugeicons:menu-01" class="w-6 h-6" aria-hidden="true" />
@@ -92,7 +92,7 @@
 					<NuxtLink to="/" class="-m-1.5 p-1.5">
 						<span class="sr-only">Все для кондитера</span>
 						<img width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp"
-							alt="Все для кондитера" />
+							alt="Лого | Все для кондитера" />
 					</NuxtLink>
 
 					<nav class="flex items-center justify-between  gap-x-12" aria-label="Основное меню">
@@ -112,21 +112,21 @@
 
 					<div class=" flex gap-5 xs:hidden">
 						<!-- Search -->
-						<button type="button" @click="popupStore.toggle('search')"
+						<button aria-label="Поиск" type="button" @click="popupStore.toggle('search')"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="hugeicons:search-01" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
 
 						<!-- Like -->
-						<button @click="handleFavorite()"
+						<button aria-label="Избранное" @click="handleFavorite()"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="hugeicons:heart-check" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
 						</button>
 
 						<!-- Basket -->
-						<button @click="popupStore.toggle('drawer')"
+						<button aria-label="Корзина" @click="popupStore.toggle('drawer')"
 							class="relative flex items-center justify-center transition-base p-1 rounded-md ring-2 ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="hugeicons:shopping-cart-02" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
@@ -205,14 +205,16 @@ const navTop = [
 ]
 
 const nav = [
-	{ name: 'Съедобная печать?', slug: '#' },
+	{ name: 'Скидки', slug: '/discount' },
+	{ name: 'Съедобная печать', slug: '/foodSeal' },
 	{ name: 'Блог', slug: '/blog' },
 	{ name: 'Контакты', slug: '/contacts' },
 ]
 
 const navBurger = [
 	{ name: 'Каталог', slug: '/catalog' },
-	{ name: 'Съедобная печать?', slug: '#' },
+	{ name: 'Скидки', slug: '/discount' },
+	{ name: 'Съедобная печать', slug: '/foodSeal' },
 	{ name: 'Блог', slug: '/blog' },
 	{ name: 'О магазине', slug: '/about' },
 	{ name: 'Доставка и оплата', slug: '/delivery' },
