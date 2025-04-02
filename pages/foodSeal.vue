@@ -117,7 +117,8 @@
                                 </div>
 
                                 <input id="file-upload" name="file-upload" type="file" @change="handleFileUpload"
-                                    accept="image/*" required class="sr-only" />
+                                    accept="image/webp,image/png,image/jpeg,image/jpg,image/heic" required
+                                    class="sr-only" />
                             </label>
                         </div>
                     </div>
