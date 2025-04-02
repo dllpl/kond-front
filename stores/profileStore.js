@@ -13,6 +13,7 @@ export const useProfileStore = defineStore('profileStore', {
             phone: '',
             patronymic: '',
             full_address: '',
+            full_address_fias_id: '',
         },
         orders: [],
         favorites: [],
