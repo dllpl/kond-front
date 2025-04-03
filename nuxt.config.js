@@ -72,7 +72,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    indexable: true, // запретить индексацию
+    indexable: false, // запретить индексацию
     url: '',
     name: 'Всё для кондитера',
     defaultLocal: 'ru',
