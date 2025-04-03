@@ -93,11 +93,14 @@ export default defineNuxtConfig({
         lang: 'ru'
       },
       charset: 'utf-8',
-      title: '',
+      title: 'Всё для кондитера',
       viewport: 'width=device-width, initial-scale=1',
-      // templateParams: {
-      //   separator: ' - '
-      // },
+      templateParams: {
+        separator: '-'
+      },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
       script: [
         // {src: 'https://www.googletagmanager.com/gtag/js?id=G-5H3XLN9HST', async: true},
       ]
