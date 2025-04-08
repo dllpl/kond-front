@@ -87,6 +87,10 @@ export default defineNuxtConfig({
     sources: [process.env.API_URL + '/sitemap/generate'],
   },
 
+  serverMiddleware: [
+    { path: '/', handler: '~/server/middleware/redirects.ts' }
+  ],
+
   app: {
     head: {
       htmlAttrs: {
