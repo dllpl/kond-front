@@ -99,7 +99,6 @@ const props = defineProps({
         default: '',
     },
 })
-
 const wrapper = computed(() => {
     return props.type === 'modal' ? ' ' : 'border-t border-white/10 flex gap-4 items-end justify-between lg:flex-col lg:items-start lg:justify-start lg:space-x-0 py-8';
 });
@@ -109,11 +108,9 @@ const formDirection = computed(() => {
 const textPolicy = computed(() => {
     return props.type === 'modal' ? '-my-2 sm:my-0' : '-my-2 absolute -bottom-4 left-0 xs:static xs:my-0';
 });
-
 const textColor = computed(() => {
     return props.theme === 'dark' ? 'text-white' : 'text-indigo-950';
 });
-
 const inputColor = computed(() => {
     return props.theme === 'dark' ? 'ring-white/10 text-white bg-white/5 ring-2' : 'ring-1 ring-gray-300 text-indigo-950 bg-white hover:ring-2';
 });

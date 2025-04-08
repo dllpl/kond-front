@@ -182,6 +182,7 @@ const handleFileUpload = (event) => {
 const submitForm = async () => {
     const { public: config } = useRuntimeConfig();
     const { phoneClear } = useHelper();
+
     const form = food.form;
     form.phone = phoneClear(form.phone)
 
@@ -191,44 +192,23 @@ const submitForm = async () => {
     for (const key in form) {
         formData.append(key, form[key]);
     }
-    console.log(formData)
 
-    await $fetch(`${config.backOptions.api}/edible-seals`, {
+    await fetch(`${config.backOptions.api}/edible-seals`, {
         method: 'POST',
         body: formData,
-        headers: { "Content-type": "multipart/form-data" },
     }).then((data) => {
+        console.log(data)
         popupStore.close('modal');
-        popupStore.toggle('toast', { title: data.message, timeout: 2000 });
+        popupStore.toggle('toast', { title: 'Данные отправлены! Мы свяжемся с Вами в ближайшее время! Спасибо.', timeout: 2000 });
+
         form.phone = null;
         form.name = null;
+        form.type_id = null;
+        form.comment = null;
+        form.imageName = null;
     }).catch(({ response }) => {
         popupStore.toggle('toast', { title: response?._data?.message ?? 'Ошибка сервера', timeout: 6000, type: 'error' })
     })
 }
-// const submitForm = async () => {
-//     const { public: config } = useRuntimeConfig();
-//     const formData = new FormData();
-//     for (const key in form.value) {
-//         formData.append(key, form.value[key]);
-//     }
-
-//     try {
-//         const response = await $fetch(`${config.backOptions.api}/edible-seals`, {
-//             method: 'POST',
-//             body: formData,
-//             headers: {},
-//         });
-
-//         if (response.ok) {
-//             alert('Форма успешно отправлена!');
-//         } else {
-//             alert('Ошибка при отправке формы.');
-//         }
-//     } catch (error) {
-//         console.error('Ошибка:', error);
-//     }
-// };
-
 
 </script>
