@@ -13,7 +13,7 @@ const redirects: Redirect[] = JSON.parse(
 export default defineEventHandler((event) => {
 
     const url = getRequestURL(event)
-    const redirect = redirects.find(r => r.before === url.origin + url.pathname)
+    const redirect = redirects.find(r => r.before === url.pathname)
 
     if (redirect) {
         return sendRedirect(event, redirect.after, 301) // 301 = permanent redirect
