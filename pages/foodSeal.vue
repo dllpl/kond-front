@@ -1,6 +1,4 @@
 <template>
-
-
     <section>
         <ElementsBreadcrumb class="wrapper-container py-4" :data="breadcrumbs" />
     </section>
@@ -51,7 +49,7 @@
                         <!-- имя -->
                         <div class="col-span-2 sm:col-auto">
                             <label for="name" class="block text-sm font-medium text-gray-900 mb-2">Имя</label>
-                            <input v-model="form.name" v-maska="maskaOptions.cyrillic_and_upper_case" name="name"
+                            <input v-model="food.form.name" v-maska="maskaOptions.cyrillic_and_upper_case" name="name"
                                 id="name" required
                                 class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                                 :class="inputColor" placeholder="Имя" />
@@ -60,7 +58,7 @@
                         <!-- Телефон -->
                         <div class="col-span-2 sm:col-auto">
                             <label for="phone" class="block text-sm font-medium text-gray-900 mb-2">Телефон</label>
-                            <input v-model="form.phone" v-maska="maskaOptions.phone.mask" name="phone" id="phone"
+                            <input v-model="food.form.phone" v-maska="maskaOptions.phone.mask" name="phone" id="phone"
                                 required
                                 class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                                 :class="inputColor" placeholder="+7 (___) ___-__-__" />
@@ -71,14 +69,13 @@
                             <label for="paper" class="block text-sm font-medium text-gray-900 mb-2">Тип
                                 бумаги</label>
                             <div class="grid grid-cols-1">
-                                <select v-model="form.paperType" id="paper" name="paper" autocomplete="paper-name"
+                                <select v-model="food.form.type_id" id="paper" name="paper" autocomplete="paper-name"
                                     required
                                     class="col-start-1 row-start-1 w-full rounded-md py-1.5 pl-3 pr-8 text-gray-900 border-0 shadow-sm ring-1 ring-inset ring-gray-300 appearance-none hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all">
-                                    <option value="">Выберите тип</option>
-                                    <option value="Вафельная-Тонкая">Вафельная бумага.Тонкая, 130 рублей</option>
-                                    <option value="Вафельная-Толстая">Вафельная бумага.Толстая, 190 рублей</option>
-                                    <option value="Сахарная">Сахарная бумага, 290 рублей</option>
-                                    <option value="Шокотрансфер">Шокотрансфер, 250 рублей</option>
+                                    <option v-for="type in paper" :key="i" :value="type.id">
+                                        {{ type.name }}
+                                    </option>
+
                                 </select>
                                 <ChevronDownIcon
                                     class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 z-10"
@@ -89,7 +86,7 @@
                         <!-- Комментарий -->
                         <div class="col-span-full">
                             <label for="desc" class="block text-sm/6 font-medium text-gray-900 mb-2">Комментарий</label>
-                            <textarea v-model="form.description" name="desc" id="desc" rows="3"
+                            <textarea v-model="food.form.comment" name="desc" id="desc" rows="3"
                                 class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                                 placeholder="Укажите ваш комментарий" />
                         </div>
@@ -102,7 +99,7 @@
                             <label for="file-upload"
                                 class="w-full flex justify-center items-center cursor-pointer rounded-md border-0 px-2.5 py-6 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 bg-white hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all ">
 
-                                <div v-if="!form.imageName" class="">
+                                <div v-if="!food.form.imageName" class="">
                                     <div class="flex items-center gap-x-2 justify-center mb-2">
                                         <Icon name="hugeicons:image-download" class="shrink-0 w-6 h-6" />
                                         <span>Загрузить файл</span>
@@ -113,7 +110,7 @@
                                 </div>
                                 <div v-else class="flex items-center gap-x-2 ">
                                     <Icon name="material-symbols:check-circle-rounded" class="h-6 w-6 bg-green-500" />
-                                    <p>Добавлено: {{ form.imageName }}</p>
+                                    <p>Добавлено: {{ food.form.imageName }}</p>
                                 </div>
 
                                 <input id="file-upload" name="file-upload" type="file" @change="handleFileUpload"
@@ -126,7 +123,8 @@
             </div>
 
             <button type="submit"
-                class="mt-6 flex text-sm font-medium px-2.5 py-1.5 rounded-md ring-2 ring-amber-400 bg-amber-400  hover:bg-amber-300 transition-base">Отправить</button>
+                class="mt-6 flex text-sm font-medium px-2.5 py-1.5 rounded-md ring-2 ring-amber-400 bg-amber-400  hover:bg-amber-300 transition-base">Отправить
+            </button>
         </form>
     </main>
 
@@ -134,8 +132,13 @@
 
 
 <script setup>
+import HttpClient from "~/server/utils/httpClient.js";
 const maskaOptions = useMaskaOptions();
 const { contacts } = useContactsStore();
+const { data: paper } = await HttpClient('edible-seals/types');
+
+const popupStore = usePopupStore();
+const { modal } = storeToRefs(popupStore);
 
 const breadcrumbs = [
     {
@@ -153,52 +156,79 @@ useHead({
     ],
 })
 
-const form = ref({
-    name: '',
-    phone: '',
-    paperType: '',
-    description: '',
-    image: null,
-    imageName: '',
+const food = reactive({
+    form: {
+        name: null,
+        phone: null,
+        type_id: null,
+        comment: null,
+        image: null,
+        imageName: null,
+    },
+    errors: null,
 });
 
 const handleFileUpload = (event) => {
     const file = event.target.files[0];
 
-    console.log('event')
-    console.log(file.name)
-
     if (file) {
-        console.log('есть контакт?')
-        form.value.image = file; // сохраняем файл в form.image
-        form.value.imageName = file.name; // сохраняем имя файла в form.imageName
+        console.log(file);
+        food.form.image = file; // сохраняем файл в form.image
+        food.form.imageName = file.name; // сохраняем имя файла в form.imageName
     }
 };
 
 
 const submitForm = async () => {
+    const { public: config } = useRuntimeConfig();
+    const { phoneClear } = useHelper();
+    const form = food.form;
+    form.phone = phoneClear(form.phone)
+
+    console.log(form)
+
     const formData = new FormData();
-    for (const key in form.value) {
-        formData.append(key, form.value[key]);
+    for (const key in form) {
+        formData.append(key, form[key]);
     }
+    console.log(formData)
 
-    try {
-        const response = await fetch('https://your-api-endpoint.com/api/submit', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                // 'Content-Type': 'multipart/form-data' // Не устанавливайте этот заголовок, он будет установлен автоматически
-            },
-        });
+    await $fetch(`${config.backOptions.api}/edible-seals`, {
+        method: 'POST',
+        body: formData,
+        headers: { "Content-type": "multipart/form-data" },
+    }).then((data) => {
+        popupStore.close('modal');
+        popupStore.toggle('toast', { title: data.message, timeout: 2000 });
+        form.phone = null;
+        form.name = null;
+    }).catch(({ response }) => {
+        popupStore.toggle('toast', { title: response?._data?.message ?? 'Ошибка сервера', timeout: 6000, type: 'error' })
+    })
+}
+// const submitForm = async () => {
+//     const { public: config } = useRuntimeConfig();
+//     const formData = new FormData();
+//     for (const key in form.value) {
+//         formData.append(key, form.value[key]);
+//     }
 
-        if (response.ok) {
-            alert('Форма успешно отправлена!');
-        } else {
-            alert('Ошибка при отправке формы.');
-        }
-    } catch (error) {
-        console.error('Ошибка:', error);
-    }
-};
+//     try {
+//         const response = await $fetch(`${config.backOptions.api}/edible-seals`, {
+//             method: 'POST',
+//             body: formData,
+//             headers: {},
+//         });
+
+//         if (response.ok) {
+//             alert('Форма успешно отправлена!');
+//         } else {
+//             alert('Ошибка при отправке формы.');
+//         }
+//     } catch (error) {
+//         console.error('Ошибка:', error);
+//     }
+// };
+
 
 </script>
