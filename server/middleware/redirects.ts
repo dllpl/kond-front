@@ -1,9 +1,9 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
+import {readFileSync} from 'fs'
+import {join} from 'path'
 
 interface Redirect {
-    before: string
-    after: string
+  before: string
+  after: string
 }
 
 const redirects: Redirect[] = JSON.parse(
@@ -12,10 +12,12 @@ const redirects: Redirect[] = JSON.parse(
 
 export default defineEventHandler((event) => {
 
-    const url = getRequestURL(event)
-    const redirect = redirects.find(r => r.before === url.pathname)
+  if (process.env.APP_ENV === 'dev') return
 
-    if (redirect) {
-        return sendRedirect(event, redirect.after, 301) // 301 = permanent redirect
-    }
+  const url = getRequestURL(event)
+  const redirect = redirects.find(r => r.before === url.pathname)
+
+  if (redirect) {
+    return sendRedirect(event, redirect.after, 301) // 301 = permanent redirect
+  }
 })

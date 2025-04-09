@@ -72,7 +72,7 @@ export default defineNuxtConfig({
     },
 
     site: {
-        indexable: true,
+        indexable: process.env.APP_ENV === 'production',
         url: '',
         name: 'Всё для кондитера',
         defaultLocal: 'ru',
@@ -132,7 +132,7 @@ export default defineNuxtConfig({
     },
 
     yandexMetrika: {
-        id: process.env.YANDEX_METRIKA_ID || '65355439',
+        id: process.env.APP_ENV === 'production' ? process.env.YANDEX_METRIKA_ID : '',
         webvisor: true,
         consoleLog: false,
         defer: true

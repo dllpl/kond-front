@@ -34,7 +34,7 @@ export const useProfileStore = defineStore('profileStore', {
             const auth_token = useCookie('auth_token', {
                 maxAge: maxAge,
                 path: '/',
-                domain: process.dev ? 'localhost' : process.env.APP_DOMAIN,
+                domain: process.dev ? 'localhost' : '.' + process.env.APP_DOMAIN,
                 secure: !process.dev,
                 ...(!process.dev ? { sameSite: 'none' } : {}),
                 httpOnly: false,
