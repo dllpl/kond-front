@@ -3,14 +3,14 @@ export default defineNuxtConfig({
     devtools: {enabled: false},
     ssr: true,
 
-  runtimeConfig: {
-    public: {
-      backOptions: {
-        storage: process.env.STORAGE_PATH,
-        api: process.env.API_URL,
-      },
+    runtimeConfig: {
+        public: {
+            backOptions: {
+                storage: process.env.STORAGE_PATH,
+                api: process.env.API_URL,
+            },
+        },
     },
-  },
 
     nitro: {
         routeRules: {
@@ -87,9 +87,11 @@ export default defineNuxtConfig({
         sources: [process.env.API_URL + '/sitemap/generate'],
     },
 
-    serverMiddleware: [
-        {path: '/', handler: '~/server/middleware/redirects.ts'}
-    ],
+    ...(process.env.APP_ENV === 'dev' ? {} : {
+        serverMiddleware: [
+            {path: '/', handler: '~/server/middleware/redirects.ts'}
+        ],
+    }),
 
     app: {
         head: {
