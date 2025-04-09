@@ -7,7 +7,7 @@ interface Redirect {
 }
 
 const redirects: Redirect[] = JSON.parse(
-  readFileSync(join(process.cwd(), 'temp_redirects.json'), 'utf-8')
+  readFileSync(join(process.cwd(), 'server/utils/temp_redirects.json'), 'utf-8')
 )
 
 export default defineEventHandler((event) => {
