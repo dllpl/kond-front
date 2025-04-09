@@ -6,13 +6,17 @@ interface Redirect {
   after: string
 }
 
-const redirects: Redirect[] = JSON.parse(
-  readFileSync(join(process.cwd(), 'server/utils/temp_redirects.json'), 'utf-8')
-)
+let redirects: Redirect[] = []
+
+if(process.env.APP_ENV === 'production') {
+  redirects = JSON.parse(
+    readFileSync(join(process.cwd(), 'server/utils/temp_redirects.json'), 'utf-8')
+  )
+}
 
 export default defineEventHandler((event) => {
 
-  if (process.env.APP_ENV === 'dev') return
+  if (process.env.APP_ENV !== 'production') return
 
   const url = getRequestURL(event)
   const redirect = redirects.find(r => r.before === url.pathname)
