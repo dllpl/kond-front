@@ -1,4 +1,4 @@
-import {reloadNuxtApp} from "#app";
+import { reloadNuxtApp } from "#app";
 
 export const useProfileStore = defineStore('profileStore', {
     state: () => ({
@@ -53,18 +53,13 @@ export const useProfileStore = defineStore('profileStore', {
             const { public: config } = useRuntimeConfig();
 
             try {
-                const profile  = await $fetch(`${config.backOptions.api}/user/profile`, { headers: { 'Authorization': `Bearer ${this.credentials.token}` } })
-
-                // console.log(profile)
-
+                const profile = await $fetch(`${config.backOptions.api}/user/profile`, { headers: { 'Authorization': `Bearer ${this.credentials.token}` } })
                 this.setProfile(profile)
-
             } catch (error) {
                 if (error.status === 401) {
                     useCookie('auth_token').value = undefined
                     return navigateTo('/login', { redirectCode: 401 })
                 }
-
                 throw createError({
                     statusCode: error.status,
                     statusMessage: error.message
@@ -83,7 +78,7 @@ export const useProfileStore = defineStore('profileStore', {
         },
 
         getAuthHeader() {
-            if(this.isAuth()) {
+            if (this.isAuth()) {
                 return {
                     'Authorization': `Bearer ${this.credentials.token}`
                 }
@@ -189,6 +184,8 @@ export const useProfileStore = defineStore('profileStore', {
                 popupStore.toggle('toast', { title: response._data.message, timeout: 6000, type: 'error' })
             })
         },
+
+
     },
     getters: {},
 })
