@@ -10,9 +10,8 @@ export default (uri, method = 'GET', body = null, headers = {}) => {
 
     headers = {
         ...headers,
-        'Content-Type': 'application/json',
         'Accept': 'application/json'
     }
 
-    return useFetch(config.backOptions.api + '/' + uri, {headers, method, body})
+    return useFetch(`${config.backOptions.api}/${uri}`, {headers, method, body})
 }

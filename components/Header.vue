@@ -202,11 +202,12 @@ function handleFavorite() {
 const navTop = [
 	{ name: 'О магазине', slug: '/about' },
 	{ name: 'Доставка и оплата', slug: '/delivery' },
+    { name: 'Отзывы', slug: '/reviews' },
 ]
 
 const nav = [
 	{ name: 'Скидки', slug: '/discount' },
-	{ name: 'Съедобная печать', slug: '/foodSeal' },
+	{ name: 'Съедобная печать', slug: '/food-seal' },
 	{ name: 'Блог', slug: '/blog' },
 	{ name: 'Контакты', slug: '/contacts' },
 ]
@@ -214,11 +215,12 @@ const nav = [
 const navBurger = [
 	{ name: 'Каталог', slug: '/catalog' },
 	{ name: 'Скидки', slug: '/discount' },
-	{ name: 'Съедобная печать', slug: '/foodSeal' },
+	{ name: 'Съедобная печать', slug: '/food-seal' },
 	{ name: 'Блог', slug: '/blog' },
 	{ name: 'О магазине', slug: '/about' },
 	{ name: 'Доставка и оплата', slug: '/delivery' },
 	{ name: 'Контакты', slug: '/contacts' },
+    { name: 'Отзывы', slug: '/reviews' },
 ]
 
 const city = [
