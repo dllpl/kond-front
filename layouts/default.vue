@@ -9,10 +9,10 @@ const {data: response} = await HttpClient('contacts');
 contactsStore.setContacts(response.value.data); // Записываем полученные данные в store
 </script>
 <template>
-  <Header/>
-  <ElementsMobileCatalogPopover/>
-  <slot/>
-  <Footer/>
-  <ElementsNotifications/>
-  <ElementsModal/>
+    <Header/>
+    <ElementsMobileCatalogPopover/>
+    <slot/>
+    <Footer/>
+    <ElementsNotifications/>
+    <ElementsModal/>
 </template>

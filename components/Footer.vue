@@ -83,35 +83,35 @@
                         <li>ИНН&nbsp;&mdash; 165033847201</li>
                         <li>ОГРН&nbsp;&mdash; 308165020600060</li>
                     </ul>
-                    <p class="text-xs leading-5 text-gray-400 mt-0 sm:text-center">&copy; {{ new Date().getFullYear() }}
-                        Всё для
-                        кондитера
-                    </p>
+                    <p class="text-xs leading-5 text-gray-400 mt-0 sm:text-center">&copy; {{ new Date().getFullYear() }} Всё для кондитера</p>
                 </div>
-                <div class="flex items-center space-x-6  ">
-                    <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
-                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
-                        <span class="sr-only">Whatsapp</span>
-                        <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />
-                    </NuxtLink>
+                <div class="">
+                    <div class="flex items-center space-x-6 justify-end">
+                        <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
+                                  class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                            <span class="sr-only">Whatsapp</span>
+                            <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                        </NuxtLink>
 
-                    <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
-                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
-                        <span class="sr-only">Instagram</span>
-                        <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />
-                    </NuxtLink>
+                        <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
+                                  class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                            <span class="sr-only">Instagram</span>
+                            <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />
+                        </NuxtLink>
 
-                    <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
-                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
-                        <span class="sr-only">Телеграм</span>
-                        <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true" />
-                    </NuxtLink>
+                        <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
+                                  class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                            <span class="sr-only">Телеграм</span>
+                            <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true" />
+                        </NuxtLink>
 
-                    <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
-                        class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
-                        <span class="sr-only">ВКонтакте</span>
-                        <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true" />
-                    </NuxtLink>
+                        <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
+                                  class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                            <span class="sr-only">ВКонтакте</span>
+                            <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true" />
+                        </NuxtLink>
+                    </div>
+                    <p class="text-xs leading-5 text-white mt-0 sm:text-center"><NuxtLink to="https://webseed.ru/?utm_source=dljakonditera" target="_blank" external title="Заказать разработку сайта Татарстан, Набережные Челны, Казань webseed.ru. Вебсид ру">Сайт разработан веб-студией webseed.ru</NuxtLink></p>
                 </div>
 
             </div>
@@ -122,13 +122,12 @@
 
 <script setup>
 const { contacts } = useContactsStore();
-const maskaOptions = useMaskaOptions();
 const popupStore = usePopupStore();
 
 const navigation = {
     menu: [
         { name: 'Каталог', href: '/catalog' },
-        { name: 'Съедобная печать', href: '#' },
+        { name: 'Съедобная печать', href: '/food-seal' },
         { name: 'Блог', href: '/blog' },
         { name: 'Контакты', href: '/contacts' },
         { name: 'Вход | Регистрация', href: 'lk' },
@@ -138,8 +137,9 @@ const navigation = {
         { name: 'О магазине', href: '/about' },
         { name: 'Доставка и оплата', href: '/delivery' },
         { name: 'Избранное', href: 'lk#favorites' },
-        { name: 'Корзина' },
-        { name: 'Поиск' },
+        // { name: 'Корзина' },
+        // { name: 'Поиск' },
+        { name: 'Отзывы', href: '/reviews' },
     ],
 }
 </script>
