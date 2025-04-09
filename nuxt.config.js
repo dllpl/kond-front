@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             backOptions: {
+                app_env: process.env.APP_ENV,
                 storage: process.env.STORAGE_PATH,
                 api: process.env.API_URL,
             },
@@ -108,7 +109,7 @@ export default defineNuxtConfig({
                 {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
             ],
             script: [
-                // {src: 'https://www.googletagmanager.com/gtag/js?id=G-5H3XLN9HST', async: true},
+                {src: 'https://www.googletagmanager.com/gtag/js?id=G-8TWE0J1QGG', async: true},
             ]
         },
     },
