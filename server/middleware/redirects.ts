@@ -10,7 +10,7 @@ let redirects: Redirect[] = []
 
 if(process.env.APP_ENV === 'production') {
   redirects = JSON.parse(
-    readFileSync(join(process.cwd(), 'server/utils/temp_redirects.json'), 'utf-8')
+    readFileSync(join(process.cwd(), 'temp_redirects.json'), 'utf-8')
   )
 }
 
