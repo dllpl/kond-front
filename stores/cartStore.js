@@ -34,14 +34,25 @@ export const useCartStore = defineStore('cartStore', {
 
         //проверяем если ли товар в корзине
         issetInCart(productId) {
+
+            if (!this.products || typeof this.products !== 'object' || !this.products.length) {
+                return false
+            }
+
             const product = this.products.find(item => item.id === productId);
             if (typeof product !== 'undefined') {
                 return product;
             }
+
             return false
         },
 
         getCountProductInCart(productId) {
+
+            if (!this.products || typeof this.products !== 'object' || !this.products.length) {
+                return 0
+            }
+
             const product = this.products.find(item => item.id === productId);
             if (typeof product !== 'undefined') {
                 return product.inCart;
@@ -170,7 +181,7 @@ export const useCartStore = defineStore('cartStore', {
                 } else {
                     popupStore.toggle('toast', {title: data.message, timeout: 2000})
                 }
-            }).catch(({ response }) => {
+            }).catch(({response}) => {
                 if (response.status === 422) {
                     popupStore.toggle('toast', {title: 'Проверьте введенные данные', timeout: 2000, type: 'error'})
                 } else {

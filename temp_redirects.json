@@ -1,6 +1,11 @@
 [
   {
     "id": 2,
+    "before": "/discount",
+    "after": "/set"
+  },
+  {
+    "id": 2,
     "before": "/catalog/upakovka/podlozhki-podnosy-salfetki/podlozhki/podlozhki-usilennye-32mm/",
     "after": "/catalog/upakovka/podlozhki-podnosy-salfetki/podlozhki/podlozhki-usilennye-32mm"
   },
