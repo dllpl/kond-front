@@ -42,6 +42,28 @@ useHead({
 })
 
 if (is_product_page) {
+
+  useSeoMeta({
+    ogType: 'product',
+    ...(data.value.product.images?.length ? {
+      ogImage: storage + data.value.product.images[0]
+    } : {
+      ogImage: '/assets/img/default-product-img.webp'
+    }),
+    ogImageType: 'image/webp',
+    ogImageHeight: 600,
+    ogImageWidth: 1200,
+    ogLocale: 'ru_RU',
+  })
+
+  useHead({
+    meta: [
+      { property: 'product:price:amount', content: data.value.product.price },
+      { property: 'product:price:currency', content: 'RUB' },
+      { property: 'product:availability', content: 'in stock' }
+    ]
+  })
+
   useSchemaOrg([
     defineProduct({
       name: data.value.product.title,

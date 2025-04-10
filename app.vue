@@ -43,17 +43,12 @@ useSchemaOrg([
         email: 'zakazkonditer.nch@gmail.com',
         description: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России.',
     }),
-    // defineWebSite({
-    //     name: 'Всё для кондитера',
-    //     description: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России.',
-    //     inLanguage: ['ru-RU'],
-    // })
 ])
 
 useSeoMeta({
     ogType: 'website',
-    ogImage: '/logo-card.png',
-    ogImageType: 'image/png',
+    ogImage: '/cooking-1.1.webp',
+    ogImageType: 'image/webp',
     ogImageHeight: 600,
     ogImageWidth: 1200,
     ogLocale: 'ru_RU',
