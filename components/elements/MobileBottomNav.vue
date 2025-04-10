@@ -1,6 +1,6 @@
 <template>
     <nav
-        class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow lg:block hidden"
+        class="fixed bottom-0 left-0 right-0 z-5 bg-white border-t border-gray-200 shadow lg:block hidden"
     >
         <div class="flex justify-around items-center h-14 text-sm text-gray-600">
             <NuxtLink
@@ -27,18 +27,18 @@
             </button>
 
             <NuxtLink
-                to="/lk#favorites"
-                :class="linkClass('/lk', true)"
+                to="/cart"
+                :class="linkClass('/cart')"
             >
-                <Icon name="hugeicons:favourite" class="w-5 h-5 mb-1" />
-                <span class="text-xs">Любимое</span>
+                <Icon name="hugeicons:shopping-cart-02" class="w-5 h-5 mb-1" />
+                <span class="text-xs">Корзина</span>
             </NuxtLink>
 
             <NuxtLink
                 to="/lk"
-                :class="linkClass('/lk')"
+                :class="linkClass('/lk#orders')"
             >
-                <Icon name="heroicons:user" class="w-5 h-5 mb-1" />
+                <Icon name="hugeicons:user" class="w-5 h-5 mb-1" />
                 <span class="text-xs">Кабинет</span>
             </NuxtLink>
         </div>
