@@ -14,15 +14,6 @@ export default defineNuxtConfig({
         },
     },
 
-    nitro: {
-        routeRules: Object.fromEntries(
-            redirects.map(r => [
-                r.before,
-                { redirect: r.after, statusCode: r.status || 301 }
-            ])
-        )
-    },
-
     routeRules: {
         "/": {isr: 300, headers: {"Cache-Control": "public, max-age=300"}},
         "/_nuxt/**": {headers: {"Cache-Control": "public, max-age=31536000, immutable"}},

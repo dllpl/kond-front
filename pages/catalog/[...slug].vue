@@ -10,6 +10,10 @@ const uri = route.params?.slug ? route.params.slug.join('/') : '';
 
 const {data} = await HttpClient('products-categories/' + uri)
 
+if (!data.value) {
+    throw createError({statusCode: 404, statusMessage: 'Страница не найдена'})
+}
+
 const breadcrumbs = [
   {
     name: 'Каталог',
