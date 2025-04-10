@@ -40,12 +40,12 @@ export default defineNuxtConfig({
     // },
 
     modules: [
-      '@nuxt/icon',
-      '@pinia/nuxt',
-      '@nuxtjs/google-fonts',
-      'yandex-metrika-module-nuxt3',
-      'nuxt-headlessui',
-      '@nuxtjs/seo',
+        '@nuxt/icon',
+        '@pinia/nuxt',
+        '@nuxtjs/google-fonts',
+        '@nuxtjs/seo',
+        'yandex-metrika-module-nuxt3',
+        'nuxt-headlessui',
     ],
 
     css: ['~/assets/css/main.css'],
@@ -135,7 +135,7 @@ export default defineNuxtConfig({
     },
 
     schemaOrg: {
-        defaults: true,
+        defaults: false,
     },
 
     devServer: {
