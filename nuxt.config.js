@@ -1,3 +1,4 @@
+import redirects from './temp_redirects.json'
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     devtools: {enabled: false},
@@ -11,18 +12,6 @@ export default defineNuxtConfig({
                 api: process.env.API_URL,
             },
         },
-    },
-
-    nitro: {
-        routeRules: {
-            '/**': {
-                headers: {
-                    'X-Frame-Options': 'SAMEORIGIN',
-                    'X-Content-Type-Options': 'nosniff',
-                    'Referrer-Policy': 'strict-origin-when-cross-origin',
-                }
-            },
-        }
     },
 
     routeRules: {
@@ -72,6 +61,12 @@ export default defineNuxtConfig({
         },
     },
 
+    robots: {
+        disallow: [
+            '/lk',
+        ]
+    },
+
     site: {
         indexable: process.env.APP_ENV === 'production',
         url: 'https://dljakonditera.ru',
@@ -88,11 +83,9 @@ export default defineNuxtConfig({
         sources: [process.env.API_URL + '/sitemap/generate'],
     },
 
-    ...(process.env.APP_ENV === 'production' ? {
-        serverMiddleware: [
-            {path: '/', handler: '~/server/middleware/redirects.ts'}
-        ],
-    } : {}),
+    // serverMiddleware: [
+    //     {path: '/', handler: '~/server/middleware/redirects.ts'}
+    // ],
 
     app: {
         head: {

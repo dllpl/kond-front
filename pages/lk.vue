@@ -92,7 +92,7 @@ const tabs = [
 ]
 
 const breadcrumbs = [
-    {name: 'Личный кабинет', uri: 'lk'},
+    {name: 'Личный кабинет', uri: '/lk'},
 ]
 
 useHead({

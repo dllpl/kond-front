@@ -1,11 +1,14 @@
 <script setup>
-const { contacts } = useContactsStore();
-const { storage } = useRuntimeConfig().public.backOptions;
+const {contacts} = useContactsStore();
+const {storage} = useRuntimeConfig().public.backOptions;
 const favoriteStore = useFavoriteStore();
 
 const props = defineProps({
     product: Object
 })
+
+console.log(props.product)
+
 </script>
 
 
@@ -22,11 +25,11 @@ const props = defineProps({
                     <div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-white ring-2 ring-gray-300/20">
 
                         <img width="600" height="535" v-if="product.images && product.images.length"
-                            :src="storage + product.images[0]" :alt="product.title"
-                            class="object-cover max-h-[535px] object-center rounded-lg w-full" />
+                             :src="storage + product.images[0]" :alt="product.title"
+                             class="object-cover max-h-[535px] object-center rounded-lg w-full"/>
 
                         <img width="400" height="400" v-else src="/assets/img/default-product-img.webp"
-                            :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full">
+                             :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full">
 
                     </div>
                 </div>
@@ -56,8 +59,8 @@ const props = defineProps({
                         <!-- <ElementsProductfavorits class="gap-x-2 ring-2 transition-base " /> -->
 
                         <button @click="favoriteStore.toggle(product)"
-                            :class="product.is_favorite ? 'bg-red-600 ring-red-500 text-white' : 'bg-white/70 text-indigo-950 ring-gray-900/5 '"
-                            class="flex gap-x-2 group items-center justify-center transition-all p-1 rounded-md 
+                                :class="product.is_favorite ? 'bg-red-600 ring-red-500 text-white' : 'bg-white/70 text-indigo-950 ring-gray-900/5 '"
+                                class="flex gap-x-2 group items-center justify-center transition-all p-1 rounded-md
                             ring-2  
             hover:bg-red-600 hover:ring-red-500 hover:text-white 
             focus:ring-red-500 focus:text-text-white">
@@ -66,33 +69,33 @@ const props = defineProps({
                             <span v-if="product.is_favorite">В избранном</span>
                             <span v-else>В избранное</span>
                         </button>
-                        <ElementsProductCounter :item="product" />
+                        <ElementsProductCounter :item="product"/>
                     </div>
-                    <ElementsCallsToAction />
+                    <ElementsCallsToAction/>
 
                     <!-- social -->
                     <div class=" pt-10 text-right lg:hidden">
                         <h3 class="text-sm font-medium text-gray-900">Мы в соцсетях</h3>
                         <div class="mt-2 flex items-center justify-end space-x-2">
                             <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
-                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                      class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Whatsapp</span>
-                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true"/>
                             </NuxtLink>
                             <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
-                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                      class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Instagram</span>
-                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true"/>
                             </NuxtLink>
                             <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
-                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                      class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Телеграм</span>
-                                <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true"/>
                             </NuxtLink>
                             <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
-                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                      class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">ВКонтакте</span>
-                                <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true"/>
                             </NuxtLink>
                         </div>
                     </div>
@@ -105,27 +108,35 @@ const props = defineProps({
                         <div class="border-b border-gray-200 sm:snap-x">
                             <TabList
                                 class="-mb-px flex space-x-8 sm:no-scrollbar sm:snap-x sm:overflow-x-auto sm:w-full ">
-                                <Tab as="template" v-if="product.description && product.description.length"
-                                    v-slot="{ selected }" class="scroll-ml-6 snap-start">
+                                <Tab as="template" v-if="product?.description && product.description.length"
+                                     v-slot="{ selected }" class="scroll-ml-6 snap-start">
                                     <button class="transition-base"
-                                        :class="[selected ? 'border-amber-400' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">Описание</button>
+                                            :class="[selected ? 'border-amber-400' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">
+                                        Описание
+                                    </button>
                                 </Tab>
                                 <Tab as="template" v-slot="{ selected }" class="scroll-ml-6 snap-start">
                                     <button class="transition-base"
-                                        :class="[selected ? 'border-amber-400 ' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">Оформление
-                                        заказа</button>
+                                            :class="[selected ? 'border-amber-400 ' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">
+                                        Оформление
+                                        заказа
+                                    </button>
                                 </Tab>
                                 <Tab as="template" v-slot="{ selected }" class="scroll-ml-6 snap-start">
                                     <button class="transition-base"
-                                        :class="[selected ? 'border-amber-400' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">Доставка</button>
+                                            :class="[selected ? 'border-amber-400' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">
+                                        Доставка
+                                    </button>
                                 </Tab>
                             </TabList>
                         </div>
 
                         <TabPanels as="template">
-                            <TabPanel v-if="product.description && product.description.length" class="pt-10">
+                            <TabPanel v-if="product?.description && product.description.length" class="pt-10">
                                 <h3 class="sr-only">Описание</h3>
-                                <p class="text-gray-500" v-html="product.description"></p>
+                                <ClientOnly>
+                                    <p class="text-gray-500" v-html="product.description"></p>
+                                </ClientOnly>
                             </TabPanel>
                             <TabPanel class="pt-10">
                                 <h3 class="sr-only">Оформление заказа</h3>
@@ -184,24 +195,24 @@ const props = defineProps({
                         <h3 class="text-sm font-medium text-gray-900">Мы в соцсетях</h3>
                         <div class="mt-2 flex items-center justify-end space-x-2">
                             <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
-                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                      class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Whatsapp</span>
-                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true"/>
                             </NuxtLink>
                             <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
-                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                      class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Instagram</span>
-                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true"/>
                             </NuxtLink>
                             <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
-                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                      class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Телеграм</span>
-                                <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:telegram-plane" class="w-6 h-6 " aria-hidden="true"/>
                             </NuxtLink>
                             <NuxtLink v-if="contacts.vk_link" :to="contacts.vk_link" target="_blank"
-                                class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
+                                      class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">ВКонтакте</span>
-                                <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true" />
+                                <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true"/>
                             </NuxtLink>
                         </div>
                     </div>
@@ -210,7 +221,7 @@ const props = defineProps({
                 <!-- Product others -->
                 <div class="relative col-span-8 mt-8 lg:col-span-1 lg:mt-0">
                     <LazyElementsSliderProduct v-if="product.similars?.length" class="col-span-2 lg:grid-cols-1"
-                        :data="product.similars" title="Похожие товары" />
+                                               :data="product.similars" title="Похожие товары"/>
                 </div>
             </div>
         </div>
