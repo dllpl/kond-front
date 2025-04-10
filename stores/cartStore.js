@@ -1,6 +1,12 @@
 export const useCartStore = defineStore('cartStore', {
+
+
     state: () => ({
-        products: []
+        products: [],
+        loyalty: 0,
+        discount: 0, // скидка по промокоду
+        total: 0, // итоговая сумма с учетом скидки
+        promo: null,
     }),
     getters: {
         // сумма товара
@@ -18,8 +24,46 @@ export const useCartStore = defineStore('cartStore', {
             return result
         },
 
+        //Сумма со скидкой
+        calculateTotal() {
+            const fullPrice = this.products.reduce((total, item) => total + (item.price * item.inCart), 0);
+            return this.total = Math.ceil(fullPrice - (fullPrice * this.discount) / 100)
+        },
+
     },
     actions: {
+
+        // Действие для проверки промокода
+        async applyPromoCode(promoCode) {
+            const popupStore = usePopupStore();
+            const profileStore = useProfileStore()
+            const { public: config } = useRuntimeConfig();
+            this.promo = promoCode;
+
+            await $fetch(`${config.backOptions.api}/promo-codes/check`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${profileStore.credentials.token}`,
+                },
+                body: JSON.stringify({ promo_code: promoCode, })
+            }).then((data) => {
+                popupStore.toggle('toast', { title: data.message, timeout: 2000, type: 'success' })
+                this.discount = data.discount_percent
+            }).catch(({ response }) => {
+                popupStore.toggle('toast', { title: response._data.message, timeout: 2000, type: 'error' })
+            })
+        },
+
+
+
+
+
+
+
+
+
+
         // сумма шт * кол-во
         totalPriceProduct(item) {
             return item.inCart * item.price;
@@ -147,7 +191,9 @@ export const useCartStore = defineStore('cartStore', {
                 }
             }
 
-            data.phone = phoneClear(data.phone)
+            data.phone = phoneClear(data.phone);
+            data.promo_code = this.promo;
+
 
             delete (data.is_pickup)
 
@@ -180,5 +226,4 @@ export const useCartStore = defineStore('cartStore', {
 
     },
     persist: true
-
 })
