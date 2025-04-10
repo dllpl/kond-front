@@ -72,6 +72,12 @@ export default defineNuxtConfig({
         },
     },
 
+    robots: {
+        disallow: [
+            '/lk',
+        ]
+    },
+
     site: {
         indexable: process.env.APP_ENV === 'production',
         url: 'https://dljakonditera.ru',

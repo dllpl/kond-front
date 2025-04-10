@@ -130,13 +130,13 @@ const navigation = {
         { name: 'Съедобная печать', href: '/food-seal' },
         { name: 'Блог', href: '/blog' },
         { name: 'Контакты', href: '/contacts' },
-        { name: 'Вход | Регистрация', href: 'lk' },
+        { name: 'Вход | Регистрация', href: '/lk' },
     ],
 
     other: [
         { name: 'О магазине', href: '/about' },
         { name: 'Доставка и оплата', href: '/delivery' },
-        { name: 'Избранное', href: 'lk#favorites' },
+        { name: 'Избранное', href: '/lk#favorites' },
         // { name: 'Корзина' },
         // { name: 'Поиск' },
         { name: 'Отзывы', href: '/reviews' },
