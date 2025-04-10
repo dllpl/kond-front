@@ -120,6 +120,8 @@ export const useCartStore = defineStore('cartStore', {
                 return
             }
 
+            const order_type_id = data.order_type_id
+
             const { phoneClear } = useHelper()
             const popupStore = usePopupStore()
             const { public: config } = useRuntimeConfig();
@@ -164,8 +166,8 @@ export const useCartStore = defineStore('cartStore', {
                 this.products = []
                 this.saveToLocalStorage(this.products)
                 navigateTo('/lk')
-                if (data.order_type_id === 1) {
-                    navigateTo(data.formUrl, { open: true })
+                if (order_type_id === 1) {
+                    navigateTo(data.formUrl)
                 } else {
                     popupStore.toggle('toast', { title: data.message, timeout: 2000 })
                 }
