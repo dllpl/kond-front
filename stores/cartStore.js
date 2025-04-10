@@ -111,71 +111,70 @@ export const useCartStore = defineStore('cartStore', {
             }
         },
 
-        makePay(data) {
+        async makePay(form) {
 
             const profileStore = useProfileStore()
 
             if (!profileStore.isAuth()) {
-                popupStore.toggle('toast', { title: 'Войдите в аккаунт', timeout: 5000, type: 'warning' })
+                popupStore.toggle('toast', {title: 'Войдите в аккаунт', timeout: 5000, type: 'warning'})
                 return
             }
 
-            const order_type_id = data.order_type_id
+            const order_type_id = form.order_type_id
 
-            const { phoneClear } = useHelper()
+            const {phoneClear} = useHelper()
             const popupStore = usePopupStore()
-            const { public: config } = useRuntimeConfig();
+            const {public: config} = useRuntimeConfig();
 
-            data.products = data.products.map(item => {
+            form.products = form.products.map(item => {
                 return {
                     id: item.id,
                     count: item.inCart
                 }
             })
 
-            if (data.is_pickup) {
-                data.delivery_type_id = 1
+            if (form.is_pickup) {
+                form.delivery_type_id = 1
 
-                delete (data.full_address)
-                delete (data.full_address_fias_id)
+                delete (form.full_address)
+                delete (form.full_address_fias_id)
             } else {
-                data.delivery_type_id = 2
+                form.delivery_type_id = 2
             }
 
-            if (data.delivery_type_id === 2) {
-                if (!data.full_address) {
-                    popupStore.toggle('toast', { title: 'Укажите адрес доставки', timeout: 5000, type: 'warning' })
+            if (form.delivery_type_id === 2) {
+                if (!form.full_address) {
+                    popupStore.toggle('toast', {title: 'Укажите адрес доставки', timeout: 5000, type: 'warning'})
                     return
                 }
             }
 
-            data.phone = phoneClear(data.phone)
+            form.phone = phoneClear(form.phone)
 
-            delete (data.is_pickup)
+            delete (form.is_pickup)
 
             $fetch(`${config.backOptions.api}/orders`, {
                 method: 'POST',
-                body: data,
+                body: form,
                 headers: {
                     'Authorization': `Bearer ${profileStore.credentials.token}`,
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 }
             }).then((data) => {
-                popupStore.toggle('toast', { title: data.message, timeout: 3000 })
+                popupStore.toggle('toast', {title: data.message, timeout: 3000})
                 this.products = []
                 this.saveToLocalStorage(this.products)
-                navigateTo('/lk')
                 if (order_type_id === 1) {
-                    navigateTo(data.formUrl)
+                    navigateTo(data.formUrl, {external: true})
                 } else {
-                    popupStore.toggle('toast', { title: data.message, timeout: 2000 })
+                    popupStore.toggle('toast', {title: data.message, timeout: 2000})
                 }
             }).catch(({ response }) => {
                 if (response.status === 422) {
-                    popupStore.toggle('toast', { title: 'Проверьте введенные данные', timeout: 2000, type: 'error' })
+                    popupStore.toggle('toast', {title: 'Проверьте введенные данные', timeout: 2000, type: 'error'})
                 } else {
-                    popupStore.toggle('toast', { title: response._data.message, timeout: 6000, type: 'error' })
+                    popupStore.toggle('toast', {title: response._data.message, timeout: 6000, type: 'error'})
                 }
             })
         }

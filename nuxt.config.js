@@ -74,7 +74,7 @@ export default defineNuxtConfig({
 
     site: {
         indexable: process.env.APP_ENV === 'production',
-        url: '',
+        url: 'https://dljakonditera.ru',
         name: 'Всё для кондитера',
         defaultLocal: 'ru',
     },
