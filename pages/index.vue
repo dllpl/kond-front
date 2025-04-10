@@ -46,12 +46,11 @@ const {
                 </div>
                 <SectionAdvantages class="lg:hidden"/>
             </div>
+            <LazySectionProductTop v-if="productsSetsStatus !== 'pending'" :data="productsSets.data"
+                                 class="col-span-2 lg:grid-cols-1 " title="Праздничные предложения"/>
 
             <LazyElementsSliderProduct v-if="productsOffersStatus !== 'pending'" :data="productsOffers.data"
                                        title="Спецпредложения" class="col-span-2 lg:grid-cols-1 relative"/>
-            <LazySectionProductTop v-if="productsSetsStatus !== 'pending'" :data="productsSets.data"
-                                   class="col-span-2 lg:grid-cols-1 " title="Праздничные предложения"/>
-
             <SectionPromoPrice class="col-span-2 lg:grid-cols-1 "/>
 
             <LazyElementsSliderProduct v-if="productsNewStatus !== 'pending'" :data="productsNew.data"
