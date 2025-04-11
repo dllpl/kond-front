@@ -12,8 +12,7 @@ export default defineEventHandler(async (event) => {
           url: getRequestURL(event).href,
           code: res.statusCode,
         }
-      });
-
+      })
     }
   })
 })
