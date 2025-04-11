@@ -7,8 +7,6 @@ const props = defineProps({
     product: Object
 })
 
-console.log(props.product)
-
 </script>
 
 
