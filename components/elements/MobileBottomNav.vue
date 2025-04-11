@@ -1,8 +1,8 @@
 <template>
     <nav
-        class="fixed bottom-0 left-0 right-0 z-5 bg-white border-t border-gray-200 shadow lg:block hidden"
+        class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow lg:block hidden"
     >
-        <div class="flex justify-around items-center h-14 text-sm text-gray-600">
+        <div class="flex justify-around items-center h-16 text-sm text-gray-600">
             <NuxtLink
                 to="/"
                 :class="linkClass('/')"
