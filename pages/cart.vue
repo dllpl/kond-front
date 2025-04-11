@@ -213,10 +213,11 @@
                         <li class="flex items-center justify-between xs:text-sm">
                             <span class="text-gray-600">Товаров на сумму:</span>
                             <span class="font-medium text-gray-900 text-lg">{{
-                                formatNumber(cartStore.totalPriceAllProducts)
-                            }}</span>
+                                formatNumber(cartStore.calculateFullPrice)
+                                }}</span>
                         </li>
 
+                        <!-- Купон -->
                         <li
                             class="flex flex-wrap gap-4 items-center justify-between relative border-t border-gray-200 pt-4 xs:text-sm">
                             <label for="coupon" class="text-gray-600 ">Введите код купона для скидки:</label>
@@ -230,6 +231,7 @@
                             </div>
                         </li>
 
+                        <!-- Бонусы -->
                         <li
                             class="flex items-end justify-between border-t border-gray-200 pt-4 gap-4 xs:flex-wrap xs:text-sm">
                             <span class="flex flex-col">
@@ -237,38 +239,39 @@
                                 <span class="text-gray-600 ">
                                     Баланс:
                                     <span class="text-gray-900 font-medium text-lg">
-                                        {{ formatNumber(220) }}
+                                        {{ formatNumber(cartStore.loyaltyBalance) }}
                                     </span>
                                 </span>
                                 <span class="text-gray-600 ">
                                     Доспупно для списания:
                                     <span class="text-gray-900 font-medium text-lg">
-                                        {{ formatNumber(220) }}
+                                        {{ formatNumber(cartStore.calculateLoyalty) }}
                                     </span>
                                 </span>
                             </span>
-                            <button
+                            <button type="submit" @click="applyLoyalty"
                                 class="shadow-sm text-sm rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all xs:w-full">
                                 Применить
                             </button>
                         </li>
 
+                        <!-- Сумма скидки -->
                         <li class="flex items-center justify-between border-t border-gray-200 pt-4  xs:text-sm ">
                             <span class="flex items-center  text-gray-600 ">
                                 <span>Сумма скидки:</span>
                             </span>
                             <span class=" font-medium text-gray-900 text-lg">{{
-                                formatNumber(cartStore.totalPriceAllProducts - cartStore.calculateTotal) }}</span>
+                                formatNumber(cartStore.calculateFullPrice - cartStore.calculateTotal) }}</span>
                         </li>
 
-
+                        <!-- Итого -->
                         <li class="flex items-end justify-between border-t border-gray-200 font-medium pt-4">
                             <span class="text-lg md:text-base xs:text-sm  ">
                                 Итого:
                             </span>
                             <span class="text-2xl md:text-base">{{
                                 formatNumber(cartStore.calculateTotal)
-                            }}</span>
+                                }}</span>
                         </li>
                     </ul>
 
@@ -322,9 +325,12 @@ useHead({
     ],
 })
 
+
+
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
 const { data: productsOffers } = await HttpClient('products/spec');
+
 const profileStore = useProfileStore();
 const popupStore = usePopupStore();
 const cartStore = useCartStore();
@@ -380,8 +386,19 @@ const promoCode = ref('')
 // Метод для применения промокода
 const applyPromoCode = () => {
     if (promoCode.value.trim()) {
-        cartStore.applyPromoCode(promoCode.value)
+        cartStore.applyPromoCode(promoCode.value);
+
     }
 };
+
+const applyLoyalty = () => {
+    cartStore.applyLoyalty();
+}
+
+onMounted(() => {
+    cartStore.getLoyalty();
+});
+
+
 
 </script>
