@@ -9,10 +9,9 @@ export default defineEventHandler(async (event) => {
       await $fetch(`${config.public.backOptions.api}/log/error`, {
         method: 'POST',
         body: {
-          message: res.statusMessage,
-          url: getRequestURL(event),
+          url: getRequestURL(event).href,
           code: res.statusCode,
-        },
+        }
       });
 
     }
