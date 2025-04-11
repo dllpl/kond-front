@@ -1,5 +1,5 @@
 <template>
-    <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 z-50 sm:p-6 lg:bottom-10">
+    <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 z-50 sm:p-6 lg:bottom-12">
         <div class="flex w-full flex-col items-center space-y-4">
             <transition enter-active-class="transform ease-out duration-300 transition"
                 enter-from-class="translate-y-2 opacity-0 " enter-to-class="translate-y-0 opacity-100 "

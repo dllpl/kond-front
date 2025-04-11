@@ -15,7 +15,7 @@
                     leave-to="translate-x-full">
 
                     <DialogPanel
-                        class="flex flex-col fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white pt-4 lg:max-w-sm lg:ring-1 lg:ring-gray-900/10 sm:max-w-full">
+                        class="flex flex-col fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white pt-4 lg:max-w-sm lg:ring-1 lg:ring-gray-900/10 sm:max-w-xs">
                         <div class="flex items-center justify-between px-6 ">
                             <NuxtLink to="/" class="-m-1.5 p-1.5">
                                 <span class="sr-only">Все для кондитера</span>
