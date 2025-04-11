@@ -36,7 +36,6 @@
     "maska": "^3.0.3",
     "nuxt": "^3.15.2",
     "nuxt-headlessui": "^1.2.0",
-    "nuxt-og-image": "^5.0.5",
     "postcss": "^8.4.47",
     "sass-embedded": "^1.81.0",
     "tailwindcss": "^3.4.14"

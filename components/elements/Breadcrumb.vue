@@ -26,9 +26,18 @@ const props = defineProps({
     data: Array
 })
 
+const itemListElement = props.data.map((item, i) => {
+  return {
+    "@type": "ListItem",
+    position: i + 1,
+    name: item.name,
+    item: `https://dljakonditera.ru/${item.uri}`,
+  }
+})
+
 useSchemaOrg([
     defineBreadcrumb({
-        itemListElement: props.data,
+        itemListElement: itemListElement,
         numberOfItems: props.data.length
     })
 ])
