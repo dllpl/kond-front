@@ -3,7 +3,7 @@
         <div class="wrapper-container ">
             <div class="grid grid-cols-2 gap-12 py-16 sm:grid-cols-1 sm:gap-8 sm:py-8">
                 <div>
-                    <NuxtLink to="/">
+                    <NuxtLink to="/" class="inline-block">
                         <img loading="lazy" width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp"
                             alt="Все для кондитера" />
                     </NuxtLink>

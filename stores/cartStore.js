@@ -1,6 +1,16 @@
 export const useCartStore = defineStore('cartStore', {
+
+
     state: () => ({
-        products: []
+        products: [],
+        fullPrice: 0,//// сумма всех товаров
+        discount: null, // скидка по промокоду
+        total: 0, // итоговая сумма с учетом скидки
+        promo: null, //промокод текст
+        loyaltyBalance: null,// Количество бонусов
+        loyaltyAmount: null,// Количество бонусов на списание
+        bonuses: false,
+
     }),
     getters: {
         // сумма товара
@@ -8,18 +18,80 @@ export const useCartStore = defineStore('cartStore', {
             return this.products.length
         },
 
-        // сумма все товаров
-        totalPriceAllProducts() {
-            let arr = this.products;
-            let initialValue = 0;
-            let result = arr.reduce((accumulator, arr) => {
-                return accumulator = accumulator + (arr.price * arr.inCart);
-            }, initialValue);
-            return result
+        calculateFullPrice() {
+            this.fullPrice = this.products.reduce((total, item) => total + (item.price * item.inCart), 0);
+            return this.fullPrice
+        },
+
+        //Сумма со скидкой промокод
+        calculateTotal() {
+            if (this.bonuses) {
+                return this.fullPrice - this.loyaltyAmount;
+            }
+            // const fullPrice = this.products.reduce((total, item) => total + (item.price * item.inCart), 0);
+            return this.total = Math.ceil(this.fullPrice - (this.fullPrice * this.discount) / 100)
+        },
+
+        //Сумма со скидкой бонусы
+        calculateLoyalty() {
+            const maxBonusToUse = this.fullPrice * 0.1; // 10% от стоимости товаров
+            console.log('можно списать - ' + maxBonusToUse)
+            this.loyaltyAmount = Math.min(this.loyaltyBalance, maxBonusToUse);
+            return this.loyaltyAmount
         },
 
     },
     actions: {
+
+        // Действие для проверки промокода
+        async applyPromoCode(promoCode) {
+            const popupStore = usePopupStore();
+            const profileStore = useProfileStore()
+            const { public: config } = useRuntimeConfig();
+
+
+            await $fetch(`${config.backOptions.api}/promo-codes/check`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${profileStore.credentials.token}`,
+                },
+                body: JSON.stringify({ promo_code: promoCode, })
+            }).then((data) => {
+                popupStore.toggle('toast', { title: data.message, timeout: 2000, type: 'success' });
+
+                this.promo = promoCode;
+                this.discount = data.discount_percent;
+                this.bonuses = false;
+
+            }).catch(({ response }) => {
+                popupStore.toggle('toast', { title: response._data.message, timeout: 2000, type: 'error' })
+            })
+        },
+
+        applyLoyalty() {
+            this.discount = 0
+            this.bonuses = true;
+        },
+
+
+        //получаем бонусы
+        async getLoyalty() {
+            const { public: config } = useRuntimeConfig();
+            const profileStore = useProfileStore()
+            const popupStore = usePopupStore();
+
+            await $fetch(`${config.backOptions.api}/bonus/info`, { headers: { 'Authorization': `Bearer ${profileStore.credentials.token}` } }).then((data) => {
+                this.loyaltyBalance = data.data.bonus;
+            }).catch(() => {
+                popupStore.toggle('toast', {
+                    title: 'data.message',
+                    timeout: 3000,
+                    type: 'error'
+                })
+            })
+        },
+
         // сумма шт * кол-во
         totalPriceProduct(item) {
             return item.inCart * item.price;
@@ -161,6 +233,13 @@ export const useCartStore = defineStore('cartStore', {
             }
 
             form.phone = phoneClear(form.phone)
+
+            if (this.bonuses) {
+                form.with_bonuses = this.bonuses;
+            }
+            else {
+                form.promo_code = this.promo;
+            }
 
             delete (form.is_pickup)
 
