@@ -1,3 +1,11 @@
+<script setup>
+
+import HttpClient from "~/server/utils/httpClient.js";
+
+const { data } = HttpClient('')
+
+</script>
+
 <template>
     <div class="mt-6 flow-root">
         <h2 class="text-base font-semibold leading-7 mb-6">Программа лояльности</h2>

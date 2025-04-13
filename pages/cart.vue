@@ -249,7 +249,7 @@
                                     </span>
                                 </span>
                             </span>
-                            <button type="submit" @click="applyLoyalty"
+                            <button type="submit" @click="cartStore.applyLoyalty()"
                                 class="shadow-sm text-sm rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all xs:w-full">
                                 Применить
                             </button>
@@ -325,8 +325,6 @@ useHead({
     ],
 })
 
-
-
 const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
 const { data: productsOffers } = await HttpClient('products/spec');
@@ -391,14 +389,6 @@ const applyPromoCode = () => {
     }
 };
 
-const applyLoyalty = () => {
-    cartStore.applyLoyalty();
-}
-
-onMounted(() => {
-    cartStore.getLoyalty();
-});
-
-
+cartStore.getLoyalty();
 
 </script>

@@ -1,3 +1,5 @@
+import HttpClient from "~/server/utils/httpClient.js";
+
 export const useCartStore = defineStore('cartStore', {
 
 
@@ -8,9 +10,9 @@ export const useCartStore = defineStore('cartStore', {
         total: 0, // итоговая сумма с учетом скидки
         promo: null, //промокод текст
         loyaltyBalance: null,// Количество бонусов
+        loyaltyMessage: '',
         loyaltyAmount: null,// Количество бонусов на списание
         bonuses: false,
-
     }),
     getters: {
         // сумма товара
@@ -47,7 +49,7 @@ export const useCartStore = defineStore('cartStore', {
         async applyPromoCode(promoCode) {
             const popupStore = usePopupStore();
             const profileStore = useProfileStore()
-            const { public: config } = useRuntimeConfig();
+            const {public: config} = useRuntimeConfig();
 
 
             await $fetch(`${config.backOptions.api}/promo-codes/check`, {
@@ -56,16 +58,16 @@ export const useCartStore = defineStore('cartStore', {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${profileStore.credentials.token}`,
                 },
-                body: JSON.stringify({ promo_code: promoCode, })
+                body: JSON.stringify({promo_code: promoCode,})
             }).then((data) => {
-                popupStore.toggle('toast', { title: data.message, timeout: 2000, type: 'success' });
+                popupStore.toggle('toast', {title: data.message, timeout: 2000, type: 'success'});
 
                 this.promo = promoCode;
                 this.discount = data.discount_percent;
                 this.bonuses = false;
 
-            }).catch(({ response }) => {
-                popupStore.toggle('toast', { title: response._data.message, timeout: 2000, type: 'error' })
+            }).catch(({response}) => {
+                popupStore.toggle('toast', {title: response._data.message, timeout: 2000, type: 'error'})
             })
         },
 
@@ -77,19 +79,14 @@ export const useCartStore = defineStore('cartStore', {
 
         //получаем бонусы
         async getLoyalty() {
-            const { public: config } = useRuntimeConfig();
-            const profileStore = useProfileStore()
-            const popupStore = usePopupStore();
+            const {data, error} = await HttpClient('bonus/info');
 
-            await $fetch(`${config.backOptions.api}/bonus/info`, { headers: { 'Authorization': `Bearer ${profileStore.credentials.token}` } }).then((data) => {
+            if (data.value.data) {
                 this.loyaltyBalance = data.data.bonus;
-            }).catch(() => {
-                popupStore.toggle('toast', {
-                    title: 'data.message',
-                    timeout: 3000,
-                    type: 'error'
-                })
-            })
+            }
+
+            console.log(error.value)
+
         },
 
         // сумма шт * кол-во
@@ -236,8 +233,7 @@ export const useCartStore = defineStore('cartStore', {
 
             if (this.bonuses) {
                 form.with_bonuses = this.bonuses;
-            }
-            else {
+            } else {
                 form.promo_code = this.promo;
             }
 
