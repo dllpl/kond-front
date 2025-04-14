@@ -236,22 +236,27 @@
                             class="flex items-end justify-between border-t border-gray-200 pt-4 gap-4 xs:flex-wrap xs:text-sm">
                             <span class="flex flex-col">
                                 <span class="font-medium mb-1">Бонусы</span>
-                                <span class="text-gray-600 ">
+                                <span v-if="cartStore.loyaltyParams.bonus" class="text-gray-600">
                                     Баланс:
                                     <span class="text-gray-900 font-medium text-lg">
-                                        {{ formatNumber(cartStore.loyaltyBalance) }}
+                                        {{ formatNumber(cartStore.loyaltyParams.bonus) }}
                                     </span>
                                 </span>
-                                <span class="text-gray-600 ">
+                                <span class="text-gray-600 " v-if="cartStore.loyaltyParams.bonus">
                                     Доспупно для списания:
                                     <span class="text-gray-900 font-medium text-lg">
                                         {{ formatNumber(cartStore.calculateLoyalty) }}
                                     </span>
                                 </span>
+                                <span class="text-gray-600 max-w-2xl">
+                                  {{cartStore.loyaltyParams.message}}
+                                </span>
                             </span>
-                            <button type="submit" @click="cartStore.applyLoyalty()"
-                                class="shadow-sm text-sm rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 py-2 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all xs:w-full">
-                                Применить
+                            <button type="submit" @click="cartStore.toggleLoyalty()"
+                                    :disabled="!cartStore.loyaltyParams.bonus"
+                                    :class="{ 'bg-inherit': cartStore.with_bonuses }"
+                                class="disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 disabled:ring-0 shadow-sm text-sm rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 py-2   transition-all xs:w-full">
+                                {{ !cartStore.with_bonuses ? 'Списать бонусы' : 'Накопить бонусы' }}
                             </button>
                         </li>
 
@@ -269,9 +274,17 @@
                             <span class="text-lg md:text-base xs:text-sm  ">
                                 Итого:
                             </span>
-                            <span class="text-2xl md:text-base">{{
-                                formatNumber(cartStore.totalPriceAllProducts)
-                                }}</span>
+                          <div>
+                          <span
+                              v-if="cartStore.with_bonuses"
+                              class="line-through text-gray-500 text-base md:text-xs mr-2"
+                          >
+                            {{ formatNumber(cartStore.calculateFullPrice) }}
+                          </span>
+                          <span class="text-2xl md:text-base">
+                            {{ formatNumber(cartStore.calculateTotal) }}
+                          </span>
+                          </div>
                         </li>
                     </ul>
 
@@ -375,7 +388,8 @@ const makePay = (order_type_id) => {
         ...form,
         is_pickup: is_pickup.value,
         products: cartStore.products,
-        order_type_id: order_type_id
+        order_type_id: order_type_id,
+        with_bonuses: cartStore.with_bonuses
     })
 }
 
