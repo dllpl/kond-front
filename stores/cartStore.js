@@ -12,6 +12,12 @@ export const useCartStore = defineStore('cartStore', {
             message: null,
             loyaltyLevel: null,
             code: null,
+            options: {
+                discount: null,
+                min_sum: 0,
+                type_id: null,
+                hello_bonus_count: null
+            }
         },
         loyaltyBalance: null,// Количество бонусов
         loyaltyMessage: '',
@@ -40,7 +46,7 @@ export const useCartStore = defineStore('cartStore', {
 
         //Сумма со скидкой бонусы
         calculateLoyalty() {
-            this.loyaltyAmount = Math.min(this.loyaltyParams.bonus, Math.floor(this.fullPrice * 0.1));
+            this.loyaltyAmount = Math.min(this.loyaltyParams.bonus, Math.floor(this.fullPrice * this.loyaltyParams.options.discount / 100));
             return this.loyaltyAmount
         },
 
@@ -87,7 +93,8 @@ export const useCartStore = defineStore('cartStore', {
                 bonus: data.value.data.bonus,
                 message: data.value.message,
                 loyaltyLevel: data.value.data.loyalty_level,
-                code: data.value.code
+                code: data.value.code,
+                options: data.value.options
             }
 
             return this.loyaltyParams

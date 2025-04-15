@@ -1,14 +1,5 @@
 <script setup>
-// const popupStore = usePopupStore();
-
 const loyaltyParams = await useCartStore().getLoyalty();
-
-// if(process.client) {
-//     if(loyaltyParams.code === 3) {
-//         popupStore.toggle('toast', {title: loyaltyParams.message, timeout: 5000})
-//     }
-// }
-
 </script>
 
 <template>
@@ -51,7 +42,7 @@ const loyaltyParams = await useCartStore().getLoyalty();
                 </ul>
 
                 <p class="text-gray-600  md:text-sm mb-2">
-                    Бонусами можно оплатить до 10% от стоимости покупки!
+                    Бонусами можно оплатить до {{loyaltyParams.options.discount}}% от стоимости покупки!
                 </p>
 
                 <p class="mb-2 text-lg md:text-sm">
@@ -111,7 +102,7 @@ const loyaltyParams = await useCartStore().getLoyalty();
                 Баланс бонусов: {{ formatNumber(loyaltyParams.bonus) }}
             </p>
             <p class="text-gray-600 md:text-sm">
-                Бонусами можно оплатить до 10% от стоимости покупки!
+                Бонусами можно оплатить до {{loyaltyParams.options.discount}}% от стоимости покупки!
             </p>
             <div class="flex gap-2 md:flex-col">
                 <NuxtLink to="/catalog"
