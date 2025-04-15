@@ -4,14 +4,14 @@
         <div class="text-center text-lg font-semibold mb-1" v-if="title.length">{{ title }}</div>
         <div class="text-center text-sm text-gray-500 mb-4" v-if="subtitle.length">{{ subtitle }}</div>
 
-        <form class="space-y-6" @submit.prevent="authStore.makeLogin()">
+        <form class="space-y-6" @submit.prevent="authStore.makeLogin(redirect)">
             <div class="relative">
                 <label for="phone" class="block text-sm font-medium">
                     Телефон
                 </label>
                 <div class="mt-2">
 
-                    <input v-model="login.form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel" v-autofocus
+                    <input v-model="login.form.phone" v-maska="maskaOptions.phone.mask" name="tel" type="tel" v-autofocus
                         autocomplete="tel" required :class="login.errors?.phone ? 'ring-2 ring-red-400' : ''"
                         class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm"
                         placeholder="+7 (___) ___-__-__" />
@@ -88,7 +88,6 @@ const authStore = useAuthStore();
 const { login } = useAuthStore();
 const popupStore = usePopupStore();
 
-
 const props = defineProps({
     title: {
         type: String,
@@ -98,6 +97,10 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    redirect: {
+        type: String,
+        default: '/lk',
+    }
 })
 
 </script>

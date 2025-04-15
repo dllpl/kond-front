@@ -15,7 +15,7 @@
                     leave-to="translate-x-full">
 
                     <DialogPanel
-                        class="flex flex-col fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white pt-4 lg:max-w-sm lg:ring-1 lg:ring-gray-900/10 sm:max-w-full">
+                        class="flex flex-col fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white pt-4 lg:max-w-sm lg:ring-1 lg:ring-gray-900/10 sm:max-w-xs">
                         <div class="flex items-center justify-between px-6 ">
                             <NuxtLink to="/" class="-m-1.5 p-1.5">
                                 <span class="sr-only">Все для кондитера</span>
@@ -57,8 +57,17 @@
                             </div>
                         </div>
 
-                        <div class="mt-auto ">
+                        <div class="mt-auto">
                             <ElementsCallsToAction @click="popupStore.close('burger')" />
+                            <div class="my-5">
+                                <ul class="text-xs leading-5 text-gray-400 mt-0 text-center">
+                                    <li>ИП&nbsp;&mdash; ЕВГЕНЬЕВА ДИАНА ЕВГЕНЬЕВНА</li>
+                                    <li>ИНН&nbsp;&mdash; 165033847201</li>
+                                    <li>ОГРН&nbsp;&mdash; 308165020600060</li>
+
+                                </ul>
+                                <p class="text-xs leading-5 text-gray-400 mt-0 text-center">&copy; {{ new Date().getFullYear() }} Всё для кондитера</p>
+                            </div>
                         </div>
                     </DialogPanel>
 

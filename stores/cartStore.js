@@ -1,6 +1,28 @@
+import HttpClient from "~/server/utils/httpClient.js";
+
 export const useCartStore = defineStore('cartStore', {
     state: () => ({
-        products: []
+        products: [],
+        fullPrice: 0,//// сумма всех товаров
+        discount: null, // скидка по промокоду
+        total: 0, // итоговая сумма с учетом скидки
+        promo: null, //промокод текст
+        loyaltyParams: {
+            bonus: 0,
+            message: null,
+            loyaltyLevel: null,
+            code: null,
+            options: {
+                discount: null,
+                min_sum: 0,
+                type_id: null,
+                hello_bonus_count: null
+            }
+        },
+        loyaltyBalance: null,// Количество бонусов
+        loyaltyMessage: '',
+        loyaltyAmount: null,// Количество бонусов на списание
+        with_bonuses: false,
     }),
     getters: {
         // сумма товара
@@ -8,18 +30,76 @@ export const useCartStore = defineStore('cartStore', {
             return this.products.length
         },
 
-        // сумма все товаров
-        totalPriceAllProducts() {
-            let arr = this.products;
-            let initialValue = 0;
-            let result = arr.reduce((accumulator, arr) => {
-                return accumulator = accumulator + (arr.price * arr.inCart);
-            }, initialValue);
-            return result
+        calculateFullPrice() {
+            this.fullPrice = this.products.reduce((total, item) => total + (item.price * item.inCart), 0);
+            return this.fullPrice
+        },
+
+        //Сумма со скидкой промокод
+        calculateTotal() {
+            if (this.with_bonuses) {
+                return this.fullPrice - this.loyaltyAmount;
+            }
+            // const fullPrice = this.products.reduce((total, item) => total + (item.price * item.inCart), 0);
+            return this.total = Math.ceil(this.fullPrice - (this.fullPrice * this.discount) / 100)
+        },
+
+        //Сумма со скидкой бонусы
+        calculateLoyalty() {
+            this.loyaltyAmount = Math.min(this.loyaltyParams.bonus, Math.floor(this.fullPrice * this.loyaltyParams.options.discount / 100));
+            return this.loyaltyAmount
         },
 
     },
     actions: {
+
+        // Действие для проверки промокода
+        async applyPromoCode(promoCode) {
+            const popupStore = usePopupStore();
+            const profileStore = useProfileStore()
+            const {public: config} = useRuntimeConfig();
+
+
+            await $fetch(`${config.backOptions.api}/promo-codes/check`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${profileStore.credentials.token}`,
+                },
+                body: JSON.stringify({promo_code: promoCode,})
+            }).then((data) => {
+                popupStore.toggle('toast', {title: data.message, timeout: 2000, type: 'success'});
+
+                this.promo = promoCode;
+                this.discount = data.discount_percent;
+                this.with_bonuses = false;
+
+            }).catch(({response}) => {
+                popupStore.toggle('toast', {title: response._data.message, timeout: 2000, type: 'error'})
+            })
+        },
+
+        toggleLoyalty() {
+            this.discount = 0
+            this.with_bonuses = !this.with_bonuses
+        },
+
+
+        //получаем бонусы
+        async getLoyalty() {
+            const {data} = await HttpClient('bonus/info');
+
+            this.loyaltyParams = {
+                bonus: data.value.data.bonus,
+                message: data.value.message,
+                loyaltyLevel: data.value.data.loyalty_level,
+                code: data.value.code,
+                options: data.value.options
+            }
+
+            return this.loyaltyParams
+        },
+
         // сумма шт * кол-во
         totalPriceProduct(item) {
             return item.inCart * item.price;
@@ -160,7 +240,18 @@ export const useCartStore = defineStore('cartStore', {
                 }
             }
 
+            if(!form.first_name) {
+                popupStore.toggle('toast', {title: 'Укажите имя', timeout: 3000, type: 'warning'})
+                return
+            }
+
             form.phone = phoneClear(form.phone)
+
+            // if (this.with_bonuses) {
+            //     form.with_bonuses = this.with_bonuses;
+            // } else {
+            //     form.promo_code = this.promo;
+            // }
 
             delete (form.is_pickup)
 

@@ -39,6 +39,10 @@ const { public: config } = useRuntimeConfig();
 const { storage } = useRuntimeConfig().public.backOptions;
 const { data: post } = await HttpClient('blog/' + useRoute().params.slug);
 
+if(!post.value) {
+    navigateTo('/blog', { replace: true, redirectCode: 301 })
+}
+
 const breadcrumbs = [
 	{
 		name: 'Блог',

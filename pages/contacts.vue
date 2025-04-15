@@ -48,7 +48,13 @@
                                     <Icon name="hugeicons:building-03" class="w-6 h-6 text-gray-700"
                                         aria-hidden="true" />
                                 </dt>
-                                <dd>{{ contacts.address }}</dd>
+                                <dd>
+                                    <NuxtLink to="https://yandex.ru/maps/-/CHby5LzE" target="_blank" external
+                                              class="hover:text-red-600 focus:text-red-600 transition-all">
+                                        {{ contacts.address }}
+                                    </NuxtLink>
+
+                                    </dd>
                             </div>
                         </dl>
                     </div>
@@ -121,15 +127,16 @@
                         </div>
                     </div>
 
+                    <div class="lg:col-start-2 sm:col-auto">
+                        <iframe src="https://yandex.ru/sprav/widget/rating-badge/1925028904?type=rating" width="150" height="50" frameborder="0"></iframe>
+                    </div>
+
 
 
                 </div>
 
-                <!-- </div> -->
                 <div class="row-span-2 lg:col-span-2 lg:row-auto lg:h-60">
-                    <iframe
-                        src="https://yandex.ru/map-widget/v1/?um=constructor%3A70d7f45c6e89b8456cb2e045a8b67cd3ec5e68163060116552edebbe97e584d2&amp;source=constructor"
-                        width="100%" height="100%" frameborder="0"></iframe>
+                    <iframe class="rounded-lg shadow-lg" src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1925028904" width="100%" height="100%" frameborder="0" loading="lazy"></iframe>
                 </div>
             </div>
         </main>

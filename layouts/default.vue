@@ -10,10 +10,11 @@ contactsStore.setContacts(response.value.data); // Записываем полу
 </script>
 <template>
     <Header/>
-    <ElementsMobileCatalogPopover/>
+    <LazyElementsMobileCatalogPopover/>
     <slot/>
     <Footer/>
-    <ElementsNotifications/>
-    <ElementsModal/>
+    <LazyElementsNotifications/>
+    <LazyElementsModal/>
     <ElementsMobileBottomNav/>
+    <ElementsScrollButtons/>
 </template>

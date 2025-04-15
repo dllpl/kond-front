@@ -79,6 +79,7 @@
 const selectedTab = ref(null)
 const {profile, orders, favorites} = useProfileStore();
 const first_name = profile.first_name
+
 const changeTab = (index) => {
     selectedTab.value = index
     window.location.hash = tabs[index].href
@@ -104,6 +105,7 @@ useHead({
         }
     ],
 })
+
 
 // const route = useRoute();
 

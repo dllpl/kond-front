@@ -101,7 +101,7 @@ const props = defineProps({
                 </div>
 
                 <!-- Product Tabs -->
-                <div class="col-span-8 px-4 lg:col-span-1">
+                <div class="col-span-8 lg:col-span-1">
                     <TabGroup as="div" class="overflow-hidden">
                         <div class="border-b border-gray-200 sm:snap-x">
                             <TabList
@@ -124,6 +124,12 @@ const props = defineProps({
                                     <button class="transition-base"
                                             :class="[selected ? 'border-amber-400' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">
                                         Доставка
+                                    </button>
+                                </Tab>
+                                <Tab as="template" v-slot="{ selected }" class="scroll-ml-6 snap-start">
+                                    <button class="transition-base"
+                                            :class="[selected ? 'border-amber-400' : 'border-transparent hover:border-amber-300 ', 'whitespace-nowrap border-b-2 py-4 text-sm font-medium']">
+                                        Отзывы о магазине
                                     </button>
                                 </Tab>
                             </TabList>
@@ -181,9 +187,18 @@ const props = defineProps({
 
                                 <p class="mt-4">
                                     После того, как заказ будет собран, ему присвоится трек-номер, который
-                                    придет
-                                    вам на электронную почту или на телефон смс-сообщением.
+                                    придет вам на электронную почту или на телефон смс-сообщением.
                                 </p>
+                            </TabPanel>
+                            <TabPanel class="pt-10 text-gray-500">
+                                <h3 class="sr-only">Отзывы о магазине</h3>
+
+                                <p>Отзывы о магазине на Яндекс и Google</p>
+
+                                <div class="h-[1050px] overflow-hidden relative max-w-[760px]">
+                                    <iframe src="https://yandex.ru/maps-reviews-widget/1925028904?comments" class="w-full h-full rounded-md"></iframe>
+                                </div>
+
                             </TabPanel>
                         </TabPanels>
                     </TabGroup>
@@ -219,7 +234,7 @@ const props = defineProps({
                 <!-- Product others -->
                 <div class="relative col-span-8 mt-8 lg:col-span-1 lg:mt-0">
                     <LazyElementsSliderProduct v-if="product.similars?.length" class="col-span-2 lg:grid-cols-1"
-                                               :data="product.similars" title="Похожие товары"/>
+                                               :data="product.similars" :title="`Похожие товары на ${product.title}`"/>
                 </div>
             </div>
         </div>

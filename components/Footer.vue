@@ -3,7 +3,7 @@
         <div class="wrapper-container ">
             <div class="grid grid-cols-2 gap-12 py-16 sm:grid-cols-1 sm:gap-8 sm:py-8">
                 <div>
-                    <NuxtLink to="/">
+                    <NuxtLink to="/" class="inline-block">
                         <img loading="lazy" width="250" height="66" class="h-12 w-auto" src="/assets/img/logo.webp"
                             alt="Все для кондитера" />
                     </NuxtLink>
@@ -17,12 +17,18 @@
                             </li>
                             <li>
                                 <NuxtLink :to="`mailto:${contacts.email}`" target="_blank"
-                                    class="text-sm leading-6 text-gray-300 transition-all hover:text-white">
+                                    class="text-sm md:text-xs leading-6 text-gray-300 transition-all hover:text-white">
                                     {{ contacts.email }}
                                 </NuxtLink>
                             </li>
                             <li>
-                                <span class="text-sm leading-6 text-gray-300"> {{ contacts.address }} </span>
+                                <span class="text-sm leading-6 text-gray-300">
+                                    <NuxtLink
+                                        class="text-sm md:text-xs leading-6 text-gray-300 transition-all hover:text-white"
+                                        to="https://yandex.ru/maps/-/CHby5LzE" target="_blank" external>
+                                        {{ contacts.address }}
+                                    </NuxtLink>
+                                </span>
                             </li>
                             <li>
                                 <span class="text-sm leading-6 text-gray-300">
@@ -30,6 +36,9 @@
                                     Сб-Вс: {{ contacts.wt_weekend }}
                                     <!-- <span>Праздники: {{ contacts.wt_holiday }}</span> -->
                                 </span>
+                            </li>
+                            <li>
+                                <iframe src="https://yandex.ru/sprav/widget/rating-badge/1925028904?type=rating&theme=dark" width="150" height="50" frameborder="0"></iframe>
                             </li>
                         </ul>
                     </div>
@@ -76,7 +85,7 @@
             <ElementsCallback theme="dark" />
 
             <div
-                class="border-t border-white/10 py-8 flex items-center justify-between xs:flex-col-reverse xs:items-center xs:gap-4">
+                class="border-t border-white/10 py-8 flex items-center justify-between xs:flex-col-reverse xs:items-center xs:gap-4 lg:mb-5">
                 <div>
                     <ul class="text-xs leading-5 text-gray-400 mt-0 mb-2 sm:text-center">
                         <li>ИП&nbsp;&mdash; ЕВГЕНЬЕВА ДИАНА ЕВГЕНЬЕВНА</li>
@@ -86,7 +95,7 @@
                     <p class="text-xs leading-5 text-gray-400 mt-0 sm:text-center">&copy; {{ new Date().getFullYear() }} Всё для кондитера</p>
                 </div>
                 <div class="">
-                    <div class="flex items-center space-x-6 justify-end">
+                    <div class="flex items-center space-x-6 justify-end lg:justify-center">
                         <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                                   class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                             <span class="sr-only">Whatsapp</span>
@@ -140,6 +149,7 @@ const navigation = {
         // { name: 'Корзина' },
         // { name: 'Поиск' },
         { name: 'Отзывы', href: '/reviews' },
+        { name: 'Карта сайта', href: '/sitemap' },
     ],
 }
 </script>

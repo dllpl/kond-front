@@ -14,6 +14,7 @@ export const usePopupStore = defineStore('popupStore', {
                 title: null,
                 subtitle: null,
                 type: 'login',
+                redirect: '/lk',
             }
         },
         drawer: {
