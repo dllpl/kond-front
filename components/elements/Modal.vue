@@ -20,14 +20,25 @@
                                     <span class="sr-only">Закрыть</span>
                                     <Icon name="hugeicons:cancel-01" class="h-5 w-5" aria-hidden="true" />
                                 </button>
-                                <LazyElementsLogin v-if="modal.options.type === 'login'" :title="modal.options.title"
-                                    :subtitle="modal.options.subtitle" />
-                                <LazyElementsOrderProducts v-if="modal.options.type === 'order'"
-                                    :products="modal.options.products" :title="modal.options.title"
-                                    :formUrl="modal.options.formUrl" />
-                                <LazyElementsCallback v-if="modal.options.type === 'callback'"
-                                    :title="modal.options.title" :subtitle="modal.options.subtitle" theme="light"
-                                    type="modal" />
+                                <LazyElementsLogin
+                                    v-if="modal.options.type === 'login'"
+                                    :title="modal.options.title"
+                                    :subtitle="modal.options.subtitle"
+                                    :redirect="modal.options.redirect"
+                                />
+                                <LazyElementsOrderProducts
+                                    v-if="modal.options.type === 'order'"
+                                    :products="modal.options.products"
+                                    :title="modal.options.title"
+                                    :formUrl="modal.options.formUrl"
+                                />
+                                <LazyElementsCallback
+                                    v-if="modal.options.type === 'callback'"
+                                    :title="modal.options.title"
+                                    :subtitle="modal.options.subtitle"
+                                    theme="light"
+                                    type="modal"
+                                />
                             </div>
                         </DialogPanel>
                     </TransitionChild>

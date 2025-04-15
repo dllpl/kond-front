@@ -5,9 +5,10 @@ export const useNotificationStore = defineStore('notificationStore', {
             const { public: config } = useRuntimeConfig();
             const profileStore = useProfileStore();
             const popupStore = usePopupStore();
+            const { currentRoute } = useRouter();
 
             if (!profileStore.isAuth()) {
-                popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы получить уведомление о поступлении товара', type: 'login' })
+                popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы получить уведомление о поступлении товара', type: 'login', redirect: currentRoute.value.path })
             }
             else {
                 $fetch(`${config.backOptions.api}/products-notification`, {

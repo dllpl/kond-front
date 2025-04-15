@@ -12,13 +12,13 @@
 							class="flex items-center gap-2 transition-base rounded-md  hover:text-red-600 group focus:bg-red-500 focus:rounded-md focus:text-white
                         xs:p-1 xs:ring-2 xs:ring-gray-300/20 xs:hover:ring-red-500 xs:focus:ring-red-500 xs:focus:text-red-600 xs:focus:bg-transparent">
 							<Icon name="hugeicons:call" class="w-6 h-6 group-hover:stroke-red-600 " />
-							<span class="block text-base xs:hidden">{{ contacts.phone }}</span>
+							<span class="block text-sm xs:hidden">{{ contacts.phone }}</span>
 						</NuxtLink>
                         <NuxtLink to="https://yandex.ru/maps/-/CHby5LzE" target="_blank"
                                   class="flex items-center gap-2 transition-base rounded-md  hover:text-red-600 group focus:bg-red-500 focus:rounded-md focus:text-white
-                        xs:p-1 xs:ring-2 xs:ring-gray-300/20 xs:hover:ring-red-500 xs:focus:ring-red-500 xs:focus:text-red-600 xs:focus:bg-transparent">
-                            <Icon name="hugeicons:building-03" class="w-6 h-6 group-hover:stroke-red-600 " />
-                            <span class="block text-base xs:hidden">{{ contacts.address }}</span>
+                        xs:p-1 xs:ring-2 xs:ring-gray-300/20 xs:hover:ring-red-500 xs:focus:ring-red-500 xs:focus:text-red-600 xs:focus:bg-transparent md:hidden">
+                            <Icon name="hugeicons:location-01" class="w-6 h-6 group-hover:stroke-red-600 " />
+                            <span class="block text-sm xs:hidden">{{ contacts.address }}</span>
                         </NuxtLink>
 
 					</div>
@@ -196,13 +196,14 @@ const { contacts } = useContactsStore();
 const cartStore = useCartStore();
 const popupStore = usePopupStore();
 const profileStore = useProfileStore();
+const { currentRoute } = useRouter();
 
 // проверка на авторизацию при клики на избранное в шапке
 const router = useRouter();
 function handleFavorite() {
 	profileStore.isAuth()
 		? router.push('/lk#favorites')
-		: popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы перейти в избранное', timeout: 1000, type: 'login' })
+		: popupStore.toggle('modal', { title: 'Авторизация', subtitle: 'Авторизуйтесь, что бы перейти в избранное', timeout: 1000, type: 'login', redirect: currentRoute.value.path })
 }
 
 const navTop = [

@@ -9,7 +9,7 @@
         </button>
     </div>
 
-    <div class="fixed bottom-4 right-4 z-50 lg:hidden">
+    <div class="fixed bottom-4 right-4 z-10 lg:hidden">
         <NuxtLink
             external
             :to="contacts.whatsapp_link"

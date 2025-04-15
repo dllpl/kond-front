@@ -4,8 +4,8 @@ import RecursiveList from "~/components/section/RecursiveList.vue";
 
 const breadcrumbs = [
     {
-        name: 'Доставка и оплата',
-        href: '/delivery',
+        name: 'Карта сайта',
+        href: '/sitemap',
     },
 ]
 useHead({
@@ -13,7 +13,7 @@ useHead({
     meta: [
         {
             name: 'description',
-            content: 'Карта сайта интернет-магазина Всё для кондитера'
+            content: 'Навигация по сайту. Карта сайта интернет-магазина Всё для кондитера'
         }
     ],
 })

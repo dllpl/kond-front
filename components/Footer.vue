@@ -149,6 +149,7 @@ const navigation = {
         // { name: 'Корзина' },
         // { name: 'Поиск' },
         { name: 'Отзывы', href: '/reviews' },
+        { name: 'Карта сайта', href: '/sitemap' },
     ],
 }
 </script>

@@ -53,7 +53,7 @@ export const useAuthStore = defineStore('authStore', {
                 this.register.disabled = false
             })
         },
-        async makeLogin() {
+        async makeLogin(redirect = '/lk') {
 
             this.login.disabled = true
 
@@ -73,7 +73,7 @@ export const useAuthStore = defineStore('authStore', {
 
                 popupStore.toggle('toast', {title: 'Успешная авторизация', timeout: 2000, type: 'success'})
                 profileStore.setAuth(data)
-                navigateTo('/lk', {external: true})
+                navigateTo(redirect, {external: true})
 
             }).catch(({response}) => {
 

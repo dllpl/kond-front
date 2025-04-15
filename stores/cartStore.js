@@ -1,8 +1,6 @@
 import HttpClient from "~/server/utils/httpClient.js";
 
 export const useCartStore = defineStore('cartStore', {
-
-
     state: () => ({
         products: [],
         fullPrice: 0,//// сумма всех товаров
@@ -13,6 +11,7 @@ export const useCartStore = defineStore('cartStore', {
             bonus: 0,
             message: null,
             loyaltyLevel: null,
+            code: null,
         },
         loyaltyBalance: null,// Количество бонусов
         loyaltyMessage: '',
@@ -41,8 +40,7 @@ export const useCartStore = defineStore('cartStore', {
 
         //Сумма со скидкой бонусы
         calculateLoyalty() {
-            const maxBonusToUse = this.fullPrice * 0.1; // 10% от стоимости товаров
-            this.loyaltyAmount = Math.min(this.loyaltyParams.bonus, maxBonusToUse);
+            this.loyaltyAmount = Math.min(this.loyaltyParams.bonus, Math.floor(this.fullPrice * 0.1));
             return this.loyaltyAmount
         },
 
@@ -88,8 +86,11 @@ export const useCartStore = defineStore('cartStore', {
             this.loyaltyParams = {
                 bonus: data.value.data.bonus,
                 message: data.value.message,
-                loyaltyLevel: data.value.data.loyalty_level
+                loyaltyLevel: data.value.data.loyalty_level,
+                code: data.value.code
             }
+
+            return this.loyaltyParams
         },
 
         // сумма шт * кол-во
@@ -230,6 +231,11 @@ export const useCartStore = defineStore('cartStore', {
                     popupStore.toggle('toast', {title: 'Укажите адрес доставки', timeout: 5000, type: 'warning'})
                     return
                 }
+            }
+
+            if(!form.first_name) {
+                popupStore.toggle('toast', {title: 'Укажите имя', timeout: 3000, type: 'warning'})
+                return
             }
 
             form.phone = phoneClear(form.phone)
