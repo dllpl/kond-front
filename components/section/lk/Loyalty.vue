@@ -95,7 +95,7 @@ const loyaltyParams = await useCartStore().getLoyalty();
             </ul>
 
             <p class="text-lg md:text-sm font-bold">
-                Ранг: {{ loyaltyParams.loyaltyLevel ?? 'Новичок' }}
+                Уровень лояльности: {{ loyaltyParams.loyaltyLevel ?? 'Новичок' }}
             </p>
 
             <p class="text-lg md:text-sm font-bold">
