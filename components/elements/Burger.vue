@@ -57,8 +57,17 @@
                             </div>
                         </div>
 
-                        <div class="mt-auto ">
+                        <div class="mt-auto">
                             <ElementsCallsToAction @click="popupStore.close('burger')" />
+                            <div class="my-5">
+                                <ul class="text-xs leading-5 text-gray-400 mt-0 text-center">
+                                    <li>ИП&nbsp;&mdash; ЕВГЕНЬЕВА ДИАНА ЕВГЕНЬЕВНА</li>
+                                    <li>ИНН&nbsp;&mdash; 165033847201</li>
+                                    <li>ОГРН&nbsp;&mdash; 308165020600060</li>
+
+                                </ul>
+                                <p class="text-xs leading-5 text-gray-400 mt-0 text-center">&copy; {{ new Date().getFullYear() }} Всё для кондитера</p>
+                            </div>
                         </div>
                     </DialogPanel>
 

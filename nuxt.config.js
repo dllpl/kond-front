@@ -46,7 +46,7 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         '@nuxtjs/google-fonts',
         '@nuxtjs/seo',
-        'yandex-metrika-module-nuxt3',
+        'nuxt-yandex-metrika',
         'nuxt-headlessui',
     ],
 
@@ -98,7 +98,7 @@ export default defineNuxtConfig({
             title: 'Всё для кондитера',
             viewport: 'width=device-width, initial-scale=1',
             templateParams: {
-                separator: '-'
+                separator: '–'
             },
             link: [
                 {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
@@ -131,9 +131,11 @@ export default defineNuxtConfig({
 
     yandexMetrika: {
         id: process.env.APP_ENV === 'production' ? process.env.YANDEX_METRIKA_ID : '',
-        webvisor: true,
-        consoleLog: false,
-        defer: true
+        options: {
+            webvisor: true,
+            defer: true,
+            ecommerce: true,
+        },
     },
 
     schemaOrg: {

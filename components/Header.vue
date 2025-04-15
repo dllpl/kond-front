@@ -14,6 +14,12 @@
 							<Icon name="hugeicons:call" class="w-6 h-6 group-hover:stroke-red-600 " />
 							<span class="block text-base xs:hidden">{{ contacts.phone }}</span>
 						</NuxtLink>
+                        <NuxtLink to="https://yandex.ru/maps/-/CHby5LzE" target="_blank"
+                                  class="flex items-center gap-2 transition-base rounded-md  hover:text-red-600 group focus:bg-red-500 focus:rounded-md focus:text-white
+                        xs:p-1 xs:ring-2 xs:ring-gray-300/20 xs:hover:ring-red-500 xs:focus:ring-red-500 xs:focus:text-red-600 xs:focus:bg-transparent">
+                            <Icon name="hugeicons:building-03" class="w-6 h-6 group-hover:stroke-red-600 " />
+                            <span class="block text-base xs:hidden">{{ contacts.address }}</span>
+                        </NuxtLink>
 
 					</div>
 					<!-- MOBILE VISIBLE XS-->

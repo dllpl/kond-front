@@ -24,10 +24,10 @@ const breadcrumbs = [
 
 let current_title = 'Каталог товаров'
 if (data.value.breadcrumbs.length) {
-  current_title = data.value.breadcrumbs[data.value.breadcrumbs.length - 1].name
+    current_title = data.value.breadcrumbs.map(b => b.name).reverse().join(' – ')
 }
 
-const description = current_title === 'Каталог товаров' ? 'Каталог товаров интернет-магазина Всё для кондитера' : 'Купить ' + current_title + ' онлайн в интернет-магазине Всё для кондитера. Доставка по г. Набережные Челны и всей России'
+const description = current_title === 'Каталог товаров' ? 'Каталог товаров магазина Всё для кондитера. Онлайн заказ. Быстрая доставка по г. Набережные Челны и всей России' : 'Купить или заказать ' + current_title + ' онлайн в магазине Всё для кондитера. Быстрая доставка по г. Набережные Челны и всей России'
 
 const is_product_page = !!data.value.product
 
