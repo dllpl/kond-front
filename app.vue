@@ -8,7 +8,7 @@ useSchemaOrg([
     defineLocalBusiness({
         "@type": "Store",
         name: 'Всё для кондитера',
-        logo: '/logo-card.png',
+        logo: '/logo.webp',
         url: 'https://dljakonditera.ru',
         sameAs: [
             'https://wa.me/79586281044',
@@ -47,7 +47,7 @@ useSchemaOrg([
 
 useSeoMeta({
     ogType: 'website',
-    ogImage: '/cooking-1.1.webp',
+    ogImage: 'https://dljakonditera.ru/cooking-1.1.webp',
     ogImageType: 'image/webp',
     ogImageHeight: 600,
     ogImageWidth: 1200,

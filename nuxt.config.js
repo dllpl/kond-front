@@ -66,6 +66,7 @@ export default defineNuxtConfig({
     robots: {
         disallow: [
             '/lk',
+            '/_nuxt/**',
         ]
     },
 

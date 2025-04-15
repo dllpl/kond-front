@@ -23,8 +23,10 @@ const breadcrumbs = [
 ]
 
 let current_title = 'Каталог товаров'
+let real_title = ''
 if (data.value.breadcrumbs.length) {
     current_title = data.value.breadcrumbs.map(b => b.name).reverse().join(' – ')
+    real_title = data.value.breadcrumbs[data.value.breadcrumbs.length - 1].name
 }
 
 const description = current_title === 'Каталог товаров' ? 'Каталог товаров магазина Всё для кондитера. Онлайн заказ. Быстрая доставка по г. Набережные Челны и всей России' : 'Купить или заказать ' + current_title + ' онлайн в магазине Всё для кондитера. Быстрая доставка по г. Набережные Челны и всей России'
@@ -48,7 +50,7 @@ if (is_product_page) {
     ...(data.value.product.images?.length ? {
       ogImage: storage + data.value.product.images[0]
     } : {
-      ogImage: '/assets/img/default-product-img.webp'
+      ogImage: 'https://dljakonditera.ru/default-product-img.webp'
     }),
     ogImageType: 'image/webp',
     ogImageHeight: 600,
@@ -60,7 +62,7 @@ if (is_product_page) {
     meta: [
       { property: 'product:price:amount', content: data.value.product.price },
       { property: 'product:price:currency', content: 'RUB' },
-      { property: 'product:availability', content: 'in stock' }
+      { property: 'product:availability', content: data.value.product.price ? 'in stock' : 'out of stock' }
     ]
   })
 
@@ -70,10 +72,10 @@ if (is_product_page) {
       ...(data.value.product.images?.length ? {
         image: storage + data.value.product.images[0]
       } : {
-        image: '/assets/img/default-product-img.webp'
+        image: 'https://dljakonditera.ru/default-product-img.webp'
       }),
       aggregateRating: {
-        ratingValue: "4.8",
+        ratingValue: "4.9",
         reviewCount: 24
       },
       description: description,
@@ -87,7 +89,7 @@ if (is_product_page) {
           "@type": "Offer",
           price: data.value.product.price,
           priceCurrency: 'RUB',
-          availability: 'https://schema.org/InStock',
+          availability: data.value.product.count > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
           itemCondition: 'https://schema.org/NewCondition',
           url: 'https://dljakonditera.ru/catalog/' + data.value.product.slug_path,
           seller: {
@@ -99,15 +101,39 @@ if (is_product_page) {
     })
   ])
 } else {
-
   useSchemaOrg([
     defineItemList({
-      name: current_title,
+      name: real_title,
       description: description,
-      brand: 'Всё для кондитера',
-      offers: [
-        {price: 1, priceCurrency: 'RUB'}
-      ],
+      itemListOrder: "Descending",
+      numberOfItems: data.value.products ? data.value.products.length : 0,
+      ...(data.value.products ? {
+        itemListElement: data.value.products.map(product => ({
+          "@type": "Product",
+          name: product.title,
+          image: product.images?.length ? storage + product.images[0] : 'https://dljakonditera.ru/default-product-img.webp',
+          description: description,
+          sku: product.id,
+          brand: {
+            "@type": "Brand",
+            name: 'Всё для кондитера'
+          },
+          offer: {
+              "@type": "Offer",
+              ...(product.price > 0 ? {
+                price: product.price,
+              } : {}),
+              priceCurrency: 'RUB',
+              availability: product.count > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+              itemCondition: 'https://schema.org/NewCondition',
+              url: 'https://dljakonditera.ru/catalog/' + product.slug_path,
+              seller: {
+                "@type": "Organization",
+                name: 'Всё для кондитера dljakonditera.ru'
+              }
+            },
+        }))
+      }: {})
     })
   ])
 }
