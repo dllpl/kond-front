@@ -192,11 +192,11 @@ export const useCartStore = defineStore('cartStore', {
         },
 
         saveToLocalStorage(items) {
-            localStorage.setItem('cart', JSON.stringify(items))
+            localStorage.setItem('product_cart', JSON.stringify(items))
         },
 
         loadFromLocalStorage(products) {
-            const savedCart = localStorage.getItem('cart')
+            const savedCart = localStorage.getItem('product_cart')
             if (savedCart) {
                 this.products = JSON.parse(savedCart)
             }
