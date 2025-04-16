@@ -46,7 +46,6 @@ defineProps({
     product: Object,
     index: Number
 });
-
 const { storage } = useRuntimeConfig().public.backOptions;
 const favoriteStore = useFavoriteStore();
 </script>

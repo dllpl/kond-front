@@ -2,10 +2,13 @@
 const {contacts} = useContactsStore();
 const {storage} = useRuntimeConfig().public.backOptions;
 const favoriteStore = useFavoriteStore();
+const {pushProductDetail} = useEcommerceHelper()
 
 const props = defineProps({
     product: Object
 })
+
+pushProductDetail(props.product)
 
 </script>
 
@@ -196,7 +199,8 @@ const props = defineProps({
                                 <p>Отзывы о магазине на Яндекс и Google</p>
 
                                 <div class="h-[1050px] overflow-hidden relative max-w-[760px]">
-                                    <iframe src="https://yandex.ru/maps-reviews-widget/1925028904?comments" class="w-full h-full rounded-md"></iframe>
+                                    <iframe src="https://yandex.ru/maps-reviews-widget/1925028904?comments"
+                                            class="w-full h-full rounded-md"></iframe>
                                 </div>
 
                             </TabPanel>

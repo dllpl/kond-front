@@ -46,41 +46,47 @@ export const useCartStore = defineStore('cartStore', {
 
         //Сумма со скидкой бонусы
         calculateLoyalty() {
+            if (this.promo) {
+                return 0
+            }
             this.loyaltyAmount = Math.min(this.loyaltyParams.bonus, Math.floor(this.fullPrice * this.loyaltyParams.options.discount / 100));
             return this.loyaltyAmount
         },
 
     },
     actions: {
-
         // Действие для проверки промокода
-        async applyPromoCode(promoCode) {
+        async togglePromoCode(promoCode) {
+
+            if (this.promo) {
+                this.promo = null
+                this.discount = null
+                this.with_bonuses = false
+                return
+            }
+
+            promoCode = promoCode.trim()
+
             const popupStore = usePopupStore();
-            const profileStore = useProfileStore()
-            const {public: config} = useRuntimeConfig();
+
+            const {data, error} = await HttpClient('promo-codes/check', 'POST', {promo_code: promoCode})
 
 
-            await $fetch(`${config.backOptions.api}/promo-codes/check`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${profileStore.credentials.token}`,
-                },
-                body: JSON.stringify({promo_code: promoCode,})
-            }).then((data) => {
-                popupStore.toggle('toast', {title: data.message, timeout: 2000, type: 'success'});
+            if (error.value) {
+                popupStore.toggle('toast', {title: error.value.data.message, timeout: 2000, type: 'error'})
+                return
+            }
 
-                this.promo = promoCode;
-                this.discount = data.discount_percent;
-                this.with_bonuses = false;
+            popupStore.toggle('toast', {title: data.value.message, timeout: 2000, type: 'success'});
 
-            }).catch(({response}) => {
-                popupStore.toggle('toast', {title: response._data.message, timeout: 2000, type: 'error'})
-            })
+            this.promo = promoCode;
+            this.discount = data.value.discount_percent;
+            this.with_bonuses = false;
         },
 
         toggleLoyalty() {
             this.discount = 0
+            this.promo = null
             this.with_bonuses = !this.with_bonuses
         },
 
@@ -142,6 +148,9 @@ export const useCartStore = defineStore('cartStore', {
 
         // Увеличить количество товара  
         increment(product) {
+
+            const {pushAddToCart} = useEcommerceHelper()
+
             if (this.products.length) {
                 // Перебираем товары в корзине
                 let isProductInCart = false;
@@ -158,16 +167,22 @@ export const useCartStore = defineStore('cartStore', {
                     product.inCart = 1;  // Добавляем новый товар с количеством 1
                     this.products.push(product);
                 }
+
             } else {
                 // Если корзина пустая, просто добавляем товар с количеством 1
                 product.inCart = 1;
                 this.products.push(product);
             }
             this.saveToLocalStorage(this.products)
+
+            pushAddToCart(product)
         },
 
         // Уменьшить количество товара
         decrement(product) {
+
+            const {pushRemoveFromCart} = useEcommerceHelper()
+
             if (this.products.length) {
                 // Перебираем товары в корзине
                 let isProductInCart = true;
@@ -189,6 +204,8 @@ export const useCartStore = defineStore('cartStore', {
                 }
             }
             this.saveToLocalStorage(this.products)
+
+            pushRemoveFromCart(product)
         },
 
         saveToLocalStorage(items) {
@@ -205,6 +222,9 @@ export const useCartStore = defineStore('cartStore', {
         async makePay(form) {
 
             const profileStore = useProfileStore()
+            const {pushPurchase} = useEcommerceHelper()
+
+            const products_all = form.products
 
             if (!profileStore.isAuth()) {
                 popupStore.toggle('toast', {title: 'Войдите в аккаунт', timeout: 5000, type: 'warning'})
@@ -217,7 +237,9 @@ export const useCartStore = defineStore('cartStore', {
             const popupStore = usePopupStore()
             const {public: config} = useRuntimeConfig();
 
-            form.products = form.products.map(item => {
+
+
+            form.products = products_all.map(item => {
                 return {
                     id: item.id,
                     count: item.inCart
@@ -240,18 +262,12 @@ export const useCartStore = defineStore('cartStore', {
                 }
             }
 
-            if(!form.first_name) {
+            if (!form.first_name) {
                 popupStore.toggle('toast', {title: 'Укажите имя', timeout: 3000, type: 'warning'})
                 return
             }
 
             form.phone = phoneClear(form.phone)
-
-            // if (this.with_bonuses) {
-            //     form.with_bonuses = this.with_bonuses;
-            // } else {
-            //     form.promo_code = this.promo;
-            // }
 
             delete (form.is_pickup)
 
@@ -263,10 +279,13 @@ export const useCartStore = defineStore('cartStore', {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 }
-            }).then((data) => {
+            }).then(async (data) => {
                 popupStore.toggle('toast', {title: data.message, timeout: 3000})
                 this.products = []
                 this.saveToLocalStorage(this.products)
+
+                await pushPurchase(products_all, data.order_id)
+
                 if (order_type_id === 1) {
                     navigateTo(data.formUrl, {external: true})
                 } else {
