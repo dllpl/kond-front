@@ -2,7 +2,14 @@
 export const useContactsStore = defineStore('contactsStore', {
     state: () => {
         return {
-            contacts: [], // Массив контактов
+            contacts: {
+                whatsapp_link: '',
+                email: '',
+                phone: '',
+                address: '',
+                instagram_link: '',
+                telegram_link: '',
+            }, // Массив контактов
         }
     },
     actions: {

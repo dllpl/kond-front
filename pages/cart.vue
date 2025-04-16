@@ -149,7 +149,9 @@
                                 <div class="text-sm space-y-2 mt-4">
                                     <p>Самовывоз - бесплатно по адресу:</p>
                                     <p>{{ contacts.address }}</p>
-                                    <p>График работы: пн-пт {{ contacts.wt_weekday }} - сб-вс {{ contacts.wt_weekend }}</p>
+                                    <p>График работы: пн-пт {{ contacts.wt_weekday }} - сб-вс {{
+                                            contacts.wt_weekend
+                                        }}</p>
                                 </div>
                             </div>
 
@@ -219,18 +221,18 @@
                         </li>
 
                         <!-- Промокод -->
-<!--                        <li-->
-<!--                            class="flex flex-wrap gap-4 items-center justify-between relative border-t border-gray-200 pt-4 xs:text-sm">-->
-<!--                            <label for="coupon" class="text-gray-600 ">Введите промокод для скидки:</label>-->
-<!--                            <div class="relative w-72 md:w-full">-->
-<!--                                <input v-model="promoCode" name="coupon" type="text" required-->
-<!--                                       class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all ">-->
-<!--                                <button type="submit" @click="applyPromoCode"-->
-<!--                                        class="absolute right-0 top-0 shadow-sm flex items-center justify-center rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all h-full">-->
-<!--                                    <Icon name="hugeicons:arrow-right-02" class="h-5 w-5 text-grey-900"/>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </li>-->
+                        <li
+                            class="flex flex-wrap gap-4 items-center justify-between relative border-t border-gray-200 pt-4 xs:text-sm">
+                            <label for="coupon" class="text-gray-600 ">Введите промокод для скидки:</label>
+                            <div class="relative w-72 md:w-full">
+                                <input v-model="promoCode" name="coupon" type="text" :disabled="cartStore.promo"
+                                       class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all ">
+                                <button type="submit" @click="cartStore.togglePromoCode(promoCode)"
+                                        class="disabled:cursor-not-allowed disabled:opacity-50 absolute right-0 top-0 shadow-sm flex items-center justify-center rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all h-full">
+                                    <Icon :name="cartStore.promo ? 'hugeicons:cancel-01' : 'hugeicons:arrow-right-02'" class="h-5 w-5 text-grey-900"/>
+                                </button>
+                            </div>
+                        </li>
 
                         <!-- Бонусы -->
                         <li
@@ -262,7 +264,7 @@
                                 </span>
                             </span>
                             <button type="submit" @click="cartStore.toggleLoyalty()"
-                                    :disabled="!cartStore.loyaltyParams.bonus"
+                                    :disabled="!cartStore.loyaltyParams.bonus || cartStore.promo"
                                     :class="{ 'bg-inherit': cartStore.with_bonuses }"
                                     class="disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 disabled:ring-0 shadow-sm text-sm rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 py-2   transition-all xs:w-full">
                                 {{ !cartStore.with_bonuses ? 'Списать бонусы' : 'Накопить бонусы' }}
@@ -274,9 +276,13 @@
                             <span class="flex items-center  text-gray-600 ">
                                 <span>Сумма скидки:</span>
                             </span>
-                            <span class=" font-medium text-gray-900 text-lg">{{
-                                    formatNumber(cartStore.calculateFullPrice - cartStore.calculateTotal)
-                                }}</span>
+                            <div>
+                                <span class=" font-medium text-gray-900 text-lg">{{
+                                        formatNumber(cartStore.calculateFullPrice - cartStore.calculateTotal)
+                                    }}
+                                </span>
+                            </div>
+
                         </li>
 
                         <!-- Итого -->
@@ -285,15 +291,15 @@
                                 Итого:
                             </span>
                             <div>
-                          <span
-                              v-if="cartStore.with_bonuses"
-                              class="line-through text-gray-500 text-base md:text-xs mr-2"
-                          >
-                            {{ formatNumber(cartStore.calculateFullPrice) }}
-                          </span>
+                                <span
+                                    v-if="cartStore.with_bonuses || cartStore.promo"
+                                    class="line-through text-gray-500 text-base md:text-xs mr-2"
+                                >
+                                    {{ formatNumber(cartStore.calculateFullPrice) }}
+                                </span>
                                 <span class="text-2xl md:text-base">
-                            {{ formatNumber(cartStore.calculateTotal) }}
-                          </span>
+                                    {{ formatNumber(cartStore.calculateTotal) }}
+                                </span>
                             </div>
                         </li>
                     </ul>
@@ -399,19 +405,12 @@ const makePay = (order_type_id) => {
         is_pickup: is_pickup.value,
         products: cartStore.products,
         order_type_id: order_type_id,
-        with_bonuses: cartStore.with_bonuses
+        with_bonuses: cartStore.with_bonuses,
+        promo_code: cartStore.promo
     })
 }
 
 const promoCode = ref('')
-
-// Метод для применения промокода
-const applyPromoCode = () => {
-    if (promoCode.value.trim()) {
-        cartStore.applyPromoCode(promoCode.value);
-
-    }
-};
 
 cartStore.getLoyalty();
 
