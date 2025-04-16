@@ -4,7 +4,7 @@ export const useEcommerceHelper = () => {
         // Данные должны отправляться в момент открытия страницы с карточкой товара.
         pushProductDetail: (product) => {
 
-            if (!process.client) return
+            if (!process.client || window?.dataLayer || typeof window.dataLayer !== 'object') return
 
             window.dataLayer.push({
                 "ecommerce": {
@@ -29,7 +29,7 @@ export const useEcommerceHelper = () => {
         // Данные должны отправляться в момент добавления заказа в корзину. Например, при нажатии кнопки «Добавить в корзину».
         pushAddToCart: (product, qty = 1) => {
 
-            if (!process.client) return
+            if (!process.client || window?.dataLayer || typeof window.dataLayer !== 'object') return
 
             window.dataLayer.push({
                 "ecommerce": {
@@ -54,7 +54,7 @@ export const useEcommerceHelper = () => {
         // Удаление товара из корзины
         // Данные должны отправляться в момент удаления заказа из корзины.
         pushRemoveFromCart: (product, qty = 1) => {
-            if (!process.client) return
+            if (!process.client || window?.dataLayer || typeof window.dataLayer !== 'object') return
             window.dataLayer.push({
                 "ecommerce": {
                     "currencyCode": "RUB",
@@ -80,29 +80,6 @@ export const useEcommerceHelper = () => {
         pushPurchase: (products, order_number) => {
             return new Promise((resolve, reject) => {
                 try {
-
-                    console.log({
-                        "ecommerce": {
-                            "currencyCode": "RUB",
-                            "purchase": {
-                                "actionField": {
-                                    "id": order_number
-                                },
-                                "products": products.map(product => {
-                                    return {
-                                        "id": product.id,
-                                        "name": product.title,
-                                        "price": product.price,
-                                        ...(product?.category?.title && {
-                                            "category": product.category.title
-                                        }),
-                                        "quantity": product.inCart
-                                    }
-                                })
-                            }
-                        }
-                    })
-
                     window.dataLayer.push({
                         "ecommerce": {
                             "currencyCode": "RUB",
