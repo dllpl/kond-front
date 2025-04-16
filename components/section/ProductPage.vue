@@ -8,7 +8,9 @@ const props = defineProps({
     product: Object
 })
 
-pushProductDetail(props.product)
+onMounted(() => {
+    pushProductDetail(props.product)
+})
 
 </script>
 

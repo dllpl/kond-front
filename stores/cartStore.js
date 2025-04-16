@@ -237,8 +237,6 @@ export const useCartStore = defineStore('cartStore', {
             const popupStore = usePopupStore()
             const {public: config} = useRuntimeConfig();
 
-
-
             form.products = products_all.map(item => {
                 return {
                     id: item.id,
