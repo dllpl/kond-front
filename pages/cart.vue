@@ -149,7 +149,7 @@
                                 <div class="text-sm space-y-2 mt-4">
                                     <p>Самовывоз - бесплатно по адресу:</p>
                                     <p>{{ contacts.address }}</p>
-                                    <p>График работы: {{ contacts.wt_weekday }} - {{ contacts.wt_weekend }}</p>
+                                    <p>График работы: пн-пт {{ contacts.wt_weekday }} - сб-вс {{ contacts.wt_weekend }}</p>
                                 </div>
                             </div>
 
