@@ -31,11 +31,11 @@
 
 					<div class="hidden xs:flex xs:gap-3 ">
 						<!-- Search -->
-						<button aria-label="Поиск" type="button" @click="popupStore.toggle('search')"
+            <NuxtLink to="/search" aria-label="Поиск" type="button"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="hugeicons:search-01" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
-						</button>
+						</NuxtLink>
 
 						<!-- Like -->
 						<!-- <a href="http://"
@@ -118,11 +118,11 @@
 
 					<div class=" flex gap-5 xs:hidden">
 						<!-- Search -->
-						<button aria-label="Поиск" type="button" @click="popupStore.toggle('search')"
+						<NuxtLink to="/search" aria-label="Поиск"
 							class="flex items-center justify-center transition-base p-1 rounded-md ring-2  ring-gray-300/20  hover:text-red-600 hover:ring-red-500 group focus:rounded-md focus:ring-red-500 focus:text-red-600">
 							<Icon name="hugeicons:search-01" class="w-6 h-6 group-hover:stroke-red-600">
 							</Icon>
-						</button>
+						</NuxtLink>
 
 						<!-- Like -->
 						<button aria-label="Избранное" @click="handleFavorite()"
@@ -176,7 +176,7 @@
 			</div>
 		</Popover>
 
-		<ElementsSearch />
+<!--		<ElementsSearch />-->
 		<ElementsDrawer />
 		<ElementsBurger :data="navBurger" />
 		<NuxtLoadingIndicator color="#fbbf24" :height="4" :throttle="500" />
