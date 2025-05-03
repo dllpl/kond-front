@@ -13,7 +13,7 @@
                         <div class="mt-2">
                             <input v-model='profile.last_name' type="text" name="last_name" autocomplete="last_name"
                                 required minlength='5' v-maska="maskaOptions.cyrillic_and_upper_case"
-                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
+                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all" />
                             <span v-if="errors?.last_name" class="absolute text-[11px]">
                                 {{ errors.last_name[0] }}
                             </span>
@@ -27,7 +27,7 @@
                         <div class="mt-2">
                             <input v-maska="maskaOptions.cyrillic_and_upper_case" name="first_name"
                                 autocomplete="first_name" required v-model="profile.first_name"
-                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
+                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all" />
                             <span v-if="errors?.first_name" class="absolute text-[11px]">
                                 {{ errors.first_name[0] }}
                             </span>
@@ -41,7 +41,7 @@
                         <div class="mt-2">
                             <input v-maska="maskaOptions.cyrillic_and_upper_case" name="patronymic"
                                 autocomplete="patronymic" v-model="profile.patronymic"
-                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all" />
+                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all" />
                             <span v-if="errors?.patronymic" class="absolute text-[11px]">
                                 {{ errors.patronymic[0] }}
                             </span>
@@ -55,7 +55,7 @@
                         <div class="mt-2">
                             <input disabled v-maska="maskaOptions.phone.mask" name="phone" autocomplete="phone" required
                                 v-model="profile.phone"
-                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
+                                class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"
                                 placeholder="+7 (___) ___-__-__" />
                             <span v-if="errors?.phone" class="absolute text-[11px]">
                                 {{ errors.phone[0] }}
@@ -69,7 +69,7 @@
 
                         <input id="email" name="email" type="email" autocomplete="email" v-model="profile.email"
                             disabled
-                            class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
+                            class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"
                             placeholder="Email" />
                         <span v-if="errors?.email" class="absolute text-[11px]">
                             {{ errors.email[0] }}
