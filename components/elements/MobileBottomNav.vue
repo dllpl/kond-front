@@ -19,14 +19,13 @@
                 <span class="text-xs">Подборки</span>
             </NuxtLink>
 
-            <NuxtLink
-                to="/search"
+          <button aria-label="Поиск" type="button" @click="popupStore.toggle('search')"
                 :class="linkClass('/search')"
                 class="flex flex-col items-center justify-center hover:text-red-500"
             >
                 <Icon name="hugeicons:search-01" class="w-5 h-5 mb-1" />
                 <span class="text-xs">Поиск</span>
-            </NuxtLink>
+          </button>
 
             <NuxtLink
                 to="/cart"

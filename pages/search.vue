@@ -140,8 +140,8 @@ const submitSearch = async () => {
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <Icon name="hugeicons:search-01" class="w-5 h-5 text-gray-500 dark:text-gray-400"/>
           </div>
-          <input :autofocus="!find" v-model="find" type="search" id="search"
-                 class="block text-white w-full p-4 ps-10 text-sm rounded-md bg-gray-900 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"
+          <input :autofocus="!find.length" v-model="find" type="search" id="search"
+                 class="block  w-full p-4 ps-10 rounded-md bg-inherit ring-2 ring-gray-300 focus:ring-amber-500 focus:border-blue-500 placeholder-gray-400"
                  placeholder="Поиск" required/>
           <button type="submit"
                   class="absolute end-2.5 bottom-2 items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-base hover:bg-red-500 focus-visible:bg-red-500">
