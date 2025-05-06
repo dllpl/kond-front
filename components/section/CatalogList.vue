@@ -1,7 +1,6 @@
 <template>
   <div class="relative box-content overflow-visible ">
-    <h1 class="mb-8 font-bold text-4xl 2xl:text-3xl">{{ current_title }}</h1>
-
+    <h1 class="mb-8 font-bold text-4xl 2xl:text-3xl" v-if="!from_search">{{ current_title }}</h1>
     <div class="relative grid grid-cols-6 gap-8 space-x-0 xl:grid-cols-4 lg:grid-cols-3 lg:gap-6 xs:grid-cols-2">
       <NuxtLink v-for="(category, i) in children" :key="i" :to="`/catalog/${category.slug_path}`" class="relative flex flex-col w-auto h-60 overflow-hidden rounded-lg p-6 transition-all hover:opacity-75 
         lg:h-50 
@@ -28,17 +27,29 @@ const { storage } = useRuntimeConfig().public.backOptions;
 const props = defineProps({
   data: {
     type: Array,
+    default: []
   },
+  from_search: {
+    type: Boolean,
+    default: false
+  }
 })
 
-let children = []
-let current_title = 'Каталог'
+const children = ref([])
+const current_title = ref('Каталог')
 
-if (props.data.length > 1) {
-  children = props.data
+if(!props.from_search) {
+  if (props.data.length > 1) {
+    children.value = props.data
+  } else {
+    children.value = props.data[0].children
+    current_title.value = props.data[0].title
+  }
 } else {
-  children = props.data[0].children
-  current_title = props.data[0].title
+  if(props.data.length) {
+    children.value = props.data
+  }
+
 }
+
 </script>
-<!-- mb-20" :class="{ 'mb-0': children.length === 0 }" -->

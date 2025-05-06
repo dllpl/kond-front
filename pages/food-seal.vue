@@ -41,7 +41,7 @@
                                 <label for="name" class="block text-sm font-medium text-gray-900 mb-2">Имя</label>
                                 <input v-model="food.form.name" v-maska="maskaOptions.cyrillic_and_upper_case" name="name"
                                        id="name" required
-                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
+                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"
                                        placeholder="Имя"/>
                             </div>
 
@@ -50,7 +50,7 @@
                                 <label for="phone" class="block text-sm font-medium text-gray-900 mb-2">Телефон</label>
                                 <input v-model="food.form.phone" v-maska="maskaOptions.phone.mask" name="phone" id="phone"
                                        required
-                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
+                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"
                                        placeholder="+7 (___) ___-__-__"/>
                             </div>
 

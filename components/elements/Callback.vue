@@ -18,14 +18,14 @@
             <div>
                 <label for="name" class="sr-only">Имя</label>
                 <input v-model="callback.form.name" v-maska="maskaOptions.cyrillic_and_upper_case" name="name" id="name"
-                    required class="w-full leading-6 px-3 py-1.5  ring-inset rounded-md shadow-sm text-sm placeholder:text-gray-500 transition-base 
+                    required class="w-full leading-6 px-3 py-1.5  ring-inset rounded-md shadow-sm placeholder:text-gray-500 transition-base
                     lg:text-base 
                     focus:ring-red-500 hover:ring-red-500" :class="inputColor" placeholder="Имя" />
             </div>
             <div>
                 <label for="phone" class="sr-only">Телефон</label>
                 <input v-model="callback.form.phone" v-maska="maskaOptions.phone.mask" name="phone" id="phone" required
-                    class="w-full leading-6 px-3 py-1.5  ring-inset rounded-md shadow-sm text-sm placeholder:text-gray-500 transition-base 
+                    class="w-full leading-6 px-3 py-1.5  ring-inset rounded-md shadow-sm placeholder:text-gray-500 transition-base
                     lg:text-base 
                     focus:ring-red-500 hover:ring-red-500" :class="inputColor" placeholder="+7 (___) ___-__-__" />
             </div>

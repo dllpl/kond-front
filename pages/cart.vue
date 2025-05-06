@@ -86,7 +86,7 @@
 
                                 <input v-model='form.last_name' type="text" name="surname" autocomplete="surname"
                                        required minlength='5' v-maska="maskaOptions.cyrillic_and_upper_case"
-                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"/>
+                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"/>
                             </li>
 
                             <li class="">
@@ -96,7 +96,7 @@
 
                                 <input v-maska=maskaOptions.cyrillic_and_upper_case name="name" autocomplete="name"
                                        v-model="form.first_name" required
-                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"/>
+                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"/>
                             </li>
 
                             <li class="">
@@ -106,7 +106,7 @@
 
                                 <input v-maska="maskaOptions.cyrillic_and_upper_case" name="patronymic"
                                        v-model="form.patronymic" autocomplete="patronymic" required=""
-                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"/>
+                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"/>
                             </li>
 
                             <li class="row-start-3 xs:row-auto">
@@ -115,7 +115,7 @@
 
                                 <input v-maska="maskaOptions.phone.mask" name="phone" autocomplete="phone" required
                                        v-model="form.phone"
-                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
+                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"
                                        placeholder="+7 (___) ___-__-__"/>
 
                             </li>
@@ -125,7 +125,7 @@
                                     class="text-red-500">*</span></label>
 
                                 <input id="email" name="email" type="email" autocomplete="email" v-model="form.email"
-                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
+                                       class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"
                                        placeholder="Email"/>
 
                             </li>

@@ -24,7 +24,7 @@
                                 </label>
                                 <div class="mt-2">
                                     <input id="email" name="email" type="email" autocomplete="email" required=""
-                                        class="block w-full rounded-md border-0 px-2 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm" />
+                                        class="block w-full rounded-md border-0 px-2 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all" />
                                 </div>
                             </div>
 

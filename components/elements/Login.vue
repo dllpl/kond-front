@@ -13,7 +13,7 @@
 
                     <input v-model="login.form.phone" v-maska="maskaOptions.phone.mask" name="tel" type="tel" v-autofocus
                         autocomplete="tel" required :class="login.errors?.phone ? 'ring-2 ring-red-400' : ''"
-                        class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm"
+                        class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all"
                         placeholder="+7 (___) ___-__-__" />
                     <span v-if="login.errors?.phone" class="absolute text-[11px]">
                         {{ login.errors.phone[0] }}
@@ -29,7 +29,7 @@
                     <input v-model="login.form.password" name="password" type="password" autocomplete="current-password"
                         placeholder="Минимум 6 символов" required
                         :class="login.errors?.password ? 'ring-2 ring-red-400' : ''"
-                        class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
+                        class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all placeholder:text-sm" />
                     <span v-if="login.errors?.password" class="absolute text-[11px]">
                         {{ login.errors.password[0] }}
                     </span>

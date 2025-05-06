@@ -23,7 +23,7 @@
                   <input v-model="register.form.phone" v-maska=maskaOptions.phone.mask name="tel" type="tel" v-autofocus
                     placeholder="+7 (___) ___-__-__" autocomplete="tel" required
                     :class="register.errors?.phone ? 'ring-2 ring-red-400' : ''"
-                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
+                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all placeholder:text-sm" />
                   <span v-if="register.errors?.phone" class="absolute text-[11px]">
                     {{ register.errors.phone[0] }}
                   </span>
@@ -37,7 +37,7 @@
                 <div class="mt-2">
                   <input v-model="register.form.email" name="email" type="email" autocomplete="email" required
                     placeholder="Укажите электронную почту" :class="register.errors?.email ? 'ring-2 ring-red-400' : ''"
-                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
+                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all placeholder:text-sm" />
                   <span v-if="register.errors?.email" class="absolute text-[11px]">
                     {{ register.errors.email[0] }}
                   </span>
@@ -52,7 +52,7 @@
                   <input v-model="register.form.password" name="password" type="password" autocomplete="new-password"
                     placeholder="Минимум 6 символов" required
                     :class="register.errors?.password ? 'ring-2 ring-red-400' : ''"
-                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all sm:text-sm placeholder:text-sm" />
+                    class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300  focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all placeholder:text-sm" />
                   <span v-if="register.errors?.password" class="absolute  text-[11px]">
                     {{ register.errors.password[0] }}
                   </span>
