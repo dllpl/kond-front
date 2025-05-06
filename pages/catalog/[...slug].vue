@@ -75,6 +75,7 @@ if (is_product_page) {
         image: 'https://dljakonditera.ru/default-product-img.webp'
       }),
       aggregateRating: {
+        "@type": "AggregateRating",
         ratingValue: "4.9",
         reviewCount: 24
       },
@@ -119,6 +120,7 @@ if (is_product_page) {
             name: 'Всё для кондитера'
           },
             aggregateRating: {
+                "@type": "AggregateRating",
                 ratingValue: "4.9",
                 reviewCount: 24
             },
@@ -126,7 +128,9 @@ if (is_product_page) {
               "@type": "Offer",
               ...(product.price > 0 ? {
                 price: product.price,
-              } : {}),
+              } : {
+                price: 0
+              }),
               priceCurrency: 'RUB',
               availability: product.count > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
               itemCondition: 'https://schema.org/NewCondition',
