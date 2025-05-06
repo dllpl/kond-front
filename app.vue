@@ -14,7 +14,11 @@ useSchemaOrg([
             'https://wa.me/79586281044',
             'https://instagram.com/konditershop_chelny',
             'https://vk.com/konditershop_chelny',
+            'https://t.me/KondeterSHOP_bot/?start=utm_source=site',
         ],
+        currenciesAccepted: 'RUB',
+        priceRange: '$',
+        paymentAccepted: 'Cash, Credit Card',
         openingHoursSpecification: [
             {
                 dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -39,7 +43,7 @@ useSchemaOrg([
             postalCode: '423812',
             addressCountry: 'RU',
         },
-        telephone: '+7(958)6281044',
+        telephone: '+7 958 628-10-44',
         email: 'zakazkonditer.nch@gmail.com',
         description: 'Всё для кондитера - товары для кондитеров с доставкой по г. Набережные Челны и России.',
     }),

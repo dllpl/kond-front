@@ -78,6 +78,7 @@ export default defineNuxtConfig({
     },
 
     sitemap: {
+        xsl: false,
         defaults: {
             changefreq: 'daily',
             priority: 0.5,
