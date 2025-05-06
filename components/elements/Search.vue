@@ -25,7 +25,7 @@
                     class="h-12 w-full border-0 bg-transparent pl-11 pr-4 placeholder:text-gray-400 focus:ring-0"
                     placeholder="Введите название..." @change="goToSearch($event.target.value)"
                     @blur="query = ''"/>
-                <NuxtLink class="absolute right-4 top-3.5" :to="'/search?find=' + searchInput">
+                <NuxtLink class="absolute right-4 top-3.5" :to="`/search?find=${searchInput}`" @click="popupStore.close('search')">
                   <Icon name="mdi-light:tab-plus" class="pointer-events-none text-gray-600 h-5 w-5" aria-hidden="true">
                   </Icon>
                 </NuxtLink>
