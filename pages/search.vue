@@ -73,8 +73,12 @@ const breadcrumbs = [
   }
 ]
 
+if(find.value) {
+  title = `Результаты поиска "${find.value}"`
+}
+
 useHead({
-  title: `Результаты поиска "${find.value}"`,
+  title: title,
   meta: [
     {
       name: 'description',
@@ -90,7 +94,10 @@ useHead({
         "url": "https://dljakonditera.ru",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://dljakonditera.ru/search?find={query}",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://dljakonditera.ru/search?find={query}"
+          },
           "query-input": "required name=query"
         }
       })

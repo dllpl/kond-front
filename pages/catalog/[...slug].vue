@@ -118,7 +118,11 @@ if (is_product_page) {
             "@type": "Brand",
             name: 'Всё для кондитера'
           },
-          offer: {
+            aggregateRating: {
+                ratingValue: "4.9",
+                reviewCount: 24
+            },
+          offers: {
               "@type": "Offer",
               ...(product.price > 0 ? {
                 price: product.price,
