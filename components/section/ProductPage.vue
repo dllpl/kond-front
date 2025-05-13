@@ -23,19 +23,36 @@ onMounted(() => {
             <!-- Product -->
             <div class="grid grid-cols-7 grid-rows-1 gap-x-8 gap-y-10 lg:grid-cols-1">
 
-                <!-- Product image -->
-                <div class="col-span-3 row-end-1  xl:col-span-4 lg:col-span-1 ">
+                <div class="col-span-3 row-end-1 xl:col-span-4 lg:col-span-1">
                     <div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-white ring-2 ring-gray-300/20">
-
-                        <img width="600" height="535" v-if="product.images && product.images.length"
-                             :src="storage + product.images[0]" :alt="product.title"
-                             class="object-cover max-h-[535px] object-center rounded-lg w-full"/>
-
-                        <img width="400" height="400" v-else src="/assets/img/default-product-img.webp"
-                             :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full">
-
+                        <ElementsSliderProductPhoto
+                            v-if="product.images && product.images.length"
+                            :data="product.images"
+                            :productTitle="product.title"
+                        />
+                        <img
+                            v-else
+                            width="400"
+                            height="400"
+                            src="/assets/img/default-product-img.webp"
+                            :alt="product.title"
+                            class="object-cover max-h-[535px] object-center rounded-lg w-full">
                     </div>
                 </div>
+
+                <!-- Product image -->
+                <!--                <div class="col-span-3 row-end-1  xl:col-span-4 lg:col-span-1 ">-->
+                <!--                    <div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-white ring-2 ring-gray-300/20">-->
+
+                <!--                        <img width="600" height="535" v-if="product.images && product.images.length"-->
+                <!--                             :src="storage + product.images[0]" :alt="product.title"-->
+                <!--                             class="object-cover max-h-[535px] object-center rounded-lg w-full"/>-->
+
+<!--                                        <img width="400" height="400" v-else src="/assets/img/default-product-img.webp"-->
+<!--                                             :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full">-->
+
+                <!--                    </div>-->
+                <!--                </div>-->
 
                 <!-- Product details -->
                 <div class="col-span-4 xl:col-span-3 lg:col-span-1">
