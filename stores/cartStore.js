@@ -210,12 +210,21 @@ export const useCartStore = defineStore('cartStore', {
 
         saveToLocalStorage(items) {
             localStorage.setItem('product_cart', JSON.stringify(items))
+            localStorage.setItem('product_cart_stamp', Date.now())
         },
 
-        loadFromLocalStorage(products) {
+        loadFromLocalStorage() {
+            localStorage.removeItem('cart')
+
             const savedCart = localStorage.getItem('product_cart')
+            const savedStamp = localStorage.getItem('product_cart_stamp')
             if (savedCart) {
-                this.products = JSON.parse(savedCart)
+                if(savedStamp && (Date.now() - savedStamp < 1000 * 60 * 60 * 24 * 31)) {
+                    this.products = JSON.parse(savedCart)
+                } else {
+                    localStorage.removeItem('product_cart')
+                    localStorage.removeItem('product_cart_stamp')
+                }
             }
         },
 

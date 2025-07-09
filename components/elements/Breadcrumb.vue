@@ -13,6 +13,7 @@
                     {{ page.name }}
                 </span>
                 <NuxtLink v-else :to="`/${page.uri}`"
+                          :title="page.name"
                           class="ml-1 text-sm font-medium text-gray-400 hover:text-gray-500 transition-all">
                     {{ page.name }}
                 </NuxtLink>
