@@ -1,4 +1,5 @@
 import redirects from './temp_redirects.json'
+
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     devtools: {enabled: false},
@@ -67,6 +68,12 @@ export default defineNuxtConfig({
         disallow: [
             '/lk',
             '/_nuxt/**',
+        ],
+        groups: [
+            {
+                userAgent: ['Yandex'],
+                cleanParam: ['curPos']
+            }
         ]
     },
 

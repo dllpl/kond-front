@@ -33,7 +33,6 @@ useSchemaOrg([
                 {
                     "@type": "ListItem",
                     position: 1,
-                    name: "Главная",
                     item: {
                         "@type": "Thing",
                         "@id": "https://dljakonditera.ru",
