@@ -380,20 +380,19 @@ const address_data = ref({
 })
 
 const searchAdress = async (value) => {
-    const data = await $fetch('dadata/address', {
+    adresess.value = await $fetch('dadata/address', {
         method: 'POST',
         body: {
             query: value,
             count: 5,
         }
     })
-    adresess.value = data
 }
 
-watch(selected, (val) => {
+watch(address_data, (val) => {
     form.full_address = val.name
     form.full_address_fias_id = val.fias_id
-})
+}, {deep: true})
 
 const disabledPay = computed(() => {
     return !products.value.length || !profileStore.isAuth()

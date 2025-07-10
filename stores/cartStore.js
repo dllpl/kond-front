@@ -288,8 +288,11 @@ export const useCartStore = defineStore('cartStore', {
                 }
             }).then(async (data) => {
                 popupStore.toggle('toast', {title: data.message, timeout: 3000})
-                this.products = []
-                this.saveToLocalStorage(this.products)
+
+                // this.products = []
+                // this.saveToLocalStorage(this.products)
+
+                localStorage.setItem('product_cart_stamp', Date.now() + 1000 * 60 * 30)
 
                 await pushPurchase(products_all, data.order_id)
 
