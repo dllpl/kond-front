@@ -7,7 +7,9 @@
     "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "scp -r .output/* therockyholl@dljakonditera.ru:~/domains/dljakonditera.ru/ && ssh therockyholl@dljakonditera.ru \"mkdir -p ~/domains/dljakonditera.ru/tmp && touch ~/domains/dljakonditera.ru/tmp/restart.txt\"",
+    "buld-deploy": "npm run build && npm run deploy"
   },
   "dependencies": {
     "@egjs/flicking-plugins": "^4.7.1",

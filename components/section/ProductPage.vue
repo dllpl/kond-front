@@ -23,7 +23,7 @@ onMounted(() => {
             <!-- Product -->
             <div class="grid grid-cols-7 grid-rows-1 gap-x-8 gap-y-10 lg:grid-cols-1">
 
-                <div class="col-span-3 row-end-1 xl:col-span-4 lg:col-span-1">
+                <div class="col-span-3 row-end-1 xl:col-span-4 lg:col-span-1 relative">
                     <div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-white ring-2 ring-gray-300/20">
                         <ElementsSliderProductPhoto
                             v-if="product.images && product.images.length"
@@ -37,6 +37,9 @@ onMounted(() => {
                             src="/assets/img/default-product-img.webp"
                             :alt="product.title"
                             class="object-cover max-h-[535px] object-center rounded-lg w-full">
+                    </div>
+                    <div v-if="product.promo_price" class="absolute p-2 bg-red-500 rounded-lg text-white font-bold top-2.5 left-2.5">
+                        Успей купить товар по акции!
                     </div>
                 </div>
 
@@ -70,7 +73,7 @@ onMounted(() => {
                             В наличии: <span class="text-indigo-950">{{ product.count }} шт.</span>
                         </span>
                         <span class="text-xl font-bold" v-if="product.count">
-                            Цена: <span class="text-3xl">{{ product.price }}</span> ₽
+                            Цена: <span class="text-3xl" :class="product.promo_price ? 'line-through text-gray-400 text-xl' : ''">{{ product.price }} ₽</span> <span v-if="product.promo_price" class="mt-auto font-semibold text-2xl">{{product.promo_price}} ₽</span>
                         </span>
                         <span v-else class="text-red-600 ml-auto">Нет в наличии</span>
                     </div>
