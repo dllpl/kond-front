@@ -38,7 +38,8 @@ onMounted(() => {
                             :alt="product.title"
                             class="object-cover max-h-[535px] object-center rounded-lg w-full">
                     </div>
-                    <div v-if="product.promo_price" class="absolute p-2 bg-red-500 rounded-lg text-white font-bold top-2.5 left-2.5">
+                    <div v-if="product.promo_price"
+                         class="absolute p-2 bg-red-500 rounded-lg text-white font-bold top-2.5 left-2.5">
                         Успей купить товар по акции!
                     </div>
                 </div>
@@ -51,8 +52,8 @@ onMounted(() => {
                 <!--                             :src="storage + product.images[0]" :alt="product.title"-->
                 <!--                             class="object-cover max-h-[535px] object-center rounded-lg w-full"/>-->
 
-<!--                                        <img width="400" height="400" v-else src="/assets/img/default-product-img.webp"-->
-<!--                                             :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full">-->
+                <!--                                        <img width="400" height="400" v-else src="/assets/img/default-product-img.webp"-->
+                <!--                                             :alt="product.title" class="object-cover max-h-[535px] object-center rounded-lg w-full">-->
 
                 <!--                    </div>-->
                 <!--                </div>-->
@@ -73,7 +74,19 @@ onMounted(() => {
                             В наличии: <span class="text-indigo-950">{{ product.count }} шт.</span>
                         </span>
                         <span class="text-xl font-bold" v-if="product.count">
-                            Цена: <span class="text-3xl" :class="product.promo_price ? 'line-through text-gray-400 text-xl' : ''">{{ product.price }} ₽</span> <span v-if="product.promo_price" class="mt-auto font-semibold text-2xl">{{product.promo_price}} ₽</span>
+                            Цена: <span v-if="product.promo_price"
+                                        class="mt-auto font-semibold text-2xl mr-1">
+                                {{
+                                formatNumber(product.promo_price)
+                            }}
+                            </span>
+                            <span
+                                class="text-3xl"
+                                :class="product.promo_price ? 'line-through text-gray-400 text-sm' : ''">
+                                {{
+                                    formatNumber(product.price)
+                                }}
+                            </span>
                         </span>
                         <span v-else class="text-red-600 ml-auto">Нет в наличии</span>
                     </div>

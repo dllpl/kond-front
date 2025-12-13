@@ -8,6 +8,8 @@ export const useFavoriteStore = defineStore('favoriteStore', {
             const popupStore = usePopupStore();
             const { currentRoute } = useRouter();
 
+            console.log(product)
+
             // console.log(product.is_favorite)
             //проверка на наличие is_favorite в товаре=авторизацию
             //если делать проверку в catch идет задержка так как уходит запрос и еще срет в консоль

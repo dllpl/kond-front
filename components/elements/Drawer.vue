@@ -64,9 +64,13 @@
 
 
                                                                     <p class="text-base font-medium">
-                                                                        <span class="text-gray-500 text-sm">Цена:
+                                                                        Цена:
+                                                                        <span class="mr-1" v-if="product.promo_price">
+                                                                            {{formatNumber(product.promo_price)}}
                                                                         </span>
-                                                                        {{ formatNumber(product.price) }}
+                                                                        <span v-if="product.price" :class="product.promo_price ? 'text-gray-500 text-xs line-through' : ''">
+                                                                            {{ formatNumber(product.price) }}
+                                                                        </span>
                                                                     </p>
                                                                     <ElementsProductCounter :item="product"
                                                                         context="small" />

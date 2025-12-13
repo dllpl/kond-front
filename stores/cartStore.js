@@ -31,7 +31,13 @@ export const useCartStore = defineStore('cartStore', {
         },
 
         calculateFullPrice() {
-            this.fullPrice = this.products.reduce((total, item) => total + (item.price * item.inCart), 0);
+            this.fullPrice = this.products.reduce(function (total, item) {
+                if(item.promo_price > 0) {
+                    return total + (item.promo_price * item.inCart)
+                } else {
+                    return total + (item.price * item.inCart)
+                }
+            }, 0);
             return this.fullPrice
         },
 
@@ -108,7 +114,11 @@ export const useCartStore = defineStore('cartStore', {
 
         // сумма шт * кол-во
         totalPriceProduct(item) {
-            return item.inCart * item.price;
+            if(item.promo_price) {
+                return item.inCart * item.promo_price;
+            } else {
+                return item.inCart * item.price;
+            }
         },
 
         //удаление товара из корзины

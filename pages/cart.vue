@@ -30,9 +30,13 @@
                                     <div class="mr-auto md:w-5/6 xs:text-center xs:w-full">
                                         <h3>{{ product.title }}</h3>
                                         <p class="text-base font-medium">
-                                            <span class="text-gray-500 text-sm">Цена:
-                                            </span>
-                                            {{ formatNumber(product.price) }}
+                                            Цена:
+                                            <span class="mr-1" v-if="product.promo_price">
+                                                                            {{formatNumber(product.promo_price)}}
+                                                                        </span>
+                                            <span v-if="product.price" :class="product.promo_price ? 'text-gray-500 text-xs line-through' : ''">
+                                                                            {{ formatNumber(product.price) }}
+                                                                        </span>
                                         </p>
                                     </div>
 
