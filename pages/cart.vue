@@ -32,9 +32,10 @@
                                         <p class="text-base font-medium">
                                             Цена:
                                             <span class="mr-1" v-if="product.promo_price">
-                                                                            {{formatNumber(product.promo_price)}}
+                                                                            {{ formatNumber(product.promo_price) }}
                                                                         </span>
-                                            <span v-if="product.price" :class="product.promo_price ? 'text-gray-500 text-xs line-through' : ''">
+                                            <span v-if="product.price"
+                                                  :class="product.promo_price ? 'text-gray-500 text-xs line-through' : ''">
                                                                             {{ formatNumber(product.price) }}
                                                                         </span>
                                         </p>
@@ -233,7 +234,8 @@
                                        class="block w-full rounded-md border-0 px-2 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all ">
                                 <button type="submit" @click="cartStore.togglePromoCode(promoCode)"
                                         class="disabled:cursor-not-allowed disabled:opacity-50 absolute right-0 top-0 shadow-sm flex items-center justify-center rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 hover:bg-amber-300 focus:ring-2 focus:ring-inset focus:ring-amber-400 transition-all h-full">
-                                    <Icon :name="cartStore.promo ? 'hugeicons:cancel-01' : 'hugeicons:arrow-right-02'" class="h-5 w-5 text-grey-900"/>
+                                    <Icon :name="cartStore.promo ? 'hugeicons:cancel-01' : 'hugeicons:arrow-right-02'"
+                                          class="h-5 w-5 text-grey-900"/>
                                 </button>
                             </div>
                         </li>
@@ -268,7 +270,7 @@
                                 </span>
                             </span>
                             <button type="submit" @click="cartStore.toggleLoyalty()"
-                                    :disabled="!cartStore.loyaltyParams.bonus || cartStore.promo"
+                                    :disabled="!cartStore.loyaltyParams.bonus || cartStore.promo || cartStore.calculateLoyalty <= 0"
                                     :class="{ 'bg-inherit': cartStore.with_bonuses }"
                                     class="disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 disabled:ring-0 shadow-sm text-sm rounded-md ring-1 ring-inset ring-amber-400 bg-amber-400 px-2.5 py-2   transition-all xs:w-full">
                                 {{ !cartStore.with_bonuses ? 'Списать бонусы' : 'Накопить бонусы' }}

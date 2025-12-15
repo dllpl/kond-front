@@ -50,7 +50,7 @@ const {
                 </div>
                 <SectionAdvantages class="lg:hidden"/>
             </div>
-            <LazyElementsSliderProduct v-if="productsPromoStatus !== 'pending' && productsOffers.data.length > 0" :data="productsPromo.data"
+            <LazyElementsSliderProduct v-if="productsPromoStatus !== 'pending' && productsPromo.data.length > 0" :data="productsPromo.data"
                                        title="Успей купить" class="col-span-2 lg:grid-cols-1 relative"
             />
 
