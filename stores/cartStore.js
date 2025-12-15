@@ -25,6 +25,15 @@ export const useCartStore = defineStore('cartStore', {
         with_bonuses: false,
     }),
     getters: {
+        nonPromoPrice() {
+            return this.products.reduce((total, item) => {
+                const isPromo = item.promo_price && item.promo_price > 0
+                if (isPromo) return total
+
+                return total + (item.price * item.inCart)
+            }, 0)
+        },
+
         // сумма товара
         totalCountProducts() {
             return this.products.length
@@ -50,12 +59,30 @@ export const useCartStore = defineStore('cartStore', {
             return this.total = Math.ceil(this.fullPrice - (this.fullPrice * this.discount) / 100)
         },
 
-        //Сумма со скидкой бонусы
+        // Сумма списания бонусов (ТОЛЬКО на неакционные товары)
         calculateLoyalty() {
+
+            // если применён промокод — бонусы нельзя
             if (this.promo) {
+                this.loyaltyAmount = 0
                 return 0
             }
-            this.loyaltyAmount = Math.min(this.loyaltyParams.bonus, Math.floor(this.fullPrice * this.loyaltyParams.options.discount / 100));
+
+            // если нет обычных товаров — бонусы списывать не с чего
+            if (this.nonPromoPrice <= 0) {
+                this.loyaltyAmount = 0
+                return 0
+            }
+
+            const maxByRules = Math.floor(
+                this.nonPromoPrice * this.loyaltyParams.options.discount / 100
+            )
+
+            this.loyaltyAmount = Math.min(
+                this.loyaltyParams.bonus,
+                maxByRules
+            )
+
             return this.loyaltyAmount
         },
 
