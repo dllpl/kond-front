@@ -50,6 +50,42 @@ export const useCartStore = defineStore('cartStore', {
             return this.fullPrice
         },
 
+        // сумма скидки по акционным товарам
+        promoDiscountSum() {
+            return this.products.reduce((total, item) => {
+                if (!item.promo_price || item.promo_price <= 0) {
+                    return total
+                }
+
+                const discountPerItem = item.price - item.promo_price
+                if (discountPerItem <= 0) {
+                    return total
+                }
+
+                return total + (discountPerItem * item.inCart)
+            }, 0)
+        },
+
+        // общая сумма скидки (акции + бонусы + промокод)
+        totalDiscount() {
+            let discount = 0
+
+            // 1. Скидка по акциям
+            discount += this.promoDiscountSum
+
+            // 2. Бонусы
+            if (this.with_bonuses) {
+                discount += this.loyaltyAmount || 0
+            }
+
+            // 3. Промокод (ТОЛЬКО если не бонусы)
+            if (this.discount && !this.with_bonuses) {
+                discount += Math.floor(this.fullPrice * this.discount / 100)
+            }
+
+            return discount
+        },
+
         //Сумма со скидкой промокод
         calculateTotal() {
             if (this.with_bonuses) {

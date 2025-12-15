@@ -42,7 +42,7 @@ const loyaltyParams = await useCartStore().getLoyalty();
                 </ul>
 
                 <p class="text-gray-600  md:text-sm mb-2">
-                    Бонусами можно оплатить до {{loyaltyParams.options.discount}}% от стоимости покупки!
+                    Бонусами можно оплатить до {{loyaltyParams.options.discount}}% от стоимости покупки покупки неакционных товаров!
                 </p>
 
                 <p class="mb-2 text-lg md:text-sm">
@@ -102,7 +102,7 @@ const loyaltyParams = await useCartStore().getLoyalty();
                 Баланс бонусов: {{ formatNumber(loyaltyParams.bonus) }}
             </p>
             <p class="text-gray-600 md:text-sm">
-                Бонусами можно оплатить до {{loyaltyParams.options.discount}}% от стоимости покупки!
+                Бонусами можно оплатить до {{loyaltyParams.options.discount}}% от стоимости покупки неакционных товаров!
             </p>
             <div class="flex gap-2 md:flex-col">
                 <NuxtLink to="/catalog"
