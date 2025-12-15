@@ -12,11 +12,11 @@
             </NuxtLink>
 
             <NuxtLink
-                to="/set"
-                :class="linkClass('/set')"
+                to="/discount"
+                :class="linkClass('/discount')"
                 class="flex flex-col items-center justify-center hover:text-red-500">
                 <Icon name="hugeicons:shape-collection" class="w-5 h-5 mb-1" />
-                <span class="text-xs">Подборки</span>
+                <span class="text-xs">Акции</span>
             </NuxtLink>
 
           <button aria-label="Поиск" type="button" @click="popupStore.toggle('search')"

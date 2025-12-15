@@ -120,7 +120,7 @@
                             <Icon name="fa-brands:vk" class="w-6 h-6 " aria-hidden="true" />
                         </NuxtLink>
                     </div>
-                    <p class="text-xs leading-5 text-white mt-0 sm:text-center"><a href="https://webseed.ru/services" title="Разработка и продвижение сайта">https://webseed.ru/services</a></p>
+                    <p class="text-xs leading-5 text-white mt-0 sm:text-center">Разработано в студии <a href="https://webseed.ru" title="Разработка и продвижение сайтов под ключ" class="text-red-500">webseed.ru</a></p>
                 </div>
 
             </div>

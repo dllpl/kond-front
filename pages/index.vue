@@ -29,6 +29,10 @@ const {
     status: productsSetsStatus,
     data: productsSets
 } = await HttpClient('products-sets');
+const {
+    status: productsPromoStatus,
+    data: productsPromo
+} = await HttpClient('products/promo');
 </script>
 <template>
     <main class="wrapper-container py-16 sm:pb-8 sm:pt-4">
@@ -46,6 +50,10 @@ const {
                 </div>
                 <SectionAdvantages class="lg:hidden"/>
             </div>
+            <LazyElementsSliderProduct v-if="productsPromoStatus !== 'pending' && productsOffers.data.length > 0" :data="productsPromo.data"
+                                       title="Успей купить" class="col-span-2 lg:grid-cols-1 relative"
+            />
+
             <LazySectionProductTop v-if="productsSetsStatus !== 'pending'" :data="productsSets.data"
                                  class="col-span-2 lg:grid-cols-1 " title="Праздничные предложения"/>
 

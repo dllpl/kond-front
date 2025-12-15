@@ -213,7 +213,7 @@ const navTop = [
 ]
 
 const nav = [
-	{ name: 'Скидки', slug: '/discount' },
+	{ name: 'Скидки и акции', slug: '/discount' },
 	{ name: 'Съедобная печать', slug: '/food-seal' },
 	{ name: 'Блог', slug: '/blog' },
 	{ name: 'Контакты', slug: '/contacts' },
@@ -221,7 +221,7 @@ const nav = [
 
 const navBurger = [
 	{ name: 'Каталог', slug: '/catalog' },
-	{ name: 'Скидки', slug: '/discount' },
+	{ name: 'Скидки и акции', slug: '/discount' },
 	{ name: 'Съедобная печать', slug: '/food-seal' },
 	{ name: 'Блог', slug: '/blog' },
 	{ name: 'О магазине', slug: '/about' },
