@@ -16,16 +16,34 @@ export default defineNuxtConfig({
     },
 
     routeRules: {
-        "/": {isr: 300, headers: {"Cache-Control": "public, max-age=300"}},
-        "/_nuxt/**": {headers: {"Cache-Control": "public, max-age=31536000, immutable"}},
-        "/static/**": {headers: {"Cache-Control": "public, max-age=86400"}},
+        '/**': {
+            headers: {
+                'Cache-Control': 'no-store, must-revalidate'
+            }
+        },
+        "/_nuxt/**": {headers: {'Cache-Control': 'public, max-age=31536000'}},
+
+        '/static/**': {
+            headers: {
+                'Cache-Control': 'public, max-age=31536000'
+            }
+        },
+
 
         "/api/user/**": {headers: {"Cache-Control": "no-store, no-cache, must-revalidate"}},
         "/api/orders/**": {headers: {"Cache-Control": "no-store, no-cache, must-revalidate"}},
 
-        "/api/**": {swr: 300, headers: {"Cache-Control": "public, max-age=300"}},
+        "/api/**": {
+            headers: {
+                'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=30'
+            }
+        },
 
-        "/lk/**": {headers: {"Cache-Control": "private, max-age=0, no-cache,no-store, must-revalidate"}},
+        "/lk/**": {
+            headers: {
+                "Cache-Control": "private, max-age=0, no-cache,no-store, must-revalidate"
+            }
+        },
     },
 
     icon: {
@@ -65,7 +83,7 @@ export default defineNuxtConfig({
     robots: {
         disallow: [
             '/lk',
-            '/_nuxt/**',
+            // '/_nuxt/**',
         ],
         groups: [
             {

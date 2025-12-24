@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "scp -r .output/* therockyholl@dljakonditera.ru:~/domains/dljakonditera.ru/ && ssh therockyholl@dljakonditera.ru \"mkdir -p ~/domains/dljakonditera.ru/tmp && touch ~/domains/dljakonditera.ru/tmp/restart.txt\"",
+    "deploy": "cd .output && tar -czf ../deploy.tar.gz . && cd .. && scp deploy.tar.gz therockyholl@dljakonditera.ru:~/domains/dljakonditera.ru/ && ssh therockyholl@dljakonditera.ru \"cd ~/domains/dljakonditera.ru && rm -rf public server nitro.json && tar -xzf deploy.tar.gz && rm deploy.tar.gz && mkdir -p tmp && touch tmp/restart.txt\"",
     "buld-deploy": "npm run build && npm run deploy"
   },
   "dependencies": {
