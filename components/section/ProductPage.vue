@@ -115,13 +115,13 @@ onMounted(() => {
                         <div class="mt-2 flex items-center justify-end space-x-2">
                             <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                                       class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
-                                <span class="sr-only">Whatsapp</span>
-                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true"/>
+                                <span class="sr-only">Whatsapp*</span>
+                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true"/>*
                             </NuxtLink>
                             <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
                                       class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Instagram</span>
-                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true"/>
+                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true"/>*
                             </NuxtLink>
                             <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
                                       class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
@@ -248,13 +248,13 @@ onMounted(() => {
                         <div class="mt-2 flex items-center justify-end space-x-2">
                             <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                                       class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
-                                <span class="sr-only">Whatsapp</span>
-                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true"/>
+                                <span class="sr-only">Whatsapp*</span>
+                                <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true"/>*
                             </NuxtLink>
                             <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
                                       class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                                 <span class="sr-only">Instagram</span>
-                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true"/>
+                                <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true"/>*
                             </NuxtLink>
                             <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
                                       class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">

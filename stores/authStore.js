@@ -5,6 +5,7 @@ export const useAuthStore = defineStore('authStore', {
                 email: null,
                 password: null,
                 phone: null,
+                agree: false
             },
             errors: null,
             disabled: false,
@@ -22,14 +23,21 @@ export const useAuthStore = defineStore('authStore', {
     actions: {
         async makeRegister() {
 
+            const popupStore = usePopupStore();
+
             this.register.disabled = true
 
             let form = this.register.form
 
+            if(!form?.agree) {
+                popupStore.toggle('toast', {title: 'Дайте своё согласие', timeout: 6000, type: 'error'})
+                this.register.disabled = false
+                return;
+            }
+
             const {public: config} = useRuntimeConfig();
             const {phoneClear} = useHelper()
             const profileStore = useProfileStore()
-            const popupStore = usePopupStore();
 
             form.phone = phoneClear(form.phone)
 

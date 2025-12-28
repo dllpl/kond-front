@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-8 sm:gap-4">
+                <div class="grid grid-cols-3 sm:grid-cols-1 gap-8 sm:gap-4">
                     <div>
                         <h3 class=" font-semibold leading-6 text-white">Навигация</h3>
                         <ul role="list" class="mt-6 space-y-4">
@@ -59,7 +59,8 @@
                     </div>
 
                     <div>
-                        <ul role="list" class="mt-12 space-y-4">
+                        <h3 class=" font-semibold leading-6 text-white">Магазин</h3>
+                        <ul role="list" class="mt-6 space-y-4">
                             <li v-for="item in navigation.other" :key="item.name">
 
                                 <button v-if="item.name === 'Корзина'" @click="popupStore.toggle('drawer')"
@@ -79,13 +80,26 @@
                             </li>
                         </ul>
                     </div>
+
+                    <div>
+                        <h3 class=" font-semibold leading-6 text-white">Документы</h3>
+                        <ul role="list" class="mt-6 space-y-4">
+                            <li v-for="item in navigation.docs" :key="item.name">
+                                <NuxtLink :to="item.href"
+                                          class="text-sm leading-6 text-gray-300 transition-all hover:text-white">
+                                    {{ item.name }}
+                                </NuxtLink>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <ElementsCallback theme="dark" />
 
             <div
-                class="border-t border-white/10 py-8 flex items-center justify-between xs:flex-col-reverse xs:items-center xs:gap-4 lg:mb-5">
+                class="border-t border-white/10 py-2 flex items-center justify-between xs:flex-col-reverse xs:items-center xs:gap-4 lg:mb-5">
                 <div>
                     <ul class="text-xs leading-5 text-gray-400 mt-0 mb-2 sm:text-center">
                         <li>ИП&nbsp;&mdash; ЕВГЕНЬЕВА ДИАНА ЕВГЕНЬЕВНА</li>
@@ -98,14 +112,14 @@
                     <div class="flex items-center space-x-6 justify-end lg:justify-center">
                         <NuxtLink v-if="contacts.whatsapp_link" :to="contacts.whatsapp_link" target="_blank"
                                   class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
-                            <span class="sr-only">Whatsapp</span>
-                            <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />
+                            <span class="sr-only">Whatsapp*</span>
+                            <Icon name="fa-brands:whatsapp" class="w-6 h-6 " aria-hidden="true" />*
                         </NuxtLink>
 
                         <NuxtLink v-if="contacts.instagram_link" :to="contacts.instagram_link" target="_blank"
                                   class="flex items-center p-1.5 text-gray-500 transition-base hover:text-gray-400">
                             <span class="sr-only">Instagram</span>
-                            <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />
+                            <Icon name="fa-brands:instagram" class="w-6 h-6 " aria-hidden="true" />*
                         </NuxtLink>
 
                         <NuxtLink v-if="contacts.telegram_link" :to="contacts.telegram_link" target="_blank"
@@ -122,7 +136,9 @@
                     </div>
                     <p class="text-xs leading-5 text-white mt-0 sm:text-center">Разработано в студии <a href="https://webseed.ru" title="Разработка и продвижение сайтов под ключ" class="text-red-500">webseed.ru</a></p>
                 </div>
-
+            </div>
+            <div class="text-center pb-5 xl:pb-20">
+                <span class="text-xs text-gray-400">* - компания Meta Platforms Inc. признана экстремистской организацией, и её деятельность запрещена на территории РФ. WhatsApp и Instagram - её продукты</span>
             </div>
         </div>
 
@@ -151,5 +167,20 @@ const navigation = {
         { name: 'Отзывы', href: '/reviews' },
         { name: 'Карта сайта', href: '/sitemap' },
     ],
+
+    docs: [
+        {
+            name: 'Политика обработки персональных данных',
+            href: '/policy',
+        },
+        {
+            name: 'Согласие на обработку персональных данных',
+            href: '/soglasie',
+        },
+        {
+            name: 'Условия использования файлов cookies',
+            href: '/cookie-policy',
+        }
+    ]
 }
 </script>

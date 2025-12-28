@@ -19,6 +19,7 @@
             aria-label="Contact via WhatsApp"
         >
             <Icon name="fa-brands:whatsapp" class="w-7 h-7"/>
+            <span class="absolute right-2 top-2">*</span>
         </NuxtLink>
     </div>
 </template>

@@ -58,12 +58,17 @@
                   </span>
                 </div>
               </div>
-              <!-- <div class="">
-                <span class="text-xs text-gray-500">Отправляя форму, вы соглашаетесь
-                  c <NuxtLink @click="popupStore.close('modal')" :to="`/policy`">политикой конфиденциальности
-                  </NuxtLink>
-                </span>
-              </div> -->
+
+                <div class="relative flex flex-col">
+                    <label class="label items-start border-gray-200 border-2 p-2 rounded-md" for="agree">
+                        <input v-model="register.form.agree" type="checkbox" id="agree" name="agree" class="checkbox">
+                        <span class="text-wrap ml-1 text-sm">
+                            Даю <NuxtLink @click="popupStore.close('modal')" to="/soglasie" target="_blank" class="text-red-500 underline">согласие</NuxtLink> на обработку персональных данных на условиях <NuxtLink
+                            to="/policy" target="_blank" class="text-red-500 underline">Политики</NuxtLink> в отношении обработки персональных данных.
+                        </span>
+                    </label>
+                    <span v-if="register.errors?.agree" class="text-xs text-red-500 text-end">  {{ register.errors.agree[0] }}</span>
+                </div>
               <div class="">
                 <button type="submit" :disabled="register.disabled"
                   class="flex w-full items-center justify-center rounded-md bg-amber-400 px-3 py-1.5 text-sm font-semibold leading-6  shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 transition-all ">

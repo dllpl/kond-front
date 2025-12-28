@@ -13,35 +13,43 @@
         </div>
 
 
-        <form @submit.prevent="submitCallback()" class="relative flex gap-4 sm:flex-col sm:gap-2 sm:w-full"
-            :class="formDirection">
-            <div>
-                <label for="name" class="sr-only">Имя</label>
-                <input v-model="callback.form.name" v-maska="maskaOptions.cyrillic_and_upper_case" name="name" id="name"
-                    required class="w-full leading-6 px-3 py-1.5  ring-inset rounded-md shadow-sm placeholder:text-gray-500 transition-base
-                    lg:text-base 
-                    focus:ring-red-500 hover:ring-red-500" :class="inputColor" placeholder="Имя" />
-            </div>
-            <div>
-                <label for="phone" class="sr-only">Телефон</label>
-                <input v-model="callback.form.phone" v-maska="maskaOptions.phone.mask" name="phone" id="phone" required
-                    class="w-full leading-6 px-3 py-1.5  ring-inset rounded-md shadow-sm placeholder:text-gray-500 transition-base
-                    lg:text-base 
-                    focus:ring-red-500 hover:ring-red-500" :class="inputColor" placeholder="+7 (___) ___-__-__" />
-            </div>
-            <div :class="textPolicy">
-                <span class="text-xs text-gray-500">Отправляя форму, вы соглашаетесь
-                    c <NuxtLink @click="popupStore.close('modal')" :to="`/policy`">политикой конфиденциальности
-                    </NuxtLink>
-                </span>
-            </div>
-            <div class="flex-shrink-0 ">
-                <button type="submit" class="flex w-full items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-base  hover:bg-red-500 
-                            focus-visible:bg-red-500">
-                    Отправить
-                </button>
-            </div>
+        <form @submit.prevent="submitCallback()" class="flex flex-col gap-4"
+              :class="formDirection">
+            <div class="flex sm:flex-col gap-4">
+                <div>
+                    <label for="name" class="sr-only">Имя</label>
+                    <input v-model="callback.form.name" v-maska="maskaOptions.cyrillic_and_upper_case" name="name"
+                           id="name"
+                           required class="w-full leading-6 px-3 py-1.5  ring-inset rounded-md shadow-sm placeholder:text-gray-500 transition-base
+                    lg:text-base
+                    focus:ring-red-500 hover:ring-red-500" :class="inputColor" placeholder="Имя"/>
+                </div>
+                <div>
+                    <label for="phone" class="sr-only">Телефон</label>
+                    <input v-model="callback.form.phone" v-maska="maskaOptions.phone.mask" name="phone" id="phone"
+                           required
+                           class="w-full leading-6 px-3 py-1.5  ring-inset rounded-md shadow-sm placeholder:text-gray-500 transition-base
+                    lg:text-base
+                    focus:ring-red-500 hover:ring-red-500" :class="inputColor" placeholder="+7 (___) ___-__-__"/>
+                </div>
 
+                <div class="flex-shrink-0 ">
+                    <button type="submit" class="flex w-full items-center justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-base  hover:bg-red-500
+                            focus-visible:bg-red-500">
+                        Отправить
+                    </button>
+                </div>
+            </div>
+            <div class="max-w-[550px]">
+                <label class="label items-start text-gray-500" for="agree2">
+                    <input v-model="callback.form.agree" type="checkbox" id="agree2" name="agree2" class="checkbox">
+                    <span class="text-wrap ml-1 text-sm">
+                        Даю <NuxtLink @click="popupStore.close('modal')" to="/soglasie" target="_blank"
+                                      class="text-red-500 underline">согласие</NuxtLink> на обработку персональных данных на условиях <NuxtLink
+                        to="/policy" target="_blank" class="text-red-500 underline">Политики</NuxtLink> в отношении обработки персональных данных.
+                    </span>
+                </label>
+            </div>
         </form>
     </div>
 
@@ -50,20 +58,27 @@
 <script setup>
 const maskaOptions = useMaskaOptions();
 const popupStore = usePopupStore();
-const { modal } = storeToRefs(popupStore);
+const {modal} = storeToRefs(popupStore);
 
 const callback = reactive({
     form: {
         name: null,
         phone: null,
+        agree: false,
     },
     errors: null,
 })
 
 const submitCallback = async () => {
     const form = callback.form;
-    const { public: config } = useRuntimeConfig();
-    const { phoneClear } = useHelper();
+
+    if(!form?.agree) {
+        popupStore.toggle('toast', {title: 'Дайте своё согласие', timeout: 6000, type: 'error'})
+        return;
+    }
+
+    const {public: config} = useRuntimeConfig();
+    const {phoneClear} = useHelper();
 
     form.phone = phoneClear(form.phone)
 
@@ -72,11 +87,11 @@ const submitCallback = async () => {
         body: form
     }).then((data) => {
         popupStore.close('modal');
-        popupStore.toggle('toast', { title: data.message, timeout: 2000 });
+        popupStore.toggle('toast', {title: data.message, timeout: 2000});
         form.phone = null;
         form.name = null;
-    }).catch(({ response }) => {
-        popupStore.toggle('toast', { title: response?._data?.message ?? 'Ошибка сервера', timeout: 6000, type: 'error' })
+    }).catch(({response}) => {
+        popupStore.toggle('toast', {title: response?._data?.message ?? 'Ошибка сервера', timeout: 6000, type: 'error'})
     })
 }
 
@@ -100,7 +115,7 @@ const props = defineProps({
     },
 })
 const wrapper = computed(() => {
-    return props.type === 'modal' ? ' ' : 'border-t border-white/10 flex gap-4 items-end justify-between lg:flex-col lg:items-start lg:justify-start lg:space-x-0 py-8';
+    return props.type === 'modal' ? ' ' : 'border-t border-white/10 flex gap-4 items-start justify-between lg:flex-col lg:items-start lg:justify-start lg:space-x-0 py-4';
 });
 const formDirection = computed(() => {
     return props.type === 'modal' ? 'flex-col' : 'flex-row';
