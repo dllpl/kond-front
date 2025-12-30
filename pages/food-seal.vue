@@ -10,7 +10,8 @@
 
             <ul class="space-y-2">
                 <li>
-                    <p class="lg:col-span-2">&mdash;&nbsp;Выберите нужный тип бумаги для печати самовывоз или доставку курьером.
+                    <p class="lg:col-span-2">&mdash;&nbsp;Выберите нужный тип бумаги для печати самовывоз или доставку
+                        курьером.
                     </p>
                 </li>
                 <li>
@@ -20,7 +21,8 @@
                 </li>
                 <li>
                     <p class="lg:col-span-2">
-                        - Заполните данную форму и нажмите кнопку "Отправить". Мы свяжемся с вами в самое ближайшее время.
+                        - Заполните данную форму и нажмите кнопку "Отправить". Мы свяжемся с вами в самое ближайшее
+                        время.
                     </p>
                 </li>
             </ul>
@@ -39,7 +41,8 @@
                             <!-- имя -->
                             <div class="col-span-2 sm:col-auto">
                                 <label for="name" class="block text-sm font-medium text-gray-900 mb-2">Имя</label>
-                                <input v-model="food.form.name" v-maska="maskaOptions.cyrillic_and_upper_case" name="name"
+                                <input v-model="food.form.name" v-maska="maskaOptions.cyrillic_and_upper_case"
+                                       name="name"
                                        id="name" required
                                        class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"
                                        placeholder="Имя"/>
@@ -48,7 +51,8 @@
                             <!-- Телефон -->
                             <div class="col-span-2 sm:col-auto">
                                 <label for="phone" class="block text-sm font-medium text-gray-900 mb-2">Телефон</label>
-                                <input v-model="food.form.phone" v-maska="maskaOptions.phone.mask" name="phone" id="phone"
+                                <input v-model="food.form.phone" v-maska="maskaOptions.phone.mask" name="phone"
+                                       id="phone"
                                        required
                                        class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 leading-6 transition-all"
                                        placeholder="+7 (___) ___-__-__"/>
@@ -59,7 +63,8 @@
                                 <label for="paper" class="block text-sm font-medium text-gray-900 mb-2">Тип
                                     бумаги</label>
                                 <div class="grid grid-cols-1">
-                                    <select v-model="food.form.type_id" id="paper" name="paper" autocomplete="paper-name"
+                                    <select v-model="food.form.type_id" id="paper" name="paper"
+                                            autocomplete="paper-name"
                                             required
                                             class="col-start-1 row-start-1 w-full rounded-md py-1.5 pl-3 pr-8 text-gray-900 border-0 shadow-sm ring-1 ring-inset ring-gray-300 appearance-none hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all">
                                         <option disabled selected value="0">Выберите тип бумаги</option>
@@ -68,15 +73,13 @@
                                         </option>
 
                                     </select>
-                                    <ChevronDownIcon
-                                        class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 z-10"
-                                        aria-hidden="true"/>
                                 </div>
                             </div>
 
                             <!-- Комментарий -->
                             <div class="col-span-full">
-                                <label for="desc" class="block text-sm/6 font-medium text-gray-900 mb-2">Комментарий</label>
+                                <label for="desc"
+                                       class="block text-sm/6 font-medium text-gray-900 mb-2">Комментарий</label>
                                 <textarea v-model="food.form.comment" name="desc" id="desc" rows="3"
                                           class="block w-full rounded-md border-0 px-2.5 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all"
                                           placeholder="Укажите ваш комментарий"/>
@@ -84,9 +87,9 @@
 
                             <!-- картинка -->
                             <div class="col-span-full">
-                            <span for="cover-photo" class="block text-sm font-medium text-gray-900 mb-2">
-                                Изображение
-                            </span>
+                                <span for="cover-photo" class="block text-sm font-medium text-gray-900 mb-2">
+                                    Изображение
+                                </span>
                                 <label for="file-upload"
                                        class="w-full flex justify-center items-center cursor-pointer rounded-md border-0 px-2.5 py-6 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 bg-white hover:ring-amber-400 hover:ring-2 focus:ring-2 focus:ring-inset focus:ring-amber-400 text-sm leading-6 transition-all ">
 
@@ -96,17 +99,33 @@
                                             <span>Загрузить файл</span>
                                         </div>
                                         <p class="text-xs text-center text-gray-600">
-                                            Пожалуйста, загрузите файл в формате JPG/JPEG/PNG/WEBP размером не более 3 MB
+                                            Пожалуйста, загрузите файл в формате JPG/JPEG/PNG/WEBP размером не более 3
+                                            MB
                                         </p>
                                     </div>
                                     <div v-else class="flex items-center gap-x-2 ">
-                                        <Icon name="material-symbols:check-circle-rounded" class="h-6 w-6 bg-green-500"/>
+                                        <Icon name="material-symbols:check-circle-rounded"
+                                              class="h-6 w-6 bg-green-500"/>
                                         <p>Добавлено: {{ food.form.imageName }}</p>
                                     </div>
 
                                     <input id="file-upload" name="file-upload" type="file" @change="handleFileUpload"
                                            accept="image/webp,image/png,image/jpeg,image/jpg,image/heic" required
                                            class="sr-only"/>
+                                </label>
+                            </div>
+
+                            <div class="col-span-full">
+                                <label class="block label text-gray-500 border-2 p-2 rounded-md" for="food_form_agree">
+                                    <input v-model="food.form.agree" type="checkbox" id="food_form_agree"
+                                           name="food_form_agree"
+                                           required
+                                           class="checkbox">
+                                    <span class="text-wrap ml-1 text-sm">
+                        Даю <NuxtLink @click="popupStore.close('modal')" to="/soglasie" target="_blank"
+                                      class="text-red-500 underline">согласие</NuxtLink> на обработку персональных данных на условиях <NuxtLink
+                                        to="/policy" target="_blank" class="text-red-500 underline">Политики</NuxtLink> в отношении обработки персональных данных.
+                    </span>
                                 </label>
                             </div>
                         </div>
@@ -152,10 +171,11 @@ const food = reactive({
     form: {
         name: null,
         phone: null,
-        type_id: null,
+        type_id: 0,
         comment: null,
         image: null,
         imageName: null,
+        agree: false,
     },
     errors: null,
 });
@@ -173,6 +193,11 @@ const handleFileUpload = (event) => {
 const submitForm = async () => {
     const {phoneClear} = useHelper();
 
+    if (!food.form.agree) {
+        popupStore.toggle('toast', {title: 'Дайте своё согласие', timeout: 6000, type: 'error'})
+        return;
+    }
+
     const form = food.form;
     form.phone = phoneClear(form.phone)
 
@@ -181,7 +206,7 @@ const submitForm = async () => {
         formData.append(key, form[key]);
     }
 
-    const {data , error} = await HttpClient('edible-seals', 'POST', formData);
+    const {data, error} = await HttpClient('edible-seals', 'POST', formData);
 
     if (error.value) {
         popupStore.toggle('toast', {title: error.value.message, timeout: 5000})
@@ -192,10 +217,11 @@ const submitForm = async () => {
     food.form = {
         name: null,
         phone: null,
-        type_id: null,
+        type_id: 0,
         comment: null,
         image: null,
         imageName: null,
+        agree: false,
     }
 }
 

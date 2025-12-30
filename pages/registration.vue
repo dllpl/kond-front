@@ -61,7 +61,7 @@
 
                 <div class="relative flex flex-col">
                     <label class="label items-start border-gray-200 border-2 p-2 rounded-md" for="agree">
-                        <input v-model="register.form.agree" type="checkbox" id="agree" name="agree" class="checkbox">
+                        <input v-model="register.form.agree" type="checkbox" id="agree" name="agree" class="checkbox" required>
                         <span class="text-wrap ml-1 text-sm">
                             Даю <NuxtLink @click="popupStore.close('modal')" to="/soglasie" target="_blank" class="text-red-500 underline">согласие</NuxtLink> на обработку персональных данных на условиях <NuxtLink
                             to="/policy" target="_blank" class="text-red-500 underline">Политики</NuxtLink> в отношении обработки персональных данных.

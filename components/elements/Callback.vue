@@ -41,8 +41,8 @@
                 </div>
             </div>
             <div class="max-w-[550px]">
-                <label class="label items-start text-gray-500" for="agree2">
-                    <input v-model="callback.form.agree" type="checkbox" id="agree2" name="agree2" class="checkbox">
+                <label class="block label text-gray-500 rounded-md border-2 p-2 border-gray-500" for="agree2">
+                    <input v-model="callback.form.agree" type="checkbox" id="agree2" name="agree2" class="checkbox" required>
                     <span class="text-wrap ml-1 text-sm">
                         Даю <NuxtLink @click="popupStore.close('modal')" to="/soglasie" target="_blank"
                                       class="text-red-500 underline">согласие</NuxtLink> на обработку персональных данных на условиях <NuxtLink
