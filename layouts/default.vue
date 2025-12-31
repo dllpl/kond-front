@@ -18,4 +18,5 @@ contactsStore.setContacts(response.value.data); // Записываем полу
     <ElementsMobileBottomNav/>
     <ElementsScrollButtons/>
     <ElementsCookieNotice/>
+    <ElementsWorkTimeNotice/>
 </template>
