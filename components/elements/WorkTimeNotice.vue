@@ -20,16 +20,8 @@ onMounted(() => {
         return
     }
 
-    // Если пользователь уже закрыл уведомление
-    if (!document.cookie.includes(`${COOKIE_NAME}=1`)) {
-        visible.value = true
-    }
+    visible.value = true
 })
-
-function accept() {
-    document.cookie = `${COOKIE_NAME}=1; path=/; max-age=31536000; SameSite=Lax`
-    visible.value = false
-}
 </script>
 <template>
     <transition name="fade">
