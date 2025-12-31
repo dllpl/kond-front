@@ -2,14 +2,21 @@
 const COOKIE_NAME = 'work_time_notice'
 const visible = ref(false)
 
-// Дата, после которой уведомление больше не показывается
-const HIDE_AFTER_DATE = new Date('2026-01-05T00:00:00')
+function isInAllowedDateRange(date: Date) {
+    const year = date.getFullYear()
+
+    // Диапазон: с 1 января 00:00 по 4 января 23:59
+    const start = new Date(year, 0, 1, 0, 0, 0)
+    const end = new Date(year, 0, 4, 23, 59, 59)
+
+    return date >= start && date <= end
+}
 
 onMounted(() => {
     const now = new Date()
 
-    // Если дата уже наступила — ничего не показываем
-    if (now >= HIDE_AFTER_DATE) {
+    // Если сегодня не 1–4 января — ничего не показываем
+    if (!isInAllowedDateRange(now)) {
         return
     }
 
